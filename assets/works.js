@@ -148,7 +148,8 @@ const WORKS = [
     cat: '錯題詳解',
     tags: ['錯誤診斷', '逐題詳解', '對症練習', 'MathJax'],
     date: '2026-06',
-    featured: true
+    featured: true,
+    lead: true   /* 首頁精選的主打卡（版面加大） */
   },
   {
     id: 'physics-errata-rotation',

@@ -14,13 +14,16 @@
 <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
 if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
 document.documentElement.setAttribute('data-theme',t)})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <div class="topbar">
   <div class="wrap bar">
-    <a class="brand" href="./">盧政良 <span class="en">Addie Lu</span></a>
+    <a class="brand" href="./">盧政良 <span class="en">ADDIE LU</span></a>
     <nav class="mainnav" aria-label="主選單">
       <a href="#about" class="hide-sm">關於</a>
       <a href="#works" class="hide-sm">作品</a>
@@ -34,27 +37,18 @@ document.documentElement.setAttribute('data-theme',t)})();</script>
 </div>
 
 <header class="hero">
-  <svg class="hero-deco" viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <path d="M 20 320 Q 260 -40 500 320" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="6 7"/>
-    <circle cx="68"  cy="255" r="3.5" fill="var(--accent2)"/>
-    <circle cx="140" cy="185" r="4"   fill="var(--accent2)"/>
-    <circle cx="212" cy="147" r="4.5" fill="var(--accent2)"/>
-    <circle cx="260" cy="140" r="5"   fill="var(--accent)"/>
-    <circle cx="308" cy="147" r="4.5" fill="var(--accent2)"/>
-    <circle cx="380" cy="185" r="4"   fill="var(--accent2)"/>
-    <circle cx="452" cy="255" r="3.5" fill="var(--accent2)"/>
-    <path d="M -10 310 q 40 -28 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".55"/>
-    <circle cx="470" cy="70" r="14" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".6"/>
-    <circle cx="470" cy="70" r="3"  fill="var(--accent2)"/>
-    <ellipse cx="470" cy="70" rx="26" ry="9" fill="none" stroke="var(--accent)" stroke-width="1" opacity=".45" transform="rotate(-24 470 70)"/>
-  </svg>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="inner">
-      <span class="badge">高雄中學物理教師 × AI 教學工具開發</span>
-      <h1>盧政良 <span class="en">ADDIE LU</span></h1>
-      <p class="tagline">把課堂上的真實需求，做成上線就能用的網站——為學生做自學評量與錯題詳解，為老師經營共備社群，讓 AI 真正走進教學現場。</p>
-      <div class="cta">
-        <a class="btn primary" href="#works">看精選作品</a>
+      <p class="eyebrow rise d1">高雄中學・物理科・Est. 2004</p>
+      <h1 class="rise d2">盧政良</h1>
+      <p class="role rise d3">
+        <span class="en">ADDIE LU</span>
+        <span>台大物理博士・高師大兼任助理教授・教物理 21 年</span>
+      </p>
+      <p class="tagline rise d3">把課堂上的真實需求，做成上線就能用的網站——為學生做自學評量與錯題詳解，為老師經營共備社群，讓 AI 真正走進教學現場。</p>
+      <div class="cta rise d4">
+        <a class="btn primary" href="#works">看精選作品 <span class="arr">→</span></a>
         <a class="btn" href="works.html">全部作品</a>
         <a class="btn" href="#contact">聯絡我</a>
       </div>
@@ -73,7 +67,10 @@ document.documentElement.setAttribute('data-theme',t)})();</script>
 
 <section class="block" id="about">
   <div class="wrap">
-    <h2><span class="hash">#</span>關於我</h2>
+    <div class="sec-head">
+      <p class="eyebrow">§01 · About</p>
+      <h2>關於我</h2>
+    </div>
     <div class="about-grid">
       <div class="about-text">
         <p>我是盧政良（Addie Lu），高雄中學物理教師，在講台上教了 21 年物理；台大物理博士，現在也在高雄師範大學物理學系兼任助理教授，並擔任《物理教育學刊》副主編與探究與實作學會理事。</p>
@@ -81,14 +78,14 @@ document.documentElement.setAttribute('data-theme',t)})();</script>
         <p>這兩年我把 AI 帶進教學工作流：用 Claude Code 等工具，把段考複習、錯題診斷、探究課程這些真實需求一個個做成上線就能用的網站；也透過 <a href="https://addielu-phy.github.io/phai-platform/" target="_blank" rel="noopener">PhAI 資源館</a>與<a href="https://addielu-phy.github.io/kh-inquiry-community-site/" target="_blank" rel="noopener">高雄市探究與實作社群</a>，和更多老師一起共備、分享做法。</p>
       </div>
       <div class="panel">
-        <h3>現職與服務</h3>
-        <div class="chips" style="margin-bottom:16px">
+        <h3>Current Roles</h3>
+        <div class="chips">
           <span class="chip">高雄中學物理教師</span>
           <span class="chip">高師大物理系兼任助理教授</span>
           <span class="chip">《物理教育學刊》副主編</span>
           <span class="chip">探究與實作學會理事</span>
         </div>
-        <h3>專長領域</h3>
+        <h3>Focus</h3>
         <div class="chips">
           <span class="chip">高中物理教學</span>
           <span class="chip">探究與實作</span>
@@ -104,31 +101,39 @@ document.documentElement.setAttribute('data-theme',t)})();</script>
 
 <section class="block" id="works">
   <div class="wrap">
-    <h2><span class="hash">#</span>精選作品</h2>
+    <div class="sec-head">
+      <p class="eyebrow">§02 · Selected Works</p>
+      <h2>精選作品</h2>
+    </div>
     <p class="lead">從 19 個上線作品中挑出最能代表方向的幾個：自學評量、錯題詳解、探究與實作、社群共備。</p>
     <div class="grid" id="featured-grid">
       <noscript><p>作品清單需要 JavaScript 才能顯示。你也可以直接造訪 <a href="https://github.com/addielu-phy" rel="noopener">GitHub</a> 瀏覽所有專案。</p></noscript>
     </div>
     <div class="more-row">
-      <a class="btn" href="works.html">看全部 19 個作品 →</a>
+      <a class="btn" href="works.html">看全部 19 個作品 <span class="arr">→</span></a>
     </div>
   </div>
 </section>
 
 <section class="block" id="community">
   <div class="wrap">
-    <h2><span class="hash">#</span>社群與共備</h2>
+    <div class="sec-head">
+      <p class="eyebrow">§03 · Community</p>
+      <h2>社群與共備</h2>
+    </div>
     <p class="lead">好的做法值得被更多老師拿去用。這兩個平台是我投入的教師社群入口：</p>
     <div class="duo">
       <div class="panel reveal">
-        <h3>PhAI 資源館｜AI × 物理教學共備平台</h3>
-        <p>收錄社群老師的 AI 物理教學案例、互動模擬、探究命題與教師工作流；可搜尋、篩選，也開放投稿上架。</p>
-        <a class="btn" href="https://addielu-phy.github.io/phai-platform/" target="_blank" rel="noopener">前往資源館 →</a>
+        <h3>AI × Physics</h3>
+        <p class="name">PhAI 資源館</p>
+        <p>AI × 物理教學共備平台：收錄社群老師的 AI 教學案例、互動模擬、探究命題與教師工作流；可搜尋、篩選，也開放投稿上架。</p>
+        <a class="btn" href="https://addielu-phy.github.io/phai-platform/" target="_blank" rel="noopener">前往資源館 <span class="arr">→</span></a>
       </div>
       <div class="panel reveal">
-        <h3>高雄市探究與實作社群</h3>
+        <h3>Inquiry &amp; Practice</h3>
+        <p class="name">高雄市探究與實作社群</p>
         <p>跨校教師共備社群：活動訊息、共備成果與社群資源的入口網站。</p>
-        <a class="btn" href="https://addielu-phy.github.io/kh-inquiry-community-site/" target="_blank" rel="noopener">前往社群網站 →</a>
+        <a class="btn" href="https://addielu-phy.github.io/kh-inquiry-community-site/" target="_blank" rel="noopener">前往社群網站 <span class="arr">→</span></a>
       </div>
     </div>
   </div>
@@ -136,8 +141,11 @@ document.documentElement.setAttribute('data-theme',t)})();</script>
 
 <section class="block" id="contact">
   <div class="wrap">
-    <h2><span class="hash">#</span>聯絡我</h2>
-    <p class="lead">教學合作、研習邀約、社群共備，或想聊聊 AI 怎麼用進課堂，都歡迎來信。</p>
+    <div class="sec-head">
+      <p class="eyebrow">§04 · Contact</p>
+      <h2>聯絡我</h2>
+    </div>
+    <p class="contact-line">教學合作、研習邀約、社群共備，<br>或想聊聊 AI 怎麼用進課堂——都歡迎來信。</p>
     <div class="contact-row">
       <a class="btn primary" href="mailto:cylcphychem@gmail.com">✉ cylcphychem@gmail.com</a>
       <a class="btn" href="https://www.facebook.com/addielu.tw" target="_blank" rel="noopener">Facebook / 盧政良</a>
@@ -149,6 +157,7 @@ document.documentElement.setAttribute('data-theme',t)})();</script>
 <footer class="site">
   <div class="wrap">
     <p>© 2026 盧政良 Addie Lu · 高雄 · 本站以 <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a> 打造</p>
+    <p class="fmono">x(t) = v₀cosθ·t　·　y(t) = v₀sinθ·t − ½gt²</p>
   </div>
 </footer>
 
