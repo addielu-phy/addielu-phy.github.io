@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
   {
+  "id": "spring-force-lab",
+  "title": "雙彈簧受力實驗室",
+  "desc": "調整天花板與平台的距離，即時觀察兩條彈簧的伸縮、兩端彈力、物體受力與支撐端作用力；附中學生適用的逐步解說及離台臨界分析。",
+  "url": "https://addielu-phy.github.io/spring-force-lab/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/spring-force-lab",
+  "cat": "探究與實作",
+  "tags": [
+    "彈簧",
+    "受力圖",
+    "靜力平衡",
+    "互動模擬"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+  {
   "id": "english-flashcards",
   "title": "國三上英語單字閃卡（參考版）",
   "desc": "翰林（佳音）三上 Unit 3、4 共 77 字詞參考練習，提供翻卡、錯題加強、練習時間、逐題紀錄與老師／家長報告；115-1 採用版本已核實，第二次段考正式範圍與現行完整字庫待核對。",
