@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
   {
+  "id": "english-flashcards",
+  "title": "國三上英語單字閃卡（參考版）",
+  "desc": "翰林（佳音）三上 Unit 3、4 共 77 字詞參考練習，提供翻卡、錯題加強與本機進度備份；115-1 採用版本已核實，第二次段考正式範圍與現行完整字庫待核對。",
+  "url": "https://addielu-phy.github.io/english-flashcards/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/english-flashcards",
+  "cat": "自學評量",
+  "tags": [
+    "國中英文",
+    "單字閃卡",
+    "錯題加強",
+    "進度紀錄"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+  {
     id: 'AT_tutor',
     title: '後醫考古題自學平台 AT_tutor',
     desc: '後醫入學考的考古題自學平台：原題截圖、自動批改、錯題練習、繁中詳解，並附教師端統計。',
@@ -229,3 +245,4 @@ const WORKS = [
     featured: true
   }
 ];
+
