@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {digest,pack,loadSnapshot,publishSnapshot,SyncConflict,chooseInitialAction} from './snapshot-core.mjs';
+let manifest=null;const chunks=new Map();const driver={readManifest:async()=>manifest,writeChunk:async(k,v)=>chunks.set(k,v),readChunk:async k=>chunks.get(k),commitManifest:async(expected,next)=>{if((manifest?.revision||0)!==expected)throw new SyncConflict(manifest?.revision||0);manifest=next}};
+const data={version:2,cards:[{en:'😀'.repeat(50000),zh:'測試'}],records:{},learning:{sessions:[],attempts:[]}};
+const first=await publishSnapshot(driver,data,0);assert.deepEqual(await loadSnapshot(driver,first),data);assert.equal(first.revision,1);assert(first.chunkIds.length>1);
+await assert.rejects(publishSnapshot(driver,{...data,records:{test:1}},0),SyncConflict);
+assert.deepEqual(await loadSnapshot(driver,manifest),data);
+const good=chunks.get(first.chunkIds[0]);chunks.set(first.chunkIds[0],good+'broken');await assert.rejects(loadSnapshot(driver,first),/不完整/);chunks.set(first.chunkIds[0],good);
+const failing={...driver,writeChunk:async()=>{throw Error('offline')}};await assert.rejects(publishSnapshot(failing,data,1),/offline/);assert.equal(manifest.revision,1);
+const racing={...driver,commitManifest:async(expected,next)=>{manifest={...manifest,revision:2};return driver.commitManifest(expected,next)}};await assert.rejects(publishSnapshot(racing,data,1),SyncConflict);assert.equal(manifest.revision,2);
+assert.equal(chooseInitialAction({cloud:first,localHasData:true,ownerMatches:false}),'confirm-choice');assert.equal(chooseInitialAction({cloud:first,localHasData:true,ownerMatches:true,localDigest:'x',lastDigest:'y',baseRevision:0}),'conflict');assert.equal(chooseInitialAction({cloud:first,localHasData:false}),'load-cloud');
+console.log('PASS: cross-device revision conflicts, mid-upload failure, raced commit, Unicode chunks, corruption rejection, account-switch choices');
