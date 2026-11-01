@@ -21,7 +21,7 @@ const WORKS = [
   {
   "id": "english-flashcards",
   "title": "國三上英語單字閃卡（參考版）",
-  "desc": "翰林（佳音）三上 Unit 3、4 共 77 字詞參考練習，提供翻卡、錯題加強與本機進度備份；115-1 採用版本已核實，第二次段考正式範圍與現行完整字庫待核對。",
+  "desc": "翰林（佳音）三上 Unit 3、4 共 77 字詞參考練習，提供翻卡、錯題加強、練習時間、逐題紀錄與老師／家長報告；115-1 採用版本已核實，第二次段考正式範圍與現行完整字庫待核對。",
   "url": "https://addielu-phy.github.io/english-flashcards/",
   "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/english-flashcards",
   "cat": "自學評量",
