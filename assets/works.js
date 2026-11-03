@@ -19,6 +19,17 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
   {
+  "id": "tennis-racket",
+  "title": "網球拍定理 3D 互動模擬",
+  "desc": "網球拍定理（中間軸定理）3D 互動模擬，可調慣量與擾動、即時圖表、淺色／深色切換。",
+  "url": "https://addielu-phy.github.io/tennis-racket/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/tennis-racket",
+  "cat": "探究與實作",
+  "tags": ["剛體轉動", "中間軸定理", "3D 模擬", "互動模擬"],
+  "date": "2026-11",
+  "featured": true
+},
+  {
   "id": "spring-force-lab",
   "title": "雙彈簧受力實驗室",
   "desc": "調整天花板與平台的距離，即時觀察兩條彈簧的伸縮、兩端彈力、物體受力與支撐端作用力；附中學生適用的逐步解說及離台臨界分析。",
