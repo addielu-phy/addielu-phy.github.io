@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="範例8：水平木棒三力平衡互動模擬（grok版）。拖曳重錘位置，同步顯示張力、樞紐反力、封閉力三角形與變化曲線。作者：盧政良。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>三力平衡實驗室（grok版）｜木棒、輕繩與重錘｜盧政良</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{
+  --ink:#1a3144; --muted:#5a7284; --line:#d7e3eb;
+  --bg:#f2f6f9; --card:#fff;
+  --blue:#1f6fc2; --red:#c23d45; --green:#0d8a6f;
+  --amber:#b8860b; --purple:#6f4fb0; --orange:#c06a12;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+a{color:var(--blue)}
+header,main,footer{max-width:1360px;margin:auto;padding:22px 20px}
+header{padding-top:30px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--green);font-weight:700}
+h1{font-size:clamp(26px,3.8vw,40px);line-height:1.3;margin:8px 0}
+h2{font-size:21px;margin:0 0 10px}
+h3{font-size:17px;margin:14px 0 8px}
+.sub,.note,.muted{color:var(--muted)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;background:#e6f6f1;color:var(--green);font-size:13px;font-weight:700;vertical-align:middle}
+.layout{display:grid;grid-template-columns:290px 1fr;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 3px 14px #18354a08}
+.controls{position:sticky;top:12px;align-self:start}
+.control{margin:16px 0}
+label{display:block;font-weight:650;margin-bottom:4px}
+output{float:right;color:var(--green);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--green);height:28px;cursor:pointer}
+.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+button{border:1px solid var(--line);border-radius:9px;background:#edf3f7;color:var(--ink);padding:9px 13px;font:inherit;cursor:pointer}
+button.primary{background:var(--green);color:#fff;border-color:var(--green)}
+button:hover{filter:brightness(.97)}
+button:focus-visible,input:focus-visible{outline:3px solid #e0ad3a;outline-offset:2px}
+.toggle{display:flex;align-items:center;gap:8px;font-weight:500;margin:8px 0;font-size:14.5px}
+.toggle input{width:17px;height:17px;accent-color:var(--green)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:14.5px;margin-bottom:10px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.visuals{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}
+.visuals .card{min-width:0;padding:14px}
+svg{display:block;width:100%;height:auto;overflow:visible;touch-action:none}
+svg text{font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;font-size:14px;fill:var(--ink)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.metric{background:#f4f8fb;border-radius:10px;padding:10px 12px}
+.metric span{font-size:12.5px;color:var(--muted)}
+.metric b{display:block;font-size:20px;font-variant-numeric:tabular-nums;line-height:1.45}
+.status{margin-top:12px;padding:10px 14px;border-radius:10px;background:#eaf7f2;font-size:14px}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.charts .card{padding:14px}
+.chart-title{font-size:14px;font-weight:700;margin:0 0 4px}
+.explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden;max-width:100%}
+.eqbox{background:#f4f8fb;border-left:3px solid var(--green);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;overflow-x:auto;max-width:100%}
+.card,.explain-grid,.visuals,.charts,.layout,main,header,footer{max-width:100%;min-width:0}
+.katex-html{max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}
+th{background:#f4f8fb}
+.tablewrap{overflow-x:auto}
+.note{font-size:13.5px;margin:8px 0 0}
+footer{font-size:13.5px;color:var(--muted);padding-bottom:40px}
+#weightHandle{cursor:ew-resize}
+@media(max-width:1050px){
+  .layout{grid-template-columns:1fr}
+  .controls{position:static}
+  .ctrlgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+}
+@media(max-width:780px){
+  header,main,footer{padding:16px}
+  .visuals,.charts,.explain-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .ctrlgrid{grid-template-columns:1fr}
+  .card{padding:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">PHYSICS LAB · 靜力平衡</div>
+  <h1>重錘右移，三個力怎麼變？ <span class="badge">grok版</span></h1>
+  <p class="sub">範例 8：輕棒、輕繩與重錘的三力平衡。拖曳重錘或拉動滑桿，同步觀察受力圖、封閉力三角形與變化曲線。</p>
+</header>
+
+<main>
+<div class="layout">
+  <aside class="card controls">
+    <h2>實驗控制</h2>
+    <span class="badge">理想輕棒 · 準靜態平衡</span>
+    <div class="ctrlgrid">
+      <div class="control">
+        <label for="pos">重錘位置 $x/\ell$ <output id="posOut"></output></label>
+        <input id="pos" type="range" min="0.02" max="0.98" step="0.001" value="0.40">
+        <div class="buttons">
+          <button type="button" data-pos="0.1">近 O</button>
+          <button type="button" data-pos="0.5">中央</button>
+          <button type="button" data-pos="0.9">近 P</button>
+        </div>
+      </div>
+      <div class="control">
+        <label for="theta">繩與棒夾角 $\theta$ <output id="thetaOut"></output></label>
+        <input id="theta" type="range" min="15" max="70" step="1" value="35">
+      </div>
+      <div class="control">
+        <label for="W">重錘重量 $W$ <output id="WOut"></output></label>
+        <input id="W" type="range" min="20" max="200" step="1" value="100">
+      </div>
+      <div class="control">
+        <label for="L">木棒長度 $\ell$ <output id="LOut"></output></label>
+        <input id="L" type="range" min="0.8" max="4" step="0.1" value="2">
+      </div>
+    </div>
+    <div class="buttons">
+      <button type="button" id="play" class="primary">▶ 播放 $x:0\rightarrow\ell$</button>
+      <button type="button" id="reset">重設</button>
+    </div>
+    <label class="toggle"><input type="checkbox" id="showComp" checked> 顯示樞紐反力分量 $H$、$V$</label>
+    <label class="toggle"><input type="checkbox" id="showConcur" checked> 顯示三力作用線共點</label>
+    <label class="toggle"><input type="checkbox" id="showTrace" checked> 力三角形頂點軌跡</label>
+    <p class="note">也可直接左右拖曳灰色重錘。播放時 $x$ 由近 O 端掃到近 P 端。</p>
+  </aside>
+
+  <section>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--blue)"></i>繩張力 $T$</span>
+      <span><i class="dot" style="background:var(--red)"></i>重錘拉力 $W$</span>
+      <span><i class="dot" style="background:var(--green)"></i>樞紐反力 $\vec R$</span>
+      <span><i class="dot" style="background:var(--orange)"></i>水平分量 $H$</span>
+      <span><i class="dot" style="background:var(--purple)"></i>鉛直分量 $V$</span>
+    </div>
+
+    <div class="visuals">
+      <article class="card">
+        <h2>01 · 裝置與受力圖</h2>
+        <svg id="scene" viewBox="0 0 640 520" role="img" aria-label="木棒、繩、重錘與三個力的大小方向"></svg>
+        <p class="note">彩色箭頭依同一比例尺繪製，代表作用在<strong>木棒</strong>上的外力。虛線為作用線；共點 $Q$ 顯示三力作用線交會。</p>
+      </article>
+      <article class="card">
+        <h2>02 · 封閉力三角形</h2>
+        <svg id="tri" viewBox="0 0 460 400" role="img" aria-label="張力、重量與樞紐反力首尾相接的封閉三角形"></svg>
+        <p class="note" id="triNote">三力首尾相接形成封閉三角形：$\vec T+\vec W+\vec R=\vec 0$。固定 $\vec W$ 邊，頂點隨 $x$ 沿張力方向移動。</p>
+      </article>
+    </div>
+
+    <article class="card">
+      <h2>即時數值</h2>
+      <div class="metrics" id="metrics"></div>
+      <div class="status" id="balance"></div>
+    </article>
+
+    <div class="charts">
+      <article class="card">
+        <p class="chart-title">$T/W$、$H/W$、$V/W$ 對 $x/\ell$</p>
+        <svg id="chartF" viewBox="0 0 520 260" role="img" aria-label="力比值隨位置變化"></svg>
+      </article>
+      <article class="card">
+        <p class="chart-title">樞紐反力方向角 $\varphi$ 對 $x/\ell$</p>
+        <svg id="chartPhi" viewBox="0 0 520 260" role="img" aria-label="方向角隨位置變化"></svg>
+      </article>
+    </div>
+  </section>
+</div>
+
+<article class="card">
+  <h2>題意重述</h2>
+  <p>一根長度為 $\ell$、重量可忽略的木棒，一端 $O$ 以鉸鏈固定於牆，另一端 $P$ 以輕繩拉住，使木棒保持水平；輕繩與木棒夾角為 $\theta$。重量為 $W$ 的物體掛在距牆 $x$ 處。當重錘沿棒向右移動（$x$ 增大）時，下列各量如何變化？</p>
+  <ol>
+    <li>(A) 輕繩張力大小</li>
+    <li>(B) 鉸鏈對棒水平分力大小</li>
+    <li>(C) 鉸鏈對棒鉛直分力大小</li>
+    <li>(D) 鉸鏈對棒作用力與水平方向的夾角</li>
+  </ol>
+  <p><strong>答案：</strong>(A) 變大；(B) 變大；(C) 變小；(D) 變小。</p>
+</article>
+
+<div class="explain-grid">
+  <article class="card">
+    <h2>1. 力矩平衡求張力</h2>
+    <p>取 $O$ 為力矩原點：鉸鏈反力通過 $O$，力矩為零；張力水平分量沿棒，力臂為零。僅剩張力鉛直分量與重錘的力矩：</p>
+    <div class="eqbox">$$\sum \tau_O = \ell\, T\sin\theta - x W = 0 \quad\Rightarrow\quad T=\dfrac{W x}{\ell\sin\theta}$$</div>
+    <p>$x$ 增大時，重錘力臂變大，而張力力臂 $\ell\sin\theta$ 固定，故 $T$ 必須<strong>變大</strong>——即 (A)。</p>
+  </article>
+  <article class="card">
+    <h2>2. 力的平衡求分量</h2>
+    <p>水平、鉛直分別取平衡（右、上為正）：</p>
+    <div class="eqbox">$$H = T\cos\theta = \dfrac{W x}{\ell\tan\theta},\qquad V = W - T\sin\theta = W\Bigl(1-\dfrac{x}{\ell}\Bigr)$$</div>
+    <p>$x$ 增大 ⇒ $H$ <strong>變大</strong>（抵消更大的 $T\cos\theta$）；$V$ <strong>變小</strong>（繩承擔更多重量）——即 (B)、(C)。注意 $V$ 與 $\theta$ 無關。</p>
+  </article>
+  <article class="card">
+    <h2>3. 鉸鏈反力方向角 $\varphi$</h2>
+    <p>令 $\varphi$ 為 $\vec R$ 與水平向右的夾角：</p>
+    <div class="eqbox">$$\tan\varphi = \dfrac{V}{H} = \tan\theta\cdot\dfrac{\ell-x}{x}$$</div>
+    <p>固定 $\theta$ 時，$x$ 越大，$(\ell-x)/x$ 越小，故 $\varphi$ <strong>變小</strong>——即 (D)。極限：$x\to 0^+$ 時 $\varphi\to 90^\circ$；$x=\ell$ 時 $\varphi=0^\circ$。</p>
+  </article>
+  <article class="card">
+    <h2>4. 力三角形與作用線共點</h2>
+    <p>三力平衡 ⇒ $\vec T+\vec W+\vec R=\vec 0$，首尾相接成封閉三角形。三角形中：$\vec W$ 鉛直向下長度固定；$\vec T$ 方向固定（與水平夾 $\theta$），長度隨 $x$ 變；$\vec R$ 補上最後一邊，與水平夾角即 $\varphi$。</p>
+    <p>三個非平行力平衡時，作用線必交於一點 $Q$。由幾何可得 $Q=\bigl(x,\,(\ell-x)\tan\theta\bigr)$，而 $\vec R$ 沿 $OQ$，故 $\tan\varphi$ 與分量法一致。</p>
+  </article>
+</div>
+
+<article class="card">
+  <h2>四選項對照表</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>選項</th><th>物理量</th><th>關係式</th><th>$x$ 增大時</th><th>直觀原因</th></tr></thead>
+      <tbody>
+        <tr><td>(A)</td><td>繩張力 $T$</td><td>$Wx/(\ell\sin\theta)$</td><td><strong>變大</strong></td><td>需更大逆時針力矩</td></tr>
+        <tr><td>(B)</td><td>鉸鏈水平分力 $H$</td><td>$Wx/(\ell\tan\theta)$</td><td><strong>變大</strong></td><td>抵消更大的 $T\cos\theta$</td></tr>
+        <tr><td>(C)</td><td>鉸鏈鉛直分力 $V$</td><td>$W(1-x/\ell)$</td><td><strong>變小</strong></td><td>繩提供更多向上分力</td></tr>
+        <tr><td>(D)</td><td>鉸鏈反力與水平夾角 $\varphi$</td><td>$\arctan(V/H)$</td><td><strong>變小</strong></td><td>$V$ 減、$H$ 增，方向更水平</td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<article class="card">
+  <h2>邊界情況與常見迷思</h2>
+  <h3>邊界</h3>
+  <ul>
+    <li>$x\to 0$：重錘靠近鉸鏈，$T\to 0$，$H\to 0$，$V\to W$，$\varphi\to 90^\circ$。力三角形退化成一線段（$T$ 邊消失）。</li>
+    <li>$x=\ell$：重錘在 $P$ 端，$T=W/\sin\theta$，$H=W/\tan\theta$，$V=0$，$\varphi=0^\circ$。鉸鏈只提供水平力；力三角形在頂點為直角。</li>
+    <li>$\theta\to 0^+$：任何 $x>0$ 所需張力發散——輕繩幾乎水平時無法提供力矩，故本模擬避開過小平角。</li>
+  </ul>
+  <h3>常見迷思</h3>
+  <ul>
+    <li>「$H$ 變大、$V$ 變小 ⇒ $R=\sqrt{H^2+V^2}$ 一定變小」——不成立。$R$ 可能先減後增；最小值發生在 $x/\ell=\sin^2\theta$，此時 $R_{\min}=W\cos\theta$。</li>
+    <li>把 $H$、$V$ 當成與 $R$ 並列的第三、第四個外力——其實它們只是 $\vec R$ 的正交分解。</li>
+    <li>把重錘的「重力」直接畫在木棒受力圖上——嚴格說，木棒感受到的是懸掛線向下的拉力（與重力等大）；重錘本身另受重力與線的向上拉力而平衡。</li>
+    <li>以為力三角形的形狀就是裝置的幾何形狀——力三角形是向量圖，可平移，不可旋轉；與裝置尺寸無直接比例。</li>
+  </ul>
+  <p class="note">模型假設：棒重可忽略、輕繩只能抗拉、理想鉸鏈不提供力偶、準靜態（忽略移動時慣性）。作者：盧政良。</p>
+</article>
+</main>
+
+<footer>
+  盧政良 · 物理教學互動模擬｜<strong>grok版</strong> · 2026-11-05<br>
+  <a href="../">作品總覽</a> · <a href="../works.html">教學作品集</a> · 可離線使用（首次需載入 KaTeX CDN）
+</footer>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const C = { t:'#1f6fc2', w:'#c23d45', r:'#0d8a6f', h:'#c06a12', v:'#6f4fb0', ink:'#1a3144', mute:'#5a7284', soft:'#b7c7d0' };
+
+function model(u, thetaDeg, W, L) {
+  const th = thetaDeg * Math.PI / 180;
+  const T = W * u / Math.sin(th);
+  const H = T * Math.cos(th);
+  const V = W * (1 - u);
+  const R = Math.hypot(H, V);
+  const phi = Math.atan2(V, H) * 180 / Math.PI;
+  return { u, theta: thetaDeg, th, W, L, T, H, V, R, phi, x: u * L };
+}
+window.beamModelGrok = model;
+
+const fmt = (n, d = 1) => (Math.abs(n) < 1e-10 ? 0 : n).toFixed(d);
+const line = (x1,y1,x2,y2,c=C.soft,w=2,dash='') =>
+  `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+const txt = (x,y,t,c=C.ink,a='start',fs=14) =>
+  `<text x="${x}" y="${y}" fill="${c}" text-anchor="${a}" font-size="${fs}">${t}</text>`;
+function arrow(x,y,dx,dy,c,w=4){
+  const n=Math.hypot(dx,dy); if(n<1) return '';
+  const ux=dx/n, uy=dy/n, h=Math.min(12, n*0.35);
+  const px=x+dx, py=y+dy;
+  return line(x,y,px,py,c,w) +
+    `<path d="M${px},${py} L${px-h*ux+h*0.45*uy},${py-h*uy-h*0.45*ux} L${px-h*ux-h*0.45*uy},${py-h*uy+h*0.45*ux} Z" fill="${c}"/>`;
+}
+
+const tracePts = []; // {u, Ax, Ay} in triangle coords
+let playing = false, playLast = 0;
+
+function render() {
+  const u = +$('pos').value, theta = +$('theta').value, W = +$('W').value, L = +$('L').value;
+  const m = model(u, theta, W, L);
+  const { th, T, H, V, R, phi, x } = m;
+
+  $('posOut').textContent = fmt(u * 100, 1) + '%';
+  $('thetaOut').textContent = theta + '°';
+  $('WOut').textContent = W + ' N';
+  $('LOut').textContent = fmt(L, 1) + ' m';
+
+  // —— Scene ——
+  const O = { x: 120, y: 340 }, span = 400;
+  const P = { x: O.x + span, y: O.y };
+  const wx = O.x + span * u;
+  const ropeAy = O.y - span * Math.tan(th); // rope attach on wall
+  const s = 120 / Math.max(W, T, R, 1);
+  let a = '';
+
+  // wall hatch
+  for (let yy = 30; yy < 460; yy += 14) a += line(100, yy, 120, yy - 11, '#b8c8d2', 1.5);
+  a += line(120, 30, 120, 460, '#5f7888', 5);
+  // rod
+  a += line(O.x, O.y, P.x, P.y, '#7a8790', 14) + line(O.x, O.y, P.x, P.y, '#c5ccd2', 8);
+  // rope
+  a += line(120, ropeAy, P.x, P.y, '#7f95a4', 3);
+  // hinge
+  a += `<circle cx="${O.x}" cy="${O.y}" r="9" fill="#fff" stroke="${C.ink}" stroke-width="3"/>`;
+  // weight (draggable)
+  a += `<g id="weightHandle">
+    <rect x="${wx-32}" y="${O.y+8}" width="64" height="90" fill="transparent"/>
+    <line x1="${wx}" y1="${O.y}" x2="${wx}" y2="${O.y+55}" stroke="#7d858b" stroke-width="2"/>
+    <rect x="${wx-22}" y="${O.y+55}" width="44" height="36" rx="4" fill="#a8b3bb" stroke="#566a77"/>
+    <text x="${wx}" y="${O.y+78}" text-anchor="middle" font-size="13" fill="${C.ink}">拖曳</text>
+  </g>`;
+
+  // concurrency Q
+  if ($('showConcur').checked && u > 0.01 && u < 0.99) {
+    const qx = wx;
+    const qy = O.y - span * (1 - u) * Math.tan(th);
+    a += line(wx, O.y, wx, qy, C.w, 1.5, '5 4');
+    a += line(O.x, O.y, qx, qy, C.r, 1.5, '5 4');
+    a += line(P.x, P.y, qx, qy, C.t, 1.5, '5 4');
+    a += `<circle cx="${qx}" cy="${qy}" r="5" fill="#a76b00"/>` + txt(qx + 10, qy - 8, 'Q', '#a76b00');
+  }
+
+  // components
+  if ($('showComp').checked) {
+    a += arrow(O.x, O.y, s * H, 0, C.h, 2.5);
+    a += arrow(O.x, O.y, 0, -s * V, C.v, 2.5);
+    a += line(O.x + s*H, O.y, O.x + s*H, O.y - s*V, '#a9bdc6', 1, '3 3');
+    a += line(O.x, O.y - s*V, O.x + s*H, O.y - s*V, '#a9bdc6', 1, '3 3');
+    if (H > 1) a += txt(O.x + s*H/2, O.y + 18, 'H', C.h, 'middle', 13);
+    if (V > 1) a += txt(O.x - 14, O.y - s*V/2, 'V', C.v, 'end', 13);
+  }
+
+  // main forces
+  a += arrow(P.x, P.y, -s * T * Math.cos(th), -s * T * Math.sin(th), C.t);
+  a += arrow(wx, O.y, 0, s * W, C.w);
+  a += arrow(O.x, O.y, s * H, -s * V, C.r);
+
+  // labels
+  a += txt(P.x + 8, O.y - 8, 'P') + txt(O.x - 28, O.y + 28, 'O');
+  a += txt(P.x - s*T*Math.cos(th) - 4, P.y - s*T*Math.sin(th) - 8, `T = ${fmt(T)} N`, C.t, 'end');
+  a += txt(wx + 12, O.y + s*W + 4, `W = ${fmt(W)} N`, C.w);
+  a += txt(O.x + s*H + 8, O.y - s*V - 6, `R = ${fmt(R)} N`, C.r);
+  a += txt(P.x - 70, O.y - 14, `θ = ${theta}°`, C.mute);
+
+  // phi arc
+  if (u > 0.02 && H > 0.5) {
+    const ar = 42;
+    const px = O.x + ar * Math.cos(phi * Math.PI / 180);
+    const py = O.y - ar * Math.sin(phi * Math.PI / 180);
+    a += `<path d="M${O.x+ar},${O.y} A${ar},${ar} 0 0 0 ${px},${py}" fill="none" stroke="${C.r}" stroke-width="1.5"/>`;
+    a += txt(O.x + ar + 8, O.y - 14, 'φ', C.r);
+  }
+
+  // length marks
+  a += line(O.x, 470, P.x, 470, '#8298a5', 1) + line(O.x, 464, O.x, 476) + line(P.x, 464, P.x, 476);
+  a += txt((O.x+P.x)/2, 492, `ℓ = ${fmt(L,1)} m`, C.mute, 'middle');
+  a += line(O.x, 448, wx, 448, '#8298a5', 1);
+  a += txt((O.x+wx)/2, 442, `x = ${fmt(x,2)} m`, C.mute, 'middle');
+
+  const top = Math.min(20, ropeAy - 40);
+  $('scene').setAttribute('viewBox', `0 ${top} 640 ${520 - top}`);
+  $('scene').innerHTML = a;
+
+  // —— Force triangle ——
+  // Fix W vertical: B at top, C below. A is tip of H from C (and of T from B).
+  // Vector order: A --T--> B --W--> C --R--> A
+  // B = start of W, C = end of W / start of R, A = end of R / start of T
+  const k = 200 / Math.max(W, H + 1e-9, T + 1e-9);
+  const B = { x: 130, y: 70 };
+  const Cc = { x: 130, y: 70 + W * k }; // renamed to avoid conflict
+  const A = { x: 130 + H * k, y: 70 + (W - V) * k }; // = 70 + T*sin*k = 70 + W*u*k
+  // Check: R goes C→A: (H, -V) in screen? Screen y down: C to A is (H*k, (W-V)*k - W*k) = (H*k, -V*k) ✓
+  // T goes A→B: B-A = (-H*k, 70 - (70+W*u*k)) = (-H*k, -W*u*k) = (-T cos k, -T sin k) ✓
+
+  if ($('showTrace').checked) {
+    // record current A
+    const last = tracePts[tracePts.length - 1];
+    if (!last || Math.abs(last.u - u) > 0.004 || Math.abs(last.theta - theta) > 0.5) {
+      if (last && Math.abs(last.theta - theta) > 0.5) tracePts.length = 0;
+      tracePts.push({ u, theta, Ax: A.x, Ay: A.y });
+      if (tracePts.length > 250) tracePts.shift();
+    }
+  }
+
+  let b = '';
+  // trace of A (along direction of T changes — actually A moves as T grows with fixed direction from B)
+  if ($('showTrace').checked && tracePts.length > 1) {
+    let d = '';
+    for (let i = 0; i < tracePts.length; i++) {
+      // recompute A for stored u at current theta/W scale
+      const mm = model(tracePts[i].u, theta, W, L);
+      const Ax = 130 + mm.H * k;
+      const Ay = 70 + W * mm.u * k;
+      d += (i ? 'L' : 'M') + Ax + ',' + Ay;
+    }
+    b += `<path d="${d}" fill="none" stroke="#9bb8c8" stroke-width="2" stroke-dasharray="4 3"/>`;
+  }
+
+  b += `<path d="M${A.x},${A.y} L${B.x},${B.y} L${Cc.x},${Cc.y} Z" fill="#e8f3ef" opacity=".9"/>`;
+  b += arrow(A.x, A.y, B.x - A.x, B.y - A.y, C.t);
+  b += arrow(B.x, B.y, Cc.x - B.x, Cc.y - B.y, C.w);
+  b += arrow(Cc.x, Cc.y, A.x - Cc.x, A.y - Cc.y, C.r);
+
+  for (const [p, lab, dx, dy] of [[A,'A',10,4],[B,'B',-14,-10],[Cc,'C',-14,20]]) {
+    b += `<circle cx="${p.x}" cy="${p.y}" r="4" fill="${C.ink}"/>` + txt(p.x+dx, p.y+dy, lab, C.ink, 'start', 13);
+  }
+  b += txt((A.x+B.x)/2 + 10, (A.y+B.y)/2 - 8, 'T', C.t);
+  b += txt(B.x - 18, (B.y+Cc.y)/2 + 4, 'W', C.w, 'end');
+  b += txt((Cc.x+A.x)/2 + 10, (Cc.y+A.y)/2 + 16, 'R', C.r);
+
+  // mark θ at B (between BA which is opposite T, and horizontal? )
+  // At B: incoming T is from A (direction of rope: up-left from P, so T vector A→B is up-left? Wait A→B is toward upper-left from A which is right of B... A is to the right of B, so A→B is leftward and upward.
+  // Angle of T with horizontal = θ. At B, W goes down. Angle between -T direction and W... 
+  // Angle at B in triangle: between vectors BA and BC.
+  // BA = A-B? Vectors from B: to A and to C.
+  // Angle between T reversed and W: actually angle at B between side BT(from B along -T? Let's compute.
+  // T direction from A to B makes angle θ with horizontal (leftward & up).
+  // W is vertical down. Interior angle at B = 90° - θ.
+  // Angle at C between W (up reverse) and R: R makes φ with horizontal, so interior = 90° - φ? 
+  // Better: label θ near the T side relative to horizontal, and φ near R relative to horizontal.
+
+  // horizontal guide at B for θ
+  if (T > 1) {
+    const ar = 36;
+    // T from A to B: angle from +x is 180° - θ
+    // At B, show angle between left-horizontal and direction of T arrival (from A), which is direction angle 180-θ from +x, so from left-horizontal (180°) the angle down? 
+    // Direction of vector A→B: angle = Math.atan2(B.y-A.y, B.x-A.x) = atan2(-T sin k, -T cos k) = atan2(-sin,-cos) = -180+θ or 180-θ in screen.
+    // From B along reverse of T (B→A): angle = θ below the left-horizontal? B→A is right and down: angle = θ from +x.
+    // Mark θ between BA and horizontal right at B? Problem's θ is rope-rod angle = T with horizontal.
+    b += line(B.x, B.y, B.x + 50, B.y, '#9aa', 1, '3 2');
+    // arc from horizontal-right to direction B→A
+    const ang = th; // B→A is at angle +θ from +x in math coords, but screen y down so angle is +θ in screen from +x clockwise? 
+    // Screen: +x right, +y down. Vector B→A = (H*k, W*u*k) = (T cos θ ·k, T sin θ ·k), so screen angle from +x is +θ (clockwise).
+    const ax = B.x + ar * Math.cos(th);
+    const ay = B.y + ar * Math.sin(th);
+    b += `<path d="M${B.x+ar},${B.y} A${ar},${ar} 0 0 1 ${ax},${ay}" fill="none" stroke="${C.t}" stroke-width="1.5"/>`;
+    b += txt(B.x + ar + 6, B.y + 18, 'θ', C.t, 'start', 13);
+  }
+  // φ at C: R from C to A is (H, -V) in math = (H*k, -V*k) in screen y-down ⇒ (H*k, -V*k)
+  if (R > 1 && H > 0.5) {
+    const ar = 36;
+    const ax = Cc.x + ar * Math.cos(phi * Math.PI / 180);
+    const ay = Cc.y - ar * Math.sin(phi * Math.PI / 180);
+    b += line(Cc.x, Cc.y, Cc.x + 55, Cc.y, '#9aa', 1, '3 2');
+    b += `<path d="M${Cc.x+ar},${Cc.y} A${ar},${ar} 0 0 0 ${ax},${ay}" fill="none" stroke="${C.r}" stroke-width="1.5"/>`;
+    b += txt(Cc.x + ar + 4, Cc.y - 10, 'φ', C.r, 'start', 13);
+  }
+
+  b += txt(230, 380, '同一比例尺 · 可平移不可旋轉', C.mute, 'middle', 12);
+  $('tri').innerHTML = b;
+
+  if (u < 0.03) $('triNote').textContent = 'x → 0：T ≈ 0，三角形幾乎退化成鉛直線段（R 與 W 等大反向）。';
+  else if (u > 0.97) $('triNote').textContent = 'x → ℓ：V ≈ 0，R 近水平；頂點 A 使三角形在 C 處接近直角。';
+  else $('triNote').textContent = '固定紅色 W 邊；頂點 A 隨 x 移動。T 方向不變、長度變大，R 補上封閉邊。θ、φ 標於水平參考線旁。';
+
+  // —— Metrics ——
+  $('metrics').innerHTML = [
+    ['繩張力 T', fmt(T) + ' N', `與水平夾 ${theta}°（左上）`],
+    ['水平分量 H', fmt(H) + ' N', '向右 →'],
+    ['鉛直分量 V', fmt(V) + ' N', V >= 0 ? '向上 ↑' : '向下 ↓'],
+    ['樞紐反力 R', fmt(R) + ' N', `與水平夾 φ = ${fmt(phi)}°`],
+    ['方向角 φ', fmt(phi) + '°', '由向右水平線量起'],
+    ['懸掛點 x', fmt(x, 2) + ' m', `相對位置 ${fmt(u*100)}%`]
+  ].map(([t,v,d]) => `<div class="metric"><span>${t}</span><b>${v}</b><span>${d}</span></div>`).join('');
+
+  const sFx = H - T * Math.cos(th);
+  const sFy = V + T * Math.sin(th) - W;
+  const sT = L * T * Math.sin(th) - x * W;
+  $('balance').textContent = `平衡檢查：ΣFx = ${fmt(sFx, 3)} N；ΣFy = ${fmt(sFy, 3)} N；ΣτO = ${fmt(sT, 3)} N·m。三力作用線${($('showConcur').checked && u>0.01 && u<0.99) ? '交於 Q' : '（可勾選顯示共點）'}。`;
+
+  // —— Charts ——
+  drawForceChart(theta, W, L, u);
+  drawPhiChart(theta, W, L, u);
+}
+
+function drawForceChart(theta, W, L, u) {
+  const ymax = Math.ceil((1 / Math.sin(theta * Math.PI / 180)) * 2) / 2 || 2;
+  const px = v => 50 + 440 * v;
+  const py = v => 220 - 180 * Math.min(v, ymax * 1.05) / ymax;
+  let g = '';
+  for (let i = 0; i <= 4; i++) {
+    const v = ymax * i / 4;
+    g += line(50, py(v), 490, py(v), '#e2ebf0', 1) + txt(42, py(v) + 4, fmt(v, 2), C.mute, 'end', 11);
+  }
+  for (let i = 0; i <= 4; i++) g += txt(px(i/4), 238, fmt(i/4, 2), C.mute, 'middle', 11);
+  g += line(50, 40, 50, 220) + line(50, 220, 490, 220);
+  g += txt(8, 28, '力 / W', C.mute, 'start', 12) + txt(500, 252, 'x/ℓ', C.mute, 'end', 12);
+
+  const series = [
+    ['T', C.t],
+    ['H', C.h],
+    ['V', C.v]
+  ];
+  for (const [key, color] of series) {
+    let d = '';
+    for (let i = 0; i <= 100; i++) {
+      const mm = model(i / 100, theta, W, L);
+      const val = mm[key] / W;
+      d += (i ? 'L' : 'M') + px(i/100) + ',' + py(val);
+    }
+    g += `<path d="${d}" fill="none" stroke="${color}" stroke-width="2.5"/>`;
+    const cur = model(u, theta, W, L);
+    g += `<circle cx="${px(u)}" cy="${py(cur[key]/W)}" r="4.5" fill="${color}" stroke="#fff" stroke-width="1.5"/>`;
+  }
+  g += line(px(u), 40, px(u), 220, C.ink, 1.2, '4 3');
+  // legend
+  g += txt(60, 22, 'T/W', C.t, 'start', 12) + txt(110, 22, 'H/W', C.h, 'start', 12) + txt(165, 22, 'V/W', C.v, 'start', 12);
+  $('chartF').innerHTML = g;
+}
+
+function drawPhiChart(theta, W, L, u) {
+  const ymax = 90;
+  const px = v => 50 + 440 * v;
+  const py = v => 220 - 180 * v / ymax;
+  let g = '';
+  for (let i = 0; i <= 3; i++) {
+    const v = ymax * i / 3;
+    g += line(50, py(v), 490, py(v), '#e2ebf0', 1) + txt(42, py(v) + 4, fmt(v, 0) + '°', C.mute, 'end', 11);
+  }
+  for (let i = 0; i <= 4; i++) g += txt(px(i/4), 238, fmt(i/4, 2), C.mute, 'middle', 11);
+  g += line(50, 40, 50, 220) + line(50, 220, 490, 220);
+  g += txt(8, 28, 'φ', C.mute, 'start', 12) + txt(500, 252, 'x/ℓ', C.mute, 'end', 12);
+
+  let d = '';
+  for (let i = 1; i <= 100; i++) { // skip 0 where phi→90 but H→0
+    const mm = model(i / 100, theta, W, L);
+    d += (i === 1 ? 'M' : 'L') + px(i/100) + ',' + py(mm.phi);
+  }
+  // also point near 0
+  const m0 = model(0.005, theta, W, L);
+  d = `M${px(0.005)},${py(m0.phi)}` + d.slice(d.indexOf('L'));
+  g += `<path d="${d}" fill="none" stroke="${C.r}" stroke-width="2.5"/>`;
+  const cur = model(u, theta, W, L);
+  g += `<circle cx="${px(u)}" cy="${py(cur.phi)}" r="4.5" fill="${C.r}" stroke="#fff" stroke-width="1.5"/>`;
+  g += line(px(u), 40, px(u), 220, C.ink, 1.2, '4 3');
+  g += txt(60, 22, `目前 φ = ${fmt(cur.phi)}°`, C.r, 'start', 12);
+  $('chartPhi').innerHTML = g;
+}
+
+// —— Events ——
+function stopPlay() {
+  playing = false;
+  $('play').textContent = '▶ 播放 x:0→ℓ';
+}
+
+function tick(t) {
+  if (!playing) return;
+  const dt = playLast ? Math.min((t - playLast) / 1000, 0.05) : 0;
+  playLast = t;
+  let u = +$('pos').value + dt * 0.15;
+  if (u >= 0.98) { u = 0.98; stopPlay(); }
+  $('pos').value = u;
+  render();
+  if (playing) requestAnimationFrame(tick);
+}
+
+for (const id of ['pos', 'theta', 'W', 'L']) {
+  $(id).addEventListener('input', () => {
+    if (id === 'pos') stopPlay();
+    if (id === 'theta') tracePts.length = 0;
+    render();
+  });
+}
+for (const id of ['showComp', 'showConcur', 'showTrace']) {
+  $(id).addEventListener('change', () => {
+    if (id === 'showTrace' && !$('showTrace').checked) tracePts.length = 0;
+    render();
+  });
+}
+document.querySelectorAll('[data-pos]').forEach(btn => {
+  btn.addEventListener('click', () => { stopPlay(); $('pos').value = btn.dataset.pos; render(); });
+});
+$('play').onclick = () => {
+  if (playing) { stopPlay(); return; }
+  tracePts.length = 0;
+  $('pos').value = 0.02;
+  playing = true;
+  playLast = 0;
+  $('play').textContent = 'Ⅱ 暫停';
+  render();
+  requestAnimationFrame(tick);
+};
+$('reset').onclick = () => {
+  stopPlay();
+  $('pos').value = 0.40;
+  $('theta').value = 35;
+  $('W').value = 100;
+  $('L').value = 2;
+  $('showComp').checked = true;
+  $('showConcur').checked = true;
+  $('showTrace').checked = true;
+  tracePts.length = 0;
+  render();
+};
+
+// drag weight
+let dragging = false;
+const scene = $('scene');
+function dragTo(e) {
+  const p = scene.createSVGPoint();
+  p.x = e.clientX; p.y = e.clientY;
+  const loc = p.matrixTransform(scene.getScreenCTM().inverse());
+  const u = Math.max(0.02, Math.min(0.98, (loc.x - 120) / 400));
+  $('pos').value = u;
+  render();
+}
+scene.addEventListener('pointerdown', e => {
+  if (!e.target.closest('#weightHandle')) return;
+  stopPlay();
+  dragging = true;
+  scene.setPointerCapture(e.pointerId);
+  dragTo(e);
+  e.preventDefault();
+});
+scene.addEventListener('pointermove', e => { if (dragging) dragTo(e); });
+scene.addEventListener('pointerup', () => dragging = false);
+scene.addEventListener('pointercancel', () => dragging = false);
+document.addEventListener('visibilitychange', () => { if (document.hidden) stopPlay(); });
+
+render();
+// re-render after KaTeX in case layout shifts labels (outputs already plain text)
+setTimeout(render, 400);
+</script>
+</body>
+</html>

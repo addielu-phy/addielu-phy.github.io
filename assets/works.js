@@ -19,6 +19,23 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
   {
+  "id": "beam-equilibrium-grok",
+  "title": "三力平衡實驗室（grok版）｜木棒、輕繩與重錘",
+  "desc": "拖曳重錘位置，同步顯示張力、樞紐反力與分量、封閉力三角形、作用線共點及 T/H/V/φ 變化曲線；附力矩推導與四選項詳解。",
+  "url": "https://addielu-phy.github.io/beam-equilibrium-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/beam-equilibrium-grok",
+  "cat": "探究與實作",
+  "tags": [
+    "靜力平衡",
+    "受力圖",
+    "力三角形",
+    "互動模擬",
+    "grok版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+  {
   "id": "beam-equilibrium",
   "title": "三力平衡實驗室（GPT版）｜木棒、輕繩與重物",
   "desc": "拖曳重物位置，同步顯示張力、樞紐反力與分量、封閉力三角形及受力變化曲線；附力矩、方向角與逐步詳解。",
