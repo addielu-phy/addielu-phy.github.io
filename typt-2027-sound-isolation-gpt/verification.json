@@ -1,0 +1,23 @@
+{
+  "title": "TYPT 2027 Sound isolation — GPT version v1.0",
+  "date": "2026-11-05",
+  "numerical": {
+    "parameter_cases": 729,
+    "ranges": {"area_mm2":[1,25,500],"aspect_ratio":[1,9,100],"thickness_mm":[0.1,10,100],"temperature_C":[0,20,40],"frequency_Hz":[20,500,5000],"shapes":["circle","square","rectangle"]},
+    "checks": ["finite passive impedance", "0 <= transmission <= 1", "nonnegative reflection and absorption", "energy conservation"],
+    "maximum_energy_balance_error": 2.220446049250313e-16,
+    "independent_circle_complex_Bessel_solution_max_relative_mobility_error": 0.00001365025890977645,
+    "independent_circle_frequencies_Hz": [20,500,5000],
+    "independent_square_rectangle_static_Poiseuille_relative_tolerance": 0.0001,
+    "area_leakage_reference": {"porosity":0.001,"wall_TL_dB":40,"local_aperture_tau":1,"predicted_TL_dB":29.58646797953026}
+  },
+  "browser": {
+    "desktop": "Rendered hero and simulation panels inspected in Chrome; shape selection, aspect-ratio keyboard adjustment, A/B/C switching, and cavity-volume keyboard control exercised.",
+    "csv": "Download event received after activating CSV export in model A. File bytes not separately inspected.",
+    "responsive": "390px-wide iframe (375px content viewport with scrollbar) rendered in Chrome; no body-level horizontal overflow; mode C switch verified. A later attempt to capture the mobile plot was interrupted by browser transport disconnection.",
+    "real_phone_touch": "Not tested",
+    "printing": "Print button implemented; print dialog and paper output not tested"
+  },
+  "scope": ["Theoretical predictions, no physical measurements", "Short-aperture lumped model", "Modal solution for internal linear viscous flow", "Shared equivalent-radius end correction is approximate for noncircular openings", "No thermal losses, 3D aperture radiation solution, panel elasticity, room modes or nonlinear entrance flow"],
+  "legacy_website": "Old Sites overview remained active in provider metadata; browser returned ERR_INVALID_AUTH_CREDENTIALS. No access settings changed."
+}
