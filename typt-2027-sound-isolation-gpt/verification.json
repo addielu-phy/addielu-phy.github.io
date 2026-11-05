@@ -71,5 +71,15 @@
     "Shared equivalent-radius end correction is approximate for noncircular openings",
     "No thermal losses, 3D aperture radiation solution, panel elasticity, room modes or nonlinear entrance flow"
   ],
-  "legacy_website": "Old Sites overview remained active in provider metadata; browser returned ERR_INVALID_AUTH_CREDENTIALS. No access settings changed."
+  "legacy_website": "Old Sites overview remained active in provider metadata; browser returned ERR_INVALID_AUTH_CREDENTIALS. No access settings changed.",
+  "password_gate": {
+    "added": "2026-11-05",
+    "encryption": "AES-256-GCM; PBKDF2-SHA256, 600000 iterations, random 16-byte salt and 12-byte nonce",
+    "plaintext_password_in_public_HTML": false,
+    "plaintext_model_in_public_HTML": false,
+    "tests": "Node WebCrypto and mocked DOM exercised wrong password rejection, correct decryption, iframe creation, password field clearing and lock cleanup; independent Python byte round-trip also passed.",
+    "browser": "Login screen rendered and show/hide button checked in Chrome. Automated browser credential entry was not performed; successful browser unlock not claimed.",
+    "refresh": "No password or decrypted content stored in localStorage/sessionStorage/cookies; initial page state is locked.",
+    "history": "Earlier public GitHub commits and previously downloaded copies were not removed."
+  }
 }
