@@ -20,7 +20,7 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 const WORKS = [
   {
   "id": "beam-equilibrium",
-  "title": "三力平衡實驗室｜木棒、輕繩與重物",
+  "title": "三力平衡實驗室（GPT版）｜木棒、輕繩與重物",
   "desc": "拖曳重物位置，同步顯示張力、樞紐反力與分量、封閉力三角形及受力變化曲線；附力矩、方向角與逐步詳解。",
   "url": "https://addielu-phy.github.io/beam-equilibrium/",
   "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/beam-equilibrium",
