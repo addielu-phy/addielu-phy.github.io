@@ -21,7 +21,7 @@ const WORKS = [
   {
   "id": "typt-2027-sound-isolation-gpt",
   "title": "TYPT 2027｜Sound isolation 聲音隔離研究室（GPT 版本）",
-  "desc": "第11題用字精讀與物理推導；可調孔形、面積、長寬比、厚度與頻率，比較漏聲、黏滯阻抗與背腔共振，附 CSV 匯出及模型適用範圍。",
+  "desc": "需密碼解鎖。第11題用字精讀與物理推導；可調孔形、面積、長寬比、厚度與頻率，比較漏聲、黏滯阻抗與背腔共振，附 CSV 匯出及模型適用範圍。",
   "url": "https://addielu-phy.github.io/typt-2027-sound-isolation-gpt/",
   "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/typt-2027-sound-isolation-gpt",
   "cat": "探究與實作",
