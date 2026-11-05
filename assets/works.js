@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
   {
+  "id": "beam-equilibrium",
+  "title": "三力平衡實驗室｜木棒、輕繩與重物",
+  "desc": "拖曳重物位置，同步顯示張力、樞紐反力與分量、封閉力三角形及受力變化曲線；附力矩、方向角與逐步詳解。",
+  "url": "https://addielu-phy.github.io/beam-equilibrium/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/beam-equilibrium",
+  "cat": "探究與實作",
+  "tags": [
+    "靜力平衡",
+    "受力圖",
+    "力三角形",
+    "互動模擬"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+  {
   "id": "typt-2027-sound-isolation-gpt",
   "title": "TYPT 2027｜Sound isolation 聲音隔離研究室（GPT 版本）",
   "desc": "需密碼解鎖。第11題用字精讀與物理推導；可調孔形、面積、長寬比、厚度與頻率，比較漏聲、黏滯阻抗與背腔共振，附 CSV 匯出及模型適用範圍。",
