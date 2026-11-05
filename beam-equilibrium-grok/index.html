@@ -293,7 +293,11 @@ function render() {
   const P = { x: O.x + span, y: O.y };
   const wx = O.x + span * u;
   const ropeAy = O.y - span * Math.tan(th); // rope attach on wall
-  const s = 120 / Math.max(W, T, R, 1);
+  // Fixed force scale for current θ, W: use max over full x∈[0,ℓ] so W arrow length does not change with x.
+  const Tmax = W / Math.sin(th);
+  const Hmax = W / Math.tan(th);
+  const Rmax = Math.max(W, Hmax);
+  const s = 120 / Math.max(W, Tmax, Rmax, 1);
   let a = '';
 
   // wall hatch
@@ -367,8 +371,12 @@ function render() {
   // —— Force triangle ——
   // Fix W vertical: B at top, C below. A is tip of H from C (and of T from B).
   // Vector order: A --T--> B --W--> C --R--> A
-  // B = start of W, C = end of W / start of R, A = end of R / start of T
-  const k = 200 / Math.max(W, H + 1e-9, T + 1e-9);
+  // Fixed px/N scale from θ, W only (largest triangle over x∈[0,ℓ] still fits). Independent of current x.
+  // Usable drawing box ≈ x: 40..420, y: 40..350 inside viewBox 460×400.
+  const fitW = 250; // max pixels for W side (vertical)
+  const fitH = 250; // max pixels for H side at x=ℓ (horizontal)
+  const k = Math.min(fitW / Math.max(W, 1e-9), fitH / Math.max(Hmax, 1e-9));
+  window.__forceScale = { s, k, Tmax, Hmax, Rmax, W, theta };
   const B = { x: 130, y: 70 };
   const Cc = { x: 130, y: 70 + W * k }; // renamed to avoid conflict
   const A = { x: 130 + H * k, y: 70 + (W - V) * k }; // = 70 + T*sin*k = 70 + W*u*k
@@ -378,9 +386,9 @@ function render() {
   if ($('showTrace').checked) {
     // record current A
     const last = tracePts[tracePts.length - 1];
-    if (!last || Math.abs(last.u - u) > 0.004 || Math.abs(last.theta - theta) > 0.5) {
-      if (last && Math.abs(last.theta - theta) > 0.5) tracePts.length = 0;
-      tracePts.push({ u, theta, Ax: A.x, Ay: A.y });
+    if (!last || Math.abs(last.u - u) > 0.004 || Math.abs(last.theta - theta) > 0.5 || Math.abs((last.W ?? W) - W) > 0.5) {
+      if (last && (Math.abs(last.theta - theta) > 0.5 || Math.abs((last.W ?? W) - W) > 0.5)) tracePts.length = 0;
+      tracePts.push({ u, theta, W, Ax: A.x, Ay: A.y });
       if (tracePts.length > 250) tracePts.shift();
     }
   }
@@ -560,7 +568,7 @@ function tick(t) {
 for (const id of ['pos', 'theta', 'W', 'L']) {
   $(id).addEventListener('input', () => {
     if (id === 'pos') stopPlay();
-    if (id === 'theta') tracePts.length = 0;
+    if (id === 'theta' || id === 'W') tracePts.length = 0;
     render();
   });
 }
