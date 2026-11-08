@@ -19,6 +19,23 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
   {
+  "id": "math-a-nanyi-ch2-gpt",
+  "title": "高二上數學A｜南一版第二次段考 2-1～2-3（GPT版）",
+  "desc": "依指數函數、對數與對數律、對數函數整理15個核心重點，搭配30題原創代表題；詳解與提示按鈕展開，附易錯提醒、圖形與學習掌握紀錄。",
+  "url": "https://addielu-phy.github.io/math-a-nanyi-ch2-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/math-a-nanyi-ch2-gpt",
+  "cat": "自學評量",
+  "tags": [
+    "高二數學A",
+    "南一版",
+    "指數與對數",
+    "段考複習",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+  {
   "id": "beam-equilibrium-grok",
   "title": "三力平衡實驗室（grok版）｜木棒、輕繩與重錘",
   "desc": "拖曳重錘位置，同步顯示張力、樞紐反力與分量、封閉力三角形、作用線共點及 T/H/V/φ 變化曲線；附力矩推導與四選項詳解。",
