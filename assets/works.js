@@ -21,7 +21,7 @@ const WORKS = [
 {
   "id": "balloon-cubesat-chips",
   "title": "探空氣球 × 立方衛星晶片資料庫｜GPT 版",
-  "desc": "30 個元件與模組的型號、量程、環境限制、官方資料與購買價格；可搜尋、篩選、並排比較、下載 CSV/JSON，另有探空高度量程檢查。",
+  "desc": "30 個代表性元件與模組：完整料號、量程、環境限制及查核價格；GPT v1.1 增加採購速查表，支援搜尋、篩選、比較、CSV/JSON 與高度量程檢查。",
   "url": "https://addielu-phy.github.io/balloon-cubesat-chips/",
   "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/balloon-cubesat-chips",
   "cat": "探究與實作",
