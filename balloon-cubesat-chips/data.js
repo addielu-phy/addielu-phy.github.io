@@ -1,6 +1,6 @@
 window.CATALOG = {
   "title": "探空氣球 × 立方衛星晶片資料庫｜GPT 版",
-  "version": "1.0",
+  "version": "1.1",
   "edition": "GPT 版",
   "checkedAt": "2026-11-10",
   "scope": "主要子系統的 30 個代表性元件／模組；不是全球全部晶片，也不是飛行合格認證。",
@@ -49,7 +49,7 @@ window.CATALOG = {
           "amount": 12.25,
           "currency": "USD",
           "quantity": 1,
-          "availability": "有庫存 (7,069 shown)",
+          "availability": "本次複核頁面顯示有庫存 7,077；數量會變動。",
           "url": "https://www.digikey.com/en/products/detail/te-connectivity-measurement-specialties/MS561101BA03-50/5277638",
           "note": "未含額外運費、稅及關稅"
         },
@@ -507,7 +507,7 @@ window.CATALOG = {
           "seller": "DFRobot",
           "sku": "SEN0463",
           "form": "模組 + M4011 Geiger tube",
-          "amount": 60.0,
+          "amount": 60,
           "currency": "USD",
           "quantity": 1,
           "availability": "產品售價可讀；未獨立確認 checkout 庫存",
@@ -851,7 +851,7 @@ window.CATALOG = {
     {
       "id": "nav-adxl375",
       "model": "ADXL375",
-      "exactPart": "ADXL375；購買品項：5374",
+      "exactPart": "ADXL375BCCZ（原廠訂購指南）；捲帶版本 ADXL375BCCZ-RL / ADXL375BCCZ-RL7；模組：Adafruit 5374",
       "maker": "Analog Devices",
       "category": "導航與慣性",
       "subcategory": "3 軸高 g 加速度計 IC",
@@ -869,7 +869,8 @@ window.CATALOG = {
       "limited": true,
       "balloonCandidate": true,
       "caveats": [
-        "高量程以較低靈敏度換取衝擊量測餘裕。它不直接量測速度；不可將 10,000 g 存活規格寫成 ±10,000 g 量測範圍。"
+        "高量程以較低靈敏度換取衝擊量測餘裕。它不直接量測速度；不可將 10,000 g 存活規格寫成 ±10,000 g 量測範圍。",
+        "完整 IC 訂購料號依原廠資料表第 32 頁；未獨立確認 Adafruit 模組實際採用的包裝尾碼，模組價格不可套用為裸 IC 價格。"
       ],
       "sources": [
         {
@@ -1017,7 +1018,7 @@ window.CATALOG = {
           "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262"
         }
       ],
-      "evidenceNote": "RF 主要規格交叉核對 Semtech 產品頁與分銷商；完整配置與射頻設計仍應依最新版資料表。",
+      "evidenceNote": "RF 主要規格交叉核對 Semtech 產品頁與分銷商；完整配置與射頻設計仍應依最新版資料表。 本次複核原廠資料表下載端點無法由查核工具讀取，頻段及輸出能力以可讀的原廠產品頁交叉核對；完整電氣設計仍須下載現行資料表。",
       "offers": [
         {
           "seller": "DigiKey",
@@ -1079,7 +1080,7 @@ window.CATALOG = {
           "amount": 5.95,
           "currency": "USD",
           "quantity": 1,
-          "availability": "頁面顯示庫存 220 個",
+          "availability": "本次複核頁面顯示缺貨（0）；預估 2027-01-18 到貨 1,000 個，日期與數量不保證。",
           "url": "https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/114993390/25835823",
           "note": ""
         }
@@ -1175,7 +1176,7 @@ window.CATALOG = {
           "amount": 5.77,
           "currency": "USD",
           "quantity": 1,
-          "availability": "頁面顯示庫存 20,177 顆；目前不接受缺貨後補訂單",
+          "availability": "本次複核頁面顯示有庫存 18,013；目前不接受缺貨後補訂單，數量會變動。",
           "url": "https://www.digikey.com/en/products/detail/winbond-electronics/W25Q128JVSIQ-TR/5803944",
           "note": ""
         }
@@ -1219,7 +1220,7 @@ window.CATALOG = {
           "amount": 89.15,
           "currency": "USD",
           "quantity": 1,
-          "availability": "頁面顯示庫存 0；估計 2026-12-18 到貨 1 張，但不保證",
+          "availability": "本次複核頁面顯示缺貨（0）；估計 2026-12-22 到貨 1 張，日期不保證。",
           "url": "https://www.digikey.com/en/products/detail/kingston-technology/SDCIT2-8GB/15940420",
           "note": ""
         }
