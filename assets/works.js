@@ -18,6 +18,22 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+{
+  "id": "balloon-cubesat-chips",
+  "title": "探空氣球 × 立方衛星晶片資料庫｜GPT 版",
+  "desc": "30 個元件與模組的型號、量程、環境限制、官方資料與購買價格；可搜尋、篩選、並排比較、下載 CSV/JSON，另有探空高度量程檢查。",
+  "url": "https://addielu-phy.github.io/balloon-cubesat-chips/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/balloon-cubesat-chips",
+  "cat": "探究與實作",
+  "tags": [
+    "探空氣球",
+    "立方衛星",
+    "晶片選型",
+    "GPT 版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
   {
   "id": "math-a-nanyi-ch2-gpt",
   "title": "高二上數學A｜南一版第二次段考 2-1～2-3（GPT版）",
