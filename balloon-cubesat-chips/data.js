@@ -1,0 +1,1474 @@
+window.CATALOG = {
+  "title": "探空氣球 × 立方衛星晶片資料庫｜GPT 版",
+  "version": "1.0",
+  "edition": "GPT 版",
+  "checkedAt": "2026-11-10",
+  "scope": "主要子系統的 30 個代表性元件／模組；不是全球全部晶片，也不是飛行合格認證。",
+  "pricePolicy": "單件公開標價；依各選項的型態、數量與貨幣閱讀。未含額外稅、運費與關稅，庫存可變；需詢價不填猜測數字。",
+  "items": [
+    {
+      "id": "env-ms5611",
+      "model": "MS5611-01BA03",
+      "exactPart": "MS561101BA03-50；模組：GY-63 (TaiwanIOT SKU 4136821(A4-5))",
+      "maker": "TE Connectivity / Measurement Specialties",
+      "category": "環境感測",
+      "subcategory": "壓力",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "高空氣球壓力候選；24-bit ADC，需使用原廠補償公式。",
+      "range": "10–1200 mbar 擴展 ADC 線性範圍；450–1100 mbar 完整精度範圍。1 mbar = 1 hPa。",
+      "accuracy": "±1.5 mbar 只適用 datasheet 的指定條件（例如 25 °C、750 mbar）；不是 12 hPa 的精度保證。OSR4096 解析雜訊典型 0.012 mbar。",
+      "temperature": "-40 至 85 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "1.8–3.6 V",
+      "interface": "I2C、SPI",
+      "balloon": "有條件候選：30 km 壓力接近其 10 mbar 下限；需校驗 10–20 mbar 區及全飛行溫度。高於約 30 km 的任務沒有足夠量測餘裕。",
+      "orbit": "未建立 space qualification；外部軌道真空不適合作一般氣壓高度計。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "不能將 full-accuracy 規格套用至擴展範圍。",
+        "GY-63 為零售商標示的通用模組；原廠晶片溯源、板上穩壓器與實物版本仍須確認。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=MS5611-01BA03&DocType=Data+Sheet&PartCntxt=MS561101BA03-50"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.te.com/en/product-MS561101BA03-50.html"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "MS561101BA03-50",
+          "form": "裸封裝感測器 / IC，Cut Tape",
+          "amount": 12.25,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存 (7,069 shown)",
+          "url": "https://www.digikey.com/en/products/detail/te-connectivity-measurement-specialties/MS561101BA03-50/5277638",
+          "note": "未含額外運費、稅及關稅"
+        },
+        {
+          "seller": "TaiwanIOT 台灣物聯科技",
+          "sku": "4136821(A4-5)",
+          "form": "GY-63 breakout 模組",
+          "amount": 200,
+          "currency": "TWD",
+          "quantity": 1,
+          "availability": "尚有庫存",
+          "url": "https://www.taiwaniot.com.tw/product/ms5611-01ba03-gy-63-%E9%AB%98%E5%88%86%E8%BE%A8%E7%8E%87%E5%A4%A7%E6%B0%A3%E5%A3%93%E5%BC%B7-%E9%AB%98%E5%BA%A6-%E6%84%9F%E6%B8%AC%E5%99%A8%E6%A8%A1%E7%B5%84-iicspi%E9%80%9A%E4%BF%A1/",
+          "note": "未稅"
+        }
+      ]
+    },
+    {
+      "id": "env-bmp390",
+      "model": "BMP390",
+      "exactPart": "BMP390 (technical reference 0 273 017 014)；模組：Adafruit 4816",
+      "maker": "Bosch Sensortec",
+      "category": "環境感測",
+      "subcategory": "壓力",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "近地面、低空與艙內壓力比較教學。",
+      "range": "300–1250 hPa",
+      "accuracy": "絕對精度典型 ±50 Pa，限 300–1100 hPa、0–65 °C；非全範圍保證。",
+      "temperature": "-40 至 85 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "VDD 1.65–3.6; VDDIO 1.2–3.6 V",
+      "interface": "I2C、SPI",
+      "balloon": "不適合直接測量 30 km 環境氣壓：300 hPa 下限約在 9 km 附近即已達到。",
+      "orbit": "COTS；無所引用的太空資格；外部真空不在氣壓量測範圍。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": false,
+      "caveats": [
+        "不得以很小的相對高度解析度推論能測到平流層。",
+        "目前所查 Adafruit 模組缺貨；DigiKey 對此板標示 Discontinued at DigiKey，不代表 Bosch IC 整體停產。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.bosch-sensortec.com/en/products/environmental-sensors/pressure-sensors/bmp390"
+        },
+        {
+          "title": "供貨狀態補充",
+          "url": "https://www.digikey.com/en/products/detail/adafruit-industries-llc/4816/13543385"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "4816",
+          "form": "breakout 模組",
+          "amount": 10.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "缺貨；此為標示價，不能視作現貨報價",
+          "url": "https://www.adafruit.com/product/4816",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-bme280",
+      "model": "BME280",
+      "exactPart": "BME280 (SPN 0 273 141 185)；模組：Adafruit 2652",
+      "maker": "Bosch Sensortec",
+      "category": "環境感測",
+      "subcategory": "壓力 / 濕度 / 溫度",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "低空多合一環境感測與氣象教學，適合當限制比較案例。",
+      "range": "壓力 300–1100 hPa；濕度 0–100 %RH；溫度 −40–85 °C",
+      "accuracy": "濕度典型容差 ±3 %RH，需遵守 datasheet 測試條件；IC 溫度受電路板與自熱影響。",
+      "temperature": "-40 至 85 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "VDD 1.71–3.6; VDDIO 1.2–3.6 V",
+      "interface": "I2C、SPI",
+      "balloon": "壓力通道不適合 30 km；低溫、結露及低壓條件下的濕度可靠性需另驗證。",
+      "orbit": "COTS；未建立太空資格，外部真空中 RH/一般氣壓量測沒有同樣的物理用途。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": false,
+      "caveats": [
+        "不可將全合一的便利性等同於適合全段高空剖面。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "2652",
+          "form": "breakout 模組",
+          "amount": 14.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存",
+          "url": "https://www.adafruit.com/product/2652",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-tmp117",
+      "model": "TMP117",
+      "exactPart": "TMP117AIDRVR；此為裸 IC 採購參考，模組實際封裝版本未獨立確認；模組：Adafruit 4821 / TMP117 variant",
+      "maker": "Texas Instruments",
+      "category": "環境感測",
+      "subcategory": "溫度",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "高精度電子艙、電池艙或接觸溫度量測候選。",
+      "range": "−55–150 °C；16-bit，0.0078125 °C/LSB",
+      "accuracy": "最大 ±0.1 °C at −20–50 °C；最大 ±0.25 °C at −55–125 °C；最大 ±0.3 °C at −55–150 °C。",
+      "temperature": "-55 至 150 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "1.8–5.5 over full temperature range; 1.7–5.5 for −55–70 °C V",
+      "interface": "I2C、SMBus",
+      "balloon": "比 −40 °C 零件有更低溫餘裕，但 −55 °C 仍不能保證涵蓋所有外部氣溫；使用熱設計與校驗。",
+      "orbit": "TI catalog COTS；醫療精度或 NIST 溯源不是太空資格。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "量到的是晶片溫度；外部氣溫要控制太陽輻射、板子導熱與感測器自熱誤差。",
+        "購買 4821 頁面需選 TMP117，不要把 TMP119 變體價格混入。",
+        "自製 PCB 的完整可訂購料號參考；TI 官方列 ACTIVE，但查閱時 TI 商店顯示缺貨。未確認是否為 Adafruit 4821 實際搭載的封裝／包裝版本；不沿用模組價格作裸 IC 價格。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.ti.com/lit/ds/symlink/tmp117.pdf"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.ti.com/product/TMP117"
+        },
+        {
+          "title": "完整 IC 料號與封裝",
+          "url": "https://www.ti.com/product/TMP117/part-details/TMP117AIDRVR"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "4821 TMP117",
+          "form": "breakout 模組",
+          "amount": 11.5,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存",
+          "url": "https://www.adafruit.com/product/4821",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-mcp9808",
+      "model": "MCP9808",
+      "exactPart": "MCP9808-E/MS；此為裸 IC 採購參考，模組實際封裝版本未獨立確認；模組：Adafruit 1782",
+      "maker": "Microchip Technology",
+      "category": "環境感測",
+      "subcategory": "溫度",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "低成本多點電子艙溫度；可設 8 個 I2C 位址。",
+      "range": "−40–125 °C；最高解析度 0.0625 °C/LSB",
+      "accuracy": "最大 ±0.5 °C at −20–100 °C；最大 ±1.0 °C at −40–125 °C（datasheet 指定條件）。",
+      "temperature": "-40 至 125 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "2.7–5.5 V",
+      "interface": "I2C、SMBus",
+      "balloon": "適合經保溫的內部監測；不能保證直接外露低於 −40 °C 工作。",
+      "orbit": "COTS，未建立輻射耐受或太空資格。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "0.0625 °C 是解析度，不是最大誤差。",
+        "原廠 datasheet 第 49 頁 Product Identification System 明列完整料號；自製 PCB 採購參考。未確認是否為 Adafruit 1782 實際搭載的封裝／包裝版本；裸 IC 價格與庫存未重新核實。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/MCP9808-0.5C-Maximum-Accuracy-Digital-Temperature-Sensor-Data-Sheet-DS20005095B.pdf"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.microchip.com/en-us/product/MCP9808"
+        },
+        {
+          "title": "完整 IC 料號與封裝",
+          "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/MCP9808-0.5C-Maximum-Accuracy-Digital-Temperature-Sensor-Data-Sheet-DS20005095B.pdf#page=49"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "1782",
+          "form": "breakout 模組",
+          "amount": 4.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存",
+          "url": "https://www.adafruit.com/product/1782",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-max31865",
+      "model": "MAX31865 + 外接 Pt100 RTD",
+      "exactPart": "MAX31865AAP+T；此為裸 IC 採購參考，模組實際封裝版本未獨立確認；模組：Adafruit 3328 (Pt100 version)",
+      "maker": "Analog Devices / Maxim Integrated",
+      "category": "環境感測",
+      "subcategory": "溫度前端",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "讓外部 RTD 探頭量測氣溫，轉換器留在保溫艙內；需另購合適探頭。",
+      "range": "讀取 Pt100–Pt1000 電阻；支援 2/3/4 線，15-bit ADC。實際溫度範圍由探頭與參考電阻決定；3328 為 Pt100 板。",
+      "accuracy": "轉換器規格最大約 0.5 °C equivalent，不包含 RTD、參考電阻、導線與安裝誤差。",
+      "temperature": "-40 至 125 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "3.0–3.6 V",
+      "interface": "SPI",
+      "balloon": "可作外部低溫感測架構；需選額定低於預期最低氣溫的 RTD，並評估探頭熱慣性與太陽輻射。",
+      "orbit": "一般 COTS 轉換器與 breakout；不能直接視作太空用 RTD 系統。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "模組價格不含 RTD 探頭。",
+        "IC −40 °C 下限不代表 RTD 不能測更低溫，也不代表 IC 可在更低溫操作。",
+        "ADI 官方產品頁列 MAX31865AAP+T 為 PRODUCTION，20-lead SSOP；自製 PCB 採購參考。未確認是否為 Adafruit 3328 實際搭載的封裝／包裝版本；裸 IC 價格與庫存未重新核實。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31865.pdf"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.analog.com/en/products/max31865.html"
+        },
+        {
+          "title": "完整 IC 料號與封裝",
+          "url": "https://www.analog.com/en/products/max31865.html"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "3328",
+          "form": "Pt100 RTD converter breakout 模組；不含 RTD",
+          "amount": 14.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存",
+          "url": "https://www.adafruit.com/product/3328",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-sht45",
+      "model": "SHT45",
+      "exactPart": "SHT45-AD1B-R2 (Adafruit module page specification)；模組：Adafruit 5665, without PTFE",
+      "maker": "Sensirion",
+      "category": "環境感測",
+      "subcategory": "濕度 / 溫度",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "高精度相對濕度與溫度、地面校準及低空濕度剖面候選。",
+      "range": "0–100 %RH；−40–125 °C",
+      "accuracy": "典型 ±1 %RH 與 ±0.1 °C 僅在規定條件下適用；不是全溫全濕範圍誤差上限。",
+      "temperature": "-40 至 125 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "1.08–3.6 V",
+      "interface": "I2C (0x44)、CRC",
+      "balloon": "有條件候選：−40 °C 外環境下限、低壓響應、結冰與日照誤差需驗證；不能保證量到 30 km 的準確 RH。",
+      "orbit": "JEDEC JESD47 與 NIST 溯源不等於太空資格；外部軌道真空不適合作一般 RH 感測。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "原廠建議正常長期區間為 5–60 °C、20–80 %RH；長時間超出可能造成偏移。",
+        "啟用內建加熱器期間的 RH/溫度不等於未加熱環境值。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://sensirion.com/media/documents/33FD6951/6A7C10A0/HT_DS_Datasheet_SHT4x_V7.3.pdf"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://sensirion.com/products/catalog/SHT45"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "5665",
+          "form": "without-PTFE breakout 模組",
+          "amount": 12.5,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "無 PTFE 版本有庫存；PTFE 版缺貨",
+          "url": "https://www.adafruit.com/product/5665",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-ltr390",
+      "model": "LTR-390UV-01",
+      "exactPart": "LTR-390UV-01；模組：Adafruit 4831",
+      "maker": "Lite-On Technology（光寶）",
+      "category": "環境感測",
+      "subcategory": "紫外線 / 光",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "具真正 UV 感光通道的低成本光學實驗；另有環境光通道。",
+      "range": "UV / ALS ADC，13–20 bit 可選解析度；模組說明列 UV 峰值響應約 300–350 nm。",
+      "accuracy": "輸出計數需依增益、積分時間、窗口穿透率與校準換算；不是校準完成的光譜儀或安全級 UV 劑量計。",
+      "temperature": "-40 至 85 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "1.7–3.6 V",
+      "interface": "I2C up to 400 kHz、interrupt",
+      "balloon": "可做 UV 隨高度的相對變化實驗；要處理日照方向、感測器飽和、UV 窗口材料及低溫。",
+      "orbit": "未建立太空資格；塑封件與光學窗口的 UV/輻射老化需要任務評估。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "不要把紫外線感光稱作游離輻射粒子探測器。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.mouser.com/datasheet/2/239/LTR_390UV_Final__DS_V1_1-1145336.pdf"
+        }
+      ],
+      "evidenceNote": "使用 Mouser 託管的 Lite-On 原廠資料表副本；光學響應與配置以所列版本為依據。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "4831",
+          "form": "breakout 模組",
+          "amount": 4.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存",
+          "url": "https://www.adafruit.com/product/4831",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-veml7700",
+      "model": "VEML7700",
+      "exactPart": "VEML7700；模組：Adafruit 4162",
+      "maker": "Vishay Semiconductors",
+      "category": "環境感測",
+      "subcategory": "照度",
+      "form": "IC 規格與開發模組價格分列",
+      "formShort": "IC／模組分列",
+      "function": "可見光照度與姿態/日照變化教學。",
+      "range": "2024-11-28 原廠 rev1.8：0–約 140,000 lux，16-bit，可選增益與積分時間；最佳解析度 0.0042 lux/count。",
+      "accuracy": "不同增益/積分設定決定範圍與解析度；不能同時把最高量程和最小解析度當作單一模式。",
+      "temperature": "-25 至 85 °C（IC 本體；不是整塊 breakout 的合格範圍）",
+      "voltage": "2.5–3.6 V",
+      "interface": "I2C",
+      "balloon": "需保溫光學架構；−25 °C 下限比多數候選更嚴格，不適合無保護外露。",
+      "orbit": "COTS 環境光感測器，無所引用太空資格。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "Adafruit 描述仍寫約 120 klux、0.0036 lux/count；此處採新版原廠 datasheet 的 140 klux/0.0042 規格並保留差異。",
+        "lux 是依人眼加權的照度，不等於太陽總輻照度 W/m²。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫資料表",
+          "url": "https://www.vishay.com/docs/84286/veml7700.pdf"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.vishay.com/en/product/84286/"
+        }
+      ],
+      "evidenceNote": "主要依原廠資料表；可讀的模組商品頁用於報價與供貨型態。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "4162",
+          "form": "breakout 模組",
+          "amount": 4.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "有庫存",
+          "url": "https://www.adafruit.com/product/4162",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "env-sen0463",
+      "model": "SEN0463 蓋革計數模組",
+      "exactPart": "SEN0463；模組：SEN0463 with M4011 tube",
+      "maker": "DFRobot (module); M4011 tube manufacturer not specified in cited source",
+      "category": "環境感測",
+      "subcategory": "游離輻射",
+      "form": "感測器 IC／所列 breakout；SEN0463 為整組模組",
+      "formShort": "整組模組（非 IC）",
+      "function": "背景輻射與宇宙射線計數教學候選；不是 IC，而是 GM 管、電源與介面的整組模組。",
+      "range": "輸出低脈衝計數；原廠列理論上限 1200 µSv/h、背景約 25 CPM、換算 153.8 CPM/(µSv/h)。",
+      "accuracy": "原廠明確限原理研究/教學；非專業劑量儀。高空不同粒子/能譜下應主要記錄原始 CPM，不把簡單換算當可靠人體劑量。",
+      "temperature": "所查原廠產品頁與 wiki 未給完整模組操作溫度、低壓或真空規格；不得填入推測值。",
+      "voltage": "3.3–5 V；板內高壓：板內約 400 V；M4011 tube 380–450 V",
+      "interface": "digital pulse / GPIO interrupt",
+      "balloon": "僅限完成低溫/低壓與高壓絕緣驗證後的教學實驗；400 V 電路需特別評估低壓放電風險。",
+      "orbit": "沒有所引用太空資格；不可當軌道劑量計或單粒子效應監測器。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": false,
+      "caveats": [
+        "玻璃管脆弱；不要觸摸高壓電路。",
+        "不需採購放射源即可做背景/高度計數實驗。",
+        "保留積分時間與計數統計；低計數率有顯著 Poisson 誤差。"
+      ],
+      "sources": [
+        {
+          "title": "原廠模組技術文件（非完整 IC datasheet）",
+          "url": "https://wiki.dfrobot.com/sen0463/"
+        },
+        {
+          "title": "製造商產品頁",
+          "url": "https://www.dfrobot.com/product-2547.html/"
+        }
+      ],
+      "evidenceNote": "原廠模組產品頁與技術文件，並非完整的裸 IC 資料表。操作溫度、真空及低壓資格未核實。",
+      "offers": [
+        {
+          "seller": "DFRobot",
+          "sku": "SEN0463",
+          "form": "模組 + M4011 Geiger tube",
+          "amount": 60.0,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "產品售價可讀；未獨立確認 checkout 庫存",
+          "url": "https://www.dfrobot.com/product-2547.html/",
+          "note": "未含額外運費、稅及關稅"
+        }
+      ]
+    },
+    {
+      "id": "nav-max-m10s",
+      "model": "MAX-M10S",
+      "exactPart": "MAX-M10S-00B-01（資料表亦列出 MAX-M10S-00B1-01）；購買品項：GPS-18037",
+      "maker": "u-blox",
+      "category": "導航與慣性",
+      "subcategory": "GNSS 接收模組",
+      "form": "含 GNSS 模組的轉接板，並非裸 IC",
+      "formShort": "GNSS／感測模組",
+      "function": "3D 位置、GNSS 高度、速度及 UTC／時間脈波",
+      "range": "高度最高 80,000 m；速度最高 500 m/s；動態 ≤4 g，規格以 Airborne 4 g 平台為前提。",
+      "accuracy": "量程不等於精度。請依所列原廠資料表的模式、雜訊及測試條件評估誤差。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "裸模組的 VCC 與 I/O 要求取決於所選的 1.8 V／3 V 模式；請查閱資料表，不可直接輸入 5 V。",
+      "interface": "UART、I2C、TIMEPULSE",
+      "balloon": "可作為平流層追蹤的低功耗 COTS GNSS 候選元件，但須驗證適當天線、airborne 導航設定與熱保護。",
+      "orbit": "不適合作為規格符合在軌需求的 GNSS 接收器：80 km 高度與 500 m/s 速度遠低於 LEO 工作範圍。未建立太空／輻射資格認證。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "須選擇適當的 airborne 動態模型。不可假設資料表的 80 km 上限適用於每一種導航模式。未查證到此型號原廠特定的 COCOM 布林判斷邏輯。"
+      ],
+      "sources": [
+        {
+          "title": "MAX-M10S Data Sheet, UBX-20035208 R08, 30-Jan-2026",
+          "url": "https://content.u-blox.com/sites/default/files/MAX-M10S_DataSheet_UBX-20035208.pdf"
+        },
+        {
+          "title": "MAX-M10S Integration Manual",
+          "url": "https://content.u-blox.com/sites/default/files/MAX-M10S_IntegrationManual_UBX-20053088.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "SparkFun",
+          "sku": "GPS-18037",
+          "form": "含 GNSS 模組的轉接板，並非裸 IC",
+          "amount": 45.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面同時顯示「In stock」與 Backorder 購買按鈕，庫存資訊互相矛盾；下單前須確認。",
+          "url": "https://www.sparkfun.com/sparkfun-gnss-receiver-breakout-max-m10s-qwiic.html",
+          "note": "不含另購天線、額外配件、運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-neo-m9n-00b",
+      "model": "NEO-M9N-00B",
+      "exactPart": "NEO-M9N-00B-00，韌體 SPG 4.04；購買品項：GPS-17285",
+      "maker": "u-blox",
+      "category": "導航與慣性",
+      "subcategory": "GNSS 接收模組",
+      "form": "含 GNSS 模組的轉接板；外接天線另購",
+      "formShort": "GNSS／感測模組",
+      "function": "3D 位置、GNSS 高度、速度及 UTC／時間脈波",
+      "range": "資料表整體規格：高度 80,000 m；速度 500 m/s；以 Airborne 4 g 為前提時動態 ≤4 g。",
+      "accuracy": "量程不等於精度。請依所列原廠資料表的模式、雜訊及測試條件評估誤差。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "裸模組 VCC：2.7–3.6 V。",
+      "interface": "UART、SPI、I2C、USB 2.0 全速、TIMEPULSE",
+      "balloon": "適合教學／氣球的候選方案，具多種介面與四星系接收能力。放飛前須設定符合實際動態的 airborne 模型。",
+      "orbit": "文件記載的工作範圍不涵蓋在軌 GNSS。資料表的高度／速度限制及環境認證均不足以支持 LEO 適用性宣稱。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "預設 Portable 模型限制為 12,000 m。Airborne <1g：80,000 m／水平速度 100 m/s；<2g：80,000 m／250 m/s；<4g：80,000 m／500 m/s。適用的合理性檢查未通過時，定位結果會標為無效。須檢查 gnssFixOK，不可使用無效定位。平台模型檢查不是通用 COCOM AND/OR 規則的證據。"
+      ],
+      "sources": [
+        {
+          "title": "NEO-M9N-00B Data Sheet, UBX-19014285 R08, 09-Oct-2025",
+          "url": "https://content.u-blox.com/sites/default/files/NEO-M9N-00B_DataSheet_UBX-19014285.pdf"
+        },
+        {
+          "title": "NEO-M9N Integration Manual UBX-19014286 R10, 27-Mar-2025",
+          "url": "https://content.u-blox.com/sites/default/files/NEO-M9N_Integrationmanual_UBX-19014286.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "SparkFun",
+          "sku": "GPS-17285",
+          "form": "含 GNSS 模組的轉接板；外接天線另購",
+          "amount": 57.38,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時有庫存；所列為當時特價。",
+          "url": "https://www.sparkfun.com/sparkfun-gps-breakout-neo-m9n-sma-qwiic.html",
+          "note": "不含另購天線、額外配件、運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-bno085",
+      "model": "BNO085",
+      "exactPart": "BNO085；Adafruit 4754 為模組完整訂購編號，未獨立確認 SiP 包裝尾碼；購買品項：4754",
+      "maker": "CEVA（提供 SH-2/MotionEngine 軟體；元件由 Bosch Sensortec 製造）",
+      "category": "導航與慣性",
+      "subcategory": "9 軸 IMU／感測器融合 SiP",
+      "form": "STEMMA QT/Qwiic 轉接板，並非裸 SiP",
+      "formShort": "GNSS／感測模組",
+      "function": "3 軸加速度、角速度、磁場與融合姿態",
+      "range": "SH-2 將加速度計設定為 ±8 g、陀螺儀設定為 ±2000 °/s。底層磁感測器的典型範圍為 X/Y 軸 ±1300 µT、Z 軸 ±2500 µT（依 CEVA 引用的 BMF055 原始感測器規格）。",
+      "accuracy": "量程不等於精度。請依所列原廠資料表的模式、雜訊及測試條件評估誤差。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "裸 SiP 的感測器 VDD：2.4–3.6 V；VDDIO：1.7–3.6 V。",
+      "interface": "I2C、SPI、UART",
+      "balloon": "方便進行姿態教學與酬載旋轉紀錄；仍須驗證校正與動態表現，不可將融合後的歐拉角直接視為真值。",
+      "orbit": "可用於地面／CubeSat 原型；以重力為參考的消費級融合演算法，不是經驗證的微重力在軌姿態解法。未建立輻射／真空資格認證。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "BNO085 加速度計並非可任意選擇 ±16 g 的一般元件。磁干擾與校正會影響姿態；持續比力／自由落體可能使重力參考融合失準。所列磁場上限是原始感測器的典型量程，不是融合航向精度保證。"
+      ],
+      "sources": [
+        {
+          "title": "CEVA BNO08X Data Sheet 1000-3927 v1.17 (BNO085/BNO086)",
+          "url": "https://www.ceva-ip.com/wp-content/uploads/BNO080_085-Datasheet.pdf"
+        },
+        {
+          "title": "BNO08X 引用的 Bosch BMF055 原始感測器資料表",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmf055-ds000.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "4754",
+          "form": "STEMMA QT/Qwiic 轉接板，並非裸 SiP",
+          "amount": 29.5,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時可加入購物車；所列為購買 1–9 件的單價。",
+          "url": "https://www.adafruit.com/product/4754",
+          "note": "公開單件標價；未含額外運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-icm-42688-p",
+      "model": "ICM-42688-P",
+      "exactPart": "ICM-42688-P；購買品項：1428-ICM-42688-PCT-ND",
+      "maker": "TDK InvenSense",
+      "category": "導航與慣性",
+      "subcategory": "6 軸加速度計／陀螺儀 IC",
+      "form": "裸 14-pin LGA IC，並非轉接板",
+      "formShort": "裸 IC",
+      "function": "3 軸加速度、角速度；內部溫度",
+      "range": "加速度計可選 ±2/4/8/16 g；陀螺儀可選 ±15.625/31.25/62.5/125/250/500/1000/2000 °/s。",
+      "accuracy": "量程不等於精度。請依所列原廠資料表的模式、雜訊及測試條件評估誤差。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "VDD 與 VDDIO 各為 1.71–3.6 V。",
+      "interface": "I3C 最高 12.5 MHz、I2C 最高 1 MHz、SPI 最高 24 MHz",
+      "balloon": "適合記錄原始運動／振動，或作為自訂融合演算法的基礎；具 2 kB FIFO 與外部時鐘支援。",
+      "orbit": "須完成任務專屬測試後，才能作為實驗性 COTS 候選元件；未建立太空／輻射資格認證。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "沒有磁力計或絕對姿態輸出。高 g 衝擊可能超過 ±16 g。額定溫度不代表可無加熱暴露於平流層，也不代表整片 PCB 通過驗證。"
+      ],
+      "sources": [
+        {
+          "title": "TDK ICM-42688-P Data Sheet DS-000347 v1.6",
+          "url": "https://product.tdk.com/system/files/dam/doc/product/sensor/mortion-inertial/imu/data_sheet/ds-000347-icm-42688-p-v1.6.pdf"
+        },
+        {
+          "title": "TDK 現行產品規格頁",
+          "url": "https://product.tdk.com/en/search/sensor/mortion-inertial/imu/info?part_no=ICM-42688-P"
+        },
+        {
+          "title": "原廠 DS-000347 v1.8，經銷商託管版本",
+          "url": "https://my.avnet.com/wcm/connect/d77496ae-3601-48c5-b53c-413d058cb610/TDK-InvenSense-QCIoT-ICM42688-P-Series-EN-Datasheet.pdf?MOD=AJPERES"
+        },
+        {
+          "title": "TDK 現行產品頁，列有 v1.9 資料表",
+          "url": "https://www.invensense.tdk.com/en-us/products/6-axis/icm-42688-p"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "1428-ICM-42688-PCT-ND",
+          "form": "裸 14-pin LGA IC，並非轉接板",
+          "amount": 4.86,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時缺貨／可預訂；所列為公開標價，不代表可立即供貨。",
+          "url": "https://www.digikey.com/en/products/detail/tdk-invensense/ICM-42688-P/10824934",
+          "note": "公開單件標價；未含額外運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-bmi088",
+      "model": "BMI088",
+      "exactPart": "BMI088；購買品項：828-1082-1-ND",
+      "maker": "Bosch Sensortec",
+      "category": "導航與慣性",
+      "subcategory": "6 軸加速度計／陀螺儀 IC",
+      "form": "裸 16-LGA IC，並非轉接板",
+      "formShort": "裸 IC",
+      "function": "3 軸加速度、角速度；內部溫度",
+      "range": "加速度計可選 ±3/6/12/24 g；陀螺儀可選 ±125/250/500/1000/2000 °/s；16-bit 輸出。",
+      "accuracy": "量程不等於精度。請依所列原廠資料表的模式、雜訊及測試條件評估誤差。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "VDD：2.4–3.6 V；VDDIO：1.2–3.6 V。",
+      "interface": "I2C、SPI",
+      "balloon": "可記錄原始運動，加速度量程較 ±16 g 元件更有餘裕；原設計面向振動較強的消費性產品／無人機環境。",
+      "orbit": "僅作為教學 ADCS 原型或實驗性 COTS 候選元件；耐振動不等於通過太空資格認證。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "陀螺儀與加速度計是內部分開的裝置，有各自的定址／晶片選擇行為，須同步並校正。沒有磁航向感測器。"
+      ],
+      "sources": [
+        {
+          "title": "Bosch BMI088 Data Sheet BST-BMI088-DS000-19 v1.9, Jan-2024",
+          "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "828-1082-1-ND",
+          "form": "裸 16-LGA IC，並非轉接板",
+          "amount": 5.92,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時缺貨，且無預估到貨日期。",
+          "url": "https://www.digikey.com/en/products/detail/bosch-sensortec/BMI088/8634936",
+          "note": "公開單件標價；未含額外運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-lis3mdl",
+      "model": "LIS3MDL",
+      "exactPart": "LIS3MDLTR（IC 捲帶包裝訂購料號）；購買品項：4479",
+      "maker": "STMicroelectronics",
+      "category": "導航與慣性",
+      "subcategory": "3 軸磁力計 IC",
+      "form": "STEMMA QT/Qwiic 轉接板，並非裸 IC",
+      "formShort": "GNSS／感測模組",
+      "function": "3 軸磁場",
+      "range": "可選 ±4/8/12/16 gauss（±400/800/1200/1600 µT）；16-bit 輸出。",
+      "accuracy": "量程不等於精度。磁力計需偏移／尺度校正與磁潔淨設計。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "裸 IC 供電：1.9–3.6 V；另有獨立 I/O 供電。",
+      "interface": "I2C 100/400 kHz、SPI",
+      "balloon": "適合基礎地磁／電子羅盤教學，或搭配 6 軸 IMU。",
+      "orbit": "未另行完成資格驗證前，僅作為實驗性 COTS 磁力計／地面 ADCS 示範；磁場量測本身在 LEO 仍具用途。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "羅盤表現取決於校正、磁潔淨度、傾斜補償與地磁偏角；量程不等於航向精度。量測時須遠離磁力矩器。"
+      ],
+      "sources": [
+        {
+          "title": "ST LIS3MDL Data Sheet DS9463 Rev 7, Dec-2023",
+          "url": "https://www.st.com/resource/en/datasheet/lis3mdl.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "4479",
+          "form": "STEMMA QT/Qwiic 轉接板，並非裸 IC",
+          "amount": 12.5,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時有庫存。",
+          "url": "https://www.adafruit.com/product/4479",
+          "note": "公開單件標價；未含額外運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-mmc5983ma",
+      "model": "MMC5983MA",
+      "exactPart": "MMC5983MA；購買品項：SEN-19921",
+      "maker": "MEMSIC",
+      "category": "導航與慣性",
+      "subcategory": "3 軸磁力計 IC",
+      "form": "Qwiic Micro 轉接板，並非裸 IC",
+      "formShort": "GNSS／感測模組",
+      "function": "3 軸磁場；內部溫度",
+      "range": "±8 gauss（±800 µT）；18-bit 模式為 0.0625 mG/LSB（6.25 nT/LSB）；BW=00 時 RMS 雜訊為 0.4 mG（40 nT）；較高雜訊設定下最高可達 1000 Hz。",
+      "accuracy": "量程不等於精度。磁力計需偏移／尺度校正與磁潔淨設計。",
+      "temperature": "-40 至 105 °C（IC／模組本體；非整機驗證）",
+      "voltage": "IC VDD/VDDIO：2.8–3.6 V。",
+      "interface": "I2C 最高 400 kHz、SPI 最高 10 MHz（IC）",
+      "balloon": "磁場教學／紀錄的解析度高於許多基礎羅盤模組；內建 set/reset 有助管理偏移與殘磁。",
+      "orbit": "可作為實驗性 COTS 磁場感測器候選；但 AEC-Q100 是車用資格認證，不是輻射／太空認證。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "0.4 mG 是雜訊，不是絕對準確度。須使用 set/reset、校正與磁潔淨設計。最高 1000 Hz 與最低雜訊分屬不同設定；小型 SparkFun 板僅引出 Qwiic I2C，不包含 IC 的全部介面。"
+      ],
+      "sources": [
+        {
+          "title": "MEMSIC MMC5983MA Rev A，原廠資料表由 SparkFun 託管",
+          "url": "https://cdn.sparkfun.com/assets/a/b/7/7/2/19921-09102019_MMC5983MA_Datasheet_Rev_A-1635338.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "SparkFun",
+          "sku": "SEN-19921",
+          "form": "Qwiic Micro 轉接板，並非裸 IC",
+          "amount": 18.5,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時有庫存。",
+          "url": "https://www.sparkfun.com/sparkfun-micro-magnetometer-mmc5983ma-qwiic.html",
+          "note": "公開單件標價；未含額外運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "nav-adxl375",
+      "model": "ADXL375",
+      "exactPart": "ADXL375；購買品項：5374",
+      "maker": "Analog Devices",
+      "category": "導航與慣性",
+      "subcategory": "3 軸高 g 加速度計 IC",
+      "form": "STEMMA QT/Qwiic 轉接板，並非裸 IC",
+      "formShort": "GNSS／感測模組",
+      "function": "3 軸加速度與衝擊事件",
+      "range": "量測範圍 ±200 g；頻寬最高 1 kHz；10,000 g 衝擊耐受是極限存活規格，不是量測範圍。",
+      "accuracy": "量程不等於精度。請依所列原廠資料表的模式、雜訊及測試條件評估誤差。",
+      "temperature": "-40 至 85 °C（IC／模組本體；非整機驗證）",
+      "voltage": "IC VS：2.0–3.6 V；I/O：1.7 V 至 VS。",
+      "interface": "I2C、3-/4-wire SPI",
+      "balloon": "可選配作為爆球／開傘／落地衝擊紀錄器，並搭配較小量程的 IMU；平穩漂浮時通常不需要此高量程。",
+      "orbit": "僅可在驗證後作為發射／衝擊實驗或地面測試的候選感測器；不是在軌姿態或速度感測器。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "高量程以較低靈敏度換取衝擊量測餘裕。它不直接量測速度；不可將 10,000 g 存活規格寫成 ±10,000 g 量測範圍。"
+      ],
+      "sources": [
+        {
+          "title": "Analog Devices ADXL375 Data Sheet Rev B",
+          "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/adxl375.pdf"
+        }
+      ],
+      "evidenceNote": "原廠資料表及整合手冊；分銷商託管的原廠文件已於來源名稱標明。操作溫度不能移植為整板資格。",
+      "offers": [
+        {
+          "seller": "Adafruit",
+          "sku": "5374",
+          "form": "STEMMA QT/Qwiic 轉接板，並非裸 IC",
+          "amount": 31.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "查核時有庫存。",
+          "url": "https://www.adafruit.com/product/5374",
+          "note": "公開單件標價；未含額外運費與稅。"
+        }
+      ]
+    },
+    {
+      "id": "stm32l476rgt6",
+      "model": "STM32L476RGT6",
+      "exactPart": "STM32L476RGT6",
+      "maker": "STMicroelectronics",
+      "category": "主控 MCU",
+      "subcategory": "運算與控制",
+      "form": "單顆 IC，64-LQFP 封裝",
+      "formShort": "裸 IC",
+      "function": "低功耗飛行電腦，負責感測器排程、遙測封包格式化及資料記錄。",
+      "range": "處理器：Arm Cortex-M4F，最高 80 MHz；記憶體：1 MB 快閃記憶體；128 KB SRAM；ADC：此元件系列內建三組 12-bit ADC；僅能使用該封裝實際接出的類比通道。須確認接腳功能衝突及 VDDA／參考電壓限制。",
+      "accuracy": "非量測感測器；性能受資料表指定條件限制。",
+      "temperature": "訂購料號尾碼 T6 的環境溫度範圍為 −40 至 +85 °C",
+      "voltage": "1.71–3.6 V",
+      "interface": "I²C、SPI、UART/USART、USB OTG FS、CAN、SDMMC、QSPI；透過 SWD 燒錄程式",
+      "balloon": "經過低溫、低壓、欠壓及完整酬載測試後，是值得考慮的低功耗控制器。若電子元件實際溫度可能低於 −40 °C，須提供保溫或其他熱控保護。",
+      "orbit": "屬於商用現成元件（COTS），引用的資料表未提供 TID／SEE 保證。須依任務進行輻射評估、故障恢復架構設計及環境驗證。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "實測每個量測週期的耗能，並與 ESP32-S3 比較。加入獨立 watchdog 與欠壓恢復機制；處理器時脈較高或具有工業等級，都不等於具備飛行資格。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.st.com/content/ccc/resource/technical/document/datasheet/c5/ed/2f/60/aa/79/42/0b/DM00108832.pdf/files/DM00108832.pdf/jcr:content/translations/en.DM00108832.pdf"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "STM32L476RGT6",
+          "form": "單顆 IC",
+          "amount": 13.12,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 2,403 顆",
+          "url": "https://www.digikey.com/en/products/detail/stmicroelectronics/STM32L476RGT6/5344353",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "esp32-s3-wroom-1-n8",
+      "model": "ESP32-S3-WROOM-1-N8",
+      "exactPart": "ESP32-S3-WROOM-1-N8",
+      "maker": "Espressif Systems",
+      "category": "主控 MCU",
+      "subcategory": "運算與控制",
+      "form": "可焊接式 RF／MCU 模組，內建 PCB 天線",
+      "formShort": "模組／記憶卡",
+      "function": "適合較高階教學控制、本地 Wi-Fi／BLE 設定、相機／資料處理及原型開發。",
+      "range": "處理器：雙核心 Xtensa LX7，最高 240 MHz；記憶體：8 MB 快閃記憶體；N8 版本無 PSRAM；晶片內建 512 KB SRAM",
+      "accuracy": "非量測感測器；性能受資料表指定條件限制。",
+      "temperature": "此 N8 版本的環境溫度範圍為 −40 至 +85 °C",
+      "voltage": "3.0–3.6 V；外部電源須至少能提供 0.5 A",
+      "interface": "I²C、SPI、UART、USB、GPIO；2.4 GHz 802.11b/g/n Wi-Fi 與 Bluetooth LE 5",
+      "balloon": "在實測功耗預算並設計熱控外殼後，可作為 COTS 原型候選。Wi-Fi／BLE 適合酬載附近的通訊，不能取代已驗證的長距離回收通訊鏈路。",
+      "orbit": "不是抗輻射或經太空資格驗證的模組。測試時須把 CPU、快閃記憶體、晶體與穩壓器等相依元件視為完整系統。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "DigiKey 的產品摘要包含 802.11a，但原廠資料表標示 2.4 GHz 802.11b/g/n，應以原廠規格為準。N8R8 與其他版本有不同的記憶體／溫度限制。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf"
+        },
+        {
+          "title": "其他已核實來源／購買管道",
+          "url": "https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8?qs=Wj%2FVkw3K%252BMC1mq0KGPvoSQ%3D%3D"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "ESP32-S3-WROOM-1-N8",
+          "form": "可焊接式模組，不是開發板",
+          "amount": 5.66,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 0；預計 2026-11-25 到貨 650 個，但不保證",
+          "url": "https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8/15200089",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "sx1262imltrt",
+      "model": "SX1262IMLTRT",
+      "exactPart": "SX1262IMLTRT",
+      "maker": "Semtech",
+      "category": "通訊遙測",
+      "subcategory": "射頻",
+      "form": "單顆 RF IC，24-QFN 4×4 mm 封裝",
+      "formShort": "裸 IC",
+      "function": "LoRa／(G)FSK sub-GHz 遙測數據機；需另接 MCU、RF 匹配／濾波網路、參考時脈及天線。",
+      "range": "頻率：晶片可調頻範圍為 150–960 MHz；實際 RF 網路須依頻段設計；輸出：最高 +22 dBm；傳輸率：LoRa 最高 62.5 kb/s；FSK 最高 300 kb/s",
+      "accuracy": "耗電：在指定的 868/915 MHz 條件下，以 +22 dBm 發射時，典型電流約 118 mA",
+      "temperature": "−40 至 +85 °C",
+      "voltage": "1.8–3.7 V",
+      "interface": "SPI 及控制／中斷接腳",
+      "balloon": "完成鏈路預算、天線、多普勒效應／頻率漂移、封包遺失、熱環境與法規檢查後，是值得考慮的低資料率遙測技術。廣告所稱最大距離不是飛行通訊距離保證。",
+      "orbit": "屬於商用 RFIC；LoRa 調變方式及晶片可調頻範圍，都不代表具備抗輻射資格或衛星頻譜使用授權。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "第一次製作建議使用已完成 RF 匹配的模組。晶片最大發射功率不等於法律允許的輻射功率；台灣 LP0002 與衛星業務程序須分別確認。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://semtech.my.salesforce.com/sfc/p/E0000000JelG/a/RQ000008nKCH/hp2iKwMDKWl34g1D3LBf_zC7TGBRIo2ff5LMnS8r19s"
+        },
+        {
+          "title": "製造商產品頁／技術文件",
+          "url": "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262"
+        }
+      ],
+      "evidenceNote": "RF 主要規格交叉核對 Semtech 產品頁與分銷商；完整配置與射頻設計仍應依最新版資料表。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "SX1262IMLTRT",
+          "form": "單顆 IC",
+          "amount": 9.04,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 18,188 顆",
+          "url": "https://www.digikey.com/en/products/detail/semtech-corporation/SX1262IMLTRT/8564369",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "wio-sx1262-114993390",
+      "model": "114993390 (Wio-SX1262 with IPEX)",
+      "exactPart": "114993390 (Wio-SX1262 with IPEX)",
+      "maker": "Seeed Studio",
+      "category": "通訊遙測",
+      "subcategory": "射頻",
+      "form": "可焊接式無線電模組，12-pin SMT 封裝",
+      "formShort": "模組／記憶卡",
+      "function": "以 SX1262 實作遙測，內含 RF 網路、TCXO 及 IPEX 天線接頭；仍需外接 MCU。",
+      "range": "頻率：模組資料表規定為 862–930 MHz；產品以 868/915 MHz 應用行銷；輸出：最高 +22 dBm",
+      "accuracy": "耗電：以 +22 dBm 發射時典型電流 125 mA；在 125 kHz 頻寬下接收時典型電流 7.6 mA",
+      "temperature": "−40 至 +85 °C",
+      "voltage": "1.8–3.6 V，典型值 3.3 V",
+      "interface": "SPI、BUSY、DIO1、DIO2 RF 開關控制、DIO3 TCXO 供電；50 Ω 天線埠",
+      "balloon": "較容易上手，可減少 RF 電路布局的設計工作。須驗證 TCXO 設定、實際允許使用的頻率、天線接頭固定方式及低溫啟動。",
+      "orbit": "屬於 COTS 模組，未具太空資格。即使 SX1262 晶片可調頻範圍較廣，這款高頻段模組也不能直接當成 435–438 MHz 業餘衛星無線電使用。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "模組資料表的限制比單顆 IC 更嚴格。DIO3 的 TCXO 供電至少須比 VCC 低 200 mV；不可用 wiki 上較寬的頻率描述取代模組資料表。",
+        "Seeed direct page showed $4.29 and a 10+ price tier; use DigiKey's unambiguous quantity-one price for comparison."
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://files.seeedstudio.com/products/SenseCAP/Wio_SX1262/Wio-SX1262-N_Module_Datasheet.pdf"
+        },
+        {
+          "title": "製造商產品頁／技術文件",
+          "url": "https://wiki.seeedstudio.com/wio_sx1262/"
+        },
+        {
+          "title": "其他已核實來源／購買管道",
+          "url": "https://www.seeedstudio.com/Wio-SX1262-Wireless-Module-p-5981.html"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "114993390 (Wio-SX1262 with IPEX)",
+          "form": "無線電模組，不含主控 MCU 或天線",
+          "amount": 5.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 220 個",
+          "url": "https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/114993390/25835823",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "fm25v20a-gtr",
+      "model": "FM25V20A-GTR",
+      "exactPart": "FM25V20A-GTR",
+      "maker": "Infineon Technologies",
+      "category": "資料儲存",
+      "subcategory": "記錄",
+      "form": "單顆 FRAM IC，8-SOIC 封裝",
+      "formShort": "裸 IC",
+      "function": "儲存少量但需持續保留的事件記錄、飛行狀態、計數器及恢復檢查點。",
+      "range": "容量：2 Mbit = 256 KiB",
+      "accuracy": "耐久度：10^14 次讀寫循環；原廠標示在 65 °C 下可保存資料 151 年",
+      "temperature": "−40 至 +85 °C",
+      "voltage": "2.0–3.6 V",
+      "interface": "SPI，最高 40 MHz",
+      "balloon": "適合頻繁寫入少量資料及需耐受欠壓中斷的設計。容量較小，不能取代影像儲存。",
+      "orbit": "單憑 FRAM 記憶體技術，不能讓這顆商用元件取得抗輻射資格；仍須評估周邊電路、位元錯誤與功能異常。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "使用序號、CRC，以及雙份記錄或寫入完成標記；多位元組記錄若寫入中斷，不會自動具備不可分割的原子性。本目錄未採用 MB85RS2MTPF-G-JNERE2，因為 DigiKey 已將其標示為停產。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.infineon.com/assets/row/public/documents/10/49/infineon-fm25v20a-2-mbit-256k-8-serial-spi-f-ram-serial-spi-256k-8-40-mhz-industrial-datasheet-en.pdf"
+        },
+        {
+          "title": "製造商產品頁／技術文件",
+          "url": "https://www.infineon.com/part/FM25V20A-GTR"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "FM25V20A-GTR",
+          "form": "單顆 IC",
+          "amount": 21.92,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 8,838 顆",
+          "url": "https://www.digikey.com/en/products/detail/infineon-technologies/FM25V20A-GTR/5004796",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "w25q128jvsiq",
+      "model": "W25Q128JVSIQ TR",
+      "exactPart": "W25Q128JVSIQ TR",
+      "maker": "Winbond Electronics",
+      "category": "資料儲存",
+      "subcategory": "記錄",
+      "form": "單顆 NOR 快閃記憶體 IC，8-SOIC 封裝",
+      "formShort": "裸 IC",
+      "function": "在自行設計的 PCB 上儲存大量感測記錄或韌體映像。",
+      "range": "容量：128 Mbit = 16 MiB",
+      "accuracy": "非量測感測器；性能受資料表指定條件限制。",
+      "temperature": "−40 至 +85 °C",
+      "voltage": "2.7–3.6 V",
+      "interface": "SPI／雙線／四線 I/O，符合時序條件時最高 133 MHz",
+      "balloon": "焊接式儲存可免用可拆卸記憶卡接頭；軟體須處理抹除區塊、寫入延遲、耐用度及供電中斷。",
+      "orbit": "屬於商用 NOR 快閃記憶體，未提供抗輻射保證。須進行輻射評估與資料完整性檢查，並建議保留備援韌體映像。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "128 Mbit 等於 16 MiB，不是 128 MB。預先抹除記錄區，以附加方式寫入含 CRC 的記錄，並量測寫入時的瞬間電流。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7159/W25Q128JV.pdf"
+        },
+        {
+          "title": "製造商產品頁／技術文件",
+          "url": "https://www.winbond.com/hq/support/documentation/?__locale=en&category=%2F.categories%2Fresources%2Fdatasheet%2F&family=%2Fproduct%2Fcode-storage-flash-memory%2Fserial-nor-flash%2Findex.html&line=%2Fproduct%2Fcode-storage-flash-memory%2Findex.html&pno=W25Q128JV"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "W25Q128JVSIQ TR",
+          "form": "單顆 IC，剪帶包裝",
+          "amount": 5.77,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 20,177 顆；目前不接受缺貨後補訂單",
+          "url": "https://www.digikey.com/en/products/detail/winbond-electronics/W25Q128JVSIQ-TR/5803944",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "kingston-sdcit2-8gb",
+      "model": "SDCIT2/8GB",
+      "exactPart": "SDCIT2/8GB",
+      "maker": "Kingston Technology",
+      "category": "資料儲存",
+      "subcategory": "記錄",
+      "form": "工業級 microSDHC 記憶卡，不是單顆 IC",
+      "formShort": "模組／記憶卡",
+      "function": "可拆卸的大容量任務記錄與影像儲存。",
+      "range": "容量：8 GB",
+      "accuracy": "技術：以 pSLC 模式運作的 TLC NAND；具備 ECC、平均抹寫、斷電保護及健康狀態監測",
+      "temperature": "工作／儲存溫度為 −40 至 +85 °C",
+      "voltage": "3.3 V",
+      "interface": "microSD／SD 主機介面、UHS-I；須確認主機模式及軟體函式庫相容性",
+      "balloon": "通過資料保存、低溫啟動、反覆斷電與檔案系統測試後，可作為方便的大容量記錄器。須以機械方式固定記憶卡。",
+      "orbit": "工業等級與耐機場 X 光的規格，不能證明已通過太空輻射資格驗證。記憶卡控制器、NAND 與接頭均須依任務評估。",
+      "spaceEvidence": false,
+      "limited": true,
+      "balloonCandidate": true,
+      "caveats": [
+        "將關鍵狀態另存於容量小但可靠的記錄中；定期將緩衝資料寫回、建立檢查點，並保留足夠供電時間完成寫入。宣傳中的最高 3840 TBW 適用於此系列最大容量款，不是這張 8 GB 記憶卡。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.kingston.com/datasheets/SDCIT2_en.pdf"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "SDCIT2/8GB",
+          "form": "8 GB 記憶卡",
+          "amount": 89.15,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 0；估計 2026-12-18 到貨 1 張，但不保證",
+          "url": "https://www.digikey.com/en/products/detail/kingston-technology/SDCIT2-8GB/15940420",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "ina228aidgsr",
+      "model": "INA228AIDGSR",
+      "exactPart": "INA228AIDGSR",
+      "maker": "Texas Instruments",
+      "category": "電源與保護",
+      "subcategory": "電力與可靠度",
+      "form": "單顆 IC，10-VSSOP 封裝",
+      "formShort": "裸 IC",
+      "function": "搭配外部分流電阻，量測電池／電源軌的電壓、電流、功率、累積能量與電荷。",
+      "range": "ADC：20-bit delta-sigma ADC；匯流排量程：匯流排電壓 0–85 V；共模電壓 −0.3 至 +85 V；分流量程：±163.84 mV 或 ±40.96 mV",
+      "accuracy": "耗電：正常工作時典型供電電流 640 µA；電流量程由外部分流電阻與散熱決定，20-bit 不是絕對精度。",
+      "temperature": "環境溫度 −40 至 +125 °C",
+      "voltage": "2.7–5.5 V",
+      "interface": "I²C 最高 2.94 MHz、ALERT 接腳；16 個可選位址",
+      "balloon": "適合實測能量預算，以及觀察無線電運作時的電流瞬變。可用電流範圍取決於分流電阻的阻值、額定功率與配線。",
+      "orbit": "屬於一般商用規格，未抗輻射加固。高耐壓額定值與抗輻射能力無關。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "20-bit 解析度不等於 20-bit 絕對準確度。它不是電池充電器、保護 IC 或斷電開關，須另加適當的保護電路。",
+        "適合桌上原型實驗。不可直接把 IC 的溫度／電流限制套用到整塊板，須驗證分流電阻發熱、接頭與外殼環境。",
+        "電流為 10 A 時，15 mΩ 分流電阻會耗散 1.5 W（I²R）。量測範圍高，不代表可在不通風或低壓酬載內使用滿額電流。價格包含板上元件，選購連接線另計。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.ti.com/lit/ds/symlink/ina228.pdf"
+        },
+        {
+          "title": "其他已核實來源／購買管道",
+          "url": "https://www.ti.com/product/INA228/part-details/INA228AIDGSR"
+        },
+        {
+          "title": "開發板接線與限制",
+          "url": "https://learn.adafruit.com/adafruit-ina228-i2c-power-monitor/pinouts"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "INA228AIDGSR",
+          "form": "單顆 IC，不含分流電阻",
+          "amount": 5.31,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 0；預計到貨時間列為 2027 年 5／6 月",
+          "url": "https://www.digikey.com/en/products/detail/texas-instruments/INA228AIDGSR/13691042",
+          "note": ""
+        },
+        {
+          "seller": "Adafruit",
+          "sku": "Adafruit 5832 (INA228 breakout)",
+          "form": "已組裝的接腳引出板，附分流電阻及接頭",
+          "amount": 14.95,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "產品頁面顯示有庫存",
+          "url": "https://www.adafruit.com/product/5832",
+          "note": "電流為 10 A 時，15 mΩ 分流電阻會耗散 1.5 W（I²R）。量測範圍高，不代表可在不通風或低壓酬載內使用滿額電流。價格包含板上元件，選購連接線另計。"
+        }
+      ]
+    },
+    {
+      "id": "tps63070rnmr",
+      "model": "TPS63070RNMR",
+      "exactPart": "TPS63070RNMR",
+      "maker": "Texas Instruments",
+      "category": "電源與保護",
+      "subcategory": "電力與可靠度",
+      "form": "單顆切換式穩壓 IC，15-pin VQFN-HR 封裝",
+      "formShort": "裸 IC",
+      "function": "當電池電壓可能高於或低於所需電源軌時，提供升降壓穩壓。",
+      "range": "輸入：2.0–16 V；輸出：可調 2.5–9 V；電流：在指定條件下輸出最高 2 A；3.6 A 是開關／輸入電流限制，不是保證輸出電流；切換頻率：標稱 2.4 MHz",
+      "accuracy": "非量測感測器；性能受資料表指定條件限制。",
+      "temperature": "接面工作溫度範圍 −40 至 +125 °C",
+      "voltage": "2.0–16 V",
+      "interface": "類比回授、EN、PG、VSEL、PS/SYNC；無 I²C",
+      "balloon": "適合列為穩壓電源軌候選，但須正確配置電感／電容布局、確認電池限制，並完成低溫／低壓熱環境驗證。",
+      "orbit": "屬於一般商用規格的 COTS，不能直接當作抗輻射電力子系統（EPS）元件。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "不是電池充電器。效率及最大負載取決於 VIN、VOUT、電感、溫度與布局；須把啟動及無線電突發發射電流納入預算。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.ti.com/lit/gpn/TPS63070"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "TPS63070RNMR",
+          "form": "單顆 IC；需外接電感／電容",
+          "amount": 3.37,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "供應商頁面顯示有庫存",
+          "url": "https://www.digikey.com/en/products/detail/texas-instruments/TPS63070RNMR/6175216",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "tps3431sdrbr",
+      "model": "TPS3431SDRBR",
+      "exactPart": "TPS3431SDRBR",
+      "maker": "Texas Instruments",
+      "category": "電源與保護",
+      "subcategory": "電力與可靠度",
+      "form": "單顆 IC，8-VSON（3×3 mm）封裝",
+      "formShort": "裸 IC",
+      "function": "獨立逾時監測器，可偵測 MCU 心跳訊號停止並要求硬體重置。",
+      "range": "計時：原廠預設標稱逾時可選 200 ms 或 1.6 s；亦可用外接電容設定；故障／重置脈衝標稱 200 ms",
+      "accuracy": "耗電：典型靜態電流 10 µA",
+      "temperature": "接面工作溫度範圍 −40 至 +125 °C",
+      "voltage": "1.8–6.5 V",
+      "interface": "WDI 下降緣心跳輸入；低有效開汲極 WDO；EN、ENOUT、SET1 與電容定時輸入",
+      "balloon": "適合無人值守飛行的額外恢復機制。以刻意讓軟體停住的測試，驗證開機時間、休眠間隔與重置恢復。",
+      "orbit": "屬於商用 watchdog，未抗輻射加固。單靠重置路徑不能消除破壞性的 latch-up，也不能建立抗輻射能力。",
+      "spaceEvidence": false,
+      "limited": false,
+      "balloonCandidate": true,
+      "caveats": [
+        "只有在關鍵感測／記錄工作確實推進後，才更新 watchdog 心跳；不要在中斷內無條件更新。上拉電位須相容於 MCU 重置電壓。透過停止主迴圈、拔除感測器及破壞狀態資料進行故障注入。若要斷電再上電，還需另外的開關／保護硬體，不能只靠這個重置訊號。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.ti.com/lit/ds/symlink/tps3431.pdf"
+        },
+        {
+          "title": "其他已核實來源／購買管道",
+          "url": "https://www.ti.com/product/TPS3431/part-details/TPS3431SDRBR"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "DigiKey",
+          "sku": "TPS3431SDRBR",
+          "form": "單顆 IC",
+          "amount": 2.36,
+          "currency": "USD",
+          "quantity": 1,
+          "availability": "頁面顯示庫存 0；預計 2027-03-08 到貨 3,000 顆，但不保證",
+          "url": "https://www.digikey.com/en/products/detail/texas-instruments/TPS3431SDRBR/9597847",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "msp430fr5969-sp",
+      "model": "M4FR5969SRGZT-MLS (MSP430FR5969-SP family)",
+      "exactPart": "M4FR5969SRGZT-MLS (MSP430FR5969-SP family)",
+      "maker": "Texas Instruments",
+      "category": "太空系列對照",
+      "subcategory": "具文件之耐輻射品項",
+      "form": "抗輻射 MCU IC，48-VQFN 封裝",
+      "formShort": "耐輻射 IC",
+      "function": "低功耗太空載具狀態管理與遙測控制器。",
+      "range": "處理器：16-bit MSP430，最高 16 MHz；記憶體：64 KB FRAM、2 KB SRAM",
+      "accuracy": "輻射規格：輻射批次驗收測試達 50 krad；標示在 125 °C、LET 達 72 MeV·cm²/mg 時具 SEL 免疫能力",
+      "temperature": "−55 至 +105 °C",
+      "voltage": "1.8–3.6 V，須符合頻率／溫度條件",
+      "interface": "I²C、SPI、UART；12-bit ADC",
+      "balloon": "技術上值得參考，但對短時間教學氣球任務而言，成本及資格驗證負擔通常過高。",
+      "orbit": "確實為原廠太空／抗輻射產品。仍須核對批次文件、劑量／SEE 資料、屏蔽、軌道及任務熱環境要求；不代表整個太空載具不會故障。",
+      "spaceEvidence": true,
+      "limited": false,
+      "balloonCandidate": false,
+      "caveats": [
+        "實際可訂購料號與 MSP430FR5969-SP 系列名稱不同。一般 MSP430FR5969IRGZT 不是同一款具抗輻射保證的元件；塑膠封裝也不等於非太空級。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.ti.com/lit/gpn/MSP430FR5969-SP"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "TI direct",
+          "sku": "M4FR5969SRGZT-MLS (MSP430FR5969-SP family)",
+          "form": "太空級單顆 IC",
+          "amount": null,
+          "currency": "USD",
+          "quantity": null,
+          "availability": "公開頁面未列價格，並顯示缺貨／須登入查看庫存；需向原廠詢價及確認交期",
+          "url": "https://www.ti.com/product/MSP430FR5969-SP/part-details/M4FR5969SRGZT-MLS",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "tps7h1101a-sp",
+      "model": "5962R1320202VXC (TPS7H1101A-SP)",
+      "exactPart": "5962R1320202VXC (TPS7H1101A-SP)",
+      "maker": "Texas Instruments",
+      "category": "太空系列對照",
+      "subcategory": "具文件之耐輻射品項",
+      "form": "抗輻射 QML-V LDO，16-pin 陶瓷扁平封裝",
+      "formShort": "耐輻射 IC",
+      "function": "為太空電子設備提供低雜訊穩壓電源軌。",
+      "range": "輸入：1.5–7 V；輸出：可調 0.8–6.65 V；具足夠散熱餘裕時最高 3 A",
+      "accuracy": "輻射規格：RHA 達 100 krad(Si)；在指定測試條件下無 ELDRS 效應；LET 達 85 MeV·cm²/mg 時具 SEL、SEB 與 SEGR 免疫能力",
+      "temperature": "−55 至 +125 °C",
+      "voltage": "1.5–7 V",
+      "interface": "類比回授、EN、PG、軟啟動、電流感測／限流",
+      "balloon": "適合用來比較成本、封裝、資格驗證與採購差異，不是低預算氣球的預設穩壓器。",
+      "orbit": "此可訂購版本明確標示為 QML-V 抗輻射元件。仍須注意暫態／功能異常行為；原廠列出的 SET／SEFI 起始門檻高於 40 MeV·cm²/mg，並非保證免疫所有事件。",
+      "spaceEvidence": true,
+      "limited": false,
+      "balloonCandidate": false,
+      "caveats": [
+        "不可把 /EM 工程評估型號替換上去，就宣稱具備飛行資格。這是 LDO，不是升降壓轉換器；耗散功率約為（VIN−VOUT）×I，再加上靜態損耗。"
+      ],
+      "sources": [
+        {
+          "title": "原廠資料表／原廠撰寫文件",
+          "url": "https://www.ti.com/lit/gpn/TPS7H1101A-SP"
+        }
+      ],
+      "evidenceNote": "原廠文件及供應商商品頁交叉核對；無公開可核實價格的太空系列保留需詢價。",
+      "offers": [
+        {
+          "seller": "TI direct",
+          "sku": "5962R1320202VXC (TPS7H1101A-SP)",
+          "form": "QML-V 太空級單顆 IC",
+          "amount": null,
+          "currency": "USD",
+          "quantity": null,
+          "availability": "公開頁面無可核實價格，並顯示缺貨／須登入查看庫存；需詢價",
+          "url": "https://www.ti.com/product/TPS7H1101A-SP/part-details/5962R1320202VXC",
+          "note": ""
+        }
+      ]
+    }
+  ]
+};
