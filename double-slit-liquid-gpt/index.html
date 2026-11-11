@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>雙狹縫 × 半圓液槽｜不偏折，也會改變條紋・GPT版</title>
+<meta name="description" content="第15題雙狹縫干涉互動動畫：半圓液槽、光程差、液體波長與亮紋間距。可調折射率、波長、縫距、屏距，附原題分步詳解。GPT版。">
+<style>
+:root{--ink:#153246;--muted:#526b7a;--teal:#087e82;--blue:#3a71c9;--gold:#a36312;--line:#d8e5e9;--bg:#f3f7f6}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 "Microsoft JhengHei",system-ui,sans-serif}button,input,select{font:inherit}button,select,summary{cursor:pointer}a{color:var(--teal);text-underline-offset:4px}.wrap{max-width:1400px;margin:auto;padding:0 26px}.top{background:white;border-bottom:1px solid var(--line)}.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:15px;padding-bottom:15px;gap:15px}.brand{font-weight:800;letter-spacing:1px}.badge{display:inline-block;font-size:13px;border:1px solid #acd1cc;border-radius:25px;padding:3px 12px;color:#066c70;background:#e8f5f1;white-space:nowrap}.hero{padding:38px 0 24px}.kicker,.num{color:var(--teal);font:700 12px/1.7 system-ui;letter-spacing:2px}.num{margin-bottom:9px}h1{font-size:clamp(28px,3.3vw,46px);line-height:1.4;letter-spacing:-1px;margin:10px 0 13px}h1 span{font-weight:400;color:var(--muted)}h2{font-size:23px;line-height:1.5;margin:0 0 12px}h3{font-size:18px;margin:20px 0 8px}p{margin:9px 0}.intro{max-width:870px;color:var(--muted)}.nav{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:22px;font-size:15px}.grid>div,.grid>aside,.viz-grid>div{min-width:0}.grid{display:grid;grid-template-columns:minmax(0,1fr) 325px;gap:22px;align-items:start}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:21px;box-shadow:0 4px 16px #163b4808}.question{background:#eaf4f3;border-color:#c7ded9}.small{font-size:14px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0}.metric{border-left:2px solid #a9d0ce;padding:2px 11px;font-size:13px;color:var(--muted)}.metric strong{display:block;color:var(--ink);font:700 24px/1.6 system-ui;overflow-wrap:anywhere}.viz-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.dark{background:#102c40;border-radius:12px;overflow:hidden;margin:13px 0 8px}.dark canvas{display:block;width:100%;height:auto;touch-action:auto}.hint{border-left:3px solid var(--teal);background:#edf7f5;padding:10px 15px;color:#2a535b;margin:14px 0}.amber{border-color:#ce9b45;background:#fff7e9;color:#76501e}.formula{font:21px/1.9 "Times New Roman","Microsoft JhengHei",serif;background:#eff5f7;border-radius:10px;padding:13px 17px;overflow-wrap:anywhere}.controls label{display:block;font-size:15px;margin-top:17px}output{float:right;color:var(--teal);font-weight:700;font-variant-numeric:tabular-nums}input[type=range]{width:100%;accent-color:var(--teal);min-height:28px;margin:10px 0}button{color:var(--ink);background:#fff;border:1px solid #bdd0d8;border-radius:8px;padding:8px 12px;min-height:43px}button.primary{background:var(--teal);color:#fff;border-color:var(--teal)}button:hover{border-color:var(--teal);background:#e6f3f1}button.primary:hover{background:#096669}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #d69635;outline-offset:4px}select{width:100%;background:#fff;color:var(--ink);border:1px solid #b2c7d0;border-radius:8px;padding:9px}.legend{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:14px;color:var(--muted)}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}.readout{font-size:16px;font-variant-numeric:tabular-nums}.pill{font-size:13px;border-radius:25px;border:1px solid #d8e5e9;padding:4px 10px;color:var(--muted)}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}td,th{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-weight:500}.lesson{display:grid;grid-template-columns:1fr 1fr;gap:20px}.steps{padding-left:25px}.steps li{margin-bottom:16px}details{border-top:1px solid var(--line);padding-top:13px;margin-top:14px}summary{color:var(--teal);font-weight:700;min-height:35px}.answer{color:var(--teal);font-weight:700}.answerinput{width:100%;padding:8px;border:1px solid #afc4cd;border-radius:7px}.feedback{color:var(--teal);font-size:15px;min-height:28px}.notice{font-size:14px;color:#8b5818;min-height:25px}footer{border-top:1px solid var(--line);margin-top:28px;padding:25px 0;color:var(--muted);font-size:13px}.sticky{position:sticky;top:16px}.n-value{font-variant-numeric:tabular-nums}#pattern{cursor:crosshair}@media(max-width:1100px){.grid{grid-template-columns:minmax(0,1fr)}.side{display:grid;grid-template-columns:1fr 1fr;gap:20px}.sticky{position:static}.side .card{margin-bottom:0}}@media(max-width:680px){body{font-size:16px}.wrap{padding:0 14px}.hero{padding:26px 0 15px}.top .brand{font-size:14px}.top a{font-size:13px}.card{padding:16px}.viz-grid,.side,.lesson{display:block}.side .card{margin-bottom:20px}.metrics{gap:3px}.metric{padding:2px 6px;font-size:12px}.metric strong{font-size:19px}h2{font-size:21px}.small{font-size:13px}.dark.wide{overflow-x:auto}.dark.wide canvas{width:760px;max-width:none}.formula{font-size:19px}.nav{gap:14px;font-size:14px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<div class="top"><div class="wrap"><div class="brand">ADDIE LU <span class="badge">GPT版</span></div><a href="../works.html">教學作品集 ↗</a></div></div>
+<main class="wrap"><header class="hero"><div class="kicker">WAVE OPTICS / QUESTION 15</div><h1>雙狹縫 × 半圓液槽<br><span>不偏折，也會改變條紋。</span></h1><p class="intro">光線直直穿出液面，為什麼亮紋還會變密？把光線的「方向」、波的「波長」與兩路光的「相位差」分開看，就能讀懂這道題目。</p></header>
+<nav class="nav" aria-label="頁面導覽"><a href="#apparatus">① 光路與幾何</a><a href="#phase">② 波長與相位</a><a href="#fringes">③ 條紋比較</a><a href="#solution">④ 原題詳解</a></nav>
+<section class="card question"><div class="num">題目整理 / 第 15 題</div><p>雙狹縫位於半圓皿圓心 O 附近，縫距 <b>0.020 mm</b>。空氣中波長 <b>650 nm</b> 的雷射沿 y 軸入射，屏幕位於 <b>y = 2.0 m</b>。半圓皿注滿折射率 <b>n<sub>L</sub> = 1.3</b> 的液體。</p><p>依原題近似：出射光可視為由 O 發出，沿圓弧法線出液面，不發生方向偏折；忽略兩路光在空氣中的路程差。求屏幕上相鄰亮紋的間距。</p><p class="small">以下預設為原題資料。空氣折射率取 1；650 nm 在此近似下作為參考波長 λ<sub>air</sub>。</p></section>
+<div class="grid"><div>
+<section class="card" id="apparatus"><div class="num">01 / THE APPARATUS</div><h2>法線決定偏折；光程決定相位。</h2>
+<div class="metrics" aria-live="polite"><div class="metric">液體內波長<strong id="lambdaLiquid"></strong></div><div class="metric">近軸亮紋間距<strong id="spacing"></strong></div><div class="metric">相對空氣間距<strong id="ratioSpacing"></strong></div></div>
+<div class="viz-grid"><div><div class="dark"><canvas id="geometry" width="520" height="440" role="img" aria-label="半圓液槽俯視圖：由圓心附近出射的光沿圓弧法線通向屏幕，顯示全域觀察角與局部入射角的差別"></canvas></div><p class="small">俯視示意，尺寸與角度不按比例。大圖以 O 近似兩縫位置，只用來判斷出射方向。</p></div><div><div class="dark"><canvas id="path" width="520" height="440" role="img" aria-label="雙狹縫光程差放大圖與兩振幅向量的合成，兩縫間距保留為d"></canvas></div><p class="small">放大圖保留兩縫間距 d，用來計算路程差。金色為光程差，與單純的幾何距離不同。</p></div></div>
+<p class="hint">「不偏折」表示圓弧表面的局部入射角為 0°；全域觀察角 θ 是相對 y 軸的角度，兩個角不能混為一談。</p>
+<p id="observer" class="hint readout" aria-live="polite"></p>
+<label for="x">移動屏幕上的觀察點 x <output id="xVal"></output></label><input id="x" type="range" min="-200" max="200" step=".001" value="0">
+<div class="buttons"><button id="center">中央亮紋</button><button id="bright1">右側第 1 亮紋</button><button id="dark1">右側第 1 暗紋</button><button id="scan">自動掃描</button></div><p id="offscreen" class="notice"></p>
+</section>
+<section class="card" id="phase"><div class="num">02 / PHASE MEMORY</div><h2>波長出液面後恢復，相位差卻保留下來。</h2><div class="legend"><span><i class="dot" style="background:#66d9d3"></i>來自 S₁ 的波</span><span><i class="dot" style="background:#90b6ff"></i>來自 S₂ 的波</span><span><i class="dot" style="background:#ffd08a"></i>兩波相加</span></div>
+<div class="dark wide"><canvas id="wave" width="1040" height="340" role="img" aria-label="兩波跨越液體與空氣邊界的波形動畫：頻率不變、波長恢復、相位差保留"></canvas></div>
+<div class="buttons"><button id="play" class="primary">暫停波形動畫</button><button id="step">前進八分之一週期</button></div><p class="small">手機可左右滑動大圖。這是兩路光已走過差異路程後、以相同剩餘路程比較的波形示意；不是有限半圓皿的完整波場計算。顏色僅用來區別兩路光，動畫頻率經大幅放慢。</p>
+<div class="tablewrap"><table><thead><tr><th>比較項目</th><th>液體內</th><th>離開後的空氣中</th></tr></thead><tbody><tr><td>速率</td><td id="speedL"></td><td>約 c</td></tr><tr><td>波長</td><td id="waveL"></td><td id="waveA"></td></tr><tr><td>頻率</td><td colspan="2" id="frequency"></td></tr><tr><td>兩路相位差</td><td colspan="2">忽略空氣路程差時，離開液體後保留相同的 Δφ</td></tr></tbody></table></div>
+<p class="hint amber">650 nm 變成 500 nm，並不代表紅光變成綠光。進入介質時頻率不變；光色不應只用介質內波長判斷。</p></section>
+<section class="card" id="fringes"><div class="num">03 / COMPARE THE FRINGES</div><h2>同一個屏幕：液體讓條紋變密。</h2>
+<div class="legend"><span><i class="dot" style="background:#ffad83"></i>目前液體 n<sub>L</sub></span><span><i class="dot" style="background:#90b6ff"></i>對照：無液體，n = 1</span></div>
+<div class="dark wide"><canvas id="pattern" width="1040" height="400" role="img" aria-label="液體與空氣對照的雙狹縫干涉條紋及相對強度曲線，橫軸為屏幕位置毫米"></canvas></div>
+<p class="small">手機可左右滑動；點擊圖表選觀察點。兩次實驗分列顯示；每列以自己的最大強度歸一化，忽略反射損耗與單縫繞射包絡。</p>
+<p id="compareText" class="hint"></p><details><summary>為什麼兩個屏距相同，間距還會不同？</summary><p>相鄰亮紋需要光程差增加一個 λ<sub>air</sub>。同一觀察角下，液體把幾何路程差乘上 n<sub>L</sub>，所以比較小的角度變化就能累積一整個週期，亮紋更密。</p><p>原題：空氣對照 65 mm；注入液體後 50 mm。兩者比值 50/65 = 1/1.3 ≈ 0.7692。</p></details>
+</section>
+</div><aside class="side">
+<div class="card controls"><div class="num">EXPERIMENT SETTINGS</div><h2>改參數，觀察規律</h2>
+<label for="n">液體折射率 n<sub>L</sub> <output id="nVal"></output></label><input id="n" type="range" min="1" max="1.6" step=".01" value="1.3">
+<label for="lambda">空氣波長 λ<sub>air</sub> <output id="lambdaVal"></output></label><input id="lambda" type="range" min="400" max="700" step="10" value="650">
+<label for="d">雙狹縫間距 d <output id="dVal"></output></label><input id="d" type="range" min=".01" max=".05" step=".001" value=".02">
+<label for="L">屏距 L（由 O 到屏幕）<output id="LVal"></output></label><input id="L" type="range" min="1" max="3.5" step=".1" value="2">
+<label for="mode">位置與角度的換算</label><select id="mode"><option value="small">課本近軸：sinθ ≈ x/L</option><option value="exact">幾何比較：sinθ = x/√(L²+x²)</option></select>
+<label for="span">屏幕橫軸半寬</label><select id="span"><option value="100">±100 mm</option><option value="200" selected>±200 mm</option><option value="400">±400 mm</option></select>
+<div class="buttons"><button id="air">改成空氣 n = 1</button><button id="reset" class="primary">恢復原題</button></div>
+<div class="formula">λ<sub>L</sub> = λ<sub>air</sub>/n<sub>L</sub><br>ΔOPL ≈ n<sub>L</sub>d sinθ<br>Δx ≈ λ<sub>air</sub>L/(n<sub>L</sub>d)</div>
+<p class="small">改變參數時保留觀察點的實際 x；按「第 1 亮紋」重新定位。幾何比較只修正屏幕換算，仍沿用原題的出射與光程差近似。</p></div>
+<div class="card"><h2>先想一想</h2><p>若 n<sub>L</sub> 增加，亮紋間距如何變化？</p><div class="buttons"><button id="predictWide">變大</button><button id="predictNarrow">變小</button><button id="predictSame">不變</button></div><p id="prediction" class="feedback" aria-live="polite"></p>
+<label for="answer">原題亮紋間距是多少 mm？</label><input id="answer" class="answerinput" inputmode="decimal" placeholder="輸入數值"><div class="buttons"><button id="check">檢查答案</button></div><p id="feedback" class="feedback" aria-live="polite"></p></div>
+</aside></div>
+<section class="card" id="solution"><div class="num">04 / WORKED SOLUTION</div><h2>原題分步詳解</h2>
+<ol class="steps"><li><b>先把單位換成公尺。</b><div class="formula">d = 0.020 mm = 2.0×10⁻⁵ m<br>λ<sub>air</sub> = 650 nm = 6.50×10⁻⁷ m<br>L = 2.0 m，n<sub>L</sub> = 1.3</div></li>
+<li><b>液體內光速降低，頻率保持不變。</b><p>因此液體波長 λ<sub>L</sub> = 650/1.3 = <b>500 nm</b>。不能仍用 650 nm 去計算液體中的幾何路程差所累積的相位。</p></li>
+<li><b>保留兩狹縫的幾何路程差。</b><p>遠場下，到同一方向的兩路光近似平行。令「S₁ 路徑減 S₂ 路徑」的液體幾何路程差為 Δℓ<sub>L</sub> ≈ d sinθ。依題意忽略空氣中的兩路路程差，總光程差約為 n<sub>L</sub>Δℓ<sub>L</sub>。</p><div class="formula">Δφ ≈ 2πn<sub>L</sub>d sinθ / λ<sub>air</sub><br>亮紋：Δφ = 2πm → n<sub>L</sub>d sinθ<sub>m</sub> = mλ<sub>air</sub></div></li>
+<li><b>用屏距把角度換成屏幕位置。</b><p>由於沿圓弧法線出射，光線方向不改變。屏幕 x = L tanθ；小角度時 tanθ ≈ sinθ ≈ x/L。</p><div class="formula">x<sub>m</sub> ≈ mλ<sub>air</sub>L/(n<sub>L</sub>d)<br>Δx ≈ (6.50×10⁻⁷×2.0)/(1.3×2.0×10⁻⁵) m<br>= 0.050 m = <b>50 mm = 5.0 cm</b></div><p class="answer">答案：相鄰亮紋間距約 5.0 公分。</p></li></ol>
+<details><summary>若不用小角度近似，差多少？</summary><p>保留原題光程模型，只把屏幕幾何改成 x<sub>m</sub> = L tan[arcsin(mλ<sub>air</sub>/(n<sub>L</sub>d))]。原題中央到右側第一亮紋約 <b>50.0156 mm</b>，與近軸 50 mm 差約 0.0313%。</p><p>大角度時，相鄰亮紋不再等距；本題所稱「亮紋間距」採近軸結果。這個幾何比較不是完整半圓液槽的精確光學解。</p></details>
+<details><summary>把兩狹縫都視為 O，為什麼還有路程差？</summary><p>這是兩種不同用途的近似：判斷圓弧入射角時，d 遠小於皿的尺度，所以用 O 代表兩縫位置；計算干涉時，仍須保留 d 所造成的一階路程差 d sinθ。若把兩個波源完全合併成同一位置、連 d 都設成零，就已經失去雙狹縫干涉的題目設定。</p></details></section>
+<div class="lesson"><section class="card"><h2>三個容易混淆的地方</h2><ul class="steps"><li><b>不偏折，不代表沒有相位變化。</b>折射率仍改變速率、介質波長與光程。</li><li><b>出液面恢復 650 nm，不代表相位差歸零。</b>兩路進入空氣時已有不同相位；忽略空氣路程差，這個差值繼續保留。</li><li><b>使用一種等價算法即可。</b>可用 λ<sub>L</sub> = 500 nm 與幾何路程差，或用 λ<sub>air</sub> = 650 nm 與 n<sub>L</sub>Δℓ。不能把 λ 除以 n 後又把路程差乘 n，造成重複計算。</li></ul></section>
+<section class="card"><h2>三次小實驗</h2><ol class="steps"><li>恢復原題，將 n 改為 1。亮紋間距應由 50 mm 增為 65 mm。</li><li>恢復原題，將 d 從 0.020 改為 0.040 mm。亮紋間距減半為 25 mm。</li><li>恢復原題，按「右側第 1 暗紋」。觀察相位差為 π、兩向量反向、合振幅為零。再按「右側第 1 亮紋」，相位差為 2π，兩向量同向。</li></ol><p class="hint">原題不提供半圓皿半徑，是因為採用法線出射並忽略空氣路程差的近似後，亮紋條件不需用到半徑。</p></section></div>
+<section class="card"><h2>模型與參考</h2><p class="small">採用相干、同頻、等振幅的理想窄雙狹縫，正入射、遠場近似；依題意 Δℓ<sub>air</sub> ≈ 0、法線出射，且以 λ<sub>air</sub> 作參考波長、n<sub>air</sub> ≈ 1。忽略反射、吸收、色散、偏振、有限縫寬的單縫包絡與有限 d/R 導致的微小偏折。光強 I/I<sub>max</sub> = cos²(Δφ/2)。</p><p class="small">題目依使用者圖片重述，圖像與解說為本頁製作。基礎公式查核：<a href="https://openstax.org/books/university-physics-volume-3/pages/3-1-youngs-double-slit-interference" target="_blank" rel="noopener">OpenStax：Young 雙狹縫干涉</a> · <a href="https://openstax.org/books/college-physics-2e/pages/27-1-the-wave-aspect-of-light-interference" target="_blank" rel="noopener">OpenStax：介質中的頻率與波長</a>。半圓液槽的結論依本題假設推導。</p></section>
+<footer>GPT版 · 雙狹縫 × 半圓液槽互動教材 · 2026-11-11<br><a href="../single-slit-two-questions-gpt/">上一份：單狹縫兩題</a> · <a href="../">作品總覽</a> · <a href="../works.html">教學作品彙整</a></footer></main>
+<script>
+
+'use strict';
+const $=id=>document.getElementById(id),PI=Math.PI,C=299792458;
+const state={x:0,phase:0,playing:!matchMedia('(prefers-reduced-motion: reduce)').matches,scan:false};
+const f=(v,n=3)=>Number(v).toFixed(n);
+function parameters(){return {n:+$('n').value,lambda:+$('lambda').value*1e-9,d:+$('d').value*1e-3,L:+$('L').value,exact:$('mode').value==='exact',span:+$('span').value}}
+function sinTheta(x,p=parameters()){return p.exact?x/Math.hypot(p.L,x):x/p.L}
+function orderAt(x,p=parameters(),n=p.n){return n*p.d*sinTheta(x,p)/p.lambda}
+function intensity(x,p=parameters(),n=p.n){return Math.cos(PI*orderAt(x,p,n))**2}
+function position(q,p=parameters(),n=p.n){const s=q*p.lambda/(n*p.d);return p.L*(p.exact?s/Math.sqrt(1-s*s):s)}
+function setX(x){const span=+$('span').value;state.x=Math.max(-span,Math.min(span,x));$('x').value=state.x;update()}
+function update(){
+ const p=parameters(),q=orderAt(state.x/1000,p),dl=p.d*sinTheta(state.x/1000,p);
+ $('nVal').textContent=f(p.n,2);$('lambdaVal').textContent=f(p.lambda*1e9,0)+' nm';$('dVal').textContent=f(p.d*1000,3)+' mm';$('LVal').textContent=f(p.L,1)+' m';
+ $('lambdaLiquid').textContent=f(p.lambda/p.n*1e9,1)+' nm';$('spacing').textContent=f(p.lambda*p.L/(p.n*p.d)*1000,2)+' mm';$('ratioSpacing').textContent=f(1/p.n,4);
+ $('xVal').textContent=f(state.x,3)+' mm';
+ $('observer').textContent='x = '+f(state.x,3)+' mm　｜　θ = '+f((p.exact?Math.atan2(state.x/1000,p.L):Math.asin(state.x/(p.L*1000)))*180/PI,3)+'°　｜　ΔOPL / λair = '+f(q,4)+'　｜　Δφ / π = '+f(2*q,4)+'　｜　I/Imax = '+f(intensity(state.x/1000,p)*100,2)+'%';
+ $('speedL').textContent='c / '+f(p.n,2)+' ≈ '+f(C/p.n/1e8,3)+'×10⁸ m/s';$('waveL').textContent=f(p.lambda/p.n*1e9,1)+' nm';$('waveA').textContent=f(p.lambda*1e9,0)+' nm';$('frequency').textContent='兩邊相同：f ≈ '+f(C/p.lambda/1e12,2)+' THz';
+ $('compareText').textContent='近軸間距：液體 '+f(p.lambda*p.L/(p.n*p.d)*1000,2)+' mm；空氣對照 '+f(p.lambda*p.L/p.d*1000,2)+' mm。'+(p.exact?'目前曲線保留 sinθ 的幾何換算，中央到第 1 亮紋為 '+f(position(1,p)*1000,4)+' mm。':'目前採近軸幾何，亮紋等距。');
+ $('play').textContent=state.playing?'暫停波形動畫':'播放波形動畫';$('play').setAttribute('aria-pressed',String(state.playing));$('scan').textContent=state.scan?'停止掃描':'自動掃描';$('scan').setAttribute('aria-pressed',String(state.scan));
+ const bright=position(1,p)*1000;$('offscreen').textContent=bright>p.span?'第 1 亮紋在目前視野外，請把屏幕橫軸半寬調大。':'';
+ drawGeometry();drawPath();drawWave();drawPattern();
+}
+['n','lambda','d','L','mode'].forEach(id=>$(id).addEventListener('input',()=>{state.scan=false;update()}));
+$('span').oninput=()=>{state.scan=false;const span=+$('span').value;$('x').min=-span;$('x').max=span;setX(state.x)};
+$('x').oninput=e=>{state.scan=false;setX(+e.target.value)};
+$('center').onclick=()=>{state.scan=false;setX(0)};
+function jump(q){state.scan=false;const x=position(q)*1000;if(Math.abs(x)>+$('span').value){$('span').value=Math.abs(x)<=200?'200':'400';$('x').min=-+$('span').value;$('x').max=+$('span').value}setX(x)}
+$('bright1').onclick=()=>jump(1);$('dark1').onclick=()=>jump(.5);
+$('scan').onclick=()=>{state.scan=!state.scan;update()};
+$('play').onclick=()=>{state.playing=!state.playing;update()};
+$('step').onclick=()=>{state.playing=false;state.scan=false;state.phase=(state.phase+.125)%1;update()};
+$('air').onclick=()=>{state.scan=false;$('n').value=1;update()};
+$('reset').onclick=()=>{state.scan=false;state.phase=0;$('n').value=1.3;$('lambda').value=650;$('d').value=.02;$('L').value=2;$('mode').value='small';$('span').value=200;$('x').min=-200;$('x').max=200;$('prediction').textContent='';$('feedback').textContent='';$('answer').value='';setX(0)};
+$('predictNarrow').onclick=()=>{$('prediction').textContent='正確！Δx 與 nL 成反比。可把 n 拉高，再觀察條紋。'};
+$('predictWide').onclick=()=>{$('prediction').textContent='再想想：n 越大，液體波長越短，亮紋應更密。'};
+$('predictSame').onclick=()=>{$('prediction').textContent='不偏折只描述方向；n 仍會改變光程與相位差。'};
+$('check').onclick=()=>{const s=$('answer').value.trim(),x=Number(s);$('feedback').textContent=!s?'請先輸入原題的數值。':Number.isFinite(x)&&Math.abs(x-50)<.05?'答對了！50 mm = 5.0 cm。':Math.abs(x-65)<.05?'65 mm 是空氣對照；液體中還須除以 1.3。':Math.abs(x-5)<.01?'5.0 是公分數，這個欄位要填毫米：50。':'再試一次：650×10⁻⁹×2 ÷ (1.3×0.020×10⁻³)，最後把公尺乘 1000 換成 mm。'};
+function context(id){const c=$(id),g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);g.lineCap='round';return g}
+function line(g,x,y,X,Y,color='#658397',width=1,dash=[]){g.beginPath();g.setLineDash(dash);g.moveTo(x,y);g.lineTo(X,Y);g.strokeStyle=color;g.lineWidth=width;g.stroke();g.setLineDash([])}
+function text(g,str,x,y,color='#c0d6e3',size=17,align='left'){g.font=size+'px "Microsoft JhengHei",system-ui';g.textAlign=align;g.fillStyle=color;g.fillText(str,x,y);g.textAlign='left'}
+function dot(g,x,y,color='#ffd08a',r=4){g.beginPath();g.arc(x,y,r,0,2*PI);g.fillStyle=color;g.fill()}
+function arrow(g,x,y,X,Y,color='#ffd08a',width=2){line(g,x,y,X,Y,color,width);const a=Math.atan2(Y-y,X-x);line(g,X,Y,X-9*Math.cos(a-.4),Y-9*Math.sin(a-.4),color,width);line(g,X,Y,X-9*Math.cos(a+.4),Y-9*Math.sin(a+.4),color,width)}
+function drawGeometry(){
+ const p=parameters(),g=context('geometry'),O=[260,360],R=180,P=[260+state.x/p.span*185,65],dx=P[0]-O[0],dy=P[1]-O[1],len=Math.hypot(dx,dy),ux=dx/len,uy=dy/len,E=[O[0]+ux*R,O[1]+uy*R];
+ text(g,'俯視：半圓液槽與屏幕',22,28,'#e1eef6',19);
+ g.beginPath();g.arc(O[0],O[1],R,PI,2*PI);g.closePath();g.fillStyle='#184957';g.fill();g.strokeStyle='#66d9d3';g.lineWidth=2;g.stroke();
+ line(g,40,65,480,65,'#a9c3d3',8);text(g,'屏幕 y = L',35,52,'#d2e3ed',17);text(g,'+x →',433,105,'#d2e3ed',17);
+ line(g,260,360,260,75,'#82a4ba',1,[6,5]);text(g,'y 軸',278,148,'#a8c7da',16);
+ line(g,O[0],O[1],P[0],P[1],'#ffd08a',2.5);line(g,E[0]-ux*35,E[1]-uy*35,E[0]+ux*48,E[1]+uy*48,'#9dd8d0',1.5,[4,5]);
+ const optlen=p.n*R+(len-R),period=35;for(let a=(state.phase*period)%period;a<optlen;a+=period){const dist=a<p.n*R?a/p.n:R+(a-p.n*R);const X=O[0]+ux*dist,Y=O[1]+uy*dist;line(g,X-uy*6,Y+ux*6,X+uy*6,Y-ux*6,'#ffe2ad',2)}
+ dot(g,P[0],P[1],'#ffad83',6);text(g,'P',P[0]+12,P[1]+27,'#ffbd9b',18);
+ dot(g,E[0],E[1],'#66d9d3',5);text(g,'局部入射角 0°',22,169,'#8be1d7',18);text(g,'沿法線，方向不變',22,195,'#8be1d7',16);
+ text(g,'液體 nL = '+f(p.n,2),100,293,'#a2e3df',19);text(g,'空氣 n ≈ 1',360,133,'#b9d2e3',17);
+ dot(g,260,360,'#fff',5);text(g,'O',271,383,'#fff',20);text(g,'兩縫在 O 附近 → 右圖放大',22,422,'#b9d2e3',16);
+ arrow(g,260,414,260,371,'#90b6ff',3);text(g,'雷射',280,408,'#90b6ff',16);
+ if(Math.abs(dx)>1){g.beginPath();g.arc(260,360,53,-PI/2,Math.atan2(dy,dx),dx<0);g.strokeStyle='#ffad83';g.lineWidth=2;g.stroke();text(g,'θ',260+Math.sign(dx)*25,292,'#ffad83',20)}
+}
+function drawPath(){
+ const g=context('path'),p=parameters(),q=orderAt(state.x/1000,p),realSin=sinTheta(state.x/1000,p),theta=Math.asin(Math.max(-.65,Math.min(.65,realSin*9))),ux=Math.sin(theta),uy=-Math.cos(theta),A=[170,145],B=[350,145],dl=180*ux,F=[A[0]+ux*dl,A[1]+uy*dl];
+ text(g,'放大：計算時保留縫距 d',22,28,'#e1eef6',19);
+ line(g,110,145,410,145,'#8caaba',4);dot(g,...A,'#66d9d3',5);dot(g,...B,'#90b6ff',5);text(g,'S₁',A[0]-11,171,'#66d9d3',18);text(g,'S₂',B[0]-11,171,'#90b6ff',18);
+ arrow(g,A[0],A[1],A[0]+ux*112,A[1]+uy*112,'#66d9d3');arrow(g,B[0],B[1],B[0]+ux*112,B[1]+uy*112,'#90b6ff');
+ line(g,F[0],F[1],B[0],B[1],'#b7cedb',1,[5,5]);
+ if(Math.abs(dl)>1)line(g,A[0],A[1],F[0],F[1],'#ffd08a',5);
+ line(g,170,191,350,191,'#8daebf');text(g,'d（示意放大）',260,216,'#b9d2e3',17,'center');
+ text(g,'ΔℓL ≈ d sinθ = '+f(p.d*realSin*1e9,1)+' nm',22,250,'#c3dbe6',18);
+ text(g,'ΔOPL ≈ nL ΔℓL = '+f(q*p.lambda*1e9,1)+' nm',22,278,'#ffd08a',18);
+ text(g,'兩個等振幅向量，金色為合成',22,303,'#b9d2e3',16);
+ const c=[370,370],a=2*PI*state.phase,phi=2*PI*q,v1=[32*Math.cos(a-phi),-32*Math.sin(a-phi)],v2=[32*Math.cos(a),-32*Math.sin(a)];
+ arrow(g,c[0],c[1],c[0]+v1[0],c[1]+v1[1],'#66d9d3',3);arrow(g,c[0],c[1],c[0]+v2[0],c[1]+v2[1],'#90b6ff',3);
+ if(Math.hypot(v1[0]+v2[0],v1[1]+v2[1])>.01)arrow(g,c[0],c[1],c[0]+v1[0]+v2[0],c[1]+v1[1]+v2[1],'#ffd08a',3);
+ dot(g,c[0],c[1],'#e8f3f7',3);
+ text(g,'Δφ / π = '+f(2*q,3),22,421,'#ffd08a',18);
+}
+function drawWave(){
+ const g=context('wave'),p=parameters(),phi=2*PI*orderAt(state.x/1000,p),kA=2*PI/(38*p.lambda/650e-9),kL=kA*p.n,join=470,start=95,end=995,base=[87,169,269],amp=[21,21,25],cols=['#66d9d3','#90b6ff','#ffd08a'];
+ g.fillStyle='#184957';g.fillRect(start,36,join-start,277);line(g,join,35,join,310,'#9fcac9',2,[6,5]);
+ text(g,'液體：波長 '+f(p.lambda/p.n*1e9,1)+' nm',110,24,'#9de2db',18);text(g,'空氣：波長 '+f(p.lambda*1e9,0)+' nm',590,24,'#cadfe9',18);
+ text(g,'S₁',23,92,'#66d9d3',20);text(g,'S₂',23,174,'#90b6ff',20);text(g,'合成',16,275,'#ffd08a',19);
+ for(let row=0;row<3;row++){line(g,start,base[row],end,base[row],'#47657a',1);g.beginPath();for(let x=start;x<=end;x++){const ph=(x<=join?kL*(x-start):kL*(join-start)+kA*(x-join))-2*PI*state.phase,v1=Math.cos(ph-phi),v2=Math.cos(ph),v=row===0?v1:row===1?v2:v1+v2;const y=base[row]-amp[row]*v;if(x===start)g.moveTo(x,y);else g.lineTo(x,y)}g.strokeStyle=cols[row];g.lineWidth=2.3;g.stroke()}
+ text(g,'相位差不因過界面而歸零',520,333,'#ffd08a',18);
+ text(g,'同一頻率，較短波長',110,333,'#9de2db',18);
+}
+function plotCurve(g,n,color,dash=[]){const p=parameters();g.beginPath();for(let i=0;i<=950;i++){const mm=-p.span+i/950*2*p.span,x=77+i/950*920,y=319-134*intensity(mm/1000,p,n);if(i===0)g.moveTo(x,y);else g.lineTo(x,y)}g.strokeStyle=color;g.lineWidth=2.5;g.setLineDash(dash);g.stroke();g.setLineDash([])}
+function drawPattern(){
+ const g=context('pattern'),p=parameters(),xof=x=>77+(x+p.span)/(2*p.span)*920;
+ text(g,'目前液體',12,65,'#ffad83',16);text(g,'空氣對照',12,125,'#90b6ff',16);
+ for(let x=77;x<997;x++){const mm=(x-77)/920*p.span*2-p.span;g.fillStyle='rgba(255,157,116,'+intensity(mm/1000,p)+')';g.fillRect(x,35,1,42);g.fillStyle='rgba(144,182,255,'+intensity(mm/1000,p,1)+')';g.fillRect(x,95,1,42)}
+ for(let j=-4;j<=4;j++){const mm=j*p.span/4,x=xof(mm);line(g,x,161,x,319,'#29475b');text(g,f(mm,0),x,346,'#b9d2e3',17,'center')}
+ [0,.5,1].forEach(v=>{const y=319-134*v;line(g,77,y,997,y,'#29475b');text(g,''+v,62,y+5,'#b9d2e3',16,'right')});
+ text(g,'I/Imax',16,168,'#b9d2e3',15);plotCurve(g,1,'#90b6ff',[6,5]);plotCurve(g,p.n,'#ffad83');
+ const xp=xof(state.x);line(g,xp,28,xp,322,'#ffd08a',2);dot(g,xp,319-134*intensity(state.x/1000,p),'#ffd08a',5);
+ const xb=position(1,p)*1000;if(xb<=p.span){arrow(g,xof(0),153,xof(xb),153,'#ffd08a');text(g,'中央 → 第1亮紋 '+f(xb,2)+' mm',xof(0),381,'#ffd08a',18,'center')}
+ text(g,'x / mm',1005,346,'#b9d2e3',16,'right');
+}
+$('pattern').onclick=e=>{const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*1040;if(x<77||x>997)return;state.scan=false;setX((x-77)/920*parameters().span*2-parameters().span)};
+let lastTime=0;function animate(t){const dt=lastTime?Math.min((t-lastTime)/1000,.05):0;lastTime=t;if(document.visibilityState==='visible'){if(state.playing)state.phase=(state.phase+dt*.45)%1;if(state.scan){state.x+=dt*parameters().span*.18;if(state.x>parameters().span)state.x=-parameters().span;$('x').value=state.x;update()}else if(state.playing){drawGeometry();drawPath();drawWave()}}requestAnimationFrame(animate)}
+update();requestAnimationFrame(animate);
+
+</script></body></html>
+
