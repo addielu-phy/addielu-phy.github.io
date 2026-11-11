@@ -18,6 +18,23 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+{
+  "id": "single-slit-two-questions-gpt",
+  "title": "單狹縫繞射兩題互動實驗室（GPT版）",
+  "desc": "中央亮紋全寬、第四暗紋距離與角度、雙波長亮暗紋重合；可調參數、相量相消動畫、分步詳解，並比較課本 3/2 與精確峰值 1.4303。",
+  "url": "https://addielu-phy.github.io/single-slit-two-questions-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/single-slit-two-questions-gpt",
+  "cat": "探究與實作",
+  "tags": [
+    "單狹縫繞射",
+    "波的疊加",
+    "亮暗紋",
+    "互動動畫",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
   {
   "id": "slit-barrier-94-grok",
   "title": "94指考・單狹縫遮闌與亮紋張角（Grok版）",
