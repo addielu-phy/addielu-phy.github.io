@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>單狹縫繞射｜兩題互動實驗室・GPT版</title>
+<meta name="description" content="中央亮紋寬度、第四暗紋、雙波長亮暗紋重合：可調參數、波源相消動畫、分步詳解與課本近似及精確模型比較。GPT版。">
+<style>
+:root{--ink:#183247;--muted:#52697b;--line:#d7e3e8;--teal:#087d81;--paper:#f3f7f6}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.75 "Microsoft JhengHei",system-ui,sans-serif}a{color:var(--teal);text-underline-offset:4px}.wrap{max-width:1380px;margin:auto;padding:0 26px}.top{background:#fff;border-bottom:1px solid var(--line)}.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:15px;padding-top:15px;padding-bottom:15px}.brand{font-weight:800;letter-spacing:1px}.badge{font-size:13px;border:1px solid #9fcccb;background:#e6f5f1;color:#08666a;border-radius:30px;padding:4px 13px;white-space:nowrap}.hero{padding:40px 0 20px}.kicker,.num{font:700 12px/1.5 system-ui;color:var(--teal);letter-spacing:2px}h1{font-size:clamp(28px,3.3vw,46px);line-height:1.4;margin:10px 0 13px;letter-spacing:-1px}h1 span{font-weight:400;color:var(--muted)}h2{font-size:23px;line-height:1.5;margin:0 0 12px}h3{font-size:19px;margin:20px 0 8px}p{margin:9px 0}.intro{max-width:880px;color:var(--muted)}.tabs{display:flex;gap:8px;margin:20px 0 24px;border-bottom:1px solid var(--line)}button,input,select{font:inherit}button,select,summary{cursor:pointer}.tabs button{border:0;background:none;color:var(--muted);padding:13px 22px;border-bottom:3px solid transparent;border-radius:0;font-weight:700}.tabs button[aria-selected=true]{color:var(--teal);border-color:var(--teal)}[hidden]{display:none!important}.grid{display:grid;grid-template-columns:minmax(0,1fr) 335px;gap:22px;align-items:start}.card{border:1px solid var(--line);border-radius:16px;background:#fff;padding:23px;margin-bottom:20px;box-shadow:0 4px 18px #163c4809}.question{background:#eaf3f3;border-color:#c7dddd}.num{margin-bottom:8px}.small{font-size:14px;color:var(--muted)}.lead{font-size:19px}.hint{border-left:3px solid var(--teal);padding:9px 15px;background:#edf7f5;color:#264e58;margin:14px 0}.amber{background:#fff7e8;border-color:#d39b45;color:#78501f}.controls label{display:block;font-size:15px;margin-top:18px}output{float:right;font-variant-numeric:tabular-nums;color:var(--teal);font-weight:700}input[type=range]{width:100%;accent-color:var(--teal);margin:12px 0;min-height:24px}select{width:100%;color:var(--ink);padding:9px;border:1px solid #afc5ce;border-radius:8px;background:#fff}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}button{border:1px solid #bfd0d8;background:#fff;color:var(--ink);border-radius:8px;padding:8px 13px;min-height:43px}button:hover{background:#eaf5f3;border-color:var(--teal)}button.primary{background:var(--teal);color:#fff;border-color:var(--teal)}button.active{border-color:var(--teal);background:#e2f3ee;color:#075f63}button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #da9a3e;outline-offset:4px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:17px 0}.metric{border-left:2px solid #a8cfcd;padding:3px 11px;color:var(--muted);font-size:13px}.metric strong{display:block;color:var(--ink);font:700 22px/1.6 system-ui}.dark{background:#102b40;border-radius:12px;overflow:hidden;margin:15px 0 8px}.dark canvas{display:block;width:100%;height:auto}canvas{touch-action:pan-y}.legend{display:flex;flex-wrap:wrap;gap:6px 20px;color:var(--muted);font-size:14px}.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px}.formula{background:#eff5f7;border-radius:10px;padding:14px 17px;font:21px/1.9 "Times New Roman","Microsoft JhengHei",serif;overflow-x:auto}details{border-top:1px solid var(--line);margin-top:15px;padding-top:14px}summary{color:var(--teal);font-weight:700;min-height:35px}.steps{padding-left:25px}.steps li{margin-bottom:15px}.answer{font-weight:700;color:var(--teal)}.lesson{display:grid;grid-template-columns:1fr 1fr;gap:20px}.data{width:100%;border-collapse:collapse;font-size:15px;margin:12px 0}.data td,.data th{text-align:left;border-bottom:1px solid var(--line);padding:8px 5px}.data th{color:var(--muted);font-weight:500}.answerbox{width:100%;border:1px solid #afc5ce;border-radius:8px;padding:9px}.feedback{min-height:30px;color:var(--teal);font-weight:700;font-size:15px}.meter{height:8px;background:#e3ecee;border-radius:8px;overflow:hidden;margin:10px 0}.meter span{display:block;height:100%;background:var(--teal)}footer{padding:32px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:25px}.notice{font-size:14px;color:#8a5a16;min-height:25px}.tablewrap{overflow-x:auto}@media(max-width:1050px){.grid{grid-template-columns:minmax(0,1fr)}.side{display:grid;grid-template-columns:1fr 1fr;gap:20px}.side .card{margin-bottom:0}.controls{align-self:start}}@media(max-width:650px){body{font-size:16px}.wrap{padding:0 14px}.hero{padding:27px 0 15px}.top .brand{font-size:14px}.top a{font-size:13px}.card{padding:16px;border-radius:12px}.side,.lesson{display:block}.side .card{margin-bottom:18px}.tabs button{padding:12px 8px;font-size:15px;flex:1}.metrics{gap:3px}.metric{padding:3px 6px;font-size:12px}.metric strong{font-size:17px;overflow-wrap:anywhere}h2{font-size:21px}.formula{font-size:19px}.small{font-size:13px}}@media(max-width:650px){.dark{overflow-x:auto}.dark canvas{width:760px;max-width:none}.dark+ .small::before{content:'手機可左右滑動圖表。 ';font-weight:700}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<div class="top"><div class="wrap"><div class="brand">ADDIE LU <span class="badge">GPT版</span></div><a href="../works.html">教學作品集 ↗</a></div></div>
+<main class="wrap"><header class="hero"><div class="kicker">WAVE OPTICS / TWO INTERACTIVE QUESTIONS</div><h1>單狹縫繞射<br><span>從亮暗條紋，看懂波的疊加。</span></h1><p class="intro">先改變參數、觀察現象，再用光程差解釋原因。兩道題目串起中央亮紋、第四暗紋，以及不同波長的亮暗紋重合。</p></header>
+<nav class="tabs" role="tablist" aria-label="選擇試題"><button role="tab" id="tab1" aria-selected="true" aria-controls="page1" tabindex="0">第 2 題｜寬度與暗紋</button><button role="tab" id="tab2" aria-selected="false" aria-controls="page2" tabindex="-1">第 3 題｜雙波長重合</button></nav>
+<section id="page1" role="tabpanel" aria-labelledby="tab1">
+<div class="card question"><div class="num">QUESTION 02</div><p class="lead">以波長 5000 Å 的單色光做單狹縫繞射，狹縫寬度 0.6 mm，光屏距離 2.4 m。</p><p>求 ① 中央亮紋的寬度　② 第四條暗紋到中央亮紋中點的距離　③ 第四條暗紋的繞射角。</p><p class="small">原題資料已載入。先預測：「狹縫變窄，中央亮紋會變寬還是變窄？」再動手調整。</p></div>
+<div class="grid"><div>
+<article class="card"><div class="num">01 / PATTERN</div><h2>亮紋有多寬？用兩條暗紋夾出來。</h2>
+<div class="metrics" aria-live="polite"><div class="metric">中央亮紋全寬<strong id="centralWidth"></strong></div><div class="metric">第 4 暗紋距中心<strong id="darkFour"></strong></div><div class="metric">第 4 暗紋角度<strong id="thetaFour"></strong></div></div>
+<div class="dark"><canvas id="pattern" width="1040" height="400" role="img" aria-label="光屏條紋與相對光強曲線，橫軸為距中央的毫米數；金色範圍是中央亮紋全寬"></canvas></div>
+<div class="legend"><span><i class="dot" style="background:#52d7cf"></i>遠場光強 I/I₀</span><span><i class="dot" style="background:#ffd08a"></i>兩側第 1 暗紋與中央全寬</span><span><i class="dot" style="background:#83aeff"></i>右側第 4 暗紋</span></div>
+<p class="small">點擊曲線選觀察點，或使用滑桿。條紋亮度做平方根增亮，便於看見旁亮紋；曲線仍是實際 I/I₀，各參數組各自以中央強度歸一化。條紋採綠色示意，未模擬實際光色。</p>
+<label for="observe">觀察方向 u = a sinθ / λ <output id="observeVal"></output></label><input id="observe" type="range" min="-5" max="5" step=".001" value="1">
+<div class="buttons" id="locations"><button data-u="0">中央</button><button data-u="1">第 1 暗紋</button><button data-u="4">第 4 暗紋</button><button data-u="1.430296653">第 1 旁亮紋</button></div><p id="pointReadout" class="hint" aria-live="polite"></p><p id="offscreen" class="notice"></p></article>
+<article class="card"><div class="num">02 / WHY IT GOES DARK</div><h2>暗紋不是「沒有波」，而是振幅相消。</h2>
+<div class="dark"><canvas id="waves" width="1040" height="360" role="img" aria-label="狹縫到觀察點的方向示意，以及連續波源的相量疊加動畫"></canvas></div>
+<div class="buttons"><button id="play" class="primary">暫停動畫</button><button id="scan">自動掃描方向</button><button id="pairOne">示範第一暗紋</button><button id="pairFour">示範第四暗紋</button></div><p id="pairExplain" class="hint"></p>
+<p class="small">左圖只表達方向，狹縫、角度、距離均放大且不等比例；近似平行光線朝同一遠方觀察點。右圖以 160 個等寬小區間近似整條狹縫的振幅積分，金色箭頭為合振幅；光強數值用解析公式。動畫速度不是光的真實頻率。</p></article>
+</div><aside class="side">
+<div class="card controls"><div class="num">EXPERIMENT SETTINGS</div><h2>改一個量，找出規律</h2>
+<label for="lambda">波長 λ <output id="lambdaVal"></output></label><input id="lambda" type="range" min="400" max="700" step="10" value="500">
+<label for="slit">狹縫寬 a <output id="slitVal"></output></label><input id="slit" type="range" min=".3" max="1.2" step=".05" value=".6">
+<label for="screen">光屏距離 L <output id="screenVal"></output></label><input id="screen" type="range" min="1" max="4" step=".1" value="2.4">
+<label for="geometryMode">光屏位置的換算</label><select id="geometryMode"><option value="small">課本：y ≈ L sinθ</option><option value="exact">幾何：y = L tanθ</option></select>
+<label for="view">光屏橫軸半寬（固定刻度）</label><select id="view"><option value="12">±12 mm</option><option value="24">±24 mm</option><option value="50">±50 mm</option></select>
+<div class="buttons"><button id="fit">顯示完整第 4 暗紋</button><button id="reset1">恢復原題</button></div><p class="small">固定橫軸能直接看出條紋變寬。切換位置換算不會改變暗紋角度。</p>
+<div class="formula">a sinθ<sub>m</sub> = mλ<br>y<sub>m</sub> ≈ mλL/a<br>W<sub>中央</sub> ≈ 2λL/a</div></div>
+<div class="card"><h2>第 2 題・分步詳解</h2>
+<details><summary>① 先統一單位</summary><p>1 Å = 10⁻¹⁰ m，所以 5000 Å = 500 nm = 5×10⁻⁷ m。狹縫寬 a = 0.6 mm = 6×10⁻⁴ m。</p><p>先算基準間距：λL/a = (5×10⁻⁷×2.4)/(6×10⁻⁴) m = 0.002 m = <b>2 mm</b>。</p></details>
+<details><summary>② 中央亮紋為什麼要乘 2？</summary><p>中央亮紋從左側第 1 暗紋延伸到右側第 1 暗紋，即 −2 mm 到 +2 mm。</p><p class="answer">全寬 W = 2λL/a = 4 mm。</p><p>2 mm 是中心到第一暗紋的「半寬」。相鄰同側暗紋間距約為 2 mm，所以中央亮紋約是旁亮紋寬度的兩倍。</p></details>
+<details><summary>③ 第四暗紋的距離與角度</summary><p>由中心向同一側數，第四暗紋 m = 4。y₄ ≈ 4λL/a = 4×2 = <b>8 mm</b>。</p><p>sinθ₄ = 4λ/a = 4×(5×10⁻⁷)/(6×10⁻⁴) = 1/300。</p><p class="answer">θ₄ = arcsin(1/300) ≈ 0.190986°。</p><p>左右角度為 ±θ₄；題目問距離與角度大小時取正值。</p></details>
+<details><summary>④ 小角度近似差多少？</summary><p>暗紋角度用 a sinθ = mλ；光屏位置的精確幾何為 y = L tanθ。這裡 sinθ 很小，所以 tanθ ≈ sinθ。</p><p>原題精確幾何：中央全寬約 <b>4.000001 mm</b>；第四暗紋距中心約 <b>8.000044 mm</b>。四捨五入後仍是 4 mm、8 mm。</p><p class="small">此處「精確」只指遠場模型內的幾何換算。</p></details></div>
+</aside></div>
+<div class="lesson"><div class="card"><h2>把公式翻成一句話</h2><ul class="steps"><li><b>波長越長，條紋越寬。</b>要累積一個波長的光程差，需要更大的偏轉角。</li><li><b>狹縫越窄，條紋越寬。</b>波源間距變小，要達到相同光程差，就要看得更斜。</li><li><b>光屏越遠，線寬越大。</b>暗紋角度不變，但在更遠的光屏上離中心更遠。</li></ul></div>
+<div class="card"><h2>動手驗證</h2><p>按「恢復原題」，把 a 從 0.6 mm 改成 0.3 mm。中央全寬應從 4 mm 增為 8 mm。</p><p>再恢復原題，把 L 從 2.4 m 改成 1.2 m：中央全寬縮為 2 mm，但第四暗紋角度維持約 0.191°。</p><p class="hint">暗紋處也有各處波源傳來的波。變成零的是合振幅，不是「波沒有到達」。</p></div></div>
+</section>
+<section id="page2" role="tabpanel" aria-labelledby="tab2" hidden>
+<div class="card question"><div class="num">QUESTION 03</div><p class="lead">同一狹縫，分別以波長 λ₁、λ₂ 的單色光做繞射。如果 λ₁ 的第一個暗紋，與 λ₂ 的第一個亮帶中線在同一位置，求 λ₁/λ₂。</p><p class="small">依原題附答 3/2，「第一個亮帶」指中央亮紋旁邊的第一個亮帶。兩次實驗使用相同狹縫、光屏與中央軸線。</p></div>
+<div class="grid"><div>
+<article class="card"><div class="num">01 / TWO WAVELENGTHS</div><h2>讓一種光的暗紋，對準另一種光的亮紋。</h2><div class="legend"><span><i class="dot" style="background:#80adff"></i>λ₁ 的第一暗紋</span><span><i class="dot" style="background:#52d7cf"></i>λ₂ 的第一旁亮紋</span></div>
+<div class="dark"><canvas id="compare" width="1040" height="480" role="img" aria-label="兩波長分別實驗的光屏條紋與強度曲線，標示第一暗紋與第一旁亮紋的位置"></canvas></div>
+<p class="small">橫軸 v = a sinθ / λ₂，同一 v 就是同一方向、同一光屏位置。條紋分列代表分別實驗；藍綠只是區別曲線，並非實際光色。兩條強度曲線始終依 sinc² 遠場模型繪製。</p>
+<div class="metrics" aria-live="polite"><div class="metric">λ₁ 第一暗紋 v<strong id="darkTarget"></strong></div><div class="metric">λ₂ 亮帶定位 v<strong id="brightTarget"></strong></div><div class="metric">兩定位點差距 Δv<strong id="difference"></strong></div></div><div class="meter"><span id="alignMeter"></span></div><p id="alignText" class="hint" aria-live="polite"></p><p class="hint amber" id="approxWarning"></p></article>
+<article class="card"><div class="num">02 / SAME POSITION, SAME ANGLE</div><h2>把「同一位置」換成「同一個 sinθ」。</h2><div class="formula">λ₁ 第一暗紋：a sinθ = λ₁<br>λ₂ 第一旁亮紋：a sinθ ≈ ³⁄₂ λ₂<br>∴ λ₁ ≈ ³⁄₂ λ₂　→　λ₁/λ₂ ≈ 3/2</div>
+<ol class="steps"><li><b>第一暗紋：</b>整條狹縫上下端的光程差是 λ₁，狹縫中的波可兩兩配對相消。</li><li><b>第一旁亮紋：</b>位於 λ₂ 的第一、第二暗紋之間。課本取中間位置，因此用 1.5λ₂ 估計其整縫光程差。</li><li><b>位置相同：</b>相同 L 下，y = L tanθ 為單調函數，同一側同一位置對應同一 θ。狹縫 a 也相同，因此兩個 a sinθ 可直接相等。</li></ol>
+<p class="hint">這題的波長比不需要小角度近似；3/2 的近似來自「旁亮紋取兩暗紋中間」。精確亮帶位置會稍微向中央偏移。</p>
+<details><summary>進階：為什麼精確值是 1.4303？</summary><p>遠場光強 I/I₀ = (sinβ/β)²，β = πa sinθ/λ。對 β 微分，非零旁亮紋的極大值滿足 β cosβ − sinβ = 0，即 tanβ = β。</p><p>第一個非零正根 β₁ ≈ 4.493409458，所以 a sinθ/λ₂ = β₁/π ≈ <b>1.430296653</b>。與 λ₁ 第一暗紋相等，得 λ₁/λ₂ ≈ 1.4303。</p><p>1.5 比精確值大約 4.87%（以精確值為分母）。原題附答仍依課本近似填 <b>3/2</b>。</p></details></article>
+</div><aside class="side"><div class="card controls"><div class="num">ALIGN THE FRINGES</div><h2>調整波長比</h2>
+<label for="brightMode">第一旁亮紋的定位方法</label><select id="brightMode"><option value="school">課本近似：v = 1.5</option><option value="exact">精確峰值：v ≈ 1.4303</option></select>
+<label for="ratio">波長比 r = λ₁/λ₂ <output id="ratioVal"></output></label><input id="ratio" type="range" min="1" max="2" step=".0001" value="1.25">
+<div class="buttons"><button id="align" class="primary">對準亮暗紋</button><button id="ratioScan">動畫掃描</button><button id="reset2">重設</button></div><p class="small">滑桿改變 λ₁；λ₂ 固定 400 nm，僅供展示。初始 r = 1.25，先嘗試自行對準。</p><p id="wavelengths" class="hint"></p><div class="formula" id="ratioFormula"></div><p class="small">切到精確峰值模式，再按「對準亮暗紋」比較。v 為無因次量。</p></div>
+<div class="card"><h2>先作答，再看解釋</h2><label for="answerRatio">原題要填的 λ₁/λ₂ 是多少？</label><input id="answerRatio" class="answerbox" placeholder="輸入 3/2 或小數" autocomplete="off"><div class="buttons"><button id="checkRatio">檢查答案</button></div><p id="ratioFeedback" class="feedback" aria-live="polite"></p>
+<details><summary>顯示標準答案與易錯處</summary><p class="answer">原題答案：3/2。</p><p>λ₁ 的第一暗紋要到達 λ₂ 較外側的第一旁亮紋，所以 λ₁ 必須大於 λ₂。算出 2/3，代表比值倒過來了。</p><p>中央亮紋在 θ = 0；λ₁ 第一暗紋不在中央。本題的「第一亮帶」依附答應解讀為第一旁亮紋。</p></details></div></aside></div>
+</section>
+<section class="card"><h2>兩題共用的物理底層</h2><div class="tablewrap"><table class="data"><thead><tr><th>觀察到的現象</th><th>狹縫內的波發生什麼事？</th><th>判斷方式</th></tr></thead><tbody><tr><td>中央最亮</td><td>各處波同相到達，合振幅最大</td><td>θ = 0，u = 0</td></tr><tr><td>第 m 暗紋</td><td>分成 2m 等份，相鄰兩份逐點配對相消</td><td>a sinθ = mλ，m ≠ 0</td></tr><tr><td>第一旁亮紋</td><td>兩暗紋之間，相消不完全，出現局部最強</td><td>課本 u ≈ 1.5；精確 u ≈ 1.4303</td></tr></tbody></table></div>
+<p class="small">模型：均勻照明、單色相干光、理想長狹縫、正入射、標量夫朗和斐（遠場）繞射，適用於足夠遠的光屏或透鏡焦平面。題目按課本遠場模型作答；本頁不模擬有限屏距的菲涅耳修正、狹縫厚度或感測器響應。</p>
+<p class="small">公式查核與延伸閱讀：<a href="https://openstax.org/books/university-physics-volume-3/pages/4-1-single-slit-diffraction" target="_blank" rel="noopener">OpenStax：單狹縫繞射</a> · <a href="https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction" target="_blank" rel="noopener">OpenStax：光強與相量</a>。題目依使用者提供圖片整理；圖像與互動程式為本頁製作。</p></section>
+<footer>GPT版 · 單狹縫繞射兩題互動教材 · 2026-11-11<br>適合課堂投影與手機操作 · <a href="../">作品總覽</a> · <a href="../works.html">教學作品彙整</a></footer>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), PI=Math.PI, PEAK=4.493409457909064/PI;
+const I=u=>Math.abs(u)<1e-8?1:(Math.sin(PI*u)/(PI*u))**2;
+const S={u:1,phase:0,play:!matchMedia('(prefers-reduced-motion: reduce)').matches,scan:false,r:1.25,rscan:false,tab:1};
+const F=(x,n=3)=>Number(x).toFixed(n);
+const params=()=>({l:+$('lambda').value*1e-9,a:+$('slit').value*1e-3,L:+$('screen').value,exact:$('geometryMode').value==='exact'});
+function ypos(u,p=params()){const s=u*p.l/p.a;return p.L*(p.exact?s/Math.sqrt(1-s*s):s)*1000}
+function ufromy(y,p=params()){const t=y/(p.L*1000);return (p.exact?t/Math.sqrt(1+t*t):t)*p.a/p.l}
+function setU(v){S.u=Math.max(-5,Math.min(5,v));$('observe').value=S.u;update1()}
+function setR(v){S.r=Math.max(1,Math.min(2,v));$('ratio').value=S.r;update2()}
+function peak(){return $('brightMode').value==='school'?1.5:PEAK}
+function switchTab(n){S.tab=n;S.scan=false;S.rscan=false;[1,2].forEach(i=>{$('page'+i).hidden=i!==n;$('tab'+i).setAttribute('aria-selected',String(i===n));$('tab'+i).tabIndex=i===n?0:-1});if(n===1)update1();else update2()}
+[1,2].forEach(i=>{$('tab'+i).onclick=()=>switchTab(i);$('tab'+i).onkeydown=e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();let n=e.key==='Home'?1:e.key==='End'?2:3-i;switchTab(n);$('tab'+n).focus()}}});
+function update1(){
+ const p=params();
+ $('lambdaVal').textContent=F(p.l*1e9,0)+' nm';$('slitVal').textContent=F(p.a*1000,2)+' mm';$('screenVal').textContent=F(p.L,1)+' m';
+ $('centralWidth').textContent=F(2*ypos(1),p.exact?6:3)+' mm';$('darkFour').textContent=F(ypos(4),p.exact?6:3)+' mm';$('thetaFour').textContent=F(Math.asin(4*p.l/p.a)*180/PI,6)+'°';$('observeVal').textContent=F(S.u,3);
+ $('pointReadout').textContent='觀察點：y = '+F(ypos(S.u),3)+' mm　｜　θ = '+F(Math.asin(S.u*p.l/p.a)*180/PI,4)+'°　｜　整縫光程差 = '+F(S.u,3)+' λ　｜　I/I₀ = '+F(I(S.u)*100,3)+'%';
+ $('offscreen').textContent=ypos(4)>+$('view').value?'第 4 暗紋超出目前橫軸，按「顯示完整第 4 暗紋」調整視野。':Math.abs(ypos(S.u))>+$('view').value?'觀察點在目前視野外，可調大光屏橫軸。':'';
+ const m=Math.round(Math.abs(S.u)),isDark=m>0&&Math.abs(Math.abs(S.u)-m)<.0005;
+ $('pairExplain').textContent=isDark?'目前是第 '+m+' 暗紋：整縫光程差大小 = '+m+'λ。將狹縫分成 '+(2*m)+' 等份，每個相鄰配對的間距 a/'+(2*m)+'，光程差為 λ/2，相位差 π；所有配對全部相消。':Math.abs(S.u)<.0005?'中央方向：所有小區間的波同相到達，相量排成直線，因此合振幅最大。':'非暗紋方向：各小區間有不同相位，無法全部配對相消。所有相量相加後仍留下合振幅，光強等於合振幅大小的平方。';
+ $('play').textContent=S.play?'暫停動畫':'播放動畫';$('play').setAttribute('aria-pressed',String(S.play));
+ $('scan').textContent=S.scan?'停止掃描':'自動掃描方向';$('scan').setAttribute('aria-pressed',String(S.scan));
+ document.querySelectorAll('#locations button').forEach(b=>{const on=Math.abs(S.u-+b.dataset.u)<.001;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
+ drawPattern();drawWaves();
+}
+function update2(){
+ const b=peak(),d=Math.abs(S.r-b),school=$('brightMode').value==='school';
+ $('ratioVal').textContent=F(S.r,4);$('darkTarget').textContent=F(S.r,4);$('brightTarget').textContent=F(b,4);$('difference').textContent=F(d,4);$('alignMeter').style.width=Math.max(0,100*(1-d/.6))+'%';
+ $('alignText').textContent=d<.00015?(school?'已按課本中點近似對準，λ₁/λ₂ = 3/2。':'已與精確峰值對準，λ₁/λ₂ ≈ 1.4303。'):'目前'+(S.r<b?'藍色暗紋在綠色定位點內側，請增加 λ₁/λ₂。':'藍色暗紋在綠色定位點外側，請減少 λ₁/λ₂。');
+ $('approxWarning').textContent=school?'課本模式：虛線取 v = 1.5，並非精確峰頂。真實曲線的第一峰在 v ≈ 1.4303，圖上以小圓點標示。':'精確模式：綠色定位線經過 sinc² 的真正第一旁亮紋峰值。原題附答 3/2 採課本中點近似。';
+ $('wavelengths').textContent='λ₂ = 400 nm　｜　λ₁ = '+F(400*S.r,2)+' nm';
+ $('ratioFormula').innerHTML='暗紋位置 v<sub>暗1</sub> = r<br>亮帶位置 v<sub>亮2</sub> '+(school?'≈ 1.5<br>重合時：r ≈ 1.5':'≈ 1.4303<br>重合時：r ≈ 1.4303');
+ $('ratioScan').textContent=S.rscan?'停止掃描':'動畫掃描';$('ratioScan').setAttribute('aria-pressed',String(S.rscan));drawCompare();
+}
+['lambda','slit','screen','geometryMode','view'].forEach(id=>$(id).addEventListener('input',update1));
+$('observe').oninput=e=>{S.scan=false;setU(+e.target.value)};
+document.querySelectorAll('#locations button').forEach(b=>b.onclick=()=>{S.scan=false;setU(+b.dataset.u)});
+$('play').onclick=()=>{S.play=!S.play;update1()};$('scan').onclick=()=>{S.scan=!S.scan;update1()};
+$('pairOne').onclick=()=>{S.scan=false;setU(1)};$('pairFour').onclick=()=>{S.scan=false;setU(4)};
+$('fit').onclick=()=>{const need=ypos(4)*1.2;$('view').value=need<=12?'12':need<=24?'24':'50';update1()};
+$('reset1').onclick=()=>{S.scan=false;S.phase=0;$('lambda').value=500;$('slit').value=.6;$('screen').value=2.4;$('geometryMode').value='small';$('view').value=12;setU(1)};
+$('ratio').oninput=e=>{S.rscan=false;setR(+e.target.value)};
+$('brightMode').onchange=()=>{S.rscan=false;update2()};$('align').onclick=()=>{S.rscan=false;setR(peak())};
+$('ratioScan').onclick=()=>{S.rscan=!S.rscan;update2()};
+$('reset2').onclick=()=>{S.rscan=false;$('brightMode').value='school';$('answerRatio').value='';$('ratioFeedback').textContent='';setR(1.25)};
+$('checkRatio').onclick=()=>{const s=$('answerRatio').value.trim(),m=s.match(/^([0-9]+(?:\.[0-9]+)?)\s*\/\s*([0-9]+(?:\.[0-9]+)?)$/);const x=m?(+m[2]?+m[1]/+m[2]:NaN):Number(s);$('ratioFeedback').textContent=s===''?'請先輸入你的答案。':Math.abs(x-1.5)<.0001?'答對了！原題用課本近似，答案 3/2。':Math.abs(x-PEAK)<.001?'這是精確模型的答案。原題附答使用中點近似，應填 3/2。':Math.abs(x-2/3)<.001?'比值倒過來了：λ₁ 的暗紋要走到更外側，λ₁ 應大於 λ₂。':'再試一次：讓 λ₁ = (3/2)λ₂，再求 λ₁/λ₂。'};
+function ctx(id){const c=$(id),g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);g.font='18px "Microsoft JhengHei",system-ui';g.lineCap='round';return g}
+function line(g,x,y,X,Y,c='#54768e',w=1,d=[]){g.beginPath();g.setLineDash(d);g.moveTo(x,y);g.lineTo(X,Y);g.strokeStyle=c;g.lineWidth=w;g.stroke();g.setLineDash([])}
+function txt(g,s,x,y,c='#b8cfdf',size=18,align='left'){g.fillStyle=c;g.font=size+'px "Microsoft JhengHei",system-ui';g.textAlign=align;g.fillText(s,x,y);g.textAlign='left'}
+function dot(g,x,y,c,r=5){g.fillStyle=c;g.beginPath();g.arc(x,y,r,0,2*PI);g.fill()}
+function arrow(g,x,y,X,Y,c,w=2){line(g,x,y,X,Y,c,w);const a=Math.atan2(Y-y,X-x);line(g,X,Y,X-10*Math.cos(a-.4),Y-10*Math.sin(a-.4),c,w);line(g,X,Y,X-10*Math.cos(a+.4),Y-10*Math.sin(a+.4),c,w)}
+function curve(g,fun,x0,x1,y0,height,color,start,end){g.beginPath();for(let i=0;i<=900;i++){const t=i/900,u=start+(end-start)*t,x=x0+(x1-x0)*t,y=y0-height*fun(u);if(!i)g.moveTo(x,y);else g.lineTo(x,y)}g.strokeStyle=color;g.lineWidth=3;g.stroke()}
+function drawPattern(){
+ let g=ctx('pattern'),span=+$('view').value,xof=y=>78+(y+span)/(2*span)*910,p=params();
+ txt(g,'光屏（增亮顯示）',78,32,'#b8cfdf',17);
+ for(let x=78;x<988;x++){const y=(x-78)/910*span*2-span,v=ufromy(y,p);g.fillStyle='rgba(82,225,186,'+Math.sqrt(I(v))+')';g.fillRect(x,45,1,54)}
+ for(let j=-4;j<=4;j++){const val=j*span/4,x=xof(val);line(g,x,119,x,318,'#254359');txt(g,F(val,span===50?1:0),x,347,'#b8cfdf',17,'center')}
+ [0,.5,1].forEach(v=>{let y=318-180*v;line(g,78,y,988,y,'#254359');txt(g,''+v,60,y+6,'#b8cfdf',17,'right')});
+ txt(g,'I/I₀',25,122,'#b8cfdf',16);curve(g,y=>I(ufromy(y,p)),78,988,318,180,'#52d7cf',-span,span);
+ const c=ypos(1,p),x1=xof(-c),x2=xof(c);
+ line(g,x1,40,x1,318,'#ffd08a',1.5,[5,5]);line(g,x2,40,x2,318,'#ffd08a',1.5,[5,5]);arrow(g,(x1+x2)/2,117,x1,117,'#ffd08a');arrow(g,(x1+x2)/2,117,x2,117,'#ffd08a');
+ txt(g,'中央全寬 '+F(2*c,p.exact?6:2)+' mm',xof(0),378,'#ffd08a',19,'center');
+ const x4=xof(ypos(4,p));if(x4<=988){line(g,x4,40,x4,318,'#83aeff',2,[6,5]);txt(g,'第4暗紋',Math.min(950,x4),32,'#83aeff',17,'center')}
+ for(let n=-5;n<=5;n++){if(!n)continue;let x=xof(ypos(n,p));if(x>=78&&x<=988)dot(g,x,318,n===4?'#83aeff':'#cbd9e3',4)}
+ const xp=xof(ypos(S.u,p));if(xp>=78&&xp<=988){line(g,xp,42,xp,322,'#ffbc79',2);dot(g,xp,318-180*I(S.u),'#ffbc79',6)}txt(g,'y / mm',1002,347,'#b8cfdf',16,'right');
+}
+$('pattern').onclick=e=>{const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*1040;if(x<78||x>988)return;S.scan=false;setU(ufromy((x-78)/910*(+$('view').value)*2-(+$('view').value)))};
+function drawWaves(){
+ const g=ctx('waves'),m=Math.round(Math.abs(S.u)),dark=m>0&&Math.abs(Math.abs(S.u)-m)<.0005,tilt=-S.u*12;
+ txt(g,'狹縫內所有位置都是波源',25,31,'#d5e6ef',19);txt(g,'相量首尾相接 → 合振幅',575,31,'#d5e6ef',19);
+ line(g,535,50,535,343,'#365165');
+ line(g,145,58,145,90,'#7f9eaf',12);line(g,145,270,145,303,'#7f9eaf',12);line(g,145,180,480,180,'#54768e',1,[5,5]);txt(g,'中央軸',432,204,'#a2c0d4',15);
+ for(let i=0;i<16;i++){const y=96+i*11.2;line(g,145,y,495,y+tilt,'#3c717f');dot(g,145,y,'#52d7cf',3)}
+ for(let j=0;j<9;j++){const x=170+((j*37+S.phase*37)%310),dy=(x-145)/350*tilt;line(g,x,94+dy,x-tilt*172/350,266+dy,'#52d7cf55',2)}
+ for(let j=0;j<4;j++){const x=25+((j*25+S.phase*25)%105);line(g,x,96,x,264,'#52d7cf77',2)}
+ arrow(g,145,180,495,180+tilt,'#ffcf8b',2);txt(g,'a',110,188,'#ffcf8b',22);txt(g,'觀察方向 θ（放大）',225,61,'#ffcf8b',17);
+ if(dark){const sep=174/(2*m);for(let k=0;k<2*m;k++){g.fillStyle=k%2?'#80adff55':'#52d7cf55';g.fillRect(153,93+k*sep,20,sep)}txt(g,'分成 '+(2*m)+' 份，配對間距 a/'+(2*m),25,329,'#ffcf8b',17)}
+ else txt(g,'整縫光程差：'+F(S.u,3)+' λ',25,329,'#ffcf8b',18);
+ const N=160,scale=120,phase=S.phase*2*PI;let x=790,y=175;
+ for(let i=0;i<N;i++){const a=phase+2*PI*S.u*((i+.5)/N-.5),X=x+scale/N*Math.cos(a),Y=y-scale/N*Math.sin(a);line(g,x,y,X,Y,'#52d7cf',2);x=X;y=Y}
+ if(Math.hypot(x-790,y-175)>.5)arrow(g,790,175,x,y,'#ffcf8b',3);dot(g,790,175,'#d9e8ef',4);
+ txt(g,'合振幅 / A₀ = '+F(Math.sqrt(I(S.u)),4),575,316,'#ffcf8b',20);txt(g,'光強 / I₀ = '+F(I(S.u),5),575,345,'#b8cfdf',19);
+}
+function drawCompare(){
+ const g=ctx('compare'),r=S.r,b=peak(),xof=v=>80+v/4*900;
+ txt(g,'λ₁：第一暗紋（藍線）',80,30,'#83aeff',19);txt(g,'λ₂：第一旁亮紋（綠線）',80,125,'#52d7cf',19);
+ for(let x=80;x<980;x++){const v=(x-80)/900*4;g.fillStyle='rgba(128,173,255,'+Math.sqrt(I(v/r))+')';g.fillRect(x,43,1,42);g.fillStyle='rgba(82,215,207,'+Math.sqrt(I(v))+')';g.fillRect(x,138,1,42)}
+ for(let v=0;v<=4;v+=.5){let x=xof(v);line(g,x,215,x,415,'#254359');txt(g,F(v,1),x,444,'#b8cfdf',17,'center')}
+ for(let z of [0,.5,1]){let y=415-z*175;line(g,80,y,980,y,'#254359');txt(g,''+z,63,y+6,'#b8cfdf',17,'right')}
+ curve(g,v=>I(v/r),80,980,415,175,'#83aeff',0,4);curve(g,I,80,980,415,175,'#52d7cf',0,4);
+ line(g,xof(r),40,xof(r),416,'#83aeff',2);line(g,xof(b),132,xof(b),416,'#52d7cf',2,$('brightMode').value==='school'?[7,6]:[]);
+ dot(g,xof(PEAK),415-175*I(PEAK),'#ffcf8b',5);txt(g,'精確第一峰',xof(PEAK)+17,382,'#ffcf8b',15);
+ txt(g,'I/I₀',28,223,'#b8cfdf',16);txt(g,'中央',80,471,'#b8cfdf',16,'center');txt(g,'v = a sinθ / λ₂',980,471,'#b8cfdf',18,'right');
+ txt(g,'暗：'+F(r,4),xof(r),104,'#83aeff',17,'center');txt(g,($('brightMode').value==='school'?'近似亮：':'精確亮：')+F(b,4),xof(b),206,'#52d7cf',17,'center');
+}
+let last=0;
+function tick(t){
+ const dt=last?Math.min((t-last)/1000,.05):0;last=t;
+ if(document.visibilityState==='visible'){
+  if(S.tab===1){if(S.play)S.phase=(S.phase+dt*.4)%1;if(S.scan){S.u+=dt*.45;if(S.u>5)S.u=-5;$('observe').value=S.u;update1()}else if(S.play)drawWaves()}
+  else if(S.rscan){S.r+=dt*.08;if(S.r>2)S.r=1;$('ratio').value=S.r;update2()}
+ }
+ requestAnimationFrame(tick);
+}
+update1();update2();requestAnimationFrame(tick);
+</script></body></html>
