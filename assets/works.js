@@ -18,6 +18,22 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+{
+  "id": "electrostatics-gpt",
+  "title": "靜電學 12-1・12-2 互動例題（GPT版）",
+  "desc": "庫侖定律、電場與電力線共10道例題，一題一頁；參數掃描、向量合成、帶電擺球、非線性振動、同心球殼與靜電感應，搭配分步推導及概念檢核。",
+  "url": "https://addielu-phy.github.io/electrostatics-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/electrostatics-gpt",
+  "cat": "課程工具",
+  "tags": [
+    "靜電學",
+    "互動動畫",
+    "例題詳解",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
   {
   "id": "single-slit-six-grok",
   "title": "單狹縫六等分光程差實驗室（Grok版）",
