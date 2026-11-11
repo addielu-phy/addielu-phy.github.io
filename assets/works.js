@@ -18,6 +18,23 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+{
+  "id": "double-slit-liquid-gpt",
+  "title": "雙狹縫 × 半圓液槽：光程與相位（GPT版）",
+  "desc": "第15題互動詳解：法線出射不偏折，液體仍讓亮紋變密。調整折射率、波長、縫距與屏距，比較50 mm與65 mm，觀察光程差、波形與相位向量。",
+  "url": "https://addielu-phy.github.io/double-slit-liquid-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/double-slit-liquid-gpt",
+  "cat": "探究與實作",
+  "tags": [
+    "雙狹縫干涉",
+    "光程差",
+    "相位",
+    "互動動畫",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
   {
   "id": "double-slit-liquid-grok",
   "title": "99指考・半圓皿中的雙狹縫亮紋間距（Grok版）",
