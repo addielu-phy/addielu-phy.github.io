@@ -18,6 +18,22 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+  {
+  "id": "slit-barrier-94-grok",
+  "title": "94指考・單狹縫遮闌與亮紋張角（Grok版）",
+  "desc": "94學年度指考物理第7題：d=2λ 的單狹縫與張角 45° 的遮闌。可調 d/λ 與窗口，對照強度極圖、被裁切的中央亮帶與半波帶相消，並說明為何答案是 45° 而不是 60°。",
+  "url": "https://addielu-phy.github.io/slit-barrier-94-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/slit-barrier-94-grok",
+  "cat": "探究與實作",
+  "tags": [
+    "單狹縫繞射",
+    "指考",
+    "互動模擬",
+    "Grok版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
 {
   "id": "electrostatics-gpt",
   "title": "靜電學 12-1・12-2 互動例題（GPT版）",

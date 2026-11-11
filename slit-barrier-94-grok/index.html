@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="94學年度指考物理：單狹縫 d=2λ 與遮闌張角 45° 的互動模擬（Grok版）。對照強度極圖、被裁切的中央亮帶與半波帶相消。作者：盧政良。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>94指考・單狹縫遮闌與亮紋張角（Grok版）｜盧政良</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{
+  --ink:#1a2f44; --muted:#5a7284; --line:#d5e1ea;
+  --bg:#f3f6f9; --card:#fff;
+  --teal:#0c7f78; --blue:#1e6fc0; --violet:#6b4fb0;
+  --gold:#c08a12; --red:#c23d45; --soft:#b7c7d0;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+a{color:var(--blue)}
+header,main,footer{max-width:1360px;margin:auto;padding:22px 18px}
+header{padding-top:28px}
+.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--teal);font-weight:700}
+h1{font-size:clamp(24px,3.6vw,36px);line-height:1.3;margin:8px 0}
+h2{font-size:20px;margin:0 0 10px}
+h3{font-size:17px;margin:14px 0 8px}
+.sub,.note,.muted{color:var(--muted)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;background:#e5f4f2;color:var(--teal);font-size:13px;font-weight:700;vertical-align:middle}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:16px;min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 3px 14px #18354a08;min-width:0;max-width:100%}
+.controls{position:sticky;top:10px;align-self:start}
+.control{margin:14px 0}
+label{display:block;font-weight:650;margin-bottom:4px}
+output{float:right;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:650}
+input[type=range]{width:100%;accent-color:var(--teal);height:28px;cursor:pointer}
+.buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+button{border:1px solid var(--line);border-radius:9px;background:#edf3f7;color:var(--ink);padding:7px 11px;font:inherit;cursor:pointer}
+button.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+button.active{background:#dceff0;border-color:var(--teal);color:#0a5e59;font-weight:700}
+button:hover{filter:brightness(.98)}
+button:focus-visible,input:focus-visible{outline:3px solid #e0ad3a;outline-offset:2px}
+.toggle{display:flex;align-items:center;gap:8px;font-weight:500;margin:8px 0;font-size:14.5px}
+.toggle input{width:17px;height:17px;accent-color:var(--teal)}
+.visuals{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;min-width:0}
+.visuals .card{padding:12px}
+svg{display:block;width:100%;height:auto;max-width:100%;overflow:visible}
+svg text{font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;font-size:13px;fill:var(--ink)}
+#scene,#plot{touch-action:none}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metric{background:#f4f8fb;border-radius:10px;padding:9px 11px;min-width:0}
+.metric span{font-size:12.5px;color:var(--muted)}
+.metric b{display:block;font-size:17.5px;font-variant-numeric:tabular-nums;line-height:1.45;overflow-wrap:anywhere}
+.status{margin-top:10px;padding:10px 14px;border-radius:10px;background:#eaf6f4;font-size:14.5px}
+.katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden;max-width:100%}
+.eqbox{background:#f4f8fb;border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;overflow-x:auto;max-width:100%}
+.explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:8px 7px;text-align:left;vertical-align:top}
+th{background:#f4f8fb}
+.tablewrap{overflow-x:auto;max-width:100%}
+.note{font-size:13.5px;margin:8px 0 0}
+footer{font-size:13.5px;color:var(--muted);padding-bottom:40px}
+.preset-group strong{display:block;font-size:12.5px;color:var(--muted);margin:8px 0 4px}
+.layout,.visuals,.explain-grid,main,header,footer{max-width:100%;min-width:0}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.controls{position:static}}
+@media(max-width:780px){
+  header,main,footer{padding:14px}
+  .visuals,.explain-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .card{padding:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">PHYSICS LAB · 94 學年度指定科目考試</div>
+  <h1>遮闌只開 45°，屏上亮紋張角是多少？ <span class="badge">Grok版</span></h1>
+  <p class="sub">一束波長 $\lambda$ 的可見光垂直通過寬度 $d=2\lambda$ 的長條形狹縫，遠方屏幕 $C$ 上形成繞射條紋。遮闌 $B$ 靠近 $C$，缺口對狹縫中心 $O$ 的張角 $\varphi=45^\circ$。改變 $d/\lambda$ 與窗口，看哪些光真正到得了屏幕。</p>
+</header>
+
+<main>
+<div class="layout">
+  <aside class="card controls">
+    <h2>實驗控制</h2>
+    <span class="badge">夫琅禾費單狹縫 · 角窗口</span>
+
+    <div class="control">
+      <label for="dl">狹縫比 $d/\lambda$ <output id="dlOut"></output></label>
+      <input id="dl" type="range" min="0.5" max="6" step="0.01" value="2">
+    </div>
+    <div class="control">
+      <label for="phi">遮闌張角 $\varphi$ <output id="phiOut"></output></label>
+      <input id="phi" type="range" min="0" max="180" step="0.5" value="45">
+    </div>
+    <div class="control">
+      <label for="lambda">波長 $\lambda$（只改顏色） <output id="lamOut"></output></label>
+      <input id="lambda" type="range" min="400" max="700" step="1" value="550">
+    </div>
+
+    <label class="toggle"><input type="checkbox" id="barrier" checked> 加上遮闌 $B$（角窗口 $\pm\varphi/2$）</label>
+    <label class="toggle"><input type="checkbox" id="showFull" checked> 同時畫出未被遮擋的完整強度</label>
+
+    <div class="preset-group">
+      <strong>預設情境</strong>
+      <div class="buttons">
+        <button type="button" id="pOrig" class="primary">原題 $d=2\lambda$，φ=45°</button>
+        <button type="button" id="pFit">φ=60°，剛好框住中央亮帶</button>
+        <button type="button" id="pSide">φ=100°，側葉進入、出現暗隙</button>
+        <button type="button" id="pEq">$d=\lambda$，中央亮帶充滿半空間</button>
+        <button type="button" id="pSub">$d=0.8\lambda$，沒有暗紋</button>
+      </div>
+    </div>
+    <div class="buttons">
+      <button type="button" id="reset">重設為原題</button>
+    </div>
+    <p class="note">強度圖的縱軸以 $I_0$ 固定、角度軸固定為 $-90^\circ$～$90^\circ$，不隨 $d/\lambda$ 或 $\varphi$ 縮放。也可在極圖或裝置圖上拖曳窗口邊緣。</p>
+  </aside>
+
+  <section>
+    <div class="visuals">
+      <article class="card">
+        <h2>01 · 裝置：光束、狹縫、遮闌與屏幕</h2>
+        <svg id="scene" viewBox="0 0 720 400" role="img" aria-label="單狹縫、遮闌與屏幕的幾何裝置"></svg>
+        <p class="note">裝置為示意（狹縫寬度已放大）。自 $O$ 散開的射線代表遠場各方向；被遮闌擋住的部分在 $B$ 處停住，只有落在 $\pm\varphi/2$ 窗口內的光抵達 $C$。</p>
+      </article>
+      <article class="card">
+        <h2>02 · 強度極圖 $I(\theta)$</h2>
+        <svg id="polar" viewBox="0 0 420 360" role="img" aria-label="強度極圖與遮闌窗口"></svg>
+        <p class="note">徑向長度代表 $I/I_0$，最大半徑固定。陰影扇形是被擋住的方向。</p>
+      </article>
+    </div>
+
+    <article class="card">
+      <h2>03 · 角譜 $I(\theta)$：完整圖樣與屏上實際看到的部分</h2>
+      <svg id="plot" viewBox="0 0 760 280" role="img" aria-label="負九十度到正九十度的強度曲線"></svg>
+      <p class="note">灰色區是遮闌擋住的方向。實心填色是到達 $C$ 的光；虛線是未加遮闌的完整圖樣。暗紋與中央亮帶邊界另以直線標出。</p>
+    </article>
+
+    <article class="card">
+      <h2>04 · 半波帶：為什麼 $d\sin\theta=\lambda$ 是暗紋</h2>
+      <svg id="half" viewBox="0 0 720 250" role="img" aria-label="半波帶成對相消示意"></svg>
+      <p class="note" id="halfNote"></p>
+    </article>
+
+    <article class="card">
+      <h2>即時讀數</h2>
+      <div class="metrics" id="metrics"></div>
+      <div class="status" id="status"></div>
+    </article>
+  </section>
+</div>
+
+<article class="card">
+  <h2>題意重述</h2>
+  <p>這是<span class="badge">94 學年度指定科目考試物理考科第 7 題</span>（部分講義或圖輯標為第 10 題，內容相同）。</p>
+  <p>一束波長為 $\lambda$ 的可見光平行光束，垂直通過一條寬度 $d=2\lambda$ 的長條形狹縫後，在遠方屏幕 $C$ 上形成繞射條紋。若使遮闌 $B$ 靠近屏幕 $C$，且遮闌的缺口對狹縫中心 $O$ 的張角 $\varphi$ 正為 $45^\circ$，則屏幕 $C$ 上出現的亮紋對 $O$ 的張角與下列何者最為接近？（A）$15^\circ$（B）$30^\circ$（C）$45^\circ$（D）$60^\circ$（E）$75^\circ$</p>
+  <p><strong>答案：（C）$45^\circ$。</strong>大學入學考試中心公布的選擇題參考答案，第 7 題為（C）。以下用繞射公式與「角窗口」的觀點自行核對。</p>
+</article>
+
+<div class="explain-grid">
+  <article class="card">
+    <h2>完整中央亮帶有多寬？</h2>
+    <p>遠場單狹縫的暗紋條件為</p>
+    <div class="eqbox">$$d\sin\theta = m\lambda,\qquad m=\pm 1,\pm 2,\ldots$$</div>
+    <p>代入 $d=2\lambda$：</p>
+    <div class="eqbox">$$\sin\theta=\frac{m}{2}$$</div>
+    <p>$m=\pm 1$ 時 $\sin\theta=\pm 1/2$，故 $\theta=\pm 30^\circ$。這是中央亮帶的兩邊界，所以<strong>沒有遮闌時</strong>，完整中央亮帶對 $O$ 的張角是 $60^\circ$：</p>
+    <div class="eqbox">$$\Theta_{\text{中央}}=2\arcsin(\lambda/d)=2\arcsin(1/2)=60^\circ$$</div>
+    <p>$m=\pm 2$ 時 $\sin\theta=\pm 1$，即 $\theta=\pm 90^\circ$，位於掠射方向（縫平面上），一般不把它當成屏正前方再出現的「第二暗紋」。因此前方半空間裡，每側只能看到一條暗紋（$\pm 30^\circ$）。</p>
+  </article>
+  <article class="card">
+    <h2>遮闌是一個角窗口</h2>
+    <p>遮闌 $B$ 靠近遠方屏幕，缺口對 $O$ 的張角為 $\varphi$。它的作用不是改變繞射本身，而是只放行</p>
+    <div class="eqbox">$$|\theta|<\frac{\varphi}{2}$$</div>
+    <p>原題 $\varphi=45^\circ$，因此窗口是 $|\theta|&lt;22.5^\circ$。第一暗紋在 $\pm 30^\circ$，側葉極大約在 $46^\circ$～$49^\circ$，都在窗口之外。窗內完全落在中央亮帶裡，而且強度沒有掉到零，所以屏上只出現「被切齊的中央亮帶」，它的張角就是窗口本身：</p>
+    <div class="eqbox">$$\Theta_{\text{可見}}=\min\bigl(\varphi,\; 2\arcsin(\lambda/d)\bigr)=45^\circ$$</div>
+    <p>這就是（C）。請用「原題」按鈕對照：極圖裡只有中間那一瓣被照亮，兩邊對應 $22.5^\circ$ 到 $30^\circ$ 的光已被 $B$ 擋住。</p>
+  </article>
+  <article class="card">
+    <h2>為什麼（A）（B）（D）（E）都不對</h2>
+    <p>（A）$15^\circ$：可能把單側 $22.5^\circ$ 再折半，或把 $30^\circ$ 的一半當成張角。題目的「張角」是亮紋兩端對 $O$ 的開角，要計兩側。</p>
+    <p>（B）$30^\circ$：這是第一暗紋的角度，或中央亮帶的半寬，不是屏上這條可見亮紋的張角。</p>
+    <p>（C）$45^\circ$：正確，理由如上。</p>
+    <p>（D）$60^\circ$：最常見的陷阱。算出中央亮帶全寬 $2\times 30^\circ=60^\circ$ 就停手，忽略遮闌在兩側各切掉 $7.5^\circ$。</p>
+    <p>（E）$75^\circ$：沒有對應的特徵角（不是 $30^\circ+45^\circ$，也不是 $90^\circ-15^\circ$ 的物理組合）。</p>
+  </article>
+  <article class="card">
+    <h2>側葉在哪裡？會不會進得了窗口？</h2>
+    <p>強度為</p>
+    <div class="eqbox">$$I=I_0\left(\frac{\sin\beta}{\beta}\right)^2,\qquad \beta=\frac{\pi d\sin\theta}{\lambda}$$</div>
+    <p>第一側極大在 $\tan\beta=\beta$ 的根 $\beta\approx 4.493$，即 $d\sin\theta\approx 1.430\lambda$。當 $d=2\lambda$，$\sin\theta\approx 0.715$，$\theta\approx 45.7^\circ$（課本近似 $d\sin\theta=3\lambda/2$ 則約 $48.6^\circ$）。</p>
+    <p>原題窗口只有 $22.5^\circ$，側葉進不去。把 $\varphi$ 開到 $100^\circ$（預設按鈕）時，窗口到 $\pm 50^\circ$，就會在 $\pm 30^\circ$ 看見暗隙，並露出部分側葉。這時屏上不再是「單一亮紋」，不能再用一個 $45^\circ$ 或 $60^\circ$ 概括。</p>
+  </article>
+</div>
+
+<article class="card">
+  <h2>邊界情況與常見迷思</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>情境</th><th>第一暗紋</th><th>中央亮帶張角</th><th>$\varphi=45^\circ$ 時屏上可見中央亮紋</th></tr></thead>
+      <tbody>
+        <tr><td>原題 $d=2\lambda$</td><td>$\pm 30^\circ$</td><td>$60^\circ$</td><td>$45^\circ$（被窗口裁切）</td></tr>
+        <tr><td>$\varphi=60^\circ$、$d=2\lambda$</td><td>$\pm 30^\circ$</td><td>$60^\circ$</td><td>$60^\circ$（剛好框住，暗紋落在窗口邊緣）</td></tr>
+        <tr><td>$\varphi=100^\circ$、$d=2\lambda$</td><td>$\pm 30^\circ$</td><td>$60^\circ$</td><td>中央 $60^\circ$，另加部分側葉，中間有暗隙</td></tr>
+        <tr><td>$d=\lambda$</td><td>$\pm 90^\circ$（掠射）</td><td>$180^\circ$（充滿半空間）</td><td>仍由窗口決定，為 $45^\circ$</td></tr>
+        <tr><td>$d&lt;\lambda$（如 $0.8\lambda$）</td><td>不存在</td><td>覆蓋整個前方半空間</td><td>同樣由窗口決定，為 $45^\circ$</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>常見迷思</h3>
+  <ul>
+    <li>算出 $60^\circ$ 就選（D），忘記遮闌是角窗口。</li>
+    <li>把 $\varphi=45^\circ$ 當成單側角，或把 $30^\circ$ 當成張角。</li>
+    <li>以為 $d=2\lambda$ 還會在前方出現第二、第三暗紋。其實 $m=2$ 已經到 $90^\circ$。</li>
+    <li>以為遮闌會「改變」繞射條件（例如改變暗紋位置）。它只是擋光，不改 $d\sin\theta=m\lambda$。</li>
+    <li>把雙狹縫公式（亮紋在 $d\sin\theta=m\lambda$）套到單縫上，會得到完全相反的明暗位置。</li>
+  </ul>
+  <p class="note">模型假設：單色平面波垂直入射、遠場（夫琅禾費）近似、遮闌無限薄且緊貼遠方屏幕，只提供理想的角窗口。作者：盧政良。</p>
+</article>
+</main>
+
+<footer>
+  盧政良 · 物理教學互動模擬｜<strong>Grok版</strong> · 2026-11-11<br>
+  題目出自大學入學考試中心《九十四學年度指定科目考試試題　物理考科》第 7 題；參考答案為（C）。<br>
+  <a href="../">作品總覽</a> · <a href="../works.html">教學作品集</a> · 可離線使用（首次需載入 KaTeX CDN）
+</footer>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const fmt = (n,d=1) => (Math.abs(n)<1e-12?0:n).toFixed(d);
+const DEG = Math.PI/180;
+
+function wavecolor(nm){
+  let r=0,g=0,b=0;
+  if(nm<380) nm=380; if(nm>780) nm=780;
+  if(nm<440){r=-(nm-440)/60;b=1;}
+  else if(nm<490){g=(nm-440)/50;b=1;}
+  else if(nm<510){g=1;b=-(nm-510)/20;}
+  else if(nm<580){r=(nm-510)/70;g=1;}
+  else if(nm<645){r=1;g=-(nm-645)/65;}
+  else r=1;
+  let f=1;
+  if(nm<420) f=0.35+0.65*(nm-380)/40;
+  else if(nm>700) f=0.35+0.65*(780-nm)/80;
+  const c=x=>('0'+Math.round(Math.max(0,Math.min(1,x*f))*255).toString(16)).slice(-2);
+  return '#'+c(r)+c(g)+c(b);
+}
+function intensity(th, dl){
+  const s=Math.sin(th*DEG);
+  const beta=Math.PI*dl*s;
+  if(Math.abs(beta)<1e-12) return 1;
+  const x=Math.sin(beta)/beta;
+  return x*x;
+}
+function darkAngles(dl){
+  const list=[];
+  for(let m=1;;m++){
+    const s=m/dl;
+    if(s>1+1e-12) break;
+    const th=Math.asin(Math.min(1,s))/DEG;
+    list.push({m, theta:th, grazing: Math.abs(th-90)<1e-4});
+  }
+  return list;
+}
+function centralHalf(dl){
+  if(dl<1-1e-12) return 90;
+  return Math.asin(Math.min(1,1/dl))/DEG;
+}
+function exactSideTheta(dl){
+  // first side max: β≈4.4934094579, d sinθ/λ = β/π
+  const u=4.493409457909064/Math.PI;
+  const s=u/dl;
+  if(s>=1) return null;
+  return Math.asin(s)/DEG;
+}
+function visibleInfo(dl, phi, barrierOn){
+  const win = barrierOn ? phi/2 : 90;
+  const half = centralHalf(dl);
+  const centralVis = 2*Math.min(win, half);
+  const darks = darkAngles(dl);
+  const firstDark = darks.length ? darks[0].theta : Infinity;
+  const hasSide = barrierOn ? (win > firstDark + 0.25) : (firstDark < 90-0.25);
+  const sideExact = exactSideTheta(dl);
+  return {win, half, centralWidth: 2*half, centralVis, firstDark, hasSide, darks, sideExact, noDark: dl<1-1e-12};
+}
+
+window.slit94Model = {
+  intensity, darkAngles, centralHalf, exactSideTheta, visibleInfo,
+  answers: {choice:'C', angle:45, paperQuestion:7, year:94, officialSource:'CEEC 94指考物理選擇題參考答案第7題 (C)'}
+};
+
+const line=(x1,y1,x2,y2,c='#b7c7d0',w=2,dash='')=>
+  `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''} stroke-linecap="round"/>`;
+const txt=(x,y,t,c='#1a2f44',a='start',fs=13)=>
+  `<text x="${x}" y="${y}" fill="${c}" text-anchor="${a}" font-size="${fs}">${t}</text>`;
+
+function current(){
+  return {
+    dl:+$('dl').value,
+    phi:+$('phi').value,
+    lambda:+$('lambda').value,
+    barrier:$('barrier').checked,
+    showFull:$('showFull').checked,
+    col:wavecolor(+$('lambda').value)
+  };
+}
+
+function render(){
+  const s=current();
+  $('dlOut').textContent=fmt(s.dl,2);
+  $('phiOut').textContent=fmt(s.phi,1)+'°';
+  $('lamOut').textContent=s.lambda+' nm';
+  const info=visibleInfo(s.dl,s.phi,s.barrier);
+  drawScene(s,info);
+  drawPolar(s,info);
+  drawPlot(s,info);
+  drawHalf(s,info);
+  drawMetrics(s,info);
+}
+
+function drawScene(s,info){
+  const O={x:200,y:200}, scrX=640, bX=590;
+  const col=s.col;
+  let g='';
+  // incoming rays
+  for(let y=200-36; y<=200+36; y+=12){
+    g+=line(20,y,188,y,col,1.6);
+    g+=line(20,y,28,y-3,col,1.2)+line(20,y,28,y+3,col,1.2);
+  }
+  // wavefronts
+  for(let x=50;x<=150;x+=20) g+=line(x,200-42,x,200+42,col,1,'4 3');
+  // slit plate A
+  const slitH=52;
+  g+=line(200,20,200,200-slitH/2,'#3d5566',8);
+  g+=line(200,200+slitH/2,200,380,'#3d5566',8);
+  g+=txt(188, 200-slitH/2-8, 'A','#3d5566','end',14);
+  g+=txt(160, 200+4, 'd','#1a2f44','end',14);
+  g+=line(168,200-slitH/2,168,200+slitH/2,'#1a2f44',1.2);
+  g+=line(164,200-slitH/2,172,200-slitH/2,'#1a2f44',1.2);
+  g+=line(164,200+slitH/2,172,200+slitH/2,'#1a2f44',1.2);
+  // O
+  g+=`<circle cx="${O.x}" cy="${O.y}" r="4.5" fill="#c23d45"/>`;
+  g+=txt(O.x-16, O.y-10, 'O', '#c23d45', 'end', 15);
+
+  // screen C
+  g+=line(scrX,30,scrX,370,'#3d5566',8);
+  g+=txt(scrX+12, 50, 'C', '#3d5566', 'start', 16);
+
+  // barrier B
+  const win=s.barrier?s.phi/2:90;
+  const reach=scrX-O.x;
+  const bReach=bX-O.x;
+  function yAt(th, dist){ return O.y - dist*Math.sin(th*DEG)/Math.max(0.15, Math.cos(th*DEG)); }
+  // For far field we use angle from +x: x = dist*cosθ, y = -dist*sinθ (SVG y down, θ up positive)
+  function hit(th, dist){
+    return {x:O.x+dist*Math.cos(th*DEG), y:O.y-dist*Math.sin(th*DEG)};
+  }
+  const topOpen=hit(win, bReach), botOpen=hit(-win, bReach);
+  if(s.barrier){
+    // barrier segments: from top of screen area to open edge, and bottom
+    const topEnd=hit(80, bReach), botEnd=hit(-80, bReach);
+    g+=line(topOpen.x, Math.min(topOpen.y, 36), topOpen.x, topOpen.y, '#1a2f44', 10);
+    g+=line(botOpen.x, botOpen.y, botOpen.x, Math.max(botOpen.y, 364), '#1a2f44', 10);
+    g+=txt(bX-18, 48, 'B', '#1a2f44', 'end', 16);
+  }
+
+  // spreading rays
+  for(let th=-80; th<=80; th+=4){
+    const I=intensity(th,s.dl);
+    const blocked=s.barrier && Math.abs(th)>win+0.01;
+    const pB=hit(th, bReach);
+    const pC=hit(th, reach);
+    if(blocked){
+      g+=line(O.x,O.y,pB.x,pB.y,'#b0bcc6',1,'3 3');
+    }else{
+      const op=0.18+0.82*I;
+      g+=line(O.x,O.y,pC.x,pC.y,col, 1+1.6*I);
+    }
+  }
+  // faint circular wavefronts in the open cone
+  for(const r of [80,130,180]){
+    const a1=(-win)*DEG, a2=(win)*DEG;
+    const x1=O.x+r*Math.cos(a2), y1=O.y-r*Math.sin(a2);
+    const x2=O.x+r*Math.cos(a1), y2=O.y-r*Math.sin(a1);
+    g+=`<path d="M${x1},${y1} A${r},${r} 0 0 1 ${x2},${y2}" fill="none" stroke="${col}" stroke-width="1" opacity="0.45"/>`;
+  }
+
+  // φ arc
+  if(s.barrier && s.phi>2){
+    const r=92;
+    const p1=hit(win,r), p2=hit(-win,r);
+    g+=`<path d="M${p1.x},${p1.y} A${r},${r} 0 0 1 ${p2.x},${p2.y}" fill="none" stroke="#c08a12" stroke-width="2"/>`;
+    g+=txt(O.x+r+8, O.y-4, `φ = ${fmt(s.phi,1)}°`, '#c08a12', 'start', 13);
+  }
+
+  // first dark rays
+  if(info.firstDark<89){
+    const td=info.firstDark;
+    const q1=hit(td, reach), q2=hit(-td, reach);
+    g+=line(O.x,O.y,q1.x,q1.y,'#c23d45',1.2,'5 4');
+    g+=line(O.x,O.y,q2.x,q2.y,'#c23d45',1.2,'5 4');
+    if(q1.y>20) g+=txt(q1.x-8, q1.y-6, `暗 ${fmt(td,0)}°`, '#c23d45', 'end', 11);
+  }
+
+  // brightness on screen C (angular, mapped by y of hits)
+  for(let th=-80; th<=80; th+=0.6){
+    const p=hit(th, reach);
+    const blocked=s.barrier && Math.abs(th)>win+0.01;
+    const I=blocked?0:intensity(th,s.dl);
+    if(p.y>32 && p.y<368){
+      g+=`<rect x="${scrX-5}" y="${p.y-1.2}" width="10" height="2.6" fill="${col}" opacity="${I}"/>`;
+    }
+  }
+
+  g+=txt(30, 24, '入射平行光', '#5a7284', 'start', 13);
+  $('scene').innerHTML=g;
+}
+
+function drawPolar(s,info){
+  const ox=200, oy=200, R=150; // R is I=1, FIXED
+  const win=s.barrier?s.phi/2:90;
+  let g='';
+  // blocked sectors
+  if(s.barrier && win<90){
+    const toXY=(th,r)=>({x:ox+r*Math.cos(th*DEG), y:oy-r*Math.sin(th*DEG)});
+    const a=toXY(win,R), b=toXY(90,R), c=toXY(-90,R), d=toXY(-win,R);
+    g+=`<path d="M${ox},${oy} L${a.x},${a.y} A${R},${R} 0 0 0 ${b.x},${b.y} L${ox},${oy} Z" fill="#e8eef2"/>`;
+    g+=`<path d="M${ox},${oy} L${d.x},${d.y} A${R},${R} 0 0 1 ${c.x},${c.y} L${ox},${oy} Z" fill="#e8eef2"/>`;
+  }
+  // guide semicircle and ticks
+  g+=`<path d="M${ox},${oy-R} A${R},${R} 0 0 1 ${ox},${oy+R}" fill="none" stroke="#d5e1ea" stroke-width="1.2"/>`;
+  for(const th of [-90,-60,-30,0,30,60,90]){
+    const x=ox+R*Math.cos(th*DEG), y=oy-R*Math.sin(th*DEG);
+    g+=line(ox,oy,x,y,'#eef3f7',1);
+    const lx=ox+(R+16)*Math.cos(th*DEG), ly=oy-(R+16)*Math.sin(th*DEG);
+    g+=txt(lx,ly+4, th+'°', '#5a7284', 'middle', 11);
+  }
+  g+=`<circle cx="${ox}" cy="${oy}" r="${R*0.5}" fill="none" stroke="#e3ecf1" stroke-width="1"/>`;
+
+  // full pattern (unclipped) if requested
+  const pts=th=>{
+    const I=intensity(th,s.dl);
+    return [ox+R*I*Math.cos(th*DEG), oy-R*I*Math.sin(th*DEG)];
+  };
+  if(s.showFull){
+    let d='';
+    for(let th=-90;th<=90;th+=1){
+      const p=pts(th);
+      d+=(th===-90?'M':'L')+p[0]+','+p[1];
+    }
+    g+=`<path d="${d}" fill="none" stroke="#9aa8b4" stroke-width="1.4" stroke-dasharray="4 3"/>`;
+  }
+  // clipped / visible
+  let d2='M'+ox+','+oy;
+  const t0=s.barrier?-win:-90, t1=s.barrier?win:90;
+  for(let th=t0; th<=t1; th+=1){
+    const p=pts(th);
+    d2+='L'+p[0]+','+p[1];
+  }
+  d2+='Z';
+  g+=`<path d="${d2}" fill="${s.col}" fill-opacity="0.35" stroke="${s.col}" stroke-width="2"/>`;
+
+  // window edges
+  if(s.barrier){
+    for(const th of [win,-win]){
+      const x=ox+R*Math.cos(th*DEG), y=oy-R*Math.sin(th*DEG);
+      g+=line(ox,oy,x,y,'#c08a12',1.8,'5 3');
+    }
+  }
+  // dark marks
+  for(const dk of info.darks){
+    if(dk.grazing) continue;
+    for(const sign of [1,-1]){
+      const th=sign*dk.theta;
+      const x=ox+R*Math.cos(th*DEG), y=oy-R*Math.sin(th*DEG);
+      g+=`<circle cx="${x}" cy="${y}" r="3" fill="#c23d45"/>`;
+    }
+  }
+  g+=`<circle cx="${ox}" cy="${oy}" r="3" fill="#1a2f44"/>`;
+  $('polar').innerHTML=g;
+}
+
+function drawPlot(s,info){
+  const L=50, Rr=710, T=18, B=200, barY=218, barH=36;
+  const xOf=th=> L+(Rr-L)*(th+90)/180;
+  const yOf=I=> B-(B-T)*I;
+  const win=s.barrier?s.phi/2:90;
+  let g=`<rect x="${L}" y="${T}" width="${Rr-L}" height="${B-T}" fill="#f7fafc"/>`;
+  // barrier shade
+  if(s.barrier && win<90){
+    g+=`<rect x="${L}" y="${T}" width="${xOf(-win)-L}" height="${B-T}" fill="#e4ebf0"/>`;
+    g+=`<rect x="${xOf(win)}" y="${T}" width="${Rr-xOf(win)}" height="${B-T}" fill="#e4ebf0"/>`;
+  }
+  for(let i=0;i<=4;i++){
+    const Iv=i/4;
+    g+=line(L,yOf(Iv),Rr,yOf(Iv),'#e3ecf1',1)+txt(L-6,yOf(Iv)+4,fmt(Iv,2),'#5a7284','end',11);
+  }
+  for(const th of [-90,-60,-30,0,30,60,90]){
+    g+=line(xOf(th),T,xOf(th),B,'#e3ecf1',1)+txt(xOf(th),B+16,th+'°','#5a7284','middle',11);
+  }
+  g+=line(L,T,L,B,'#1a2f44',1.4)+line(L,B,Rr,B,'#1a2f44',1.4);
+  g+=txt(8,16,'I / I₀','#5a7284','start',12);
+  g+=txt((L+Rr)/2,B+32,'θ（度）','#5a7284','middle',12);
+
+  // full dashed
+  if(s.showFull){
+    let d='';
+    for(let th=-90;th<=90;th+=0.5){
+      d+=(th===-90?'M':'L')+xOf(th)+','+yOf(intensity(th,s.dl));
+    }
+    g+=`<path d="${d}" fill="none" stroke="#8b9bab" stroke-width="1.5" stroke-dasharray="5 3"/>`;
+  }
+  // visible fill + stroke
+  let d2='';
+  const t0=-win, t1=win;
+  for(let th=t0; th<=t1; th+=0.5){
+    d2+=(th===t0?'M':'L')+xOf(th)+','+yOf(intensity(th,s.dl));
+  }
+  const fill=d2+`L${xOf(t1)},${B} L${xOf(t0)},${B} Z`;
+  g+=`<path d="${fill}" fill="${s.col}" fill-opacity="0.28"/>`;
+  g+=`<path d="${d2}" fill="none" stroke="${s.col}" stroke-width="2.4"/>`;
+
+  // dark lines and central lobe
+  for(const dk of info.darks){
+    if(dk.grazing) continue;
+    for(const sign of [1,-1]){
+      const th=sign*dk.theta;
+      g+=line(xOf(th),T,xOf(th),B,'#c23d45',1.2,'4 3');
+    }
+  }
+  if(!info.noDark){
+    g+=txt(xOf(info.half)+4, T+12, '中央亮帶', '#0c7f78', 'start', 11);
+    g+=line(xOf(-info.half),T+4,xOf(info.half),T+4,'#0c7f78',2);
+  }
+  if(s.barrier){
+    g+=line(xOf(-win),T,xOf(-win),B+barH,'#c08a12',1.4,'3 2');
+    g+=line(xOf(win),T,xOf(win),B+barH,'#c08a12',1.4,'3 2');
+  }
+
+  // screen bar
+  g+=`<rect x="${L}" y="${barY}" width="${Rr-L}" height="${barH}" fill="#0b1020"/>`;
+  for(let th=-90; th<90; th+=0.4){
+    const blocked=s.barrier && Math.abs(th)>win;
+    const I=blocked?0:intensity(th,s.dl);
+    const px=xOf(th), w=xOf(th+0.4)-px+0.3;
+    g+=`<rect x="${px}" y="${barY}" width="${w}" height="${barH}" fill="${s.col}" opacity="${I}"/>`;
+  }
+  g+=txt(L, barY+barH+16, '屏 C 上看到的條紋（灰色方向被遮闌擋住）', '#5a7284', 'start', 11);
+  $('plot').innerHTML=g;
+}
+
+function drawHalf(s,info){
+  const dl=s.dl, col=s.col;
+  // If first dark exists, illustrate at that θ; else at 90°
+  const has= !info.noDark;
+  const th = has ? Math.min(info.firstDark, 80) : 80;
+  const dsin = dl*Math.sin(th*DEG); // in units of λ
+  let g='';
+  const sx=140, top=40, bot=200, mid=120, slitH=bot-top;
+  g+=line(sx,20,sx,top,'#3d5566',8)+line(sx,bot,sx,230,'#3d5566',8);
+  g+=`<rect x="${sx-5}" y="${top}" width="10" height="${slitH/2}" fill="#0c7f78" opacity="0.25"/>`;
+  g+=`<rect x="${sx-5}" y="${mid}" width="10" height="${slitH/2}" fill="#c23d45" opacity="0.25"/>`;
+  g+=line(sx,top,sx,bot,'#8aa0ae',2);
+  g+=txt(sx-16, top+6, '上緣', '#1a2f44', 'end', 12);
+  g+=txt(sx-16, bot+4, '下緣', '#1a2f44', 'end', 12);
+  g+=txt(sx-16, mid+4, '中線', '#5a7284', 'end', 12);
+  // observation direction
+  const rx=Math.cos(th*DEG), ry=-Math.sin(th*DEG);
+  const L=280;
+  // mid of each half
+  const pTop={x:sx,y:(top+mid)/2}, pBot={x:sx,y:(mid+bot)/2};
+  g+=line(pTop.x,pTop.y,pTop.x+rx*L,pTop.y+ry*L, '#0c7f78', 2);
+  g+=line(pBot.x,pBot.y,pBot.x+rx*L,pBot.y+ry*L, '#c23d45', 2);
+  // wavefront through top-half midpoint
+  const A=pTop;
+  // extra path of bottom-half center vs top-half center = (d/2) sinθ
+  // Visual: drop perpendicular from pBot to ray through pTop
+  const vx=rx, vy=ry;
+  const wx=pBot.x-pTop.x, wy=pBot.y-pTop.y;
+  const proj=wx*vx+wy*vy; // usually negative if θ>0? 
+  // pBot-pTop = (0, slitH/2). ray=(cosθ, -sinθ). proj = -(slitH/2)sinθ ≤0
+  // extra path px = -proj
+  const dPx=- (wx*vx+wy*vy);
+  const foot={x:pBot.x+vx*dPx, y:pBot.y+vy*dPx};
+  if(dPx>2){
+    g+=line(pBot.x,pBot.y,foot.x,foot.y,'#c08a12',3);
+    g+=txt((pBot.x+foot.x)/2+10,(pBot.y+foot.y)/2, `光程差 = (d/2) sinθ = ${fmt(dsin/2,2)} λ`, '#c08a12', 'start', 13);
+  }
+  g+=txt(400, 40, `觀察方向 θ = ${fmt(th,1)}°`, '#1a2f44', 'start', 14);
+  g+=txt(400, 64, `兩邊緣光程差 d sinθ = ${fmt(dsin,2)} λ`, '#1a2f44', 'start', 14);
+  if(has && Math.abs(dsin-1)<0.03){
+    g+=txt(400, 96, '上半與下半的中點相差 λ/2（相位差 π）', '#0c7f78', 'start', 14);
+    g+=txt(400, 120, '兩半帶成對相消 ⇒ 第一暗紋', '#c23d45', 'start', 14);
+  }else if(!has){
+    g+=txt(400, 96, '即使 θ→90°，最大光程差 d < λ', '#c08a12', 'start', 14);
+    g+=txt(400, 120, '無法湊齊一個半波帶對，故沒有暗紋', '#c08a12', 'start', 14);
+  }
+  $('half').innerHTML=g;
+  $('halfNote').textContent = has
+    ? `圖中取第一暗紋方向 θ = ±${fmt(info.firstDark,1)}°。把狹縫分成上、下兩半，對應子波的光程差剛好是 λ/2，因此全暗。`
+    : `目前 d/λ = ${fmt(dl,2)} < 1，最大光程差小於一個波長，半波帶對組不出來，前方半空間都還在中央亮瓣裡。`;
+}
+
+function drawMetrics(s,info){
+  const darks=info.darks;
+  const darkTxt = darks.length
+    ? darks.map(d=>d.grazing?`±${fmt(d.theta,1)}°（m=${d.m}，掠射）`:`±${fmt(d.theta,1)}°（m=${d.m}）`).join('、')
+    : '沒有（d < λ）';
+  const nFront = darks.filter(d=>!d.grazing).length*2;
+  const nNote = darks.some(d=>d.grazing) ? `${nFront} 條在前方，另加 ±90° 掠射` : (darks.length? `${nFront} 條` : '0 條');
+  const cw = info.noDark ? '覆蓋整個前方半空間' : (Math.abs(info.half-90)<1e-3 ? '180°（第一暗紋在掠射方向）' : fmt(info.centralWidth,1)+'°');
+  const vis = fmt(info.centralVis,1)+'°';
+  const side = info.sideExact ? fmt(info.sideExact,1)+'°' : '不在實數範圍';
+  $('metrics').innerHTML=[
+    ['暗紋角度', darkTxt, `d sinθ = mλ`],
+    ['前方暗紋數', nNote, info.noDark?'沒有全暗方向':'不含掠射則為 ±m 對'],
+    ['完整中央亮帶張角', cw, info.noDark?'d < λ':`2 arcsin(λ/d)`],
+    ['遮闌窗口', s.barrier?`φ = ${fmt(s.phi,1)}°  （±${fmt(s.phi/2,1)}°）`:'未加遮闌（±90°）', '只放行窗口內的光'],
+    ['屏上可見中央亮紋張角', vis, info.hasSide?'另有側葉進入，見下方說明':'原題要比較的量'],
+    ['第一側極大（精確）', side, '課本近似約 48.6°（d=2λ）']
+  ].map(([t,v,d])=>`<div class="metric"><span>${t}</span><b>${v}</b><span>${d}</span></div>`).join('');
+
+  let msg='';
+  if(s.barrier){
+    if(!info.hasSide){
+      msg=`加上遮闌後，屏上這條可見中央亮紋對 O 的張角為 ${fmt(info.centralVis,1)}°。`;
+      if(Math.abs(s.dl-2)<0.008 && Math.abs(s.phi-45)<0.2) msg+=' 此即原題：最接近（C）45°。完整中央亮帶雖為 60°，但窗口只開 45°，兩側各被切掉 7.5°。';
+      else if(Math.abs(s.dl-2)<0.008 && Math.abs(s.phi-60)<0.2) msg+=' 窗口剛好等於中央亮帶，暗紋落在缺口邊緣。';
+    }else{
+      msg=`窗口已超過第一暗紋（±${fmt(info.firstDark,1)}°），屏上會出現暗隙，並露出部分側葉。中央亮帶仍是 ${fmt(Math.min(info.centralWidth,s.phi),1)}°，不能再用單一張角代表「整片亮區」。`;
+    }
+  }else{
+    msg=`未加遮闌時，完整中央亮帶張角為 ${cw}。這就是原題選（D）的陷阱：忘記還有遮闌。`;
+  }
+  if(info.noDark) msg+=' 目前 d < λ，任何方向都不會全暗。';
+  if(Math.abs(s.dl-1)<0.008) msg+=' 目前 d = λ，第一暗紋在 ±90°，中央亮帶充滿前方半空間。';
+  $('status').textContent=msg;
+}
+
+function setParams(dl,phi,barrier=true){
+  $('dl').value=dl; $('phi').value=phi; $('barrier').checked=barrier;
+  render();
+}
+$('dl').addEventListener('input',render);
+$('phi').addEventListener('input',render);
+$('lambda').addEventListener('input',render);
+$('barrier').addEventListener('change',render);
+$('showFull').addEventListener('change',render);
+$('pOrig').onclick=()=>setParams(2,45,true);
+$('pFit').onclick=()=>setParams(2,60,true);
+$('pSide').onclick=()=>setParams(2,100,true);
+$('pEq').onclick=()=>setParams(1,45,true);
+$('pSub').onclick=()=>setParams(0.8,45,true);
+$('reset').onclick=()=>{ $('lambda').value=550; $('showFull').checked=true; setParams(2,45,true); };
+
+// drag window edge on polar / scene
+function angleFromPolar(e, svg, ox, oy){
+  const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY;
+  const loc=p.matrixTransform(svg.getScreenCTM().inverse());
+  let th=Math.atan2(oy-loc.y, loc.x-ox)/DEG; // -180..180, 0 = +x
+  return th;
+}
+function dragPhiTo(th){
+  const half=Math.max(0, Math.min(90, Math.abs(th)));
+  $('phi').value=2*half;
+  $('barrier').checked=true;
+  render();
+}
+let dragging=false;
+function bindDrag(id, ox, oy){
+  const svg=$(id);
+  svg.addEventListener('pointerdown',e=>{
+    dragging=true; svg.setPointerCapture(e.pointerId);
+    dragPhiTo(angleFromPolar(e,svg,ox,oy));
+    e.preventDefault();
+  });
+  svg.addEventListener('pointermove',e=>{ if(dragging) dragPhiTo(angleFromPolar(e,svg,ox,oy)); });
+  svg.addEventListener('pointerup',()=>dragging=false);
+  svg.addEventListener('pointercancel',()=>dragging=false);
+}
+bindDrag('polar',200,200);
+bindDrag('scene',200,200);
+$('plot').addEventListener('pointerdown',e=>{
+  const svg=$('plot');
+  const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY;
+  const loc=p.matrixTransform(svg.getScreenCTM().inverse());
+  const L=50,Rr=710;
+  const th=-90+180*(loc.x-L)/(Rr-L);
+  dragPhiTo(th);
+});
+$('plot').addEventListener('pointermove',e=>{
+  if(!dragging) return;
+  const svg=$('plot');
+  const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY;
+  const loc=p.matrixTransform(svg.getScreenCTM().inverse());
+  const L=50,Rr=710;
+  const th=-90+180*(loc.x-L)/(Rr-L);
+  dragPhiTo(th);
+});
+$('plot').addEventListener('pointerdown',e=>{dragging=true;$('plot').setPointerCapture(e.pointerId);});
+$('plot').addEventListener('pointerup',()=>dragging=false);
+
+render();
+setTimeout(render,400);
+</script>
+</body>
+</html>
