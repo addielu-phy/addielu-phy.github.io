@@ -18,6 +18,23 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+  {
+  "id": "single-slit-six-grok",
+  "title": "單狹縫六等分光程差實驗室（Grok版）",
+  "desc": "把單狹縫分成 a 到 g 六等分，拖曳觀察點同步顯示光程差作圖、強度曲線與條紋、相量多邊形及半波帶成對相消；含課本近似與精確亮帶位置、兩題詳解。",
+  "url": "https://addielu-phy.github.io/single-slit-six-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/single-slit-six-grok",
+  "cat": "探究與實作",
+  "tags": [
+    "單狹縫繞射",
+    "光程差",
+    "相量圖",
+    "互動模擬",
+    "Grok版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
 {
   "id": "balloon-cubesat-chips",
   "title": "探空氣球 × 立方衛星晶片資料庫｜GPT 版",

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="單狹縫六等分光程差互動模擬（Grok版）。a 到 g 標點、光程差作圖、強度曲線、相量多邊形與半波帶成對相消；含兩題詳解。作者：盧政良。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>單狹縫六等分光程差實驗室（Grok版）｜盧政良</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{
+  --ink:#1a2f44; --muted:#5a7284; --line:#d5e1ea;
+  --bg:#f3f6f9; --card:#fff;
+  --teal:#0c7f78; --blue:#1e6fc0; --violet:#6b4fb0;
+  --gold:#c08a12; --red:#c23d45; --soft:#b7c7d0;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+a{color:var(--blue)}
+header,main,footer{max-width:1360px;margin:auto;padding:22px 18px}
+header{padding-top:28px}
+.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--teal);font-weight:700}
+h1{font-size:clamp(24px,3.6vw,38px);line-height:1.3;margin:8px 0}
+h2{font-size:20px;margin:0 0 10px}
+h3{font-size:17px;margin:14px 0 8px}
+.sub,.note,.muted{color:var(--muted)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;background:#e5f4f2;color:var(--teal);font-size:13px;font-weight:700;vertical-align:middle}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 3px 14px #18354a08;min-width:0;max-width:100%}
+.controls{position:sticky;top:10px;align-self:start}
+.control{margin:14px 0}
+label{display:block;font-weight:650;margin-bottom:4px}
+output, .out{float:right;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:650}
+input[type=range]{width:100%;accent-color:var(--teal);height:28px;cursor:pointer}
+input[type=number]{width:100%;max-width:160px;font:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+button{border:1px solid var(--line);border-radius:9px;background:#edf3f7;color:var(--ink);padding:7px 11px;font:inherit;cursor:pointer}
+button.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+button.active{background:#dceff0;border-color:var(--teal);color:#0a5e59;font-weight:700}
+button:hover{filter:brightness(.98)}
+button:focus-visible,input:focus-visible{outline:3px solid #e0ad3a;outline-offset:2px}
+.toggle{display:flex;align-items:center;gap:8px;font-weight:500;margin:8px 0;font-size:14.5px}
+.toggle input{width:17px;height:17px;accent-color:var(--teal)}
+.visuals{display:grid;grid-template-columns:1.15fr 1fr;gap:14px}
+.visuals .card,.charts .card{padding:12px}
+svg{display:block;width:100%;height:auto;overflow:visible;max-width:100%}
+svg text{font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;font-size:13px;fill:var(--ink)}
+#screen,#scene{touch-action:none;cursor:crosshair}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metric{background:#f4f8fb;border-radius:10px;padding:9px 11px;min-width:0}
+.metric span{font-size:12.5px;color:var(--muted)}
+.metric b{display:block;font-size:18px;font-variant-numeric:tabular-nums;line-height:1.45;overflow-wrap:anywhere}
+.status{margin-top:10px;padding:10px 14px;border-radius:10px;background:#eaf6f4;font-size:14.5px}
+.katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden;max-width:100%}
+.eqbox{background:#f4f8fb;border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;overflow-x:auto;max-width:100%}
+.explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:8px 7px;text-align:left;vertical-align:top}
+th{background:#f4f8fb}
+.tablewrap{overflow-x:auto;max-width:100%}
+.note{font-size:13.5px;margin:8px 0 0}
+.choices p{margin:6px 0}
+footer{font-size:13.5px;color:var(--muted);padding-bottom:40px}
+.preset-group{margin-top:8px}
+.preset-group strong{display:block;font-size:12.5px;color:var(--muted);margin:6px 0 4px}
+.layout,.visuals,.charts,.explain-grid,main,header,footer{max-width:100%;min-width:0}
+@media(max-width:1050px){
+  .layout{grid-template-columns:1fr}
+  .controls{position:static}
+}
+@media(max-width:780px){
+  header,main,footer{padding:14px}
+  .visuals,.explain-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .card{padding:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">PHYSICS LAB · 波動光學</div>
+  <h1>單狹縫分成六等分，光程差怎麼看？ <span class="badge">Grok版</span></h1>
+  <p class="sub">把寬度為 $a$ 的單狹縫自上緣 $a$ 到下緣 $g$ 六等分。拖曳屏上觀察點，對照光程差作圖、強度曲線、六段（或更細）相量，以及半波帶成對相消。</p>
+</header>
+
+<main>
+<div class="layout">
+  <aside class="card controls">
+    <h2>實驗控制</h2>
+    <span class="badge">遠場夫琅禾費繞射</span>
+
+    <div class="control">
+      <label for="u">觀察點 $a\sin\theta/\lambda$ <output id="uOut"></output></label>
+      <input id="u" type="range" min="-4" max="4" step="0.001" value="0">
+      <label for="uNum" style="font-weight:500;margin-top:8px">或直接輸入</label>
+      <input id="uNum" type="number" min="-4" max="4" step="0.001" value="0">
+    </div>
+
+    <div class="preset-group">
+      <strong>題目情境</strong>
+      <div class="buttons">
+        <button type="button" data-u="1.5" data-tag="p1">題(1) 第一亮帶（課本）</button>
+        <button type="button" data-u="2" data-tag="p2">題(2) $\Delta_{ab}=\lambda/3$</button>
+      </div>
+      <strong>暗紋中線</strong>
+      <div class="buttons">
+        <button type="button" data-u="0">中央亮帶</button>
+        <button type="button" data-u="1">第 1 暗紋</button>
+        <button type="button" data-u="2">第 2 暗紋</button>
+        <button type="button" data-u="3">第 3 暗紋</button>
+      </div>
+      <strong>側邊亮帶（課本近似 / 精確極大）</strong>
+      <div class="buttons">
+        <button type="button" data-u="1.5">第 1 亮帶 近似</button>
+        <button type="button" data-u="1.4303">第 1 亮帶 精確</button>
+        <button type="button" data-u="2.5">第 2 亮帶 近似</button>
+        <button type="button" data-u="2.4590">第 2 亮帶 精確</button>
+        <button type="button" data-u="3.5">第 3 亮帶 近似</button>
+        <button type="button" data-u="3.4709">第 3 亮帶 精確</button>
+      </div>
+    </div>
+
+    <div class="control">
+      <label for="lambda">入射波長 $\lambda$ <output id="lamOut"></output></label>
+      <input id="lambda" type="range" min="400" max="700" step="1" value="550">
+    </div>
+    <div class="control">
+      <label for="width">狹縫寬度 $a$ <output id="aOut"></output></label>
+      <input id="width" type="range" min="0.04" max="0.28" step="0.005" value="0.10">
+    </div>
+    <div class="control">
+      <label for="nStrip">相量分段數 $N$</label>
+      <div class="buttons" id="nBtns">
+        <button type="button" data-n="6" class="active">6 段（題意）</button>
+        <button type="button" data-n="24">24 段</button>
+        <button type="button" data-n="72">72 段</button>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" id="play" class="primary">▶ 掃描條紋</button>
+      <button type="button" id="pair">▶ 半波帶成對相消</button>
+      <button type="button" id="reset">重設</button>
+    </div>
+    <p class="note">也可在強度曲線或條紋圖上拖曳觀察點。相量與 $\lambda$ 尺標採固定比例，不隨觀察點縮放。</p>
+  </aside>
+
+  <section>
+    <div class="visuals">
+      <article class="card">
+        <h2>01 · 狹縫、子波射線與光程差</h2>
+        <svg id="scene" viewBox="0 0 700 500" role="img" aria-label="單狹縫 a 到 g 與光程差作圖"></svg>
+        <p class="note">平行射線指向屏上觀察方向。通過 $a$ 的虛線是等相位波前；各點到此波前的距離即相對 $a$ 的光程差。下方 $\lambda$ 尺標固定，方便把光程差讀成波長的倍數。</p>
+      </article>
+      <article class="card">
+        <h2>02 · 屏上強度與條紋</h2>
+        <svg id="screen" viewBox="0 0 720 300" role="img" aria-label="單狹縫強度曲線與條紋圖"></svg>
+        <p class="note">橫軸是屏上實際位置（屏距 $D=1.5\,\mathrm{m}$）。改變 $\lambda$ 或 $a$，中央亮帶寬度 $\propto \lambda/a$ 會跟著變。縱軸以 $I_0$ 固定，不隨觀察點縮放。</p>
+      </article>
+    </div>
+
+    <article class="card">
+      <h2>03 · 相量（振幅向量）與半波帶</h2>
+      <svg id="phasor" viewBox="0 0 640 400" role="img" aria-label="子帶相量首尾相接圖"></svg>
+      <p class="note" id="phasorNote">每個子帶一個相量，首尾相接。比例尺固定：所有相量長度總和等於中央亮帶時的合振幅（圖中最大半徑）。暗紋處多邊形封閉、合向量為零。</p>
+    </article>
+
+    <article class="card">
+      <h2>即時讀數</h2>
+      <div class="metrics" id="metrics"></div>
+      <div class="status" id="status"></div>
+    </article>
+  </section>
+</div>
+
+<article class="card">
+  <h2>題意重述</h2>
+  <p>單狹縫寬度自上邊緣 $a$ 到下邊緣 $g$ 共分六等分，並以 $a$、$b$、$c$、$d$、$e$、$f$、$g$ 標明位置，其中 $d$ 為中點。入射光波長為 $\lambda$。</p>
+  <p>（1）在屏上中央亮帶右方第一亮帶之中線，到 $a$、$g$ 的光程差為若干？</p>
+  <p>（2）屏上某點至 $a$、$b$ 兩點光程差為 $\lambda/3$，則此點位置為中央軸線旁之（A）第一暗紋中線（B）第二暗紋中線（C）第一亮帶中線（D）第二亮帶中線（E）第三亮帶中線？</p>
+  <p><strong>答案：</strong>（1）$\dfrac{3}{2}\lambda$（課本近似）；（2）（B）。精確的第一側強度極大約在 $a\sin\theta\approx 1.43\lambda$，下文一併說明。</p>
+</article>
+
+<div class="explain-grid">
+  <article class="card">
+    <h2>（1）第一亮帶中線，$a$ 與 $g$ 的光程差</h2>
+    <p>遠場時，狹縫上、下緣到屏上同一點的光程差為</p>
+    <div class="eqbox">$$\Delta_{ag}=a\sin\theta$$</div>
+    <p>高中課本對「側邊亮帶」常用半波帶剩餘的近似條件：把狹縫分成奇數個半波帶，兩兩相消後還剩一帶，強度有極大。第 $n$ 級側亮帶寫成</p>
+    <div class="eqbox">$$a\sin\theta \approx \Bigl(n+\dfrac{1}{2}\Bigr)\lambda,\quad n=1,2,3,\ldots$$</div>
+    <p>中央亮帶<strong>右方第一亮帶</strong>取 $n=1$，故</p>
+    <div class="eqbox">$$a\sin\theta \approx \dfrac{3}{2}\lambda=\Delta_{ag}$$</div>
+    <p>這就是第（1）小題的課本答案。請用上方「題(1)」按鈕對照：此時 $\Delta_{ab}=\lambda/4$、$\Delta_{ad}=3\lambda/4$、$\Delta_{ag}=3\lambda/2$。</p>
+  </article>
+  <article class="card">
+    <h2>近似位置與精確極大</h2>
+    <p>連續分布的強度是</p>
+    <div class="eqbox">$$I=I_0\left(\frac{\sin\beta}{\beta}\right)^2,\qquad \beta=\frac{\pi a\sin\theta}{\lambda}$$</div>
+    <p>真正的極大滿足 $\tan\beta=\beta$ 且 $\beta\neq 0$。前三個正根約為</p>
+    <div class="eqbox">$$\frac{a\sin\theta}{\lambda}\approx 1.430,\; 2.459,\; 3.471$$</div>
+    <p>因此第一側極大在 $1.43\lambda$，不是剛好 $1.5\lambda$。課本用 $3\lambda/2$ 是便於半波帶論證的近似，高中選擇題通常採用此值。本頁兩個預設都可切換比較；兩者都很靠近，強度峰值幾乎一樣高，只是位置略向中央偏移。</p>
+  </article>
+  <article class="card">
+    <h2>（2）$\Delta_{ab}=\lambda/3$ 在哪裡？</h2>
+    <p>$a$、$b$ 是相鄰分點，這一段寬度為 $a/6$，所以</p>
+    <div class="eqbox">$$\Delta_{ab}=\frac{a}{6}\sin\theta=\frac{a\sin\theta}{6}=\frac{\lambda}{3}$$</div>
+    <p>於是</p>
+    <div class="eqbox">$$a\sin\theta=2\lambda$$</div>
+    <p>單狹縫的暗紋中線條件為 $a\sin\theta=m\lambda$（$m=\pm 1,\pm 2,\ldots$）。此處 $m=2$，就是<strong>第二暗紋中線</strong>，選（B）。請用「題(2)」按鈕：六段相量每隔 $120^\circ$，繞兩圈後封閉，合向量為零。</p>
+  </article>
+  <article class="card">
+    <h2>為什麼（A）（C）（D）（E）都不對</h2>
+    <div class="choices">
+      <p>（A）第一暗紋：$a\sin\theta=\lambda$，則 $\Delta_{ab}=\lambda/6$，不是 $\lambda/3$。</p>
+      <p>（B）第二暗紋：$a\sin\theta=2\lambda$，則 $\Delta_{ab}=\lambda/3$，正確。</p>
+      <p>（C）第一亮帶（課本）：$a\sin\theta=3\lambda/2$，則 $\Delta_{ab}=\lambda/4$；精確極大 $1.43\lambda$ 時約 $0.238\lambda$，都不是 $\lambda/3$。</p>
+      <p>（D）第二亮帶（課本）：$5\lambda/2$，則 $\Delta_{ab}=5\lambda/12$。</p>
+      <p>（E）第三亮帶（課本）：$7\lambda/2$，則 $\Delta_{ab}=7\lambda/12$。</p>
+    </div>
+  </article>
+</div>
+
+<article class="card">
+  <h2>半波帶法：亮紋與暗紋為什麼出現</h2>
+  <p>把狹縫依光程差每增加 $\lambda/2$ 切成一條「半波帶」。相鄰半波帶的對應子波相位差 $\pi$，振幅幾乎相等，因此成對相消。</p>
+  <ul>
+    <li>第 $m$ 暗紋（$a\sin\theta=m\lambda$）：正好有 $2m$ 條半波帶，兩兩抵消，合振幅為零。第一暗紋是上半縫與下半縫相消；第二暗紋可看成四條半波帶成對相消，也可看成上半、下半各自已滿足「光程差 $\lambda$」，自己就先抵消完。</li>
+    <li>課本第 $n$ 側亮帶（$a\sin\theta=(n+\frac12)\lambda$）：有 $2n+1$ 條半波帶，成對抵消後還剩一條，所以是亮的，但比中央亮帶弱得多。</li>
+  </ul>
+  <p>題目把縫分成六等分，只是為了便於計算 $\Delta_{ab}$、$\Delta_{ad}$。六等分不是六條獨立的雙縫；強度仍由整條縫的子波疊加決定。相量圖把這六段（或更細的 $N$ 段）首尾相接：中央時排成一直線；第 1 暗紋（$N=6$）圍成正六邊形；第 2 暗紋則每隔 $120^\circ$ 繞兩圈後封閉。</p>
+</article>
+
+<article class="card">
+  <h2>位置對照表與常見迷思</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>位置</th><th>$a\sin\theta$</th><th>$\Delta_{ab}$</th><th>$\Delta_{ad}$</th><th>$\Delta_{ag}$</th><th>強度</th></tr></thead>
+      <tbody>
+        <tr><td>中央亮帶</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$I_0$（最大）</td></tr>
+        <tr><td>第 1 暗紋</td><td>$\lambda$</td><td>$\lambda/6$</td><td>$\lambda/2$</td><td>$\lambda$</td><td>$0$</td></tr>
+        <tr><td>第 1 亮帶（精確）</td><td>$\approx 1.43\lambda$</td><td>$\approx 0.238\lambda$</td><td>$\approx 0.715\lambda$</td><td>$\approx 1.43\lambda$</td><td>次極大</td></tr>
+        <tr><td>第 1 亮帶（課本）</td><td>$3\lambda/2$</td><td>$\lambda/4$</td><td>$3\lambda/4$</td><td>$3\lambda/2$</td><td>近似次極大</td></tr>
+        <tr><td>第 2 暗紋（題 2）</td><td>$2\lambda$</td><td>$\lambda/3$</td><td>$\lambda$</td><td>$2\lambda$</td><td>$0$</td></tr>
+        <tr><td>第 2 亮帶（課本）</td><td>$5\lambda/2$</td><td>$5\lambda/12$</td><td>$5\lambda/4$</td><td>$5\lambda/2$</td><td>更弱</td></tr>
+        <tr><td>第 3 亮帶（課本）</td><td>$7\lambda/2$</td><td>$7\lambda/12$</td><td>$7\lambda/4$</td><td>$7\lambda/2$</td><td>更弱</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>常見迷思</h3>
+  <ul>
+    <li>把雙狹縫公式套過來，以為亮紋在 $a\sin\theta=n\lambda$、暗紋在 $(n+\frac12)\lambda$——單縫恰好相反（暗紋在整數倍）。</li>
+    <li>看到 $\Delta_{ab}=\lambda/3$，就把 $\lambda/3$ 當成整條縫的 $a\sin\theta$。</li>
+    <li>第（1）題答 $\lambda$ 或 $2\lambda$，多半是把第一亮帶與第一、第二暗紋搞混。</li>
+    <li>以為分成六等分就要改用「六狹縫干涉」公式。</li>
+    <li>把課本的 $3\lambda/2$ 當成強度函數的精確根；本頁把兩者都標出來，方便比較。</li>
+  </ul>
+  <p class="note">模型假設：單色平面波垂直入射、遠場（夫琅禾費）近似、狹縫在垂直入射方向的寬度為 $a=\overline{ag}$。作者：盧政良。</p>
+</article>
+</main>
+
+<footer>
+  盧政良 · 物理教學互動模擬｜<strong>Grok版</strong> · 2026-11-11<br>
+  <a href="../">作品總覽</a> · <a href="../works.html">教學作品集</a> · 可離線使用（首次需載入 KaTeX CDN）
+</footer>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const PTS = ['a','b','c','d','e','f','g'];
+const D_SCREEN = 1.5; // m
+const U_MAX = 4;
+const LAMBDA_PX = 40; // fixed px per λ in the geometry diagram
+const SLIT_H = 252;   // drawn slit height, px
+const PHASOR_LEN = 168; // total chain length in px (fixed scale)
+const XMAX_MM = 28;   // physical screen half-width
+const EXACT = [1.430296743069403, 2.459024313440531, 3.4708899705943665];
+
+function gcd(p,q){p=Math.abs(p);q=Math.abs(q);while(q){const t=p%q;p=q;q=t;}return p||1;}
+function fmt(n,d=2){return (Math.abs(n)<1e-12?0:n).toFixed(d);}
+function fmtLam(u){
+  const dens=[1,2,3,4,5,6,12];
+  for(const q of dens){
+    const p=Math.round(u*q);
+    if(Math.abs(u*q-p)<0.002){
+      if(p===0) return '0';
+      const g=gcd(p,q), P=p/g, Q=q/g;
+      if(Q===1) return (P===1?'λ':P===-1?'−λ':P+'λ');
+      return (P<0?'−':'')+Math.abs(P)+'/'+Q+' λ';
+    }
+  }
+  return fmt(u,3)+' λ';
+}
+function intensity(u){
+  if(Math.abs(u)<1e-12) return 1;
+  const b=Math.PI*u, s=Math.sin(b)/b;
+  return s*s;
+}
+function phasor(N,u){
+  const dphi=2*Math.PI*u/N, phi0=Math.PI*u/N, len=1/N;
+  const pts=[{x:0,y:0,phi:0}];
+  let x=0,y=0;
+  for(let j=0;j<N;j++){
+    const phi=phi0+j*dphi;
+    x+=len*Math.cos(phi); y+=len*Math.sin(phi);
+    pts.push({x,y,phi,j});
+  }
+  const R=Math.hypot(x,y);
+  return {pts,R,dphi,phi0,closed:R<1e-8 && Math.abs(u)>1e-9};
+}
+function wavecolor(nm){
+  let r=0,g=0,b=0;
+  if(nm<380) nm=380; if(nm>780) nm=780;
+  if(nm<440){r=-(nm-440)/60;b=1;}
+  else if(nm<490){g=(nm-440)/50;b=1;}
+  else if(nm<510){g=1;b=-(nm-510)/20;}
+  else if(nm<580){r=(nm-510)/70;g=1;}
+  else if(nm<645){r=1;g=-(nm-645)/65;}
+  else r=1;
+  let f=1;
+  if(nm<420) f=0.35+0.65*(nm-380)/40;
+  else if(nm>700) f=0.35+0.65*(780-nm)/80;
+  const c=x=>('0'+Math.round(Math.max(0,Math.min(1,x*f))*255).toString(16)).slice(-2);
+  return '#'+c(r)+c(g)+c(b);
+}
+function classify(u){
+  const au=Math.abs(u), side=u>1e-6?'右方':u<-1e-6?'左方':'';
+  if(au<0.02) return '中央亮帶中線';
+  for(let m=1;m<=4;m++){
+    if(Math.abs(au-m)<0.02) return side+'第 '+m+' 暗紋中線';
+  }
+  const approx=[1.5,2.5,3.5], names=['一','二','三'];
+  for(let i=0;i<3;i++){
+    if(Math.abs(au-EXACT[i])<0.012) return side+'第'+names[i]+'亮帶中線（精確極大）';
+    if(Math.abs(au-approx[i])<0.02) return side+'第'+names[i]+'亮帶中線（課本近似）';
+  }
+  return '一般位置（'+(side?side+' ':'')+fmt(u,3)+' λ）';
+}
+
+window.slit6Model = {
+  intensity, phasor, EXACT, fmtLam, D_SCREEN,
+  pathDiffs(u){return [0,1,2,3,4,5,6].map(k=>k*u/6);},
+  answers:{q1:1.5, q2:2, choice:'B', exactFirst:EXACT[0]},
+  fringeWidthMm(lambdaNm, aMm){return (lambdaNm*1e-9)*D_SCREEN/(aMm*1e-3)*1e3;} // λD/a in mm
+};
+
+const line=(x1,y1,x2,y2,c='#b7c7d0',w=2,dash='')=>
+  `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''} stroke-linecap="round"/>`;
+const txt=(x,y,t,c='#1a2f44',a='start',fs=13)=>
+  `<text x="${x}" y="${y}" fill="${c}" text-anchor="${a}" font-size="${fs}">${t}</text>`;
+function arrow(x,y,dx,dy,c,w=3.2){
+  const n=Math.hypot(dx,dy); if(n<1.2) return '';
+  const ux=dx/n, uy=dy/n, h=Math.min(9, n*0.4);
+  const px=x+dx, py=y+dy;
+  return line(x,y,px,py,c,w)+
+    `<path d="M${px},${py} L${px-h*ux+h*0.45*uy},${py-h*uy-h*0.45*ux} L${px-h*ux-h*0.45*uy},${py-h*uy+h*0.45*ux} Z" fill="${c}"/>`;
+}
+
+let Nstrips=6, playing=false, playLast=0, pairStep=-1, pairTimer=0;
+
+function current(){
+  const u=+$('u').value, lambda=+$('lambda').value, a=+$('width').value;
+  return {u, lambda, a, col:wavecolor(lambda), I:intensity(u)};
+}
+
+function render(){
+  const {u,lambda,a,col,I}=current();
+  $('uOut').textContent=fmt(u,3);
+  if(document.activeElement!==$('uNum')) $('uNum').value=fmt(u,3);
+  $('lamOut').textContent=lambda+' nm';
+  $('aOut').textContent=fmt(a,3)+' mm';
+  drawScene(u,col,lambda,I);
+  drawScreen(u,lambda,a,col,I);
+  drawPhasor(u,col);
+  drawMetrics(u,lambda,a,I);
+}
+
+function drawScene(u,col,lambda,I){
+  const sx=150, ay=70, gy=ay+SLIT_H, mid=(ay+gy)/2;
+  const sinT=Math.max(-0.9, Math.min(0.9, (u*LAMBDA_PX)/SLIT_H));
+  const th=Math.asin(sinT), cth=Math.cos(th), sth=Math.sin(th);
+  // rays go right and up for positive u (SVG y decreases)
+  const rx=cth, ry=-sth;
+  let s='';
+  // wall hatch
+  for(let y=20;y<480;y+=14){
+    if(y>ay-8 && y<gy+8) continue;
+    s+=line(sx-18,y,sx,y-10,'#c5d2da',1.4);
+  }
+  s+=line(sx,20,sx,ay-2,'#4d6575',7)+line(sx,gy+2,sx,480,'#4d6575',7);
+  // slit edges
+  s+=line(sx-6,ay,sx+6,ay,'#1a2f44',2)+line(sx-6,gy,sx+6,gy,'#1a2f44',2);
+  // opening
+  s+=line(sx,ay,sx,gy,'#8aa0ae',2);
+
+  // half-wave zone shading during pairing
+  const nHalf=Math.abs(u)*2; // number of half-wave zones
+  if(pairStep>=0 && Math.abs(u)>0.05){
+    const zoneH=SLIT_H/(Math.max(nHalf,0.01));
+    const nZ=Math.ceil(Math.abs(u)*2-1e-9);
+    for(let z=0;z<nZ;z++){
+      const y1=u>=0? ay+z*zoneH : gy-(z+1)*zoneH;
+      const y2=u>=0? ay+(z+1)*zoneH : gy-z*zoneH;
+      const yy1=Math.max(ay,Math.min(gy,y1)), yy2=Math.max(ay,Math.min(gy,y2));
+      const active=pairStep===0 || Math.floor(z/2)===pairStep-1;
+      const fill=z%2===0? 'rgba(12,127,120,0.18)' : 'rgba(194,61,69,0.16)';
+      if(active) s+=`<rect x="${sx-10}" y="${Math.min(yy1,yy2)}" width="20" height="${Math.abs(yy2-yy1)}" fill="${fill}"/>`;
+    }
+  }
+
+  // points a..g
+  const ys=PTS.map((_,k)=>ay+k*(SLIT_H/6));
+  // wavefront through a: (X-A)·ray = 0
+  const wfLen=210;
+  const wx=sth, wy=cth; // wavefront direction
+  const A={x:sx,y:ay};
+  s+=line(A.x-wx*40, A.y-wy*40, A.x+wx*wfLen, A.y+wy*wfLen, '#7f93a3', 1.6, '6 4');
+
+  // rays and feet
+  const rayL=300;
+  ys.forEach((y,k)=>{
+    const P={x:sx,y};
+    s+=arrow(P.x,P.y,rx*rayL,ry*rayL, col, k===0||k===6?2.4:1.3);
+    // foot on wavefront
+    const GA= {x:P.x-A.x, y:P.y-A.y};
+    const proj=GA.x*rx+GA.y*ry; // (P-A)·ray = path? For a, 0; for g, SLIT_H*(-sth)= -SLIT_H sinθ
+    // extra path length in px = -proj  (g is behind for +θ? wait)
+    // For +θ, ry=-sth<0, (G-A)=(0,SLIT_H), (G-A)·ray = -SLIT_H sinθ ≤0.
+    // Extra path of G vs A is + a sinθ = - (G-A)·ray. Good.
+    const dPx=-proj;
+    if(k>0 && Math.abs(dPx)>2){
+      const F={x:P.x+rx*dPx, y:P.y+ry*dPx};
+      s+=line(P.x,P.y,F.x,F.y, '#c08a12', 2.5);
+      if(k===6 || k===3 || k===1){
+        const mx=(P.x+F.x)/2, my=(P.y+F.y)/2;
+        s+=txt(mx+10,my-4, fmtLam(k*u/6), '#c08a12', 'start', 12);
+      }
+    }
+    s+=`<circle cx="${sx}" cy="${y}" r="${k===0||k===3||k===6?5:3.5}" fill="${k===3?'#0c7f78':'#1a2f44'}" stroke="#fff" stroke-width="1"/>`;
+    s+=txt(sx-18, y+4, PTS[k], '#1a2f44', 'end', 15);
+  });
+
+  // theta arc at slit mid going out
+  if(Math.abs(u)>0.04){
+    const ar=56;
+    const px=sx+ar, py=mid;
+    const qx=sx+ar*cth, qy=mid-ar*sth;
+    const sweep=u>0?0:1;
+    s+=line(sx,mid,sx+80,mid,'#9aa',1,'3 2');
+    s+=`<path d="M${px},${py} A${ar},${ar} 0 0 ${u>0?0:1} ${qx},${qy}" fill="none" stroke="#1e6fc0" stroke-width="1.5"/>`;
+    s+=txt(sx+ar+8, mid-(u>0?14:-22), 'θ', '#1e6fc0');
+  }
+
+  // labels
+  s+=txt(sx+12, ay-16, '上緣 a', '#1a2f44', 'start', 13);
+  s+=txt(sx+12, gy+22, '下緣 g', '#1a2f44', 'start', 13);
+  s+=txt(40, 36, '狹縫（六等分）', '#5a7284', 'start', 13);
+
+  // fixed λ ruler (bottom)
+  const rx0=40, ry0=455;
+  s+=line(rx0,ry0,rx0+LAMBDA_PX,ry0,'#c08a12',4);
+  s+=line(rx0,ry0-6,rx0,ry0+6,'#c08a12',2)+line(rx0+LAMBDA_PX,ry0-6,rx0+LAMBDA_PX,ry0+6,'#c08a12',2);
+  s+=txt(rx0+LAMBDA_PX/2, ry0-10, 'λ（固定尺標）', '#c08a12', 'middle', 12);
+  s+=txt(rx0+LAMBDA_PX+8, ry0+4, `Δ_ag = ${fmtLam(u)}`, '#c08a12', 'start', 13);
+
+  // mini screen on the right
+  const scrX=640, scrY1=40, scrY2=460, scrC=(scrY1+scrY2)/2;
+  s+=line(scrX,scrY1,scrX,scrY2,'#4d6575',6);
+  s+=line(scrX-8,scrC,scrX+8,scrC,'#1a2f44',2);
+  s+=txt(scrX+12, scrC+4, '中央', '#5a7284', 'start', 12);
+  s+=txt(scrX+12, 56, '右方', '#5a7284', 'start', 12);
+  s+=txt(scrX+12, 452, '左方', '#5a7284', 'start', 12);
+  // arrival y: follow a ray from mid
+  const hitY=mid+ry* ((scrX-sx)/Math.max(0.2,rx));
+  const hy=Math.max(scrY1+8, Math.min(scrY2-8, hitY));
+  const bright=0.15+0.85*I;
+  s+=`<circle cx="${scrX}" cy="${hy}" r="8" fill="${col}" opacity="${0.25+0.75*I}"/>`;
+  s+=`<circle cx="${scrX}" cy="${hy}" r="4" fill="${col}"/>`;
+
+  $('scene').innerHTML=s;
+}
+
+function drawScreen(u,lambda,a,col,Icur){
+  const L=60, R=690, T=18, B=200, barY=222, barH=42;
+  const xOf=uu => L + (R-L)*(uu* ((lambda*1e-9)*D_SCREEN/(a*1e-3)) *1000 / XMAX_MM / 2 + 0.5);
+  // x_mm = u * (λ D / a) in mm; map [-XMAX,XMAX] → [L,R]
+  const uAt=xmm => xmm * (a*1e-3) / ((lambda*1e-9)*D_SCREEN) / 1000;
+  const yOf=Iv => B - (B-T)*Iv;
+  // If fringes very wide, u-range visible shrinks; if very narrow, many oscillations.
+
+  let g='';
+  g+=`<rect x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="#f7fafc"/>`;
+  // grid
+  for(let i=0;i<=4;i++){
+    const Iv=i/4;
+    g+=line(L,yOf(Iv),R,yOf(Iv),'#e3ecf1',1)+txt(L-8,yOf(Iv)+4, fmt(Iv,2),'#5a7284','end',11);
+  }
+  for(let mm=-XMAX_MM; mm<=XMAX_MM; mm+=7){
+    const px=L+(R-L)*(mm/XMAX_MM+1)/2;
+    g+=line(px,T,px,B,'#e3ecf1',1)+txt(px,B+16, String(mm),'#5a7284','middle',11);
+  }
+  g+=line(L,T,L,B,'#1a2f44',1.4)+line(L,B,R,B,'#1a2f44',1.4);
+  g+=txt(8,16,'I / I₀','#5a7284','start',12);
+  g+=txt((L+R)/2,B+32,'屏上位置 x（mm）','#5a7284','middle',12);
+
+  // intensity curve in physical x, sampled densely
+  let d='';
+  const nSamp=360;
+  for(let i=0;i<=nSamp;i++){
+    const xmm=-XMAX_MM + 2*XMAX_MM*i/nSamp;
+    const uu=uAt(xmm);
+    const px=L+(R-L)*i/nSamp;
+    const py=yOf(intensity(uu));
+    d+=(i?'L':'M')+px+','+py;
+  }
+  g+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5"/>`;
+
+  // markers for integer dark and approx/exact bright (if on screen)
+  const mark=(uu,color,label,dy)=>{
+    const xmm=uu*((lambda*1e-9)*D_SCREEN/(a*1e-3))*1000;
+    if(Math.abs(xmm)>XMAX_MM) return;
+    const px=xOf(uu);
+    g+=line(px,T,px,B,color,1,'3 3');
+    if(label) g+=txt(px+3,T+12+dy,label,color,'start',10);
+  };
+  mark(0,'#1a2f44','',0);
+  mark(1,'#c23d45','第1暗',0);
+  mark(-1,'#c23d45','',0);
+  mark(2,'#c23d45','第2暗',0);
+  mark(1.5,'#c08a12','≈3λ/2',14);
+  mark(EXACT[0],'#0c7f78','1.43λ',0);
+
+  // current u
+  const xCur=u*((lambda*1e-9)*D_SCREEN/(a*1e-3))*1000;
+  if(Math.abs(xCur)<=XMAX_MM*1.05){
+    const px=Math.max(L,Math.min(R,xOf(u)));
+    g+=line(px,T,px,B+4,'#1a2f44',1.6,'5 3');
+    g+=`<circle cx="${px}" cy="${yOf(Icur)}" r="5.5" fill="${col}" stroke="#fff" stroke-width="1.5"/>`;
+  }
+
+  // fringe pattern bar — same physical x, brightness from I, color from λ
+  g+=`<rect x="${L}" y="${barY}" width="${R-L}" height="${barH}" fill="#0b1020"/>`;
+  const nBar=220;
+  for(let i=0;i<nBar;i++){
+    const xmm=-XMAX_MM+2*XMAX_MM*(i+0.5)/nBar;
+    const Iv=intensity(uAt(xmm));
+    const px=L+(R-L)*i/nBar;
+    const w=(R-L)/nBar+0.4;
+    g+=`<rect x="${px}" y="${barY}" width="${w}" height="${barH}" fill="${col}" opacity="${Iv}"/>`;
+  }
+  if(Math.abs(xCur)<=XMAX_MM*1.05){
+    const px=Math.max(L,Math.min(R,xOf(u)));
+    g+=line(px,barY,px,barY+barH,'#fff',1.6);
+  }
+  g+=txt(L, barY+barH+16, '條紋圖（亮度 ∝ I，顏色隨波長）', '#5a7284', 'start', 11);
+  $('screen').innerHTML=g;
+  // stash mapping for pointer
+  $('screen').dataset.ready='1';
+}
+
+function drawPhasor(u,col){
+  const N=Nstrips, ph=phasor(N,u);
+  const ox=210, oy=200, S=PHASOR_LEN; // 1 amplitude unit = S px, fixed
+  let p='';
+  // guide circle of radius S (central-max chain)
+  p+=`<circle cx="${ox}" cy="${oy}" r="${S}" fill="none" stroke="#e3ecf1" stroke-width="1"/>`;
+  p+=line(ox-S-20,oy,ox+S+80,oy,'#d5e1ea',1)+line(ox,oy-S-10,ox,oy+S+10,'#d5e1ea',1);
+  p+=txt(ox+S+20,oy-8,'實軸','#5a7284','start',11);
+
+  // zone pairing tint on groups of vectors
+  const mApprox=Math.round(Math.abs(u));
+  const closeDark=Math.abs(Math.abs(u)-mApprox)<0.03 && mApprox>=1;
+
+  // polyline of chain
+  const pts=ph.pts.map(q=>({x:ox+q.x*S, y:oy-q.y*S})); // y up
+  const pal=['#0c7f78','#1e6fc0','#6b4fb0','#c08a12','#c23d45','#2a9d8f','#3d5a80','#bc6c25'];
+  for(let j=0;j<N;j++){
+    const a=pts[j], b=pts[j+1];
+    let c=pal[j%pal.length];
+    if(N>12) c=col;
+    // pairing highlight: half-wave zone index
+    if(pairStep>0 && closeDark){
+      const zone=Math.floor(j/(N/(2*mApprox)));
+      const pair=Math.floor(zone/2);
+      if(pair!==pairStep-1) c='#cfd8df';
+    }
+    p+=arrow(a.x,a.y,b.x-a.x,b.y-a.y,c, N>24?1.4:2.6);
+  }
+  // resultant
+  const end=pts[pts.length-1];
+  p+=arrow(ox,oy,end.x-ox,end.y-oy, '#1a2f44', 3.2);
+  p+=`<circle cx="${ox}" cy="${oy}" r="4" fill="#1a2f44"/>`;
+  p+=`<circle cx="${end.x}" cy="${end.y}" r="4" fill="#c23d45"/>`;
+  p+=txt(end.x+8,end.y-8, ph.closed?'合向量 = 0（封閉）':`合振幅 ${fmt(ph.R,3)}`, ph.closed?'#c23d45':'#1a2f44', 'start', 13);
+
+  // side notes
+  p+=txt(430, 36, `N = ${N}`, '#1a2f44', 'start', 14);
+  p+=txt(430, 58, `相鄰相位差 ${fmt(ph.dphi*180/Math.PI,1)}°`, '#5a7284', 'start', 13);
+  p+=txt(430, 80, `比例尺固定（全長 = 中央合振幅）`, '#5a7284', 'start', 12);
+  if(ph.closed){
+    p+=txt(430, 110, closeDark?`第 ${mApprox} 暗紋：多邊形封閉`:'合向量為零', '#c23d45', 'start', 13);
+  }
+  if(Math.abs(u-2)<0.02 && N===6){
+    p+=txt(430, 136, '六段每隔 120°，繞兩圈封閉', '#0c7f78', 'start', 13);
+  }
+  if(Math.abs(Math.abs(u)-1)<0.02 && N===6){
+    p+=txt(430, 136, '六段每隔 60°，圍成正六邊形', '#0c7f78', 'start', 13);
+  }
+  $('phasor').innerHTML=p;
+  const note=$('phasorNote');
+  if(ph.closed){
+    note.textContent=`暗紋：N 段相量首尾相接後封閉，合向量為 0。目前 |a sinθ / λ| ≈ ${fmt(Math.abs(u),3)}。`;
+  }else if(Math.abs(u)<0.02){
+    note.textContent='中央亮帶：各子帶同位相，相量排成一直線，合振幅最大。比例尺以此全長為準，不隨觀察點放大或縮小。';
+  }else{
+    note.textContent='相量首尾相接。可切換 6 / 24 / 72 段：段數愈多愈接近連續積分。比例尺固定，暗紋處圖形變小是合振幅真的變小，不是重新縮放。';
+  }
+}
+
+function drawMetrics(u,lambda,a,I){
+  const dAB=u/6, dAD=u/2, dAG=u;
+  const half=window.slit6Model.fringeWidthMm(lambda,a);
+  $('metrics').innerHTML=[
+    ['a、b 光程差 Δ_ab', fmtLam(dAB), '寬度 a/6'],
+    ['a、d 光程差 Δ_ad', fmtLam(dAD), 'd 為中點'],
+    ['a、g 光程差 Δ_ag', fmtLam(dAG), '即 a sinθ'],
+    ['a sinθ / λ', fmt(u,3), classify(u)],
+    ['相對強度 I / I₀', fmt(I,3), I<1e-4?'接近全暗':'—'],
+    ['中央亮帶半寬 λD/a', fmt(half,2)+' mm', `D = 1.5 m`]
+  ].map(([t,v,d])=>`<div class="metric"><span>${t}</span><b>${v}</b><span>${d}</span></div>`).join('');
+
+  let msg=`目前觀察點相當於${classify(u)}。`;
+  if(Math.abs(u-1.5)<0.02) msg+=' 此為題（1）的課本條件：Δ_ag = 3λ/2。精確極大約在 1.43λ。';
+  if(Math.abs(u-EXACT[0])<0.012) msg+=' 此為強度函數的精確第一側極大。';
+  if(Math.abs(u-2)<0.02) msg+=' 此為題（2）：Δ_ab = λ/3，故 a sinθ = 2λ，第二暗紋中線（B）。';
+  const fx=Math.abs(u)>=0.02 && Math.abs(u-Math.round(u))<0.02;
+  if(fx) msg+=' 相量圖應封閉。';
+  $('status').textContent=msg;
+}
+
+// —— events ——
+function setU(v, stop=true){
+  if(stop) stopPlay();
+  v=Math.max(-U_MAX, Math.min(U_MAX, +v));
+  $('u').value=v;
+  pairStep=-1;
+  render();
+}
+function stopPlay(){playing=false;$('play').textContent='▶ 掃描條紋';}
+
+$('u').addEventListener('input',()=>setU($('u').value));
+$('uNum').addEventListener('change',()=>setU($('uNum').value));
+$('uNum').addEventListener('keydown',e=>{if(e.key==='Enter') setU($('uNum').value);});
+$('lambda').addEventListener('input',render);
+$('width').addEventListener('input',render);
+document.querySelectorAll('[data-u]').forEach(btn=>{
+  btn.addEventListener('click',()=>setU(btn.dataset.u));
+});
+document.querySelectorAll('#nBtns [data-n]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    Nstrips=+btn.dataset.n;
+    document.querySelectorAll('#nBtns [data-n]').forEach(b=>b.classList.toggle('active',b===btn));
+    render();
+  });
+});
+
+$('play').onclick=()=>{
+  if(playing){stopPlay();return;}
+  pairStep=-1;
+  $('u').value='-0.05';
+  playing=true; playLast=0;
+  $('play').textContent='Ⅱ 暫停';
+  render();
+  requestAnimationFrame(function tick(t){
+    if(!playing) return;
+    const dt=playLast?Math.min((t-playLast)/1000,0.05):0;
+    playLast=t;
+    let v=+$('u').value+dt*0.35;
+    if(v>=3.6){v=3.6;stopPlay();}
+    $('u').value=v;
+    render();
+    if(playing) requestAnimationFrame(tick);
+  });
+};
+
+$('pair').onclick=()=>{
+  stopPlay();
+  const u=+$('u').value;
+  const m=Math.round(Math.abs(u));
+  if(m<1 || Math.abs(Math.abs(u)-m)>0.08){
+    // snap to nearest dark if reasonably close, else go to 2nd dark (problem 2)
+    const target=m>=1 && Math.abs(Math.abs(u)-m)<=0.25 ? Math.sign(u||1)*m : 2;
+    setU(target,true);
+  }
+  const uu=+$('u').value;
+  const mm=Math.max(1,Math.round(Math.abs(uu)));
+  pairStep=0;
+  render();
+  clearInterval(pairTimer);
+  let step=0, max=mm+1; // 0=all zones, 1..mm = each pair
+  pairTimer=setInterval(()=>{
+    step++;
+    if(step>max){clearInterval(pairTimer);pairStep=-1;render();return;}
+    pairStep=step<=mm?step:0;
+    render();
+  },700);
+};
+
+$('reset').onclick=()=>{
+  stopPlay(); clearInterval(pairTimer); pairStep=-1;
+  $('u').value=0; $('lambda').value=550; $('width').value=0.10;
+  Nstrips=6;
+  document.querySelectorAll('#nBtns [data-n]').forEach(b=>b.classList.toggle('active',b.dataset.n==='6'));
+  render();
+};
+
+function screenPointer(e){
+  const svg=$('screen');
+  const pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+  const loc=pt.matrixTransform(svg.getScreenCTM().inverse());
+  const L=60,R=690, xmm= -XMAX_MM + 2*XMAX_MM*(loc.x-L)/(R-L);
+  const {lambda,a}=current();
+  const uu=xmm*(a*1e-3)/((lambda*1e-9)*D_SCREEN)/1000;
+  setU(uu);
+}
+let dragS=false;
+$('screen').addEventListener('pointerdown',e=>{dragS=true;$('screen').setPointerCapture(e.pointerId);screenPointer(e);e.preventDefault();});
+$('screen').addEventListener('pointermove',e=>{if(dragS) screenPointer(e);});
+$('screen').addEventListener('pointerup',()=>dragS=false);
+$('screen').addEventListener('pointercancel',()=>dragS=false);
+
+document.addEventListener('visibilitychange',()=>{if(document.hidden) stopPlay();});
+render();
+setTimeout(render,400);
+</script>
+</body>
+</html>
