@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="99學年度指考物理：半圓皿液體中的雙狹縫干涉（Grok版）。說明為何亮紋間距為 5.0 cm，並對照空氣與平面器壁的情形。作者：盧政良。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>99指考・半圓皿中的雙狹縫亮紋間距（Grok版）｜盧政良</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{
+  --ink:#1a2f44; --muted:#5a7284; --line:#d5e1ea;
+  --bg:#f3f6f9; --card:#fff;
+  --teal:#0c7f78; --blue:#1e6fc0; --gold:#c08a12; --red:#c23d45;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+a{color:var(--blue)}
+header,main,footer{max-width:1360px;margin:auto;padding:22px 18px}
+header{padding-top:28px}
+.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--teal);font-weight:700}
+h1{font-size:clamp(24px,3.6vw,36px);line-height:1.3;margin:8px 0}
+h2{font-size:20px;margin:0 0 10px}
+h3{font-size:17px;margin:14px 0 8px}
+.sub,.note,.muted{color:var(--muted)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;background:#e5f4f2;color:var(--teal);font-size:13px;font-weight:700;vertical-align:middle}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:16px;min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 3px 14px #18354a08;min-width:0;max-width:100%}
+.controls{position:sticky;top:10px;align-self:start}
+.control{margin:14px 0}
+label{display:block;font-weight:650;margin-bottom:4px}
+output{float:right;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:650}
+input[type=range]{width:100%;accent-color:var(--teal);height:28px;cursor:pointer}
+.buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+button{border:1px solid var(--line);border-radius:9px;background:#edf3f7;color:var(--ink);padding:7px 11px;font:inherit;cursor:pointer}
+button.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+button:hover{filter:brightness(.98)}
+button:focus-visible,input:focus-visible{outline:3px solid #e0ad3a;outline-offset:2px}
+.toggle{display:flex;align-items:flex-start;gap:8px;font-weight:500;margin:8px 0;font-size:14.5px}
+.toggle input{width:17px;height:17px;margin-top:3px;accent-color:var(--teal);flex:0 0 auto}
+.visuals{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;min-width:0}
+.visuals .card{padding:12px}
+svg{display:block;width:100%;height:auto;max-width:100%;overflow:hidden}
+svg text{font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;font-size:13px;fill:var(--ink)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metric{background:#f4f8fb;border-radius:10px;padding:9px 11px;min-width:0}
+.metric span{font-size:12.5px;color:var(--muted)}
+.metric b{display:block;font-size:17.5px;font-variant-numeric:tabular-nums;line-height:1.45;overflow-wrap:anywhere}
+.status{margin-top:10px;padding:10px 14px;border-radius:10px;background:#eaf6f4;font-size:14.5px}
+.katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden;max-width:100%}
+.eqbox{background:#f4f8fb;border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;overflow-x:auto;max-width:100%}
+.explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:8px 7px;text-align:left;vertical-align:top}
+th{background:#f4f8fb}
+.tablewrap{overflow-x:auto;max-width:100%}
+.note{font-size:13.5px;margin:8px 0 0}
+footer{font-size:13.5px;color:var(--muted);padding-bottom:40px}
+.preset-group strong{display:block;font-size:12.5px;color:var(--muted);margin:8px 0 4px}
+.layout,.visuals,.explain-grid,main,header,footer{max-width:100%;min-width:0}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.controls{position:static}}
+@media(max-width:780px){
+  header,main,footer{padding:14px}
+  .visuals,.explain-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .card{padding:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">PHYSICS LAB · 99 學年度指定科目考試</div>
+  <h1>半圓皿裡的液體，會讓亮紋變密還是變疏？ <span class="badge">Grok版</span></h1>
+  <p class="sub">雙狹縫放在半圓皿圓心 $O$ 內側，皿內注滿折射率 $n_L=1.3$ 的液體。光線沿半徑射出，在彎曲邊緣不折射。求屏幕上的亮紋間距，並看如果換成平面器壁會有什麼不同。</p>
+</header>
+
+<main>
+<div class="layout">
+  <aside class="card controls">
+    <h2>實驗控制</h2>
+    <span class="badge">楊氏雙縫 · 半圓皿</span>
+
+    <div class="control">
+      <label for="n">液體折射率 $n_L$ <output id="nOut"></output></label>
+      <input id="n" type="range" min="1" max="2" step="0.01" value="1.3">
+    </div>
+    <div class="control">
+      <label for="d">狹縫間距 $d$ <output id="dOut"></output></label>
+      <input id="d" type="range" min="0.010" max="0.050" step="0.001" value="0.020">
+    </div>
+    <div class="control">
+      <label for="L">屏距 $L$ <output id="LOut"></output></label>
+      <input id="L" type="range" min="0.80" max="4.00" step="0.05" value="2.00">
+    </div>
+    <div class="control">
+      <label for="lambda">空氣中波長 $\lambda$ <output id="lamOut"></output></label>
+      <input id="lambda" type="range" min="400" max="700" step="1" value="650">
+    </div>
+
+    <label class="toggle"><input type="checkbox" id="showAir" checked> 同時畫出空氣中（n = 1）的條紋作為對照</label>
+    <label class="toggle"><input type="checkbox" id="flat"> 延伸：改成平面器壁（出口用司乃耳定律）</label>
+
+    <div class="preset-group">
+      <strong>預設情境</strong>
+      <div class="buttons">
+        <button type="button" class="primary" id="pOrig">原題 $n_L=1.3$</button>
+        <button type="button" id="pEmpty">空皿 $n=1$</button>
+        <button type="button" id="pWater">水 $n=1.33$</button>
+        <button type="button" id="pGlass">類玻璃 $n=1.50$</button>
+      </div>
+    </div>
+    <div class="buttons"><button type="button" id="reset">重設為原題</button></div>
+    <p class="note">屏幕圖的橫軸以公分固定（$\pm 20\,\mathrm{cm}$），縱軸以 $I_0$ 固定；波前的「空氣中 $1\lambda$」尺標也不隨觀察點或折射率重新縮放。</p>
+  </aside>
+
+  <section>
+    <article class="card">
+      <h2>01 · 俯視裝置：雷射、雙狹縫、半圓皿與屏幕</h2>
+      <svg id="scene" viewBox="0 0 760 400" role="img" aria-label="雙狹縫半圓皿與屏幕的俯視裝置"></svg>
+      <p class="note">題目以 $+y$ 朝向屏幕；本圖改為由左至右，意義相同。半圓的圓心在 $O$，自 $O$ 沿半徑而出的光線垂直於彎曲表面（法線＝半徑），因此出射時入射角為 $0$，不折射。液體內的波前較密，間距為 $\lambda/n_L$。</p>
+    </article>
+
+    <div class="visuals">
+      <article class="card">
+        <h2>02 · 光程差特寫（角度已放大）</h2>
+        <svg id="path" viewBox="0 0 520 280" role="img" aria-label="液體中的光程差 d sinθ 與波長比較"></svg>
+        <p class="note">實際 $\theta_1$ 只有約 $1.4^\circ$，圖中放大以便看見 $d\sin\theta$。下方金色尺標是固定的「空氣中 $1\lambda$」，液體波長隨 $n_L$ 變短。</p>
+      </article>
+      <article class="card">
+        <h2>03 · 屏幕上的條紋與強度</h2>
+        <svg id="screen" viewBox="0 0 520 280" role="img" aria-label="屏幕條紋與強度曲線"></svg>
+        <p class="note">橫軸是屏幕上的實際位置，範圍固定。實線與填色是目前裝置；虛線是空氣中的對照。相鄰亮紋之間的括號標出 $\Delta y$。</p>
+      </article>
+    </div>
+
+    <article class="card" id="flatCard">
+      <h2>04 · 延伸：若器壁是平面，間距會回到空氣中的值</h2>
+      <svg id="flatFig" viewBox="0 0 760 230" role="img" aria-label="平面器壁的折射與條紋間距"></svg>
+      <p class="note" id="flatNote"></p>
+    </article>
+
+    <article class="card">
+      <h2>即時讀數</h2>
+      <div class="metrics" id="metrics"></div>
+      <div class="status" id="status"></div>
+    </article>
+  </section>
+</div>
+
+<article class="card">
+  <h2>題意重述</h2>
+  <p>這是<span class="badge">99 學年度指定科目考試物理考科非選擇題第二大題第 3 小題</span>（部分講義或圖輯標為第 15 題，題文相同）。</p>
+  <p>在 $O$ 點內側放置一個雙狹縫，狹縫間距 $d=0.020$ 毫米。空氣中波長 $\lambda=650$ 奈米的雷射沿 $y$ 軸射向雙狹縫。屏幕位於 $y=2.0$ 公尺。半圓皿內注滿折射率 $n_L=1.3$ 的液體後，從兩狹縫發出的光波皆可視為由 $O$ 點發出，故光線沿法線前進，經過半圓皿邊緣時不會折射。若忽略兩光波在空氣中的波程差，試計算屏幕上所見亮紋間距。</p>
+  <p><strong>答案：$0.05\,\mathrm{m}$（即 $5.0\,\mathrm{cm}$）。</strong>大學入學考試中心《99 學年度指定科目考試物理考科非選擇題評分標準說明》明列答案為 $0.05\,\mathrm{m}$，並要求寫出 $\lambda_L=\lambda/n_L$。</p>
+</article>
+
+<div class="explain-grid">
+  <article class="card">
+    <h2>為什麼半圓、圓心在 $O$ 就不折射？</h2>
+    <p>圓的法線就是半徑。題目把兩狹縫的光都視為由圓心 $O$ 發出，因此每條光線都沿著半徑走到彎曲表面，入射角為 $0^\circ$。</p>
+    <div class="eqbox">$$n_L\sin 0^\circ = \sin 0^\circ$$</div>
+    <p>出射方向不變，$\theta$ 從液體走進空氣後仍然是同一個角。這是半圓皿圓心放狹縫的關鍵，也是「可忽略空氣中波程差」的原因：兩束光出皿之後幾乎沿同一徑向走，在空氣段幾乎沒有額外的光程差。</p>
+  </article>
+  <article class="card">
+    <h2>液體裡變的是波長，不是頻率</h2>
+    <p>光的頻率 $f$ 由光源決定，進入介質後不變；波速降為 $c/n_L$，因此波長變短：</p>
+    <div class="eqbox">$$\lambda_L=\frac{v}{f}=\frac{\lambda}{n_L}=\frac{650\,\mathrm{nm}}{1.3}=500\,\mathrm{nm}$$</div>
+    <p>相位差由「幾何路程差 $\times\, 2\pi/\lambda_L$」決定，也就是光學路程差 $n_L\cdot(\text{幾何差})$ 對空氣波長 $\lambda$ 來算。兩種說法等價。</p>
+  </article>
+  <article class="card">
+    <h2>亮紋條件與間距</h2>
+    <p>在液體中，相鄰狹縫到觀察方向 $\theta$ 的幾何路程差為 $d\sin\theta$。亮紋滿足</p>
+    <div class="eqbox">$$d\sin\theta = m\lambda_L = m\frac{\lambda}{n_L},\qquad m=0,\pm 1,\pm 2,\ldots$$</div>
+    <p>光線出皿不偏折，屏幕上 $y=L\tan\theta$。小角度時 $\sin\theta\approx\tan\theta\approx y/L$，相鄰亮紋間距為</p>
+    <div class="eqbox">$$\Delta y=\frac{L\lambda}{n_L d}=\frac{2.0\times 650\times 10^{-9}}{1.3\times 2.0\times 10^{-5}}=0.050\,\mathrm{m}=5.0\,\mathrm{cm}$$</div>
+    <p>沒有液體（或空皿 $n=1$）時，$\Delta y_0=L\lambda/d=6.5\,\mathrm{cm}$。液體把間距縮成原來的 $1/n_L$。</p>
+  </article>
+  <article class="card">
+    <h2>小角度合不合理？</h2>
+    <p>第一亮紋：</p>
+    <div class="eqbox">$$\sin\theta_1=\frac{\lambda}{n_L d}=\frac{650\times 10^{-9}}{1.3\times 2.0\times 10^{-5}}=0.025$$</div>
+    <p>故 $\theta_1=\arcsin(0.025)\approx 1.43^\circ$。若不用小角度，改用 $y_1=L\tan\theta_1$，得到 $5.0016\,\mathrm{cm}$，與 $5.0\,\mathrm{cm}$ 只差約 $0.03\%$，小角度近似完全夠用。</p>
+  </article>
+</div>
+
+<article class="card">
+  <h2>延伸：平面器壁為什麼「變回」空氣中的間距</h2>
+  <p>如果液體裝在<strong>出口為平面</strong>（器壁垂直於軸）的容器裡，光線在液體中的亮紋條件仍是 $d\sin\theta_L=m\lambda/n_L$。但射出平面時必須服從司乃耳定律：</p>
+  <div class="eqbox">$$n_L\sin\theta_L=\sin\theta_{\text{空氣}}\implies \sin\theta_{\text{空氣}}=n_L\sin\theta_L=\frac{m\lambda}{d}$$</div>
+  <p>空氣中的角度條件與「沒有液體」完全相同，因此屏幕上 $\Delta y=L\lambda/d$，折射率被折射「抵銷」了。請勾選上方「改成平面器壁」：讀數會回到 $6.5\,\mathrm{cm}$。這不是原題的裝置，但正好說明<strong>半圓形為什麼重要</strong>——只有徑向出射、不折射，液體中縮短的波長才會直接反映在空氣中的張角上。</p>
+</article>
+
+<article class="card">
+  <h2>對照與常見迷思</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>情境</th><th>第一亮紋條件</th><th>亮紋間距（小角度）</th><th>原題數值</th></tr></thead>
+      <tbody>
+        <tr><td>半圓皿 $+$ 液體（原題）</td><td>$d\sin\theta=m\lambda/n_L$</td><td>$L\lambda/(n_L d)$</td><td>$5.0\,\mathrm{cm}$</td></tr>
+        <tr><td>空皿或空氣 $n=1$</td><td>$d\sin\theta=m\lambda$</td><td>$L\lambda/d$</td><td>$6.5\,\mathrm{cm}$</td></tr>
+        <tr><td>平面器壁 $+$ 液體（延伸）</td><td>$n_L\sin\theta_L=\sin\theta_{\text{空氣}}=m\lambda/d$</td><td>$L\lambda/d$</td><td>$6.5\,\mathrm{cm}$</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>常見迷思</h3>
+  <ul>
+    <li>以為光程差變大，間距應乘上 $n_L$，得到 $8.45\,\mathrm{cm}$。其實波長變短，條紋變密，要除以 $n_L$。</li>
+    <li>忽略液體，直接用 $L\lambda/d$ 得到 $6.5\,\mathrm{cm}$。這是空皿或平面器壁的答案，不是半圓皿。</li>
+    <li>以為頻率也跟著變，或把 $\lambda_L$ 寫成 $n_L\lambda$。</li>
+    <li>忘記「沿法線出射、不折射」，因而在半圓皿上又乘了一次司乃耳定律，結果把 $n_L$ 約掉，又回到 $6.5\,\mathrm{cm}$。</li>
+  </ul>
+  <p class="note">模型假設：單色雷射、兩狹縫同調、遠場小角度（並附精確 $\tan\theta$ 核對）、半圓薄壁厚度忽略、忽略空氣段光程差（題目指定）。作者：盧政良。</p>
+</article>
+</main>
+
+<footer>
+  盧政良 · 物理教學互動模擬｜<strong>Grok版</strong> · 2026-11-11<br>
+  題目出自大學入學考試中心《九十九學年度指定科目考試試題　物理考科》非選擇題第二大題第 3 小題；評分標準說明的答案為 $0.05\,\mathrm{m}$。<br>
+  <a href="../">作品總覽</a> · <a href="../works.html">教學作品集</a> · 可離線使用（首次需載入 KaTeX CDN）
+</footer>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const fmt = (n,d=2) => (Math.abs(n)<1e-15?0:n).toFixed(d);
+const DEG = Math.PI/180;
+const YMAX_CM = 20;         // fixed screen half-width in cm
+const LAMBDA_PX = 22;       // fixed px per air-wavelength (wavefront scale)
+const DISH_R = 130;         // drawn dish radius, fixed
+
+function wavecolor(nm){
+  let r=0,g=0,b=0;
+  if(nm<380) nm=380; if(nm>780) nm=780;
+  if(nm<440){r=-(nm-440)/60;b=1;}
+  else if(nm<490){g=(nm-440)/50;b=1;}
+  else if(nm<510){g=1;b=-(nm-510)/20;}
+  else if(nm<580){r=(nm-510)/70;g=1;}
+  else if(nm<645){r=1;g=-(nm-645)/65;}
+  else r=1;
+  let f=1;
+  if(nm<420) f=0.35+0.65*(nm-380)/40;
+  else if(nm>700) f=0.35+0.65*(780-nm)/80;
+  const c=x=>('0'+Math.round(Math.max(0,Math.min(1,x*f))*255).toString(16)).slice(-2);
+  return '#'+c(r)+c(g)+c(b);
+}
+
+function modelOf(n, dmm, Lm, lamNm, mode){
+  const d=dmm*1e-3, lam=lamNm*1e-9, L=Lm;
+  const lamL=lam/n;
+  const dyAir=L*lam/d;
+  const dyRad=L*lam/(n*d);
+  const dy = mode==='flat' ? dyAir : dyRad;
+  const s1 = mode==='flat' ? lam/d : lam/(n*d);
+  const th1 = s1<1 ? Math.asin(s1) : null;
+  const y1exact = th1!=null ? L*Math.tan(th1) : null;
+  return {n,d,dmm,L,lam,lamNm,lamL,dyAir,dyRad,dy,s1,th1,y1exact,mode};
+}
+
+function intensity(y, m, useAir){
+  const sinth=y/Math.hypot(y,m.L);
+  const arg = useAir || m.mode==='flat'
+    ? Math.PI*m.d*sinth/m.lam
+    : Math.PI*m.n*m.d*sinth/m.lam;
+  const c=Math.cos(arg);
+  return c*c;
+}
+
+window.dslModel = {
+  modelOf, intensity,
+  answers:{dy_m:0.05, dy_cm:5.0, air_cm:6.5, exam:'99指考物理非選第二大題第3小題', official:'0.05 m'}
+};
+
+const line=(x1,y1,x2,y2,c='#b7c7d0',w=2,dash='')=>
+  `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}"${dash?` stroke-dasharray="${dash}"`:''} stroke-linecap="round"/>`;
+const txt=(x,y,t,c='#1a2f44',a='start',fs=13)=>
+  `<text x="${x}" y="${y}" fill="${c}" text-anchor="${a}" font-size="${fs}">${t}</text>`;
+
+function current(){
+  return {
+    ...modelOf(+$('n').value, +$('d').value, +$('L').value, +$('lambda').value, $('flat').checked?'flat':'radial'),
+    showAir: $('showAir').checked,
+    col: wavecolor(+$('lambda').value)
+  };
+}
+
+function render(){
+  const s=current();
+  $('nOut').textContent=fmt(s.n,2);
+  $('dOut').textContent=fmt(s.dmm,3)+' mm';
+  $('LOut').textContent=fmt(s.L,2)+' m';
+  $('lamOut').textContent=s.lamNm+' nm';
+  drawScene(s);
+  drawPath(s);
+  drawScreen(s);
+  drawFlat(s);
+  drawMetrics(s);
+}
+
+function drawScene(s){
+  const O={x:200,y:200}, scrX=680, col=s.col;
+  let g='<defs><clipPath id="clipScene"><rect x="0" y="0" width="760" height="400"/></clipPath></defs>';
+  g+='<g clip-path="url(#clipScene)">';
+  g+=`<rect x="0" y="0" width="760" height="400" fill="#f7fafc"/>`;
+  // incoming laser
+  for(let y=188;y<=212;y+=8){
+    g+=line(16,y,176,y,col,2);
+    g+=line(16,y,26,y-3,col,1.4)+line(16,y,26,y+3,col,1.4);
+  }
+  g+=txt(20, 176, '雷射', col, 'start', 13);
+  // slit plate
+  g+=line(200,40,200,188,'#3d5566',7);
+  g+=line(200,212,200,360,'#3d5566',7);
+  // two slits (exaggerated)
+  g+=`<rect x="196" y="191" width="8" height="5" fill="#f7fafc"/>`;
+  g+=`<rect x="196" y="204" width="8" height="5" fill="#f7fafc"/>`;
+  g+=`<circle cx="${O.x}" cy="${O.y}" r="3.5" fill="#c23d45"/>`;
+  g+=txt(O.x-16, O.y+18, 'O', '#c23d45', 'end', 15);
+  g+=txt(168, 186, '雙狹縫', '#5a7284', 'end', 12);
+
+  const R=DISH_R;
+  if(s.mode==='radial'){
+    // semicircle dish opening to the right
+    g+=`<path d="M${O.x},${O.y-R} A${R},${R} 0 0 1 ${O.x},${O.y+R} L${O.x},${O.y-R} Z" fill="${col}" fill-opacity="0.10" stroke="#5a7284" stroke-width="2"/>`;
+    g+=line(O.x, O.y-R, O.x, O.y+R, '#5a7284', 2);
+    g+=txt(O.x+R*0.35, O.y-R+18, '半圓皿', '#5a7284', 'start', 13);
+    g+=txt(O.x+R*0.35, O.y-R+34, `n_L = ${fmt(s.n,2)}`, '#5a7284', 'start', 12);
+    // wavefronts in liquid (spacing LAMBDA_PX/n, fixed air scale)
+    const spL=LAMBDA_PX/s.n;
+    for(let r=spL; r<R-4; r+=spL){
+      g+=`<path d="M${O.x},${O.y-r} A${r},${r} 0 0 1 ${O.x},${O.y+r}" fill="none" stroke="${col}" stroke-width="1" opacity="0.55"/>`;
+    }
+    // wavefronts in air, same absolute λ scale, from dish edge outward along axis region
+    for(let r=R+LAMBDA_PX; r<scrX-O.x-10; r+=LAMBDA_PX){
+      const a=70*DEG;
+      const x1=O.x+r*Math.cos(a), y1=O.y-r*Math.sin(a);
+      const x2=O.x+r*Math.cos(-a), y2=O.y-r*Math.sin(-a);
+      // only draw the part outside the dish: the whole arc is outside if r>R
+      g+=`<path d="M${x1},${y1} A${r},${r} 0 0 1 ${x2},${y2}" fill="none" stroke="${col}" stroke-width="1" opacity="0.28"/>`;
+    }
+  }else{
+    // rectangular tank
+    const Tx=O.x+R;
+    g+=`<rect x="${O.x}" y="${O.y-R}" width="${R}" height="${2*R}" fill="${col}" fill-opacity="0.10" stroke="#5a7284" stroke-width="2"/>`;
+    g+=txt(O.x+16, O.y-R+18, '平面器壁', '#5a7284', 'start', 13);
+    const spL=LAMBDA_PX/s.n;
+    for(let x=O.x+spL; x<Tx-2; x+=spL) g+=line(x,O.y-R+4,x,O.y+R-4,col,1);
+    for(let x=Tx+LAMBDA_PX; x<scrX-8; x+=LAMBDA_PX) g+=line(x,80,x,320,col,1);
+  }
+
+  // Screen mapping is fixed in centimetres (independent of current Δy).
+  // Rays are aimed at the fringe ticks they correspond to, so geometry stays consistent
+  // and the (physically tiny) angles remain visible without flying off the canvas.
+  const halfH=140; // px corresponding to YMAX_CM
+  const yOf=cm => O.y - (cm/YMAX_CM)*halfH;
+  const dyCm=s.dy*100;
+
+  function drawRay(m, bright){
+    const yc=m*dyCm;
+    if(Math.abs(yc)>YMAX_CM+0.05) return;
+    const yS=yOf(yc);
+    if(s.mode==='radial'){
+      const dx=scrX-O.x, dy=yS-O.y, len=Math.hypot(dx,dy);
+      const ux=dx/len, uy=dy/len;
+      const xE=O.x+R*ux, yE=O.y+R*uy;
+      g+=line(O.x,O.y,scrX,yS, bright?col:'#9aa8b4', bright?2.2:1.1, bright?'':'4 3');
+      const tx=-uy, ty=ux;
+      g+=line(xE-8*tx,yE-8*ty,xE+8*tx,yE+8*ty,'#c08a12',1.6);
+      if(m===1){
+        g+=txt(xE+8,yE-10, '法線', '#c08a12', 'start', 11);
+        g+=txt(scrX-16, yS-9, '第 1 亮紋', col, 'end', 11);
+      }
+    }else{
+      const Tx=O.x+R;
+      const slopeAir=(yS-O.y)/(scrX-O.x);
+      const slopeL=slopeAir/s.n;
+      const yW=O.y+slopeL*R;
+      g+=line(O.x,O.y,Tx,yW,col,2);
+      g+=line(Tx,yW,scrX,yS,col,1.6);
+      g+=line(Tx-10,yW,Tx+10,yW,'#c08a12',1.4);
+      if(m===1) g+=txt(Tx+8,yW-8, '向外折射', '#c08a12', 'start', 11);
+    }
+  }
+  for(const m of [-3,-2,-1,0,1,2,3]) drawRay(m, Math.abs(m)<=1);
+
+  // screen
+  g+=line(scrX,50,scrX,350,'#3d5566',8);
+  g+=txt(scrX+12, 66, '屏幕', '#3d5566', 'start', 14);
+  for(let k=-8;k<=8;k++){
+    const yc=k*dyCm;
+    if(Math.abs(yc)>YMAX_CM) continue;
+    const py=yOf(yc);
+    const I=1; // bright centers
+    g+=`<rect x="${scrX-6}" y="${py-3}" width="12" height="6" fill="${col}" opacity="0.95"/>`;
+  }
+  if(s.showAir && s.n>1.001 && s.mode==='radial'){
+    const dyA=s.dyAir*100;
+    for(let k=-8;k<=8;k++){
+      const yc=k*dyA;
+      if(Math.abs(yc)>YMAX_CM) continue;
+      g+=`<rect x="${scrX+8}" y="${yOf(yc)-2}" width="8" height="4" fill="#5a7284" opacity="0.6"/>`;
+    }
+    g+=txt(scrX+18, 90, '灰：空氣', '#5a7284', 'start', 11);
+  }
+  // Δy bracket
+  const p0=yOf(0), p1=yOf(dyCm);
+  if(Math.abs(p1-p0)>8){
+    g+=line(scrX-18,p0,scrX-18,p1,'#c08a12',1.6);
+    g+=line(scrX-22,p0,scrX-14,p0,'#c08a12',1.6);
+    g+=line(scrX-22,p1,scrX-14,p1,'#c08a12',1.6);
+    g+=txt(scrX-24, (p0+p1)/2+4, `Δy`, '#c08a12', 'end', 12);
+  }
+
+  // axis
+  g+=line(O.x,O.y,scrX,O.y,'#9aa',1,'4 3');
+  g+=txt(360, 214, '+y（朝屏幕）', '#5a7284', 'start', 12);
+  // fixed λ ruler
+  g+=line(30, 378, 30+LAMBDA_PX, 378, '#c08a12', 4);
+  g+=line(30,372,30,384,'#c08a12',2)+line(30+LAMBDA_PX,372,30+LAMBDA_PX,384,'#c08a12',2);
+  g+=txt(30+LAMBDA_PX+8, 382, '空氣中 1λ（固定尺標）', '#c08a12', 'start', 11);
+
+  g+='</g>';
+  $('scene').innerHTML=g;
+}
+
+function drawPath(s){
+  const col=s.col;
+  let g=`<rect x="0" y="0" width="520" height="280" fill="#f7fafc"/>`;
+  // two slits, exaggerated angle ~28° to show d sinθ
+  const S1={x:80,y:80}, S2={x:80,y:200};
+  const th=28*DEG;
+  const rx=Math.cos(th), ry=-Math.sin(th);
+  g+=`<rect x="70" y="40" width="20" height="34" fill="#3d5566"/>`;
+  g+=`<rect x="70" y="86" width="20" height="108" fill="#3d5566"/>`;
+  g+=`<rect x="70" y="206" width="20" height="34" fill="#3d5566"/>`;
+  g+=`<circle cx="80" cy="83" r="3" fill="${col}"/>`;
+  g+=`<circle cx="80" cy="203" r="3" fill="${col}"/>`;
+  g+=txt(64, 88, "S₁", '#1a2f44', 'end', 13);
+  g+=txt(64, 208, "S₂", '#1a2f44', 'end', 13);
+  const Len=260;
+  g+=line(S1.x,S1.y,S1.x+rx*Len,S1.y+ry*Len,col,2);
+  g+=line(S2.x,S2.y,S2.x+rx*Len,S2.y+ry*Len,col,2);
+  const wx=S2.x-S1.x, wy=S2.y-S1.y;
+  const proj=wx*rx+wy*ry;
+  const dPx=-proj;
+  const F={x:S2.x+rx*dPx, y:S2.y+ry*dPx};
+  // equal-phase wavefront through S1 (perpendicular to the rays)
+  g+=line(S1.x,S1.y,F.x,F.y,'#5a7284',1.4,'5 3');
+  g+=line(S2.x,S2.y,F.x,F.y,'#c08a12',3);
+  g+=txt((S2.x+F.x)/2+12,(S2.y+F.y)/2+4, 'd sinθ', '#c08a12', 'start', 13);
+  g+=txt((S1.x+F.x)/2+16,(S1.y+F.y)/2-6, '等相波前', '#5a7284', 'start', 11);
+  // compare rulers (fixed air-λ scale), kept inside the viewBox
+  const rx0=200, ry0=258;
+  const Lliq=LAMBDA_PX/s.n;
+  g+=line(rx0,ry0-22,rx0+Lliq,ry0-22,col,5);
+  g+=line(rx0,ry0-22-4,rx0,ry0-22+4,col,1.5)+line(rx0+Lliq,ry0-22-4,rx0+Lliq,ry0-22+4,col,1.5);
+  g+=txt(rx0+Lliq+8, ry0-18, `液體中 λ_L = ${fmt(s.lamL*1e9,0)} nm`, col, 'start', 12);
+  g+=line(rx0,ry0,rx0+LAMBDA_PX,ry0,'#c08a12',5);
+  g+=line(rx0,ry0-4,rx0,ry0+4,'#c08a12',1.5)+line(rx0+LAMBDA_PX,ry0-4,rx0+LAMBDA_PX,ry0+4,'#c08a12',1.5);
+  g+=txt(rx0+LAMBDA_PX+8, ry0+5, '空氣中 λ（固定尺標）', '#c08a12', 'start', 12);
+  if(s.mode==='radial'){
+    g+=txt(300, 50, '第一亮紋：d sinθ₁ = λ_L', '#1a2f44', 'start', 14);
+    g+=txt(300, 72, `θ₁ = ${s.th1?fmt(s.th1/DEG,2):'—'}°（實際）`, '#5a7284', 'start', 13);
+    g+=txt(300, 94, '半圓出射不偏折，此 θ 就是空氣中的角', '#5a7284', 'start', 13);
+  }else{
+    g+=txt(300, 50, '平面器壁：液體中 d sinθ_L = λ_L', '#1a2f44', 'start', 14);
+    g+=txt(300, 72, '出射時 n_L sinθ_L = sinθ_空氣', '#5a7284', 'start', 13);
+    g+=txt(300, 94, '因此空氣中回到 d sinθ = mλ', '#5a7284', 'start', 13);
+  }
+  $('path').innerHTML=g;
+}
+
+function drawScreen(s){
+  const L=46, R=500, T=16, B=170, barY=196, barH=42;
+  const xOf=cm => L+(R-L)*(cm+YMAX_CM)/(2*YMAX_CM);
+  const yOf=I => B-(B-T)*I;
+  const col=s.col;
+  let g=`<rect x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="#f7fafc"/>`;
+  for(let i=0;i<=4;i++){
+    const Iv=i/4;
+    g+=line(L,yOf(Iv),R,yOf(Iv),'#e3ecf1',1)+txt(L-6,yOf(Iv)+4,fmt(Iv,2),'#5a7284','end',11);
+  }
+  for(let cm=-YMAX_CM; cm<=YMAX_CM; cm+=5){
+    g+=line(xOf(cm),T,xOf(cm),B,'#e3ecf1',1)+txt(xOf(cm),B+14,String(cm),'#5a7284','middle',11);
+  }
+  g+=line(L,T,L,B,'#1a2f44',1.4)+line(L,B,R,B,'#1a2f44',1.4);
+  g+=txt(8,16,'I / I₀','#5a7284','start',12);
+  g+=txt((L+R)/2,B+28,'屏幕位置（cm）','#5a7284','middle',12);
+
+  const Iat=cm => intensity(cm/100, s, false);
+  const Iair=cm => intensity(cm/100, s, true);
+
+  if(s.showAir){
+    let d='';
+    for(let i=0;i<=240;i++){
+      const cm=-YMAX_CM+2*YMAX_CM*i/240;
+      d+=(i?'L':'M')+xOf(cm)+','+yOf(Iair(cm));
+    }
+    g+=`<path d="${d}" fill="none" stroke="#8b9bab" stroke-width="1.5" stroke-dasharray="5 3"/>`;
+  }
+  let d2='';
+  for(let i=0;i<=240;i++){
+    const cm=-YMAX_CM+2*YMAX_CM*i/240;
+    d2+=(i?'L':'M')+xOf(cm)+','+yOf(Iat(cm));
+  }
+  g+=`<path d="${d2} L${R},${B} L${L},${B} Z" fill="${col}" fill-opacity="0.22"/>`;
+  g+=`<path d="${d2}" fill="none" stroke="${col}" stroke-width="2.3"/>`;
+
+  // Δy bracket between m=0 and m=1
+  const dyCm=s.dy*100;
+  if(dyCm<2*YMAX_CM-0.2){
+    const x0=xOf(0), x1=xOf(dyCm);
+    g+=line(x0,T+6,x1,T+6,'#c08a12',2);
+    g+=line(x0,T+2,x0,T+10,'#c08a12',2)+line(x1,T+2,x1,T+10,'#c08a12',2);
+    g+=txt((x0+x1)/2, T+22, `Δy = ${fmt(dyCm,2)} cm`, '#c08a12', 'middle', 12);
+  }
+
+  // fringe bar
+  g+=`<rect x="${L}" y="${barY}" width="${R-L}" height="${barH}" fill="#0b1020"/>`;
+  const nBar=260;
+  for(let i=0;i<nBar;i++){
+    const cm=-YMAX_CM+2*YMAX_CM*(i+0.5)/nBar;
+    const px=L+(R-L)*i/nBar, w=(R-L)/nBar+0.4;
+    g+=`<rect x="${px}" y="${barY}" width="${w}" height="${barH}" fill="${col}" opacity="${Iat(cm)}"/>`;
+  }
+  $('screen').innerHTML=g;
+}
+
+function drawFlat(s){
+  const col=s.col;
+  let g=`<rect x="0" y="0" width="760" height="230" fill="#f7fafc"/>`;
+  // mini comparison: left radial, right flat, both schematic
+  function mini(x0, label, mode){
+    const O={x:x0+70,y:120}, R=70, scr=x0+340;
+    g+=txt(x0+8, 22, label, '#1a2f44', 'start', 14);
+    g+=`<circle cx="${O.x}" cy="${O.y}" r="3" fill="#c23d45"/>`;
+    if(mode==='radial'){
+      g+=`<path d="M${O.x},${O.y-R} A${R},${R} 0 0 1 ${O.x},${O.y+R}" fill="${col}" fill-opacity="0.12" stroke="#5a7284" stroke-width="1.6"/>`;
+      const th=22*DEG;
+      g+=line(O.x,O.y,scr,O.y-Math.tan(th)*(scr-O.x),col,1.8);
+      g+=line(O.x,O.y,scr,O.y+Math.tan(th)*(scr-O.x),col,1.8);
+      g+=line(O.x,O.y,scr,O.y,col,1.2);
+      g+=txt(x0+8, 210, `Δy = Lλ/(n_L d) = ${fmt(s.dyRad*100,2)} cm`, '#0c7f78', 'start', 13);
+    }else{
+      g+=`<rect x="${O.x}" y="${O.y-R}" width="${R}" height="${2*R}" fill="${col}" fill-opacity="0.12" stroke="#5a7284" stroke-width="1.6"/>`;
+      const thL=16*DEG, thA=28*DEG;
+      const Tx=O.x+R;
+      const yL=Math.tan(thL)*R;
+      g+=line(O.x,O.y,Tx,O.y-yL,col,1.8);
+      g+=line(Tx,O.y-yL,scr,O.y-yL-Math.tan(thA)*(scr-Tx),col,1.8);
+      g+=line(O.x,O.y,Tx,O.y+yL,col,1.8);
+      g+=line(Tx,O.y+yL,scr,O.y+yL+Math.tan(thA)*(scr-Tx),col,1.8);
+      g+=line(O.x,O.y,scr,O.y,'#9aa',1,'3 2');
+      g+=txt(Tx+6, O.y-yL-8, '向外折射', '#c08a12', 'start', 11);
+      g+=txt(x0+8, 210, `Δy = Lλ/d = ${fmt(s.dyAir*100,2)} cm（與空氣相同）`, '#c08a12', 'start', 13);
+    }
+    g+=line(scr,40,scr,200,'#3d5566',6);
+  }
+  mini(10, '（甲）半圓皿：不折射，θ 不變', 'radial');
+  mini(390, '（乙）平面器壁：n_L sinθ_L = sinθ_空氣', 'flat');
+  $('flatFig').innerHTML=g;
+  const msg = s.mode==='flat'
+    ? `目前已切換為平面器壁：司乃耳定律把 n_L 抵銷，屏上亮紋間距為 ${fmt(s.dy*100,2)} cm，與空氣中相同。這不是原題的裝置。`
+    : `原題是半圓皿（甲）。平面器壁（乙）是延伸對照：同樣的液體，出口一折射，間距就回到空氣中的 ${fmt(s.dyAir*100,2)} cm。`;
+  $('flatNote').textContent=msg;
+}
+
+function drawMetrics(s){
+  const thDeg=s.th1==null?'—':fmt(s.th1/DEG,2)+'°';
+  const ratio=s.dy/s.dyAir;
+  $('metrics').innerHTML=[
+    ['液體中波長 λ_L', fmt(s.lamL*1e9,1)+' nm', `λ / n_L = ${s.lamNm} / ${fmt(s.n,2)}`],
+    ['第一亮紋角 θ₁', thDeg, `sinθ₁ = ${fmt(s.s1,4)}`],
+    ['亮紋間距 Δy（小角度）', fmt(s.dy*100,2)+' cm', s.mode==='flat'?'Lλ/d（平面器壁）':'Lλ/(n_L d)'],
+    ['精確位置 L tanθ₁', s.y1exact==null?'—':fmt(s.y1exact*100,4)+' cm', '與小角度幾乎相同'],
+    ['空氣中間距 Δy₀', fmt(s.dyAir*100,2)+' cm', 'Lλ/d，空皿時的值'],
+    ['與空氣比 Δy / Δy₀', fmt(ratio,3), s.mode==='radial'?`等於 1/n_L = ${fmt(1/s.n,3)}`:'平面器壁下為 1']
+  ].map(([t,v,d])=>`<div class="metric"><span>${t}</span><b>${v}</b><span>${d}</span></div>`).join('');
+
+  let msg='';
+  if(s.mode==='radial'){
+    msg=`半圓皿裝置：屏幕亮紋間距為 ${fmt(s.dy*100,2)} cm。`;
+    if(Math.abs(s.n-1.3)<0.008 && Math.abs(s.dmm-0.020)<1e-6 && Math.abs(s.L-2)<1e-6 && s.lamNm===650){
+      msg+=' 此即原題：0.050 m = 5.0 cm。空氣中則為 6.5 cm。';
+    }
+  }else{
+    msg=`平面器壁延伸：間距回到 ${fmt(s.dy*100,2)} cm（與空氣相同）。取消勾選可回到原題的半圓皿。`;
+  }
+  $('status').textContent=msg;
+}
+
+function setAll(n,d,L,lam,flat){
+  $('n').value=n; $('d').value=d; $('L').value=L; $('lambda').value=lam;
+  $('flat').checked=!!flat;
+  render();
+}
+$('n').addEventListener('input',render);
+$('d').addEventListener('input',render);
+$('L').addEventListener('input',render);
+$('lambda').addEventListener('input',render);
+$('showAir').addEventListener('change',render);
+$('flat').addEventListener('change',render);
+$('pOrig').onclick=()=>setAll(1.3,0.020,2.00,650,false);
+$('pEmpty').onclick=()=>setAll(1.00,0.020,2.00,650,false);
+$('pWater').onclick=()=>setAll(1.33,0.020,2.00,650,false);
+$('pGlass').onclick=()=>setAll(1.50,0.020,2.00,650,false);
+$('reset').onclick=()=>{ $('showAir').checked=true; setAll(1.3,0.020,2.00,650,false); };
+
+render();
+setTimeout(render,400);
+</script>
+</body>
+</html>

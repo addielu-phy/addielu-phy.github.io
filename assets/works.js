@@ -18,6 +18,22 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+  {
+  "id": "double-slit-liquid-grok",
+  "title": "99指考・半圓皿中的雙狹縫亮紋間距（Grok版）",
+  "desc": "99學年度指考物理非選題：半圓皿液體中的雙狹縫。可調折射率與波長，對照空氣與平面器壁，說明為何亮紋間距是 5.0 cm 而不是 6.5 cm。",
+  "url": "https://addielu-phy.github.io/double-slit-liquid-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/double-slit-liquid-grok",
+  "cat": "探究與實作",
+  "tags": [
+    "雙狹縫干涉",
+    "指考",
+    "互動模擬",
+    "Grok版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
 {
   "id": "single-slit-two-questions-gpt",
   "title": "單狹縫繞射兩題互動實驗室（GPT版）",
