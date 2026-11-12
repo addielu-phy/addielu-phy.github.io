@@ -28,7 +28,7 @@ if(id==='m2'){
 if(m==='A'){R.range=[0,10,0,110];curve('2^x+10',x=>2**x+10);curve('2^(10−x)',x=>2**(10-x),ORANGE);let x=10*v;point(x,2**x+10,BLUE);point(x,2**(10-x),ORANGE);let t=-5+Math.sqrt(1049),xr=Math.log2(t);point(xr,t+10,RED,'唯一交點');val('交點x',xr);val('交點y',t+10);}
 if(m==='B'){let h=v*Math.log2(2025);R.range=[-14,3,0,8];curve('原圖 2^x',x=>2**x);curve('移動中的 2^(x+h)',x=>2**(x+h),TEAL);curve('目標 2025·2^x',x=>2025*2**x,ORANGE);point(-h,1,RED);val('向左平移',h);val('目前倍率',2**h);R.message='實際平移距離為log₂2025；曲線超出縱軸範圍時自然裁切。';}
 if(m==='C'){R.range=[-2,12,-4,4];R.yLabel='y / 2025';curve('原圖（縱軸÷2025）',x=>2**x/2025);curve('鏡射、平移過渡示意',x=>(1-2*v)*2**x/2025-v,TEAL);curve('目標 (−2^x−2025)/2025',x=>(-(2**x)-2025)/2025,ORANGE);val('進度',fmt(v*100)+'%');R.message='縱軸以2025為單位；中間畫面為鏡射與平移的插值示意，完成時為原題精確曲線。';}
-if(m==='D'){R.equal=true;R.range=[-2,5,-2,5];curve('y=2^x',x=>2**x);curve('y=log₂x',x=>x>0?Math.log2(x):NaN,ORANGE);curve('鏡射軸 y=x',x=>x,TEAL);let u=1.5,w=2**u;point(u+(w-u)*v,w+(u-w)*v,RED,'交換坐標');R.segments.push([u,w,w,u,TEAL]);val('移動點x',u+(w-u)*v);val('移動點y',w+(u-w)*v);R.message='橫、縱軸採等比例，才能正確看出對y=x的鏡射。';}
+if(m==='D'){R.equal=true;R.range=[-3,5,-3,5];curve('y=2^|x|',x=>2**Math.abs(x));curve('y=log₂|x|',x=>x!==0?Math.log2(Math.abs(x)):NaN,ORANGE);curve('鏡射軸 y=x',x=>x,TEAL);let u=-1,w=2;point(u+(w-u)*v,w+(u-w)*v,RED,'鏡射測試');R.segments.push([u,w,w,u,TEAL]);val('移動點x',u+(w-u)*v);val('移動點y',w+(u-w)*v);R.message='原圖上的(−1,2)對y=x鏡射成(2,−1)，但log₂|2|=1。反例證明兩圖不互相鏡射。';}
 if(m==='E'){R.range=[-3,3,-3,7];curve('反例 y=2^x−2',x=>2**x-2);let x=-3+6*v;point(x,2**x-2);val('x',x);val('y',2**x-2);R.message='a=1、b=−2：第三、第四、第一象限皆出現。坐標軸上的點不屬於任何象限。';}
 }
 if(id==='m3'){
