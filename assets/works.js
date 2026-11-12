@@ -18,6 +18,23 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+  {
+  "id": "box-tipping-11-grok",
+  "title": "範例11・木箱的滑動與傾倒（Grok版）",
+  "desc": "水平推力推木箱：可調推力 F 與施力高度 h，看正向力作用點沿底面移動、對 O 軸力矩平衡與 F–h 狀態區域圖（靜止／滑動／傾倒），三小題逐步完整計算：h=2 m、h_max=2.5 m、N 的力矩 0.8 kgw·m 作用點 0.4 m。",
+  "url": "https://addielu-phy.github.io/box-tipping-11-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/box-tipping-11-grok",
+  "cat": "探究與實作",
+  "tags": [
+    "靜力平衡",
+    "力矩",
+    "摩擦力",
+    "互動模擬",
+    "Grok版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
 {
   "id": "double-slit-liquid-gpt",
   "title": "雙狹縫 × 半圓液槽：光程與相位（GPT版）",
