@@ -18,6 +18,23 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+{
+  "id": "box-tipping-gpt",
+  "title": "木箱滑動、翻倒與支撐點（GPT版）",
+  "desc": "範例11三小題完整逐步計算：靜摩擦與動摩擦、滑動與翻倒臨界、正向力作用點；可調推力與高度，動態觀察受力及力矩。",
+  "url": "https://addielu-phy.github.io/box-tipping-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/box-tipping-gpt",
+  "cat": "錯題詳解",
+  "tags": [
+    "靜力平衡",
+    "摩擦力",
+    "力矩",
+    "互動動畫",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
   {
   "id": "box-tipping-11-grok",
   "title": "範例11・木箱的滑動與傾倒（Grok版）",
