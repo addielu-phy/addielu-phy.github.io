@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+    function viewer(uid) {
+      return request.auth != null && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/englishFlashcards/$(uid)/access/$(request.auth.token.email.lower()));
+    }
+    function mayRead(uid) { return owner(uid) || viewer(uid); }
+    match /englishFlashcards/{uid} {
+      allow read: if mayRead(uid);
+      allow create: if owner(uid)
+        && request.resource.data.keys().hasOnly(['schema','revision','chunkIds','digest','byteLength','updatedAt'])
+        && request.resource.data.schema == 1 && request.resource.data.revision == 1
+        && request.resource.data.chunkIds is list && request.resource.data.chunkIds.size() > 0 && request.resource.data.chunkIds.size() <= 1000
+        && request.resource.data.digest is string && request.resource.data.digest.matches('^[a-f0-9]{64}$')
+        && request.resource.data.byteLength is int && request.resource.data.byteLength > 0 && request.resource.data.byteLength <= 15000000
+        && request.resource.data.updatedAt == request.time;
+      allow update: if owner(uid)
+        && request.resource.data.keys().hasOnly(['schema','revision','chunkIds','digest','byteLength','updatedAt'])
+        && request.resource.data.schema == 1 && request.resource.data.revision == resource.data.revision + 1
+        && request.resource.data.chunkIds is list && request.resource.data.chunkIds.size() > 0 && request.resource.data.chunkIds.size() <= 1000
+        && request.resource.data.digest is string && request.resource.data.digest.matches('^[a-f0-9]{64}$')
+        && request.resource.data.byteLength is int && request.resource.data.byteLength > 0 && request.resource.data.byteLength <= 15000000
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+      match /chunks/{hash} {
+        allow read: if mayRead(uid);
+        allow create, update: if owner(uid) && hash.matches('^[a-f0-9]{64}$')
+          && request.resource.data.keys().hasOnly(['text']) && request.resource.data.text is string
+          && request.resource.data.text.size() <= 200000;
+        allow delete: if false;
+      }
+      match /access/{email} {
+        allow get: if owner(uid) || (request.auth != null && request.auth.token.email_verified == true && request.auth.token.email.lower() == email);
+        allow list: if owner(uid);
+        allow create, update: if owner(uid) && email.matches('^[^/@]+@[^/@]+\\.[^/@]+$') && email == email.lower()
+          && request.resource.data.keys().hasOnly(['grantedAt']) && request.resource.data.grantedAt == request.time;
+        allow delete: if owner(uid);
+      }
+    }
+  }
+}
