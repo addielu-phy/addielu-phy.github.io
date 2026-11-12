@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="靜力平衡與三力共點、封閉力三角形互動式物理模擬動畫 — 探討懸掛重錘位置移動時，輕繩張力與樞紐作用力大小、方向及封閉三角形之動態變化 (Gemini 版)">
+  <title>範例 8：水平木棒靜力平衡與封閉力三角形互動模擬 | Gemini 版</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- KaTeX for crisp math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="brand-wrap">
+      <div class="badge-group">
+        <span class="tag-badge primary-badge">範例 8 靜力平衡專題</span>
+        <span class="tag-badge gemini-badge">✨ Gemini 版 Interactive Physics</span>
+      </div>
+      <h1>水平輕桿靜力平衡・三力共點與封閉力三角形動態模擬</h1>
+      <p class="subtitle">即時觀測重錘位置 $x$ 右移時，輕繩張力 $\vec{T}$、樞紐作用力 $\vec{F}_O$（含水平 $F_x$、鉛直 $F_y$ 與夾角 $\phi$）及三力封閉三角形之幾何演變</p>
+    </div>
+    <div class="header-actions">
+      <button id="btnProblemModal" class="action-btn outline-btn" title="檢視原題目卷">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        原題目與答案速覽
+      </button>
+      <a href="../" class="action-btn outline-btn" title="返回盧政良老師作品總覽">
+        ← 作品總覽
+      </a>
+      <a href="../works.html" class="action-btn outline-btn" title="全部教學作品集">
+        教學作品集
+      </a>
+      <a href="https://github.com/addielu-phy" target="_blank" rel="noopener" class="action-btn github-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        addielu-phy
+      </a>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- Original Problem Banner (Collapsible) -->
+    <section class="problem-banner glass-card" id="problemBanner">
+      <div class="problem-banner-header">
+        <div class="problem-title-tag">
+          <span class="example-pill">範例 8</span>
+          <strong>原題目敘述與四個關鍵問題（當重錘右移 $x$ 增大時，各物理量如何變化？）</strong>
+        </div>
+        <button class="collapse-btn" id="toggleBannerBtn">收合題目 ▲</button>
+      </div>
+      <div class="problem-banner-body" id="problemBannerBody">
+        <p class="problem-text">
+          一木棒長 $\ell$，其重量可忽略，一端 $\mathrm{O}$ 以樞紐固定於牆上，另端 $\mathrm{P}$ 用輕繩懸於牆，使木棒成水平，而輕繩與棒成 $\theta$ 之夾角，於木棒上距牆為 $x$ 距離處懸一重 $W$ 的物體，其平衡狀態如圖所示。今若將木棒上懸重物之位置右移（即令 $x$ 增大），則下列各量將如何變化？
+        </p>
+        <div class="options-grid">
+          <div class="option-card" data-opt="A">
+            <div class="opt-header">
+              <span class="opt-letter">(A)</span>
+              <span class="opt-name">輕繩上張力的量值 $T$</span>
+              <span class="opt-ans up">變大 ↑</span>
+            </div>
+            <div class="opt-formula">$T = \dfrac{x}{\ell \sin\theta} W \propto x$</div>
+            <div class="opt-live" id="liveOptA">目前：$T = 0.87\,W$</div>
+          </div>
+          <div class="option-card" data-opt="B">
+            <div class="opt-header">
+              <span class="opt-letter">(B)</span>
+              <span class="opt-name">樞紐施予木棒作用力的水平分量 $F_x$</span>
+              <span class="opt-ans up">變大 ↑</span>
+            </div>
+            <div class="opt-formula">$F_x = T\cos\theta = \dfrac{x}{\ell}\cot\theta \cdot W \propto x$</div>
+            <div class="opt-live" id="liveOptB">目前：$F_x = 0.75\,W$</div>
+          </div>
+          <div class="option-card" data-opt="C">
+            <div class="opt-header">
+              <span class="opt-letter">(C)</span>
+              <span class="opt-name">樞紐施予木棒作用力之鉛直分量 $F_y$</span>
+              <span class="opt-ans down">變小 ↓</span>
+            </div>
+            <div class="opt-formula">$F_y = W - T\sin\theta = \left(1 - \dfrac{x}{\ell}\right) W$</div>
+            <div class="opt-live" id="liveOptC">目前：$F_y = 0.56\,W$</div>
+          </div>
+          <div class="option-card" data-opt="D">
+            <div class="opt-header">
+              <span class="opt-letter">(D)</span>
+              <span class="opt-name">樞紐對木棒作用力方向與水平的夾角 $\phi$</span>
+              <span class="opt-ans down">變小 ↓</span>
+            </div>
+            <div class="opt-formula">$\tan\phi = \dfrac{F_y}{F_x} = \dfrac{\ell - x}{x}\tan\theta$</div>
+            <div class="opt-live" id="liveOptD">目前：$\phi = 37.0^\circ$</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual Interactive Canvas Grid -->
+    <section class="canvases-grid">
+      <!-- Left Canvas: Physical System & Free Body Force Vectors + Concurrent Lines -->
+      <div class="canvas-panel glass-card">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="panel-step-badge">視圖 1</span>
+            <h2>實體物理系統、各力大小方向與「三力共點」幾何</h2>
+          </div>
+          <span class="hint-pill">💡 可直接在畫布上拖曳重錘 $W$ 左右移動！</span>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="physicalCanvas" width="680" height="500"></canvas>
+        </div>
+        <div class="canvas-legend">
+          <span class="legend-item"><i class="dot weight-color"></i> 重錘重力 $\vec{W}$（鉛直向下）</span>
+          <span class="legend-item"><i class="dot tension-color"></i> 輕繩張力 $\vec{T}$（沿繩指向牆）</span>
+          <span class="legend-item"><i class="dot hinge-color"></i> 樞紐總力 $\vec{F}_O$（指向共點 $C$）</span>
+          <span class="legend-item"><i class="dot comp-color"></i> 分力 $\vec{F}_x, \vec{F}_y$ 與 $\vec{T}_x, \vec{T}_y$</span>
+          <span class="legend-item"><i class="dot concurrent-color"></i> 三力作用線交點 $C$（共點原理）</span>
+        </div>
+      </div>
+
+      <!-- Right Canvas: Closed Force Triangle (Head-to-Tail Vector Addition) -->
+      <div class="canvas-panel glass-card">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="panel-step-badge accent">視圖 2</span>
+            <h2>三力首尾相連「封閉力三角形」隨位置 $x$ 動態演變圖</h2>
+          </div>
+          <span class="formula-pill">$\vec{W} + \vec{T} + \vec{F}_O = \vec{0}$</span>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="triangleCanvas" width="620" height="500"></canvas>
+        </div>
+        <div class="canvas-legend">
+          <span class="legend-item"><i class="dot weight-color"></i> 定長鉛直邊 $\vec{W}$（恆不變）</span>
+          <span class="legend-item"><i class="dot tension-color"></i> 定角斜邊 $\vec{T}$（方向固定 $\theta$，長度隨 $x$ 伸長）</span>
+          <span class="legend-item"><i class="dot hinge-color"></i> 封閉第三邊 $\vec{F}_O$（隨 $x$ 右移而轉平、夾角 $\phi$ 變小）</span>
+          <span class="legend-item"><i class="dot ghost-color"></i> 虛線軌跡：不同 $x$ 位置的三角形演變包絡線</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls & Real-time Telemetry Dashboard -->
+    <section class="controls-telemetry-grid">
+      <!-- Interactive Control Deck -->
+      <div class="control-deck glass-card">
+        <div class="deck-header">
+          <h3>🎛️ 互動實驗控制面板</h3>
+          <div class="playback-group">
+            <button id="btnPlayPause" class="ctrl-btn primary-ctrl">
+              <span id="playIcon">▶</span> <span id="playText">自動掃描 $x$</span>
+            </button>
+            <button id="btnReset" class="ctrl-btn">↺ 重置預設</button>
+          </div>
+        </div>
+
+        <!-- Primary Slider: Position x/l -->
+        <div class="slider-card highlight-slider">
+          <div class="slider-top">
+            <label for="sliderX">
+              <strong>重錘懸掛位置比例 $x / \ell$</strong>
+              <span class="sub-label">（拖曳滑桿或點擊下方快速位置）</span>
+            </label>
+            <span class="slider-readout" id="readoutX">0.45 $\ell$</span>
+          </div>
+          <input type="range" id="sliderX" min="0.05" max="0.98" step="0.01" value="0.45">
+          <div class="quick-presets">
+            <button class="preset-btn" data-x="0.15">$x = 0.15\ell$（近牆端）</button>
+            <button class="preset-btn" data-x="0.33">$x = \frac{1}{3}\ell$</button>
+            <button class="preset-btn active" data-x="0.50">$x = 0.50\ell$（中點）</button>
+            <button class="preset-btn" data-x="0.75">$x = 0.75\ell$</button>
+            <button class="preset-btn" data-x="0.95">$x = 0.95\ell$（近繩端 P）</button>
+          </div>
+        </div>
+
+        <!-- Secondary Sliders: Angle theta & Weight W -->
+        <div class="secondary-sliders">
+          <div class="slider-card">
+            <div class="slider-top">
+              <label for="sliderTheta">輕繩與木棒夾角 $\theta$</label>
+              <span class="slider-readout secondary" id="readoutTheta">30°</span>
+            </div>
+            <input type="range" id="sliderTheta" min="18" max="65" step="1" value="30">
+          </div>
+
+          <div class="slider-card">
+            <div class="slider-top">
+              <label for="sliderW">重錘重量 $W$ (N)</label>
+              <span class="slider-readout secondary" id="readoutW">100 N</span>
+            </div>
+            <input type="range" id="sliderW" min="50" max="200" step="10" value="100">
+          </div>
+        </div>
+
+        <!-- Visual Layer Toggles -->
+        <div class="toggles-bar">
+          <label class="toggle-chip">
+            <input type="checkbox" id="chkComponents" checked>
+            <span>顯示水平/鉛直分力 ($F_x, F_y, T_x, T_y$)</span>
+          </label>
+          <label class="toggle-chip">
+            <input type="checkbox" id="chkConcurrent" checked>
+            <span>顯示三力延伸交點 $C$（共點線）</span>
+          </label>
+          <label class="toggle-chip">
+            <input type="checkbox" id="chkGhostTriangles" checked>
+            <span>顯示封閉三角形歷史比較軌跡</span>
+          </label>
+          <label class="toggle-chip">
+            <input type="checkbox" id="chkTorqueArc" checked>
+            <span>顯示力臂 $x$ 與力矩標示</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Real-time Telemetry & Trend Chart -->
+      <div class="telemetry-deck glass-card">
+        <div class="deck-header">
+          <h3>📊 即時物理量數值與函數曲線 ($x/\ell \in [0, 1]$)</h3>
+          <span class="unit-toggle-note">同時顯示絕對數值 (N) 與相對於 $W$ 之倍率</span>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-box tension-theme">
+            <div class="metric-title">(A) 輕繩張力 $T$</div>
+            <div class="metric-val" id="valT">90.0 N <small>(0.90 W)</small></div>
+            <div class="metric-sub" id="subT">$T_x = 77.9\text{ N}, \; T_y = 45.0\text{ N}$</div>
+          </div>
+          <div class="metric-box compx-theme">
+            <div class="metric-title">(B) 樞紐水平分力 $F_x$</div>
+            <div class="metric-val" id="valFx">77.9 N <small>(0.78 W)</small></div>
+            <div class="metric-sub">向右頂住木棒 ($F_x = T\cos\theta$)</div>
+          </div>
+          <div class="metric-box compy-theme">
+            <div class="metric-title">(C) 樞紐鉛直分力 $F_y$</div>
+            <div class="metric-val" id="valFy">55.0 N <small>(0.55 W)</small></div>
+            <div class="metric-sub">向上支撐木棒 ($F_y = W - T\sin\theta$)</div>
+          </div>
+          <div class="metric-box hinge-theme">
+            <div class="metric-title">(D) 樞紐總力 $F_O$ 與夾角 $\phi$</div>
+            <div class="metric-val" id="valFoPhi">95.4 N / $\phi = 35.2^\circ$</div>
+            <div class="metric-sub" id="subFoMin">當 $x = \ell\sin^2\theta$ 時 $F_O$ 有極小值</div>
+          </div>
+        </div>
+
+        <!-- Mini Functional Curve Canvas -->
+        <div class="chart-wrapper">
+          <canvas id="trendChartCanvas" width="560" height="190"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive Physics Explanation Section -->
+    <section class="explanation-section glass-card">
+      <div class="section-banner">
+        <div>
+          <span class="section-tag">深度物理觀念解析</span>
+          <h2>為什麼三力會形成「封閉三角形」？兩種視角完整破解範例 8</h2>
+        </div>
+      </div>
+
+      <div class="explanation-grid">
+        <!-- Method 1: Algebraic Equilibrium (Torque + Force Components) -->
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <span class="method-badge m1">方法一：力矩平衡 ＋ 力之正交分解法（代數嚴謹推導）</span>
+          </div>
+          <div class="exp-card-body">
+            <p>木棒處於<strong>靜力平衡</strong>，必須同時滿足「合力為零 ($\sum \vec{F} = \vec{0}$)」與「合力矩為零 ($\sum \vec{\tau} = \vec{0}$)」兩大條件：</p>
+
+            <div class="step-block">
+              <h4>步驟 1：以樞紐 $\mathrm{O}$ 為支點，列力矩平衡求 (A) 輕繩張力 $T$</h4>
+              <p>樞紐作用力 $\vec{F}_O$ 通過支點 $\mathrm{O}$，力臂為 $0$ 不產生力矩。重錘重力 $W$ 產生順時針力矩 $W \cdot x$；輕繩張力鉛直分量 $T\sin\theta$ 在 $\mathrm{P}$ 端產生逆時針力矩 $(T\sin\theta)\cdot \ell$：</p>
+              <div class="math-display">
+                $$\sum \tau_O = 0 \implies T\sin\theta \cdot \ell - W \cdot x = 0 \implies T = \frac{x}{\ell \sin\theta} W$$
+              </div>
+              <p class="conclusion-line">✅ <strong>結論 (A)：</strong>因 $\ell, \theta, W$ 皆固定，當重錘右移（$x$ 增大）時，力臂變長，<strong>輕繩張力 $T$ 與 $x$ 成正比而變大</strong>。</p>
+            </div>
+
+            <div class="step-block">
+              <h4>步驟 2：由水平合力為零，求 (B) 樞紐水平分量 $F_x$</h4>
+              <p>輕繩對木棒有向左拉的水平分量 $T_x = T\cos\theta$，故牆壁樞紐 $\mathrm{O}$ 必須施予木棒向右的水平推力 $F_x$ 以維持水平平衡：</p>
+              <div class="math-display">
+                $$\sum F_x = 0 \implies F_x = T\cos\theta = \left(\frac{x}{\ell}\cot\theta\right) W$$
+              </div>
+              <p class="conclusion-line">✅ <strong>結論 (B)：</strong>隨著 $x$ 增大，$T$ 變大，向左拉的分力變大，因此<strong>樞紐水平分量 $F_x$ 亦隨之變大</strong>。</p>
+            </div>
+
+            <div class="step-block">
+              <h4>步驟 3：由鉛直合力為零，求 (C) 樞紐鉛直分量 $F_y$</h4>
+              <p>鉛直方向共有向下的重物 $W$，以及向上的輕繩鉛直分力 $T_y = T\sin\theta$ 與樞紐鉛直分力 $F_y$：</p>
+              <div class="math-display">
+                $$\sum F_y = 0 \implies F_y + T\sin\theta = W \implies F_y = W - \frac{x}{\ell}W = \left(1 - \frac{x}{\ell}\right)W$$
+              </div>
+              <p class="conclusion-line">💡 <em>直覺理解（槓桿分擔重物）：</em>也可直接以 $\mathrm{P}$ 點為支點取力矩平衡：$F_y \cdot \ell = W(\ell - x)$。當重錘越往右移（越靠近 $\mathrm{P}$ 端），輕繩分擔了更多重量，<strong>樞紐 $\mathrm{O}$ 需分擔的鉛直支撐力 $F_y$ 就變小</strong>！</p>
+            </div>
+
+            <div class="step-block">
+              <h4>步驟 4：求 (D) 樞紐作用力方向與水平的夾角 $\phi$</h4>
+              <p>樞紐作用力 $\vec{F}_O$ 的水平分量 $F_x$ 變大、鉛直分量 $F_y$ 變小，其與水平方向夾角 $\phi$ 滿足：</p>
+              <div class="math-display">
+                $$\tan\phi = \frac{F_y}{F_x} = \frac{\left(1 - \frac{x}{\ell}\right)W}{\left(\frac{x}{\ell}\cot\theta\right)W} = \frac{\ell - x}{x}\tan\theta$$
+              </div>
+              <p class="conclusion-line">✅ <strong>結論 (D)：</strong>當 $x$ 增大時，分子 $(\ell - x)$ 變小且分母 $x$ 變大，故 $\tan\phi$ 嚴格遞減，<strong>夾角 $\phi$ 變小</strong>（$\vec{F}_O$ 方向越來越趨近水平）。</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Method 2: Closed Force Triangle & Three-Force Principle (Geometric Intuition) -->
+        <article class="exp-card highlight-border">
+          <div class="exp-card-header">
+            <span class="method-badge m2">方法二：封閉力三角形 ＆ 三力共點定理解法（幾何秒殺法）</span>
+          </div>
+          <div class="exp-card-body">
+            <p>木棒只受三個力作用而平衡：<strong>重力 $\vec{W}$</strong>、<strong>輕繩張力 $\vec{T}$</strong>、<strong>樞紐作用力 $\vec{F}_O$</strong>。根據靜力學兩大幾何定理，不用列代數式也能一眼看出答案：</p>
+
+            <div class="step-block">
+              <h4>定理 A：三力平衡必形成「封閉力三角形」（視圖 2）</h4>
+              <p>因為合力 $\vec{W} + \vec{T} + \vec{F}_O = \vec{0}$，將三個力向量<strong>首尾相接（Head-to-Tail）</strong>必圍成一個封閉三角形。觀察這個三角形的三個邊：</p>
+              <ul class="geo-list">
+                <li><strong>第一邊（鉛直邊 $\vec{W}$）：</strong>大小恆為 $W$、方向恆鉛直向下 $\longrightarrow$ <strong>固定不動的基準邊！</strong></li>
+                <li><strong>第二邊（斜邊 $\vec{T}$）：</strong>由 $\vec{W}$ 的箭頭出發，沿著輕繩方向（與水平夾固定角 $\theta$）向左上延伸 $\longrightarrow$ <strong>方向固定在一條射線上！</strong></li>
+                <li><strong>第三邊（樞紐力 $\vec{F}_O$）：</strong>從 $\vec{T}$ 的箭頭連回 $\vec{W}$ 的起點，負責把三角形「封閉」起來。</li>
+              </ul>
+            </div>
+
+            <div class="step-block">
+              <h4>定理 B：非平行三力平衡必「三力共點」（視圖 1 交點 $C$）</h4>
+              <p>若三個非平行力使剛體平衡，此三力的<strong>作用線必相交於同一點 $C$</strong>（否則對前兩力交點取力矩，第三力必產生不平衡力矩）：</p>
+              <ol class="geo-list">
+                <li>輕繩張力 $\vec{T}$ 的作用線即為輕繩本身（過 $\mathrm{P}$ 點、仰角 $\theta$）。</li>
+                <li>重錘重力 $\vec{W}$ 的作用線為距離牆壁 $x$ 的鉛直線。</li>
+                <li>這兩條作用線相交於點 $C(x, (\ell-x)\tan\theta)$，因此<strong>樞紐作用力 $\vec{F}_O$ 的作用線必定從 $\mathrm{O}$ 點直接指向交點 $C$！</strong></li>
+              </ol>
+              <div class="math-display">
+                $$\text{幾何斜率直接給出：}\tan\phi = \frac{y_C}{x_C} = \frac{(\ell - x)\tan\theta}{x}$$
+              </div>
+              <p>當重錘往右移（$x$ 增大）時，鉛直線右移，交點 $C$ 沿著輕繩<strong>往右下移動</strong>！因此連線 $\overline{OC}$ 與水平的夾角 $\phi$ 肉眼可見直接<strong>變小</strong>！</p>
+            </div>
+
+            <div class="step-block special-insight">
+              <h4>🌟 進階延伸思考：樞紐總作用力 $F_O = |\vec{F}_O|$ 的量值如何變化？</h4>
+              <p>許多同學誤以為 $F_O$ 也會單調變大或變小，但觀察<strong>視圖 2 的封閉三角形</strong>！$\vec{F}_O$ 是從定點（$\vec{W}$ 起點）連向斜線（$\vec{T}$ 所在直線）的向量：</p>
+              <ul class="geo-list">
+                <li>由點到直線的幾何性質可知：當 $\vec{F}_O \perp \vec{T}$ 時（即 $\phi = 90^\circ - \theta$，發生在 $x = \ell\sin^2\theta$），<strong>樞紐總作用力 $F_O$ 有最小值 $W\cos\theta$</strong>！</li>
+                <li>因此當 $x$ 從 $0$ 增加到 $\ell$ 時，樞紐總力量值 $F_O = \sqrt{F_x^2 + F_y^2}$ 會<strong>先變小、達到極小值 $W\cos\theta$ 後再變大</strong>！（可在上方調整滑桿至 $x = \sin^2\theta \cdot \ell$ 親眼驗證直角三角形瞬間！）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Summary Comparison Table -->
+      <div class="summary-table-wrap">
+        <h3>📋 範例 8 各物理量隨重錘位置 $x$ 增大（右移）之變化總整理表</h3>
+        <table class="physics-table">
+          <thead>
+            <tr>
+              <th>題號與物理量名稱</th>
+              <th>符號</th>
+              <th>數學關係式（以 $W, \ell, \theta, x$ 表示）</th>
+              <th>當 $x \to 0^+$（極近牆端）</th>
+              <th>當 $x$ 增大（重錘右移）</th>
+              <th>當 $x \to \ell$（極近繩端 P）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>(A) 輕繩張力量值</strong></td>
+              <td>$T$</td>
+              <td>$T = \dfrac{x}{\ell \sin\theta} W$</td>
+              <td>$0$</td>
+              <td><span class="badge-up">線性變大 ↑</span></td>
+              <td>$\dfrac{W}{\sin\theta}$</td>
+            </tr>
+            <tr>
+              <td><strong>(B) 樞紐作用力水平分量</strong></td>
+              <td>$F_x$</td>
+              <td>$F_x = T\cos\theta = \left(\dfrac{x}{\ell}\cot\theta\right) W$</td>
+              <td>$0$</td>
+              <td><span class="badge-up">線性變大 ↑</span></td>
+              <td>$W\cot\theta$</td>
+            </tr>
+            <tr>
+              <td><strong>(C) 樞紐作用力鉛直分量</strong></td>
+              <td>$F_y$</td>
+              <td>$F_y = W - T\sin\theta = \left(1 - \dfrac{x}{\ell}\right) W$</td>
+              <td>$W$</td>
+              <td><span class="badge-down">線性變小 ↓</span></td>
+              <td>$0$</td>
+            </tr>
+            <tr>
+              <td><strong>(D) 樞紐力與水平夾角</strong></td>
+              <td>$\phi$</td>
+              <td>$\tan\phi = \dfrac{F_y}{F_x} = \dfrac{\ell - x}{x}\tan\theta$</td>
+              <td>$90^\circ$（鉛直向上）</td>
+              <td><span class="badge-down">單調變小 ↓</span></td>
+              <td>$0^\circ$（水平向右）</td>
+            </tr>
+            <tr class="bonus-row">
+              <td><strong>★ 補充：樞紐總作用力量值</strong></td>
+              <td>$F_O$</td>
+              <td>$F_O = \sqrt{F_x^2 + F_y^2} = W\sqrt{\left(\frac{x}{\ell}\cot\theta\right)^2 + \left(1-\frac{x}{\ell}\right)^2}$</td>
+              <td>$W$</td>
+              <td><span class="badge-curve">先變小後變大 ↘↗</span><br><small>於 $x = \ell\sin^2\theta$ 有極小值 $W\cos\theta$</small></td>
+              <td>$W\cot\theta$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal for Original Problem Image -->
+  <div class="modal-backdrop" id="problemModal" aria-hidden="true">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3>📄 範例 8 原題目圖檔對照</h3>
+        <button class="close-modal-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="problem_example8.png" alt="範例 8 原題目圖" class="problem-img">
+        <div class="modal-caption">
+          答案：(A) 變大　(B) 變大　(C) 變小　(D) 變小
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>盧政良 · 高中物理靜力平衡互動教學教材｜範例 8：水平輕桿、三力共點與封閉力三角形動態模擬（<strong>Gemini 版</strong> · 2026-11-05）</p>
+    <p class="footer-sub"><a href="../" style="color:#7dd3fc;text-decoration:none;">作品總覽</a> · <a href="../works.html" style="color:#7dd3fc;text-decoration:none;">教學作品集</a> · <a href="https://github.com/addielu-phy/addielu-phy.github.io/tree/main/beam-equilibrium-gemini" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:none;">GitHub 原始碼</a> · 可離線使用，無需登入</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

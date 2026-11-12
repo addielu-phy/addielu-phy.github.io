@@ -18,6 +18,23 @@
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+  {
+  "id": "beam-equilibrium-gemini",
+  "title": "三力平衡實驗室（Gemini版）｜木棒、輕繩與重錘",
+  "desc": "互動式雙畫布動態模擬：直接拖曳重錘觀察張力、樞紐反力與正交分量、三力作用線共點 C、封閉力三角形動態包絡線與極小值點，附雙視角完整公式推導。",
+  "url": "https://addielu-phy.github.io/beam-equilibrium-gemini/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/beam-equilibrium-gemini",
+  "cat": "探究與實作",
+  "tags": [
+    "靜力平衡",
+    "受力圖",
+    "封閉力三角形",
+    "三力共點",
+    "Gemini版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
 {
   "id": "box-tipping-gpt",
   "title": "木箱滑動、翻倒與支撐點（GPT版）",
