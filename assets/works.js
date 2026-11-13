@@ -19,6 +19,41 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "earth-science-exam2-gpt",
+  "title": "國三地科二段第5、6章｜重點圖解與會考基測題解（GPT版）",
+  "desc": "翰林地球的環境、板塊運動與岩層的祕密；10張可下載SVG圖解、總海報、7道核對題號與答案的考古題導讀、5道原創遷移練習。",
+  "url": "https://addielu-phy.github.io/earth-science-exam2-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/earth-science-exam2-gpt",
+  "cat": "自學評量",
+  "tags": [
+    "國三地科",
+    "段考複習",
+    "會考與基測",
+    "圖解",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
+  "id": "torque-lever-gpt",
+  "title": "2-5 力矩與槓桿原理｜互動教學實驗室（GPT版）",
+  "desc": "可調支點、施力大小與方向，看見垂直力臂、轉動方向與槓桿平衡；含桿重、三類槓桿、8題完整分步例題、考試技巧與3題練習。",
+  "url": "https://addielu-phy.github.io/torque-lever-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/torque-lever-gpt",
+  "cat": "探究與實作",
+  "tags": [
+    "國中理化",
+    "力矩",
+    "槓桿",
+    "互動動畫",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+
+{
   "id": "torque-lever-grok",
   "title": "國三理化 2-5 力矩與槓桿原理・互動教學（Grok版）",
   "desc": "翰林九上 2-5：扳手力臂（斜向施力、作用線與垂直力臂）、槓桿砝碼、有重量米尺三個互動動畫；8 題生活情境例題完整計算（開門、蹺蹺板、扁擔、扳手、米尺、前臂、斜繩），考試陷阱整理與即時回饋小測驗。",
