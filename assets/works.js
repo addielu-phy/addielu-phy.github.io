@@ -19,6 +19,23 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "torque-lever-grok",
+  "title": "國三理化 2-5 力矩與槓桿原理・互動教學（Grok版）",
+  "desc": "翰林九上 2-5：扳手力臂（斜向施力、作用線與垂直力臂）、槓桿砝碼、有重量米尺三個互動動畫；8 題生活情境例題完整計算（開門、蹺蹺板、扁擔、扳手、米尺、前臂、斜繩），考試陷阱整理與即時回饋小測驗。",
+  "url": "https://addielu-phy.github.io/torque-lever-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/torque-lever-grok",
+  "cat": "課程工具",
+  "tags": [
+    "國三理化",
+    "力矩",
+    "槓桿原理",
+    "互動動畫",
+    "Grok版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "math-a-exam-114-gpt",
   "title": "高師大附中高二數學A第二次段考・15題互動詳解（GPT版）",
   "desc": "114-1原卷4題多選、11題填充，含20個選項解析；每題可調參數與播放動畫、完整分步計算、定義域與絕對值提醒、本機學習筆記。",

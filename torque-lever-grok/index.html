@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2-5 力矩與槓桿原理・互動教學（Grok 版）｜盧政良</title>
+<meta name="description" content="國三理化（翰林第五冊）2-5 力矩與槓桿原理互動教學：扳手力臂、槓桿砝碼、有重量米尺三個互動動畫，8 題生活情境例題完整計算、考試技巧與小測驗。Grok 版，盧政良。">
+<meta name="author" content="盧政良">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{--ink:#1d2f42;--muted:#5b6f80;--line:#d9e3ea;--bg:#f4f7f6;--card:#fff;--teal:#0d7c74;--blue:#1f6fbf;--gold:#b7791f;--red:#c43c47;--purple:#7446b0;--green:#2e8a3c;--soft:#eef5f4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+a{color:var(--blue)}
+header,main,footer{max-width:1100px;margin:auto;padding:20px 18px}
+header{padding-top:30px}
+.eyebrow{font-size:13px;letter-spacing:.12em;color:var(--teal);font-weight:700}
+h1{font-size:clamp(26px,4.2vw,40px);line-height:1.3;margin:8px 0 6px}
+h2{font-size:clamp(21px,2.6vw,26px);margin:4px 0 12px;line-height:1.4}
+h3{font-size:19px;margin:20px 0 8px;color:var(--teal)}
+.badge{display:inline-block;padding:2px 12px;border-radius:999px;background:#fdf0d8;color:#8a5a00;font-size:.5em;font-weight:800;vertical-align:middle;border:1px solid #f0d49a}
+.byline{color:var(--muted);font-size:15px;margin:0}
+.sub{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 3px 14px #18354a0a;min-width:0;max-width:100%}
+.toc ol{margin:6px 0 0;padding-left:1.4em;columns:2;column-gap:30px}
+.toc li{margin:3px 0;break-inside:avoid}
+.box{border-radius:12px;padding:12px 16px;margin:12px 0}
+.key{background:var(--soft);border-left:4px solid var(--teal)}
+.warn{background:#fdf0f0;border-left:4px solid var(--red)}
+.tip{background:#fff6e3;border-left:4px solid var(--gold)}
+.note{color:var(--muted);font-size:15px}
+.katex-display{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:3px 0}
+.tablewrap{overflow-x:auto;max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th,td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+th{background:#f2f7f6}
+svg{display:block;width:100%;height:auto;max-width:100%;user-select:none;-webkit-user-select:none}
+svg text{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+.lab{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;align-items:start}
+.stage{background:#fbfdfd;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.panel{min-width:0}
+.control{margin:8px 0}
+.control label{display:flex;justify-content:space-between;font-weight:650;font-size:16px}
+.control output{color:var(--teal);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--teal);height:30px;cursor:pointer}
+.buttons{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+button{border:1px solid var(--line);border-radius:10px;background:#eaf2f1;color:var(--ink);padding:8px 12px;font:inherit;font-size:15px;cursor:pointer;min-height:40px}
+button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #e0ad3a;outline-offset:2px}
+.readout{background:#f5f9f8;border-radius:12px;padding:10px 14px;font-size:15.5px;font-variant-numeric:tabular-nums;line-height:1.75;overflow-wrap:anywhere}
+.readout b{color:var(--ink)}
+.status{margin-top:8px;padding:9px 14px;border-radius:10px;font-weight:700}
+.s-bal{background:#e5f4e8;color:#1f6b2c}.s-ccw{background:#e8f0fb;color:#1a5aa0}.s-cw{background:#fdeaea;color:#a2262e}.s-zero{background:#f1ecf9;color:#5b2f96}
+.hint{font-size:14px;color:var(--muted);margin:6px 0 0}
+.handle{cursor:grab;touch-action:none}
+.panY{touch-action:pan-y}
+.ex{border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0;background:#fff}
+.ex h3{margin-top:0}
+.ex .tag{display:inline-block;font-size:13px;background:#eaf2f1;color:var(--teal);border-radius:999px;padding:1px 10px;margin-left:6px;font-weight:700;vertical-align:middle}
+details.sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+details.sol>summary{cursor:pointer;font-weight:700;color:var(--blue);padding:6px 0;list-style:none}
+details.sol>summary::before{content:"▶ ";font-size:.8em}
+details.sol[open]>summary::before{content:"▼ "}
+.steps{margin:6px 0;padding-left:0;list-style:none;counter-reset:st}
+.steps>li{counter-increment:st;position:relative;padding-left:36px;margin:10px 0}
+.steps>li::before{content:counter(st);position:absolute;left:0;top:3px;width:25px;height:25px;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ans{background:#fff4dc;border-radius:10px;padding:8px 14px;font-weight:700;margin:8px 0}
+.quiz .q{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.quiz .opts{display:grid;gap:8px;margin-top:8px}
+.quiz .opts button{text-align:left;background:#f6f9f9}
+.quiz .opts button.right{background:#e2f3e5;border-color:#7cc08a}
+.quiz .opts button.wrong{background:#fde6e6;border-color:#e39a9f}
+.quiz .fb{margin-top:8px;display:none}
+.quiz .fb.show{display:block}
+#score{font-weight:700;color:var(--teal)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:16px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
+footer{font-size:14px;color:var(--muted);padding-bottom:44px}
+@media(max-width:860px){.lab{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){header,main,footer{padding:14px}.card{padding:15px;border-radius:14px}.toc ol{columns:1}body{font-size:17px}.ex{padding:13px}table{font-size:15px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">國三理化 · 翰林第五冊 · 第 2 章 力與運動</div>
+  <h1>2-5 力矩與槓桿原理 <span class="badge">Grok 版</span></h1>
+  <p class="byline">作者：盧政良 ｜ 互動教學網頁（Grok 版）</p>
+  <p class="sub">為什麼門把裝在離門軸最遠的地方？為什麼斜著推扳手比較費力？蹺蹺板上大人要坐在哪裡才能和小孩平衡？用三個可以動手操作的動畫，把「力矩」看清楚，再用 8 題生活例題練到會算。</p>
+</header>
+<main>
+
+<nav class="card toc" aria-label="目錄">
+  <h2 style="margin-bottom:4px">目錄</h2>
+  <ol>
+    <li><a href="#s1">力矩：轉動效果有多大</a></li>
+    <li><a href="#labA">互動一：扳手與力臂</a></li>
+    <li><a href="#s2">轉動平衡與槓桿原理</a></li>
+    <li><a href="#labB">互動二：槓桿與砝碼</a></li>
+    <li><a href="#s3">有重量的木棒：重心與支點受力</a></li>
+    <li><a href="#labC">互動三：有重量的米尺</a></li>
+    <li><a href="#examples">情境例題 8 題（由淺入深）</a></li>
+    <li><a href="#skills">考試技巧與常見陷阱</a></li>
+    <li><a href="#quiz">小測驗</a></li>
+  </ol>
+</nav>
+
+<!-- ============ 1 ============ -->
+<section class="card" id="s1">
+  <h2>一、力矩：轉動效果有多大</h2>
+  <p>力可以讓物體移動，也可以讓物體<strong>轉動</strong>。開門、轉水龍頭、用扳手鎖螺絲，都是讓物體繞著一個固定點（或固定軸）轉動。這個固定點叫做<strong>支點</strong>（也叫轉軸）。</p>
+  <p>經驗告訴我們：推門時，推在門把（離門軸遠）比推在門軸旁邊輕鬆得多。轉動效果不只看力多大，還要看力「離支點多遠、朝哪個方向」。描述轉動效果的物理量就是<strong>力矩</strong>。</p>
+  <div class="box key">
+    <p style="margin:0"><strong>力矩的定義</strong></p>
+    \[ \text{力矩} = \text{力} \times \text{力臂} \qquad \tau = F \times d \]
+    <p style="margin:0"><strong>力臂 \(d\)：支點到「力的作用線」的垂直距離。</strong>力的作用線是沿著力的方向、通過施力點畫出的直線（向兩邊延長）。</p>
+  </div>
+  <div class="box warn">
+    <strong>力臂不是「支點到施力點的距離」！</strong>只有當力和桿子垂直時，兩者才相等。斜著施力時，力臂比支點到施力點的距離短，所以力矩比較小。若力的作用線<strong>通過支點</strong>，力臂 = 0，不論力多大，力矩都是 0，物體不會因這個力而轉動（例如沿著門面朝門軸推門）。
+  </div>
+  <h3>力矩的單位與換算</h3>
+  <p>力矩的單位是「力的單位 × 長度單位」：</p>
+  <div class="tablewrap"><table>
+    <tr><th>力的單位</th><th>長度單位</th><th>力矩單位</th></tr>
+    <tr><td>牛頓（N）</td><td>公尺（m）</td><td>N·m（牛頓·公尺）</td></tr>
+    <tr><td>公斤重（kgw）</td><td>公尺（m）</td><td>kgw·m</td></tr>
+    <tr><td>公克重（gw）</td><td>公分（cm）</td><td>gw·cm</td></tr>
+  </table></div>
+  <p>換算：\(1\ \text{kgw} = 1000\ \text{gw}\)，\(1\ \text{m} = 100\ \text{cm}\)，\(1\ \text{kgw} \approx 9.8\ \text{N}\)。</p>
+  \[ 1\ \text{kgw·m} = 1000\ \text{gw} \times 100\ \text{cm} = 10^5\ \text{gw·cm} \qquad 1\ \text{kgw·m} \approx 9.8\ \text{N·m} \]
+  <p class="note">提醒：N·m 和功的單位焦耳（J）在數學上相同，但力矩習慣寫成 N·m，不寫成 J。同一題裡，力和長度的單位要先統一再相乘。</p>
+  <h3>力矩的方向：順時針與逆時針</h3>
+  <p>力矩會讓物體繞支點往某一個方向轉：<strong>順時針</strong>或<strong>逆時針</strong>（以同一個觀察方向來看）。判斷方法：只看這一個力，想像支點被釘住，物體會往哪邊轉？</p>
+  <ul>
+    <li>水平的桿子上，<strong>支點右側</strong>受到向下的力 → 右邊往下 → <strong>順時針</strong>。</li>
+    <li>水平的桿子上，<strong>支點左側</strong>受到向下的力 → 左邊往下 → <strong>逆時針</strong>。</li>
+    <li>向上的力方向相反：支點右側向上推 → 逆時針；支點左側向上推 → 順時針。</li>
+  </ul>
+  <p class="note">有些書會規定逆時針力矩為正、順時針為負；國中解題時，通常直接比較「順時針力矩和」與「逆時針力矩和」的大小即可。</p>
+</section>
+
+<!-- ============ Lab A ============ -->
+<section class="card" id="labA">
+  <h2>互動一：扳手與力臂（斜著推為什麼比較吃力？）</h2>
+  <p>拖曳<strong>紅色箭頭的尖端</strong>改變力的方向和大小，拖曳<strong>施力點（橘色圓點）</strong>沿著扳手移動；也可以用下方滑桿。紫色虛線就是力臂：從支點（螺帽中心）垂直畫到力的作用線（灰色虛線）。</p>
+  <div class="lab">
+    <div class="stage"><svg id="svgA" viewBox="0 0 640 380" role="img" aria-label="扳手力矩互動圖"></svg></div>
+    <div class="panel">
+      <div class="control"><label for="aF">施力大小 F <output id="oaF"></output></label><input id="aF" type="range" min="0" max="100" step="1" value="40"></div>
+      <div class="control"><label for="aR">施力點到支點的距離 r <output id="oaR"></output></label><input id="aR" type="range" min="4" max="36" step="1" value="30"></div>
+      <div class="control"><label for="aT">施力方向（從扳手方向逆時針量） <output id="oaT"></output></label><input id="aT" type="range" min="0" max="359" step="1" value="90"></div>
+      <div class="buttons">
+        <button type="button" data-a="90">垂直扳手往上推</button>
+        <button type="button" data-a="30">斜 30°</button>
+        <button type="button" data-a="0">沿扳手往外拉</button>
+        <button type="button" data-a="270">垂直往下壓</button>
+        <button type="button" data-a="near">握在靠近螺帽處</button>
+      </div>
+      <div class="readout" id="readA"></div>
+      <div class="status" id="stA"></div>
+    </div>
+  </div>
+  <div class="legend"><span><i style="background:#c43c47"></i>施力 F</span><span><i style="background:#9aa7b1"></i>力的作用線</span><span><i style="background:#7446b0"></i>力臂 d（垂直距離）</span><span><i style="background:#b7791f"></i>施力點距離 r</span></div>
+  <div class="box tip"><strong>觀察重點：</strong>力的大小和施力點都不變，只改變方向時，力臂 \(d\) 在垂直施力（90°）時最大，等於 \(r\)；越斜越小；沿著扳手拉（0° 或 180°）時作用線通過支點，\(d=0\)，力矩為 0。另一種看法：把斜向的力拆成「垂直扳手」和「沿著扳手」兩部分，沿著扳手的那一部分作用線通過支點，不產生力矩。</div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="card" id="s2">
+  <h2>二、轉動平衡與槓桿原理</h2>
+  <p>物體<strong>靜止平衡</strong>時，既不移動、也不轉動，必須同時滿足兩個條件：</p>
+  <div class="box key">
+    <ol style="margin:0;padding-left:1.3em">
+      <li><strong>合力為零</strong>：向上的力的總和 = 向下的力的總和（不會移動）。</li>
+      <li><strong>合力矩為零</strong>：對支點的 順時針力矩和 = 逆時針力矩和（不會轉動）。</li>
+    </ol>
+    \[ \sum \tau_{\text{順}} = \sum \tau_{\text{逆}} \]
+  </div>
+  <p>只滿足合力為零還不夠：用兩隻手在方向盤兩側一推一拉（大小相等、方向相反），合力為零，方向盤卻會轉。</p>
+  <h3>槓桿原理</h3>
+  <p>一根可以繞支點轉動的硬棒就是<strong>槓桿</strong>。人施加的力叫<strong>施力</strong>，要克服的力（例如物體的重量）叫<strong>抗力</strong>。槓桿平衡時：</p>
+  \[ \text{施力} \times \text{施力臂} = \text{抗力} \times \text{抗力臂} \]
+  <p>這其實就是「順時針力矩 = 逆時針力矩」只有兩個力時的特例。只有兩個力時，力和力臂成<strong>反比</strong>：力臂是 2 倍，需要的力就只要一半。</p>
+  <h3>支點受力怎麼算？</h3>
+  <p>槓桿平衡時，支點也會對槓桿施力（支點的反作用力），由「合力為零」求出。若槓桿上其他的力都是鉛直向下（例如掛砝碼、人坐在蹺蹺板上），支點就向上撐住槓桿，大小等於<strong>所有向下力的總和（包含槓桿自身的重量）</strong>。依作用力與反作用力（2-3），槓桿也以同樣大小的力向下壓支點。</p>
+  <div class="box warn"><strong>支點受力通過支點，所以它對支點的力矩是 0</strong>，列力矩式時不會出現它；但列「合力為零」時一定要算進去。同理，槓桿自身重量若剛好作用在支點上，也不產生力矩，卻會讓支點受力變大。</div>
+  <p class="note">槓桿如何省力或費力、滑輪、輪軸等「簡單機械」是 3-4 的內容，不在這次 2-5 的範圍內。</p>
+</section>
+
+<!-- ============ Lab B ============ -->
+<section class="card" id="labB">
+  <h2>互動二：槓桿與砝碼</h2>
+  <p>每個砝碼重 <strong>10 gw</strong>，掛鉤每格相距 <strong>10 cm</strong>。點一下掛鉤可以<strong>加</strong>（或<strong>移除</strong>，切換下方模式）砝碼；按住一疊砝碼左右拖曳，可以把最下面那一個移到別的掛鉤。槓桿自身重 100 gw，重心就在支點上。</p>
+  <div class="lab">
+    <div class="stage"><svg id="svgB" class="panY" viewBox="0 0 640 360" role="img" aria-label="槓桿砝碼互動圖"></svg></div>
+    <div class="panel">
+      <div class="buttons">
+        <button type="button" id="bAdd" class="on">點掛鉤：加砝碼</button>
+        <button type="button" id="bDel">點掛鉤：移除砝碼</button>
+      </div>
+      <div class="buttons">
+        <button type="button" id="bDemo">示範：平衡</button>
+        <button type="button" id="bRand">出一題（左邊隨機）</button>
+        <button type="button" id="bClear">清空</button>
+      </div>
+      <div class="readout" id="readB"></div>
+      <div class="status" id="stB"></div>
+    </div>
+  </div>
+  <p class="hint">提醒：平衡的槓桿即使被輕輕推斜，仍然維持平衡（兩邊力臂同比例縮短），所以這裡平衡時畫成水平。不平衡時，槓桿會一直轉下去（動畫中轉到約 11° 就停住，代表碰到止擋）。</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="card" id="s3">
+  <h2>三、有重量的木棒：重心與支點受力</h2>
+  <p>真實的木棒、米尺都有重量。<strong>均勻</strong>木棒的重量可以看成全部集中在<strong>重心</strong>（也就是中點）上，像一個掛在中點的砝碼。</p>
+  <ul>
+    <li>重心在支點右側 → 木棒自身重量產生<strong>順時針</strong>力矩，力臂 = 重心到支點的距離。</li>
+    <li>重心在支點左側 → 產生<strong>逆時針</strong>力矩。</li>
+    <li>重心剛好在支點上 → 自身重量的力矩為 0（這就是米尺從中點支起來會平衡的原因）。</li>
+  </ul>
+  <div class="box key">米尺題的標準步驟：① 重心在 50 cm 刻度（均勻米尺）；② 力臂 = 刻度相減（取正值）；③ 順時針和 = 逆時針和；④ 支點受力 = 米尺重 + 所有掛重（其他力都向下時）。</div>
+</section>
+
+<!-- ============ Lab C ============ -->
+<section class="card" id="labC">
+  <h2>互動三：有重量的米尺</h2>
+  <p>移動<strong>支點（綠色三角形）</strong>和<strong>砝碼（藍色）</strong>：可以直接左右拖曳，也可以用滑桿。紅色箭頭是米尺自身重量，作用在 50 cm 的重心。</p>
+  <div class="lab">
+    <div class="stage"><svg id="svgC" class="panY" viewBox="0 0 680 360" role="img" aria-label="有重量米尺互動圖"></svg></div>
+    <div class="panel">
+      <div class="control"><label for="cM">米尺重量 W <output id="ocM"></output></label><input id="cM" type="range" min="0" max="200" step="10" value="100"></div>
+      <div class="control"><label for="cP">支點位置 <output id="ocP"></output></label><input id="cP" type="range" min="0" max="100" step="1" value="40"></div>
+      <div class="control"><label for="cm">砝碼重量 m <output id="ocm"></output></label><input id="cm" type="range" min="0" max="300" step="10" value="50"></div>
+      <div class="control"><label for="cX">砝碼位置 <output id="ocX"></output></label><input id="cX" type="range" min="0" max="100" step="1" value="10"></div>
+      <div class="buttons">
+        <button type="button" id="cFind">幫我找平衡位置</button>
+        <button type="button" data-c="ex5">例題 5 設定</button>
+        <button type="button" data-c="ex6">例題 6 設定</button>
+        <button type="button" data-c="mid">支點在中點</button>
+      </div>
+      <div class="readout" id="readC"></div>
+      <div class="status" id="stC"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Examples ============ -->
+<section class="card" id="examples">
+  <h2>四、情境例題（由淺入深）</h2>
+  <p>每題先自己算，再點「點擊展開完整解答」對答案。解題固定用五步：<strong>已知 → 選支點 → 分順逆 → 列等式 → 解答與單位檢查</strong>。</p>
+
+  <div class="ex" id="ex1">
+    <h3>例題 1　推門的位置 <span class="tag">力矩定義</span></h3>
+    <svg id="dg1" viewBox="0 0 600 190" aria-label="例題1示意圖"></svg>
+    <p>教室的門寬 80 cm，門把距離門軸 75 cm。你在門把處<strong>垂直門面</strong>推門，施力 20 N。<br>(1) 推門的力矩是多少 N·m？(2) 如果改推在距離門軸 25 cm 處（仍垂直門面），要產生同樣大小的力矩，需要施力多少 N？(3) 第 (1) 小題的力矩約是多少 kgw·m？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>\(F_1 = 20\ \text{N}\)，垂直門面，所以力臂 = 門把到門軸的距離 \(d_1 = 75\ \text{cm} = 0.75\ \text{m}\)；\(d_2 = 25\ \text{cm} = 0.25\ \text{m}\)。</li>
+        <li><strong>選支點：</strong>門繞門軸轉動，支點就是門軸。</li>
+        <li><strong>方向：</strong>由上往下俯視，推門的力使門往同一個方向轉（例如逆時針），只有這一個力矩要算。</li>
+        <li><strong>計算：</strong>
+          \[ (1)\ \tau = F_1 \times d_1 = 20\ \text{N} \times 0.75\ \text{m} = 15\ \text{N·m} \]
+          \[ (2)\ F_2 \times 0.25\ \text{m} = 15\ \text{N·m} \Rightarrow F_2 = 60\ \text{N} \]
+          \[ (3)\ 15\ \text{N·m} \div 9.8\ \text{N/kgw} \approx 1.53\ \text{kgw·m} \]
+        </li>
+        <li><strong>單位檢查：</strong>N × m = N·m；力臂變成原來的 \(\frac{1}{3}\)，力就要變成 3 倍（20 N → 60 N），合理。</li>
+      </ol>
+      <div class="ans">答：(1) 15 N·m　(2) 60 N　(3) 約 1.53 kgw·m</div>
+      <div class="box tip"><strong>考試技巧：</strong>力矩相同時，力和力臂成反比。先把 cm 換成 m 再算 N·m，是最常被扣分的地方。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex2">
+    <h3>例題 2　蹺蹺板上的大人和小孩 <span class="tag">槓桿原理</span><span class="tag">支點受力</span></h3>
+    <svg id="dg2" viewBox="0 0 600 190" aria-label="例題2示意圖"></svg>
+    <p>公園的蹺蹺板長 4 m，支點在正中央，板子均勻、重 30 kgw。體重 24 kgw 的小孩坐在左端，體重 60 kgw 的大人要坐在支點右側多遠處，蹺蹺板才能水平平衡？此時支點受力多少 kgw？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>小孩 24 kgw，在左端，距支點 \(4 \div 2 = 2\ \text{m}\)；大人 60 kgw，距支點 \(x\)；板重 30 kgw 作用在重心（中點），也就是支點上。</li>
+        <li><strong>選支點：</strong>蹺蹺板的支點（中央）。</li>
+        <li><strong>分順逆：</strong>逆時針（左邊往下）：小孩 \(24 \times 2 = 48\ \text{kgw·m}\)。順時針（右邊往下）：大人 \(60 \times x\)。板重通過支點，力臂 0，力矩 0。</li>
+        <li><strong>列等式：</strong>
+          \[ 60 \times x = 24 \times 2 \Rightarrow x = 0.8\ \text{m} \]
+          支點受力（合力為零，其他力都向下）：
+          \[ N = 24 + 60 + 30 = 114\ \text{kgw}\ (\text{向上}) \]
+        </li>
+        <li><strong>單位檢查：</strong>kgw × m = kgw·m，兩邊單位相同，解出的 \(x\) 是 m。大人比較重，坐得比較靠近支點，合理。</li>
+      </ol>
+      <div class="ans">答：大人坐在支點右側 0.8 m 處；支點受力 114 kgw（向上撐住蹺蹺板）。</div>
+      <div class="box tip"><strong>考試技巧：</strong>板重作用在支點上 → 不寫進力矩式，但支點受力一定要加板重。忘記加 30 kgw 而答 84 kgw，是典型錯誤。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex3">
+    <h3>例題 3　扁擔挑東西：肩膀放哪裡？ <span class="tag">找支點位置</span></h3>
+    <svg id="dg3" viewBox="0 0 600 190" aria-label="例題3示意圖"></svg>
+    <p>農夫用一根長 1.2 m 的扁擔挑東西，前端掛 18 kgw 的米，後端掛 12 kgw 的菜（扁擔重量不計）。肩膀應該放在距離前端多遠處，扁擔才能保持水平？肩膀承受多少 kgw 的力？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>前端（畫在左邊）18 kgw，後端（右邊）12 kgw，兩端相距 1.2 m。設肩膀距前端 \(x\)，則距後端 \(1.2 - x\)。</li>
+        <li><strong>選支點：</strong>肩膀就是支點。</li>
+        <li><strong>分順逆：</strong>逆時針（左邊往下）：\(18 \times x\)。順時針（右邊往下）：\(12 \times (1.2 - x)\)。</li>
+        <li><strong>列等式：</strong>
+          \[ 18x = 12(1.2 - x) \Rightarrow 18x = 14.4 - 12x \Rightarrow 30x = 14.4 \Rightarrow x = 0.48\ \text{m} \]
+          肩膀受力：\(18 + 12 = 30\ \text{kgw}\)（扁擔向下壓肩膀 30 kgw，肩膀向上撐扁擔 30 kgw）。
+        </li>
+        <li><strong>檢查：</strong>\(18 \times 0.48 = 8.64\)，\(12 \times 0.72 = 8.64\ \text{kgw·m}\)，相等 ✔。</li>
+      </ol>
+      <div class="ans">答：肩膀距前端 0.48 m（距後端 0.72 m）；肩膀受力 30 kgw。</div>
+      <div class="box tip"><strong>考試技巧（比例速解）：</strong>只有兩個力時，力臂和力成反比。重量比 18 : 12 = 3 : 2，所以距離比 = 2 : 3，前端距離 \(= 1.2 \times \frac{2}{5} = 0.48\ \text{m}\)。支點一定靠近重的那一邊。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex4">
+    <h3>例題 4　扳手鎖螺絲：斜著用力 <span class="tag">斜向力的力臂</span></h3>
+    <svg id="dg4" viewBox="0 0 600 345" aria-label="例題4示意圖"></svg>
+    <p>修腳踏車時，要用 30 cm 長的扳手轉開一顆螺帽，至少需要 12 N·m 的力矩。施力點都在扳手末端。<br>(1) 垂直扳手施力，至少要多少 N？(2) 如果施力方向和扳手夾 30°，至少要多少 N？(3) 如果沿著扳手方向用力拉，能轉開螺帽嗎？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>支點到施力點 \(r = 30\ \text{cm} = 0.30\ \text{m}\)；需要力矩 12 N·m。</li>
+        <li><strong>選支點：</strong>螺帽中心（扳手繞它轉）。</li>
+        <li><strong>找力臂：</strong>(1) 垂直施力：力臂 = \(r = 0.30\ \text{m}\)。(2) 夾 30°：從支點向力的作用線畫垂線，得到一個 30°-60°-90° 的直角三角形，斜邊是 \(r\)，力臂是 30° 角的對邊，等於斜邊的一半：\(d = 30 \div 2 = 15\ \text{cm} = 0.15\ \text{m}\)。(3) 沿扳手方向：作用線通過支點，力臂 = 0。</li>
+        <li><strong>列等式：</strong>
+          \[ (1)\ F \times 0.30 = 12 \Rightarrow F = 40\ \text{N} \]
+          \[ (2)\ F \times 0.15 = 12 \Rightarrow F = 80\ \text{N} \]
+          (3) 力矩 \(= F \times 0 = 0\)，不論 \(F\) 多大都轉不動。
+        </li>
+        <li><strong>單位檢查：</strong>N·m ÷ m = N。斜 30° 時力臂只剩一半，所需的力變 2 倍，合理。</li>
+      </ol>
+      <div class="ans">答：(1) 40 N　(2) 80 N　(3) 不能，力臂為 0，力矩為 0。</div>
+      <div class="box tip"><strong>考試技巧：</strong>看到斜向的力，第一件事是「延長作用線、從支點畫垂線」。國中常見的角度是 30°（力臂 = 一半）和 90°（力臂 = 全長）。可以到上面的<a href="#labA">互動一</a>按「斜 30°」驗證。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex5">
+    <h3>例題 5　有重量的米尺 <span class="tag">重心</span><span class="tag">支點受力</span></h3>
+    <svg id="dg5" viewBox="0 0 600 190" aria-label="例題5示意圖"></svg>
+    <p>一支均勻米尺長 100 cm、重 80 gw。把支點放在 35 cm 刻度處，在 5 cm 刻度處掛一個砝碼，米尺恰好水平平衡。砝碼重多少 gw？支點受力多少 gw？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>米尺重 80 gw，作用在重心 50 cm 處；支點 35 cm；砝碼 \(m\) 在 5 cm 處。</li>
+        <li><strong>選支點：</strong>35 cm 刻度處。力臂用刻度相減：砝碼 \(35 - 5 = 30\ \text{cm}\)，重心 \(50 - 35 = 15\ \text{cm}\)。</li>
+        <li><strong>分順逆：</strong>逆時針（支點左側往下）：砝碼 \(m \times 30\)。順時針（支點右側往下）：米尺自身重量 \(80 \times 15 = 1200\ \text{gw·cm}\)。</li>
+        <li><strong>列等式：</strong>
+          \[ m \times 30 = 80 \times 15 \Rightarrow m = \frac{1200}{30} = 40\ \text{gw} \]
+          \[ N = 80 + 40 = 120\ \text{gw}\ (\text{向上}) \]
+        </li>
+        <li><strong>單位檢查：</strong>gw × cm = gw·cm；答案 gw。米尺重心在支點右邊，要在左邊加砝碼才能平衡，合理。</li>
+      </ol>
+      <div class="ans">答：砝碼 40 gw；支點受力 120 gw。</div>
+      <div class="box tip"><strong>考試技巧：</strong>米尺題沒說「不計重量」就要把自身重量放在 50 cm（重心）。可以到<a href="#labC">互動三</a>按「例題 5 設定」驗證。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex6">
+    <h3>例題 6　用槓桿量出米尺的重量 <span class="tag">反推未知重量</span></h3>
+    <svg id="dg6" viewBox="0 0 600 190" aria-label="例題6示意圖"></svg>
+    <p>手邊沒有秤，想知道一支均勻米尺有多重。把支點放在 30 cm 刻度處，在 0 cm 刻度處掛 50 gw 的砝碼，米尺恰好水平平衡。米尺重多少 gw？支點受力多少 gw？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>砝碼 50 gw 在 0 cm；支點 30 cm；米尺重 \(W\) 作用在 50 cm。</li>
+        <li><strong>選支點：</strong>30 cm 刻度。力臂：砝碼 \(30 - 0 = 30\ \text{cm}\)；重心 \(50 - 30 = 20\ \text{cm}\)。</li>
+        <li><strong>分順逆：</strong>逆時針：\(50 \times 30 = 1500\ \text{gw·cm}\)。順時針：\(W \times 20\)。</li>
+        <li><strong>列等式：</strong>
+          \[ W \times 20 = 50 \times 30 \Rightarrow W = 75\ \text{gw} \]
+          \[ N = 75 + 50 = 125\ \text{gw} \]
+        </li>
+        <li><strong>單位檢查：</strong>兩邊都是 gw·cm；答案 gw。</li>
+      </ol>
+      <div class="ans">答：米尺重 75 gw；支點受力 125 gw。</div>
+      <div class="box tip"><strong>考試技巧：</strong>未知的米尺重量就當成「掛在 50 cm 的未知砝碼」，和例題 5 用同一個式子，只是未知數換了位置。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex7">
+    <h3>例題 7　用前臂舉啞鈴 <span class="tag">人體槓桿</span><span class="tag">支點受力方向</span></h3>
+    <svg id="dg7" viewBox="0 0 600 215" aria-label="例題7示意圖"></svg>
+    <p>手肘彎曲、前臂保持水平，手掌握著 5 kgw 的啞鈴。把前臂看成以肘關節為支點的槓桿：二頭肌在距肘關節 4 cm 處鉛直向上拉前臂，啞鈴距肘關節 32 cm，前臂自身重 1 kgw，重心距肘關節 16 cm。二頭肌的拉力多大？肘關節對前臂施力多少、方向如何？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>肌力 \(F\)（向上）力臂 4 cm；啞鈴 5 kgw（向下）力臂 32 cm；前臂重 1 kgw（向下）力臂 16 cm。所有力都和前臂垂直，力臂就是到肘關節的距離。</li>
+        <li><strong>選支點：</strong>肘關節（肘關節對前臂的力通過支點，不出現在力矩式中）。</li>
+        <li><strong>分順逆：</strong>肘在左、手在右：順時針（右側往下）：\(5 \times 32 + 1 \times 16 = 176\ \text{kgw·cm}\)。逆時針（右側向上拉）：\(F \times 4\)。</li>
+        <li><strong>列等式：</strong>
+          \[ F \times 4 = 5 \times 32 + 1 \times 16 = 176 \Rightarrow F = 44\ \text{kgw} \]
+          合力為零：向上 44 kgw，向下 \(5 + 1 = 6\ \text{kgw}\)，所以肘關節必須對前臂施 \(44 - 6 = 38\ \text{kgw}\) <strong>向下</strong>的力。
+        </li>
+        <li><strong>單位檢查：</strong>kgw·cm ÷ cm = kgw。肌肉力臂很短，所以拉力比啞鈴重得多，合理。</li>
+      </ol>
+      <div class="ans">答：二頭肌拉力 44 kgw；肘關節對前臂施力 38 kgw，方向向下。</div>
+      <div class="box tip"><strong>考試技巧：</strong>支點受力要用「合力為零」決定大小和方向，不一定向上，也不一定等於所有重量相加。只有當其他力全部向下時，支點受力才等於向下力的總和。</div>
+    </details>
+  </div>
+
+  <div class="ex" id="ex8">
+    <h3>例題 8　斜繩拉住的招牌桿 <span class="tag">斜向拉力</span><span class="tag">綜合</span></h3>
+    <svg id="dg8" viewBox="0 0 600 370" aria-label="例題8示意圖"></svg>
+    <p>店門口有一根均勻木桿，長 2 m、重 10 kgw，左端用鉸鏈固定在牆上（可繞鉸鏈轉動），右端掛著 5 kgw 的招牌，並用一條繩子把右端斜向上拉回牆上，繩子和木桿夾 30°，木桿保持水平靜止。繩子的拉力是多少 kgw？</p>
+    <details class="sol"><summary>點擊展開完整解答</summary>
+      <ol class="steps">
+        <li><strong>已知：</strong>桿重 10 kgw，作用在中點，距鉸鏈 1 m；招牌 5 kgw 在右端，距鉸鏈 2 m；繩拉力 \(T\) 作用在右端，和桿夾 30°。</li>
+        <li><strong>選支點：</strong>鉸鏈（牆對桿的力通過鉸鏈，力矩為 0，不必知道它）。</li>
+        <li><strong>找力臂：</strong>繩子的力臂是「鉸鏈到繩子作用線的垂直距離」，不是 2 m。延長繩子、從鉸鏈畫垂線，得到 30°-60°-90° 三角形，斜邊 2 m，力臂 = \(2 \div 2 = 1\ \text{m}\)。</li>
+        <li><strong>分順逆、列等式：</strong>順時針（右側往下）：\(10 \times 1 + 5 \times 2 = 20\ \text{kgw·m}\)。逆時針：\(T \times 1\)。
+          \[ T \times 1 = 10 \times 1 + 5 \times 2 = 20 \Rightarrow T = 20\ \text{kgw} \]
+        </li>
+        <li><strong>單位檢查：</strong>kgw·m ÷ m = kgw。若誤把繩子的力臂當成 2 m，會得到 10 kgw 的錯誤答案。</li>
+      </ol>
+      <div class="ans">答：繩子拉力 20 kgw（比桿和招牌的總重 15 kgw 還大，因為斜繩的力臂只有 1 m）。</div>
+      <div class="box tip"><strong>考試技巧：</strong>有未知力又有斜向力時，把支點選在「不知道也不想求」的力的作用點（這裡是鉸鏈）。牆對桿的力是斜的，國中不要求計算，高中會再學。</div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ Skills ============ -->
+<section class="card" id="skills">
+  <h2>五、考試技巧與常見陷阱</h2>
+  <h3>常見陷阱</h3>
+  <div class="tablewrap"><table>
+    <tr><th>陷阱</th><th>正確觀念</th></tr>
+    <tr><td>把桿長或「支點到施力點的距離」當力臂</td><td>力臂是支點到<strong>力的作用線</strong>的<strong>垂直</strong>距離；只有力和桿垂直時才等於支點到施力點的距離。</td></tr>
+    <tr><td>斜向的力直接乘距離</td><td>先延長作用線，從支點畫垂線找力臂；斜 30° 時力臂是一半。力的作用線通過支點時，力矩 = 0。</td></tr>
+    <tr><td>支點沒選好</td><td>先確定支點（轉軸）再找每個力的力臂；同一個力，換了支點力臂就不同。有未知力時，選它的作用點當支點，它就不會出現在力矩式中。</td></tr>
+    <tr><td>忘記木棒自身的重量</td><td>題目沒說「重量不計」，均勻木棒的重量就作用在中點（重心）。重心在支點上時力矩為 0，但支點受力仍要加上。</td></tr>
+    <tr><td>支點受力算錯</td><td>平衡時合力為零：其他力都向下時，支點受力 = 所有向下力的合力（含自身重量）；有向上的力（如肌肉、繩子）時要相減，方向也可能向下。</td></tr>
+    <tr><td>單位沒統一</td><td>同一題裡 gw 配 cm、kgw 配 m、N 配 m；\(1\ \text{kgw·m} = 10^5\ \text{gw·cm}\)，\(1\ \text{kgw} \approx 9.8\ \text{N}\)。</td></tr>
+    <tr><td>順時針、逆時針判斷錯</td><td>只看單一個力，想像支點固定：支點右側向下 → 順時針；支點左側向下 → 逆時針；向上的力相反。</td></tr>
+  </table></div>
+  <h3>解題步驟整理</h3>
+  <ol class="steps">
+    <li><strong>畫圖標力：</strong>畫出桿子，標出所有的力（大小、方向、作用點），自身重量畫在重心。</li>
+    <li><strong>選支點：</strong>題目有轉軸就用轉軸；否則選未知力的作用點。</li>
+    <li><strong>找力臂：</strong>每個力都量「支點到作用線的垂直距離」，力通過支點就寫 0。</li>
+    <li><strong>分順逆、列等式：</strong>\(\sum \tau_{\text{順}} = \sum \tau_{\text{逆}}\)，解出未知數。</li>
+    <li><strong>求支點受力：</strong>用合力為零：向上力的和 = 向下力的和。</li>
+    <li><strong>檢查：</strong>單位一致嗎？答案合理嗎（重的一側力臂較短、斜的力需要較大）？代回去兩邊相等嗎？</li>
+  </ol>
+</section>
+
+<!-- ============ Quiz ============ -->
+<section class="card quiz" id="quiz">
+  <h2>六、小測驗</h2>
+  <p>點選答案，馬上看到對錯與解說（每題以第一次作答計分）。得分：<span id="score">0 / 6</span></p>
+  <div id="quizBox"></div>
+</section>
+
+</main>
+<footer>
+  2-5 力矩與槓桿原理・互動教學｜<strong>Grok 版</strong>｜作者：盧政良 · 2026-11-13<br>
+  範圍：翰林版國中自然第五冊（九上）2-5 力矩與槓桿原理。例題數字為自編，非會考原題。<br>
+  <a href="../">回到盧政良個人網站</a>
+</footer>
+
+<script>
+'use strict';
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function txt(parent,x,y,s,attrs){const a=Object.assign({x:x,y:y,'font-size':15,fill:'#1d2f42'},attrs||{});const sv=parent.ownerSVGElement||parent;const k=+(sv.dataset&&sv.dataset.k)||1;a['font-size']=(+a['font-size'])*k;const t=el('text',a,parent);t.textContent=s;return t;}
+function setK(svg){const w=svg.clientWidth||svg.viewBox.baseVal.width;svg.dataset.k=Math.max(1,Math.min(1.75,svg.viewBox.baseVal.width/w*0.85));return +svg.dataset.k;}
+function svgPt(svg,e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
+function fmt(x,d){d=(d===undefined)?2:d;let r=Math.round(x*Math.pow(10,d))/Math.pow(10,d);if(Object.is(r,-0))r=0;return r.toLocaleString('en-US',{maximumFractionDigits:d});}
+function arrow(g,x1,y1,x2,y2,color,w,head){w=w||3;head=head||11;const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<1)return;const ux=dx/L,uy=dy/L;const bx=x2-ux*head,by=y2-uy*head;
+  el('line',{x1:x1,y1:y1,x2:bx,y2:by,stroke:color,'stroke-width':w,'stroke-linecap':'round'},g);
+  el('polygon',{points:`${x2},${y2} ${bx-uy*head*0.5},${by+ux*head*0.5} ${bx+uy*head*0.5},${by-ux*head*0.5}`,fill:color},g);}
+function arcArrow(g,cx,cy,R,ccw,color){const pts=[];const a0=ccw?-50:230,a1=ccw?230:-50,n=40;for(let i=0;i<=n;i++){const a=(a0+(a1-a0)*i/n)*Math.PI/180;pts.push([cx+R*Math.cos(a),cy-R*Math.sin(a)]);}
+  el('polyline',{points:pts.slice(0,-3).map(p=>p.join(',')).join(' '),fill:'none',stroke:color,'stroke-width':3},g);
+  const p1=pts[n-4],p2=pts[n];arrow(g,p1[0],p1[1],p2[0],p2[1],color,3,10);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+
+/* ================= Lab A: wrench ================= */
+const A={F:40,r:30,th:90,svg:document.getElementById('svgA'),O:{x:150,y:205},s:12,L:36,fs:1.5,drag:null};
+function drawA(){
+  const g=A.svg;g.innerHTML='';const K=setK(g);const O=A.O,s=A.s;
+  el('rect',{x:0,y:0,width:640,height:380,fill:'#fbfdfd'},g);
+  // wrench body
+  el('rect',{x:O.x,y:O.y-11,width:A.L*s+14,height:22,rx:11,fill:'#b8c4cc',stroke:'#7d8c97','stroke-width':2},g);
+  for(let c=0;c<=A.L;c+=4){const x=O.x+c*s;el('line',{x1:x,y1:O.y+4,x2:x,y2:O.y+11,stroke:'#5b6f80','stroke-width':1.5},g);if(c%8===0)txt(g,x,O.y+30,c+' cm',{'font-size':11,fill:'#5b6f80','text-anchor':'middle'});}
+  // nut
+  const hex=[];for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3;hex.push((O.x+30*Math.cos(a))+','+(O.y+30*Math.sin(a)));}
+  el('polygon',{points:hex.join(' '),fill:'#8a99a5',stroke:'#4d5d69','stroke-width':2},g);
+  el('circle',{cx:O.x,cy:O.y,r:6,fill:'#1d2f42'},g);
+  txt(g,O.x-38,O.y+6,'支點',{'font-size':14,fill:'#1d2f42','font-weight':700,'text-anchor':'end'});
+  const th=A.th*Math.PI/180,u={x:Math.cos(th),y:-Math.sin(th)};
+  const P={x:O.x+A.r*s,y:O.y};
+  let sn=Math.sin(th);if(Math.abs(sn)<1e-9)sn=0;
+  const d=A.r*Math.abs(sn);
+  // r bracket
+  const ry=O.y+70;el('line',{x1:O.x,y1:ry,x2:P.x,y2:ry,stroke:'#b7791f','stroke-width':2},g);
+  el('line',{x1:O.x,y1:ry-6,x2:O.x,y2:ry+6,stroke:'#b7791f','stroke-width':2},g);el('line',{x1:P.x,y1:ry-6,x2:P.x,y2:ry+6,stroke:'#b7791f','stroke-width':2},g);
+  txt(g,(O.x+P.x)/2,ry+20,'r = '+A.r+' cm',{'font-size':14,fill:'#8a5a00','text-anchor':'middle','font-weight':700});
+  if(A.F>0){
+    // line of action
+    el('line',{x1:P.x-u.x*900,y1:P.y-u.y*900,x2:P.x+u.x*900,y2:P.y+u.y*900,stroke:'#9aa7b1','stroke-width':2,'stroke-dasharray':'7 6'},g);
+    // perpendicular foot
+    const t=(O.x-P.x)*u.x+(O.y-P.y)*u.y;const Q={x:P.x+t*u.x,y:P.y+t*u.y};
+    if(d>0.05){
+      el('line',{x1:O.x,y1:O.y,x2:Q.x,y2:Q.y,stroke:'#7446b0','stroke-width':3.5,'stroke-dasharray':'8 5'},g);
+      // right angle marker
+      const nx=(O.x-Q.x),ny=(O.y-Q.y),nl=Math.hypot(nx,ny),m=10;const n={x:nx/nl,y:ny/nl};
+      const sg=(t>0)?-1:1; // move along line away from P side ok either way
+      const a1={x:Q.x+u.x*m*sg,y:Q.y+u.y*m*sg};
+      el('polyline',{points:`${a1.x},${a1.y} ${a1.x+n.x*m},${a1.y+n.y*m} ${Q.x+n.x*m},${Q.y+n.y*m}`,fill:'none',stroke:'#7446b0','stroke-width':2},g);
+      const mx=(O.x+Q.x)/2,my=(O.y+Q.y)/2;
+      const lbl=txt(g,mx,my+5,'d',{'font-size':17,fill:'#5b2f96','font-weight':800,'font-style':'italic','text-anchor':'middle'});
+      lbl.setAttribute('paint-order','stroke');lbl.setAttribute('stroke','#fbfdfd');lbl.setAttribute('stroke-width',6);
+    } else {
+    }
+    const H={x:P.x+u.x*A.F*A.fs,y:P.y+u.y*A.F*A.fs};
+    arrow(g,P.x,P.y,H.x,H.y,'#c43c47',5,16);
+    const fl=txt(g,H.x+u.x*16,H.y+u.y*16+5,'F = '+A.F+' N',{'font-size':15,fill:'#c43c47','font-weight':700,'text-anchor':'middle'});
+    fl.setAttribute('paint-order','stroke');fl.setAttribute('stroke','#fbfdfd');fl.setAttribute('stroke-width',5);
+    const hh=el('circle',{cx:H.x,cy:H.y,r:22,fill:'#c43c47','fill-opacity':0.12,class:'handle','data-h':'head'},g);
+    if(sn!==0) arcArrow(g,O.x,O.y,48,sn>0,sn>0?'#1f6fbf':'#c43c47');
+  } else {
+    el('circle',{cx:P.x,cy:P.y-40,r:22,fill:'#c43c47','fill-opacity':0.12,class:'handle','data-h':'head'},g);
+    txt(g,P.x,P.y-70,'拖這裡施力',{'font-size':13,fill:'#c43c47','text-anchor':'middle'});
+  }
+  const info=d>0.05&&A.F>0?['力臂 d = '+fmt(d,1)+' cm','力矩 = '+fmt(A.F*d/100,2)+' N·m']:(A.F>0?['作用線通過支點','力臂 d = 0，力矩 = 0']:['F = 0','力矩 = 0']);
+  el('rect',{x:10,y:10,width:200*K,height:16+20*K,rx:8,fill:'#ffffff','fill-opacity':0.92,stroke:'#d9e3ea'},g);
+  txt(g,20,14+15*K,info[0],{'font-size':15,fill:'#5b2f96','font-weight':700});txt(g,20,14+35*K,info[1],{'font-size':15,fill:'#1d2f42','font-weight':700});
+  el('circle',{cx:P.x,cy:P.y,r:9,fill:'#e08a1e',stroke:'#fff','stroke-width':2},g);
+  el('circle',{cx:P.x,cy:P.y,r:20,fill:'transparent',class:'handle','data-h':'pt'},g);
+  // readout
+  const tau=A.F*(A.r/100)*sn,tmax=A.F*A.r/100;
+  const ang=A.th<=180?A.th:360-A.th;
+  document.getElementById('oaF').textContent=A.F+' N';
+  document.getElementById('oaR').textContent=A.r+' cm';
+  document.getElementById('oaT').textContent=A.th+'°';
+  document.getElementById('readA').innerHTML=
+    `力與扳手的夾角：<b>${ang}°</b>（力${sn>0?'偏向上':sn<0?'偏向下':'沿著扳手'}）<br>`+
+    `力臂 d（支點到作用線的垂直距離）= <b>${fmt(d,2)} cm = ${fmt(d/100,4)} m</b><br>`+
+    `力矩 = F × d = ${A.F} N × ${fmt(d/100,4)} m ${Math.abs(Math.round(d*100)-d*100)<1e-6&&Math.abs(Math.round(Math.abs(tau)*100)-Math.abs(tau)*100)<1e-6?'=':'≈'} <b>${fmt(Math.abs(tau),2)} N·m</b><br>`+
+    `同樣的力垂直施力時：F × r = ${A.F} × ${fmt(A.r/100,2)} = ${fmt(tmax,2)} N·m`+
+    (tmax>0?`，現在是它的 <b>${fmt(100*Math.abs(sn),0)}%</b>`:'');
+  const st=document.getElementById('stA');
+  if(A.F===0){st.className='status s-zero';st.textContent='沒有施力，力矩為 0。';}
+  else if(sn===0){st.className='status s-zero';st.textContent='力的作用線通過支點：力臂 = 0，力矩 = 0，扳手不會轉。';}
+  else if(sn>0){st.className='status s-ccw';st.textContent='逆時針力矩 '+fmt(Math.abs(tau),2)+' N·m（扳手往逆時針轉）';}
+  else {st.className='status s-cw';st.textContent='順時針力矩 '+fmt(Math.abs(tau),2)+' N·m（扳手往順時針轉）';}
+  A.last={F:A.F,r:A.r,th:A.th,d:d,tau:tau,dir:sn>0?'ccw':sn<0?'cw':'zero'};
+}
+function syncA(){document.getElementById('aF').value=A.F;document.getElementById('aR').value=A.r;document.getElementById('aT').value=A.th;drawA();}
+syncA();
+['aF','aR','aT'].forEach(id=>document.getElementById(id).addEventListener('input',e=>{const v=+e.target.value;if(id==='aF')A.F=v;if(id==='aR')A.r=v;if(id==='aT')A.th=v;drawA();}));
+document.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.a;if(v==='near'){A.r=8;A.th=90;}else{A.th=+v;if(A.F===0)A.F=40;}syncA();}));
+A.svg.addEventListener('pointerdown',e=>{const h=e.target.getAttribute&&e.target.getAttribute('data-h');if(!h)return;A.drag=h;A.svg.setPointerCapture(e.pointerId);e.preventDefault();});
+A.svg.addEventListener('pointermove',e=>{if(!A.drag)return;const p=svgPt(A.svg,e);
+  if(A.drag==='pt'){A.r=clamp(Math.round((p.x-A.O.x)/A.s),4,36);}
+  else{const P={x:A.O.x+A.r*A.s,y:A.O.y};const dx=p.x-P.x,dy=p.y-P.y;let th=Math.round(Math.atan2(-dy,dx)*180/Math.PI);if(th<0)th+=360;if(th>=360)th-=360;A.th=th;A.F=clamp(Math.round(Math.hypot(dx,dy)/A.fs),0,100);}
+  syncA();});
+['pointerup','pointercancel'].forEach(t=>A.svg.addEventListener(t,()=>{A.drag=null;}));
+
+/* ================= Lab B: lever ================= */
+const B={svg:document.getElementById('svgB'),P:{x:320,y:150},sp:42,w:10,cm:10,beamW:100,counts:{},phi:0,mode:'add',drag:null,ghost:null,maxN:6};
+function bReset(cfg){B.counts={};for(let k=-6;k<=6;k++)if(k)B.counts[k]=0;if(cfg)for(const k in cfg)B.counts[k]=cfg[k];}
+bReset({'-3':2,'2':3});
+function bCalc(){let ccw=0,cw=0,tot=0;const L=[],R=[];
+  for(let k=-6;k<=6;k++){if(!k)continue;const n=B.counts[k];if(!n)continue;const W=n*B.w,d=Math.abs(k)*B.cm;tot+=W;
+    if(k<0){ccw+=W*d;L.push(`${W} gw × ${d} cm`);}else{cw+=W*d;R.push(`${W} gw × ${d} cm`);}}
+  return{ccw,cw,tot,L,R,dir:ccw===cw?'bal':(ccw>cw?'ccw':'cw')};}
+function hookPos(k,phi){const r=phi*Math.PI/180;return{x:B.P.x+k*B.sp*Math.cos(r),y:B.P.y+k*B.sp*Math.sin(r)};}
+function drawB(){const g=B.svg;g.innerHTML='';setK(g);el('rect',{x:0,y:0,width:640,height:360,fill:'#fbfdfd'},g);
+  const P=B.P;
+  // stand
+  el('polygon',{points:`${P.x},${P.y+6} ${P.x-26},${P.y+70} ${P.x+26},${P.y+70}`,fill:'#2e8a3c'},g);
+  el('rect',{x:P.x-60,y:P.y+70,width:120,height:10,rx:3,fill:'#5b6f80'},g);
+  // stops
+  const gb=el('g',{transform:`rotate(${B.phi} ${P.x} ${P.y})`},g);
+  el('rect',{x:P.x-275,y:P.y-7,width:550,height:14,rx:5,fill:'#d9b77a',stroke:'#9b7a3c','stroke-width':1.5},gb);
+  for(let k=-6;k<=6;k++){const x=P.x+k*B.sp;el('line',{x1:x,y1:P.y-7,x2:x,y2:P.y+7,stroke:'#7a5a20','stroke-width':k?1.5:0},gb);
+    if(k)txt(gb,x,P.y-14,(Math.abs(k)*10)+'',{'font-size':12,fill:'#5b6f80','text-anchor':'middle'});}
+  txt(gb,P.x,P.y-14,'cm',{'font-size':11,fill:'#5b6f80','text-anchor':'middle'});
+  el('circle',{cx:P.x,cy:P.y,r:5,fill:'#1d2f42'},g);
+  const c=bCalc();
+  for(let k=-6;k<=6;k++){if(!k)continue;const h=hookPos(k,B.phi);let n=B.counts[k];if(B.drag&&B.drag.from===k&&B.drag.moved)n--;
+    el('circle',{cx:h.x,cy:h.y+9,r:3,fill:n?'#1d2f42':'#b9c5cd'},g);
+    if(n>0){el('line',{x1:h.x,y1:h.y+9,x2:h.x,y2:h.y+24,stroke:'#1d2f42','stroke-width':1.5},g);
+      for(let i=0;i<n;i++){el('rect',{x:h.x-13,y:h.y+24+i*15,width:26,height:13,rx:3,fill:k<0?'#3d7fc4':'#c4564f',stroke:'#fff','stroke-width':1},g);}
+      txt(g,h.x,h.y+24+n*15+14,(n*B.w)+'gw',{'font-size':12,fill:'#1d2f42','text-anchor':'middle'});}
+  }
+  if(B.drag&&B.drag.moved&&B.drag.pt){const p=B.drag.pt;el('rect',{x:p.x-13,y:p.y-6,width:26,height:13,rx:3,fill:'#e08a1e','fill-opacity':0.75},g);}
+  if(c.dir==='bal'){const len=Math.min(150,(c.tot+B.beamW)*0.25);arrow(g,P.x+40,P.y+12+len,P.x+40,P.y+12,'#2e8a3c',3,10);
+    txt(g,P.x+48,P.y+40,'N = '+(c.tot+B.beamW)+' gw',{'font-size':13,fill:'#2e8a3c','font-weight':700});}
+  else{arcArrow(g,P.x,P.y-60,24,c.dir==='ccw',c.dir==='ccw'?'#1f6fbf':'#c43c47');}
+  txt(g,14,24,'左邊（逆時針）',{'font-size':14,fill:'#1f6fbf','font-weight':700});
+  txt(g,626,24,'右邊（順時針）',{'font-size':14,fill:'#c43c47','font-weight':700,'text-anchor':'end'});
+  // readout
+  const rd=document.getElementById('readB');
+  rd.innerHTML=`<b>逆時針力矩和（支點左側）</b><br>${c.L.length?c.L.join(' + ')+' = ':''}<b>${c.ccw} gw·cm</b><br>`+
+    `<b>順時針力矩和（支點右側）</b><br>${c.R.length?c.R.join(' + ')+' = ':''}<b>${c.cw} gw·cm</b><br>`+
+    (c.dir==='bal'?`支點受力 N = 砝碼 ${c.tot} gw + 槓桿自身 ${B.beamW} gw = <b>${c.tot+B.beamW} gw</b>（向上）`:
+    `相差 ${Math.abs(c.ccw-c.cw)} gw·cm。（槓桿正在轉動，這裡只計算平衡時的支點受力）`);
+  const st=document.getElementById('stB');
+  if(c.dir==='bal'){st.className='status s-bal';st.textContent=(c.tot?'順時針力矩和 = 逆時針力矩和 → 平衡！':'沒有砝碼：槓桿重心在支點上 → 平衡');}
+  else if(c.dir==='ccw'){st.className='status s-ccw';st.textContent='逆時針 > 順時針 → 槓桿逆時針轉（左邊下沉）';}
+  else {st.className='status s-cw';st.textContent='順時針 > 逆時針 → 槓桿順時針轉（右邊下沉）';}
+  B.last=c;
+}
+function bTarget(){const c=bCalc();return c.dir==='bal'?0:(c.dir==='cw'?11:-11);}
+function animB(){const t=bTarget();const d=t-B.phi;if(Math.abs(d)>0.01){B.phi+=d*0.12;if(Math.abs(t-B.phi)<0.01)B.phi=t;drawB();}requestAnimationFrame(animB);}
+function bKey(p){const r=B.phi*Math.PI/180;const lx=(p.x-B.P.x)*Math.cos(r)+(p.y-B.P.y)*Math.sin(r);const k=Math.round(lx/B.sp);return(k>=-6&&k<=6&&k!==0)?k:null;}
+B.svg.addEventListener('pointerdown',e=>{const p=svgPt(B.svg,e);const k=bKey(p);if(k===null)return;B.drag={from:k,start:p,pt:p,moved:false};B.svg.setPointerCapture(e.pointerId);});
+B.svg.addEventListener('pointermove',e=>{if(!B.drag)return;const p=svgPt(B.svg,e);B.drag.pt=p;if(!B.drag.moved&&Math.abs(p.x-B.drag.start.x)>12&&B.counts[B.drag.from]>0)B.drag.moved=true;if(B.drag.moved)drawB();});
+B.svg.addEventListener('pointerup',e=>{if(!B.drag)return;const dr=B.drag;B.drag=null;const p=svgPt(B.svg,e);
+  if(dr.moved){const k=bKey(p);if(k!==null&&k!==dr.from&&B.counts[k]<B.maxN){B.counts[dr.from]--;B.counts[k]++;}}
+  else{const k=dr.from;if(B.mode==='add'){if(B.counts[k]<B.maxN)B.counts[k]++;}else if(B.counts[k]>0)B.counts[k]--;}
+  drawB();});
+B.svg.addEventListener('pointercancel',()=>{B.drag=null;drawB();});
+function setMode(m){B.mode=m;document.getElementById('bAdd').classList.toggle('on',m==='add');document.getElementById('bDel').classList.toggle('on',m==='del');}
+document.getElementById('bAdd').onclick=()=>setMode('add');document.getElementById('bDel').onclick=()=>setMode('del');
+document.getElementById('bClear').onclick=()=>{bReset();drawB();};
+document.getElementById('bDemo').onclick=()=>{bReset({'-3':2,'2':3});drawB();};
+document.getElementById('bRand').onclick=()=>{const cfg={};const m=1+Math.floor(Math.random()*2);for(let i=0;i<m;i++){const k=-(1+Math.floor(Math.random()*6));cfg[k]=(cfg[k]||0)+1+Math.floor(Math.random()*3);}bReset(cfg);setMode('add');drawB();
+  document.getElementById('stB').textContent+='　→ 換你：在右邊加砝碼讓它平衡！';};
+drawB();requestAnimationFrame(animB);
+
+/* ================= Lab C: meter stick ================= */
+const C={svg:document.getElementById('svgC'),M:100,p:40,m:50,x:10,x0:50,s:5.8,y:140,phi:0,drag:null};
+function cCalc(){const terms=[];let ccw=0,cw=0;
+  const add=(name,w,pos)=>{if(w===0)return;const arm=Math.abs(pos-C.p);const t=w*arm;
+    if(arm<1e-9){terms.push({side:'0',s:`${name} ${w} gw 作用在支點上，力臂 0，力矩 0`});return;}
+    if(pos<C.p){ccw+=t;terms.push({side:'ccw',s:`${name} ${w} gw × ${fmt(arm,2)} cm`});}else{cw+=t;terms.push({side:'cw',s:`${name} ${w} gw × ${fmt(arm,2)} cm`});}};
+  add('米尺重',C.M,50);add('砝碼',C.m,C.x);
+  const diff=ccw-cw;const bal=Math.abs(diff)<1e-6*Math.max(1,ccw+cw);
+  return{terms,ccw,cw,bal,dir:bal?'bal':(diff>0?'ccw':'cw')};}
+function cX(pos){return C.x0+pos*C.s;}
+function drawC(){const g=C.svg;g.innerHTML='';setK(g);el('rect',{x:0,y:0,width:680,height:360,fill:'#fbfdfd'},g);
+  const px=cX(C.p),py=C.y+8;const c=cCalc();
+  const r=C.phi*Math.PI/180;const rot=(pos)=>{const dx=cX(pos)-px;return{x:px+dx*Math.cos(r),y:py+dx*Math.sin(r)};};
+  // pivot
+  el('polygon',{points:`${px},${py} ${px-16},${py+40} ${px+16},${py+40}`,fill:'#2e8a3c'},g);
+  el('rect',{x:px-40,y:py+40,width:80,height:8,rx:3,fill:'#5b6f80'},g);
+  el('rect',{x:px-24,y:py-10,width:48,height:60,fill:'transparent',class:'handle','data-h':'piv'},g);
+  const gs=el('g',{transform:`rotate(${C.phi} ${px} ${py})`},g);
+  el('rect',{x:cX(0),y:C.y-8,width:100*C.s,height:16,rx:3,fill:'#f3d98a',stroke:'#b7952c','stroke-width':1.5},gs);
+  for(let i=0;i<=100;i+=5){const x=cX(i);el('line',{x1:x,y1:C.y-8,x2:x,y2:C.y+(i%10?-2:2),stroke:'#6b5410','stroke-width':1},gs);if(i%10===0)txt(gs,x,C.y-12,i+'',{'font-size':11,fill:'#5b6f80','text-anchor':'middle'});}
+  // weight of stick
+  const gc=rot(50);
+  el('circle',{cx:gc.x,cy:gc.y,r:4,fill:'#c43c47'},g);
+  if(C.M>0){const len=20+C.M*0.35;arrow(g,gc.x,gc.y,gc.x,gc.y+len,'#c43c47',3.5,11);txt(g,gc.x+8,gc.y+len-4,'W = '+C.M+' gw',{'font-size':13,fill:'#c43c47','font-weight':700});}
+  // hanging mass
+  const hk=rot(C.x);
+  if(C.m>0){const top=hk.y+40,h=16+C.m*0.08;el('line',{x1:hk.x,y1:hk.y,x2:hk.x,y2:top,stroke:'#1d2f42','stroke-width':1.5},g);
+    el('rect',{x:hk.x-17,y:top,width:34,height:h,rx:4,fill:'#3d7fc4'},g);
+    txt(g,hk.x,top+h+16,C.m+' gw',{'font-size':13,fill:'#1f5aa0','text-anchor':'middle','font-weight':700});
+    el('rect',{x:hk.x-24,y:hk.y-6,width:48,height:h+56,fill:'transparent',class:'handle','data-h':'mass'},g);}
+  else{el('circle',{cx:hk.x,cy:hk.y,r:16,fill:'#3d7fc4','fill-opacity':0.15,class:'handle','data-h':'mass'},g);}
+  // N
+  if(c.bal){const Ntot=C.M+C.m;const len=Math.min(130,20+Ntot*0.3);arrow(g,px-34,py+len,px-34,py+2,'#2e8a3c',3.5,11);
+    txt(g,px-34,py+len+16,'N = '+Ntot+' gw',{'font-size':13,fill:'#2e8a3c','font-weight':700,'text-anchor':'middle'});}
+  else arcArrow(g,px,C.y-70,22,c.dir==='ccw',c.dir==='ccw'?'#1f6fbf':'#c43c47');
+  // outputs
+  document.getElementById('ocM').textContent=C.M+' gw';document.getElementById('ocP').textContent=fmt(C.p,2)+' cm 刻度';
+  document.getElementById('ocm').textContent=C.m+' gw';document.getElementById('ocX').textContent=fmt(C.x,2)+' cm 刻度';
+  const L=c.terms.filter(t=>t.side==='ccw').map(t=>t.s),R=c.terms.filter(t=>t.side==='cw').map(t=>t.s),Z=c.terms.filter(t=>t.side==='0').map(t=>t.s);
+  document.getElementById('readC').innerHTML=`以 ${fmt(C.p,2)} cm 刻度為支點：<br><b>逆時針（支點左側）</b>：${L.length?L.join(' + ')+' = ':''}<b>${fmt(c.ccw,2)} gw·cm</b><br>`+
+    `<b>順時針（支點右側）</b>：${R.length?R.join(' + ')+' = ':''}<b>${fmt(c.cw,2)} gw·cm</b>`+(Z.length?'<br>'+Z.join('；'):'')+'<br>'+
+    (c.bal?`平衡時支點受力 N = W + m = ${C.M} + ${C.m} = <b>${C.M+C.m} gw</b>（向上）`:'尚未平衡：米尺會轉動（本頁只計算平衡時的支點受力）。');
+  const st=document.getElementById('stC');
+  if(c.bal){st.className='status s-bal';st.textContent='順時針力矩和 = 逆時針力矩和 → 平衡';}
+  else if(c.dir==='ccw'){st.className='status s-ccw';st.textContent='逆時針 > 順時針 → 逆時針轉（左端下沉）';}
+  else{st.className='status s-cw';st.textContent='順時針 > 逆時針 → 順時針轉（右端下沉）';}
+  C.last=c;}
+function cTarget(){const c=cCalc();return c.bal?0:(c.dir==='cw'?10:-10);}
+function animC(){const t=cTarget(),d=t-C.phi;if(Math.abs(d)>0.01){C.phi+=d*0.12;if(Math.abs(t-C.phi)<0.01)C.phi=t;drawC();}requestAnimationFrame(animC);}
+function syncC(){document.getElementById('cM').value=C.M;document.getElementById('cP').value=C.p;document.getElementById('cm').value=C.m;document.getElementById('cX').value=C.x;drawC();}
+[['cM','M'],['cP','p'],['cm','m'],['cX','x']].forEach(([id,k])=>document.getElementById(id).addEventListener('input',e=>{C[k]=+e.target.value;drawC();}));
+C.svg.addEventListener('pointerdown',e=>{const h=e.target.getAttribute&&e.target.getAttribute('data-h');if(!h)return;C.drag=h;C.svg.setPointerCapture(e.pointerId);});
+C.svg.addEventListener('pointermove',e=>{if(!C.drag)return;const p=svgPt(C.svg,e);const px=cX(C.p),r=C.phi*Math.PI/180;
+  if(C.drag==='piv'){C.p=clamp(Math.round((p.x-C.x0)/C.s),0,100);}
+  else{const lx=(p.x-px)/Math.cos(r);C.x=clamp(Math.round(C.p+lx/C.s),0,100);}
+  syncC();});
+['pointerup','pointercancel'].forEach(t=>C.svg.addEventListener(t,()=>{C.drag=null;}));
+document.getElementById('cFind').onclick=()=>{const st=document.getElementById('stC');
+  if(C.m===0){st.className='status s-zero';st.textContent='砝碼重量為 0，請先把 m 調大。';return;}
+  const x=C.p-C.M*(50-C.p)/C.m; // m(p-x)=M(50-p)
+  if(x<0||x>100){st.className='status s-zero';st.textContent=`要平衡需把砝碼放在 ${fmt(x,2)} cm，超出米尺範圍，請改變 m 或支點位置。`;return;}
+  C.x=x;syncC();};
+document.querySelectorAll('[data-c]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.c;
+  if(v==='ex5'){C.M=80;C.p=35;C.m=40;C.x=5;} if(v==='ex6'){C.M=75;C.p=30;C.m=50;C.x=0;} if(v==='mid'){C.p=50;C.m=0;}
+  syncC();
+}));
+syncC();requestAnimationFrame(animC);
+
+/* ================= Example diagrams ================= */
+const DIAG={};
+function diagram(id,spec){const g=document.getElementById(id);if(!g)return;DIAG[id]=spec;g.innerHTML='';const K=Math.min(1.3,setK(g));g.dataset.k=K;const W=600,H=+g.getAttribute('viewBox').split(' ')[3];
+  const x0=60,x1=540,y=spec.y||90;const X=v=>x0+(x1-x0)*v/spec.L;
+  el('rect',{x:0,y:0,width:W,height:H,fill:'#fbfdfd'},g);
+  if(spec.wall){el('rect',{x:x0-22,y:y-250,width:16,height:300,fill:'#c9d3da'},g);}
+  el('rect',{x:X(0),y:y-6,width:X(spec.L)-X(0),height:12,rx:4,fill:spec.color||'#d9b77a',stroke:'#9b7a3c','stroke-width':1.2},g);
+  const pv=X(spec.pivot);
+  if(spec.pivotType==='hinge'){el('circle',{cx:pv,cy:y,r:7,fill:'#2e8a3c',stroke:'#fff','stroke-width':2},g);}
+  else{el('polygon',{points:`${pv},${y+6} ${pv-14},${y+34} ${pv+14},${y+34}`,fill:'#2e8a3c'},g);}
+  if(spec.pivotLabel)txt(g,pv,y+(spec.pivotType==='hinge'?-14:36+13*K),spec.pivotLabel,{'font-size':13,fill:'#2e8a3c','text-anchor':'middle','font-weight':700});
+  (spec.forces||[]).forEach(f=>{const a=f.ang*Math.PI/180,len=f.len||55;const sx=X(f.x),sy=y;const ex=sx+len*Math.cos(a),ey=sy-len*Math.sin(a);
+    if(f.loa){el('line',{x1:sx-400*Math.cos(a),y1:sy+400*Math.sin(a),x2:sx+400*Math.cos(a),y2:sy-400*Math.sin(a),stroke:'#9aa7b1','stroke-width':1.5,'stroke-dasharray':'6 5'},g);
+      const ux=Math.cos(a),uy=-Math.sin(a);const t=(pv-sx)*ux+(y-sy)*uy;const qx=sx+t*ux,qy=sy+t*uy;
+      el('line',{x1:pv,y1:y,x2:qx,y2:qy,stroke:'#7446b0','stroke-width':2.5,'stroke-dasharray':'6 4'},g);
+      txt(g,(pv+qx)/2-6,(y+qy)/2-8,f.loa,{'font-size':13,fill:'#5b2f96','font-weight':700,'text-anchor':'end'});}
+    if(f.above){arrow(g,sx,sy-6-len,sx,sy-6,f.c||'#c43c47',3,10);txt(g,sx+(f.dx||0),sy-12-len+(f.dy||0),f.label,{'font-size':13,fill:f.c||'#c43c47','font-weight':700,'text-anchor':'middle'});return;}
+    arrow(g,sx,sy,ex,ey,f.c||'#c43c47',3,10);
+    txt(g,ex+(f.dx||0),ey+(f.dy!==undefined?f.dy:(Math.sin(a)<0?16:-6)),f.label,{'font-size':13,fill:f.c||'#c43c47','font-weight':700,'text-anchor':'middle'});});
+  (spec.dims||[]).forEach(d=>{const yy=y+(d.off||60);const a=X(d.a),b=X(d.b);el('line',{x1:a,y1:yy,x2:b,y2:yy,stroke:'#b7791f','stroke-width':1.5},g);
+    el('line',{x1:a,y1:yy-5,x2:a,y2:yy+5,stroke:'#b7791f','stroke-width':1.5},g);el('line',{x1:b,y1:yy-5,x2:b,y2:yy+5,stroke:'#b7791f','stroke-width':1.5},g);
+    txt(g,(a+b)/2,yy+16,d.t,{'font-size':12.5,fill:'#8a5a00','text-anchor':'middle'});});
+  (spec.notes||[]).forEach(n=>txt(g,n.x,n.y,n.t,{'font-size':12.5,fill:'#5b6f80','text-anchor':n.anchor||'start'}));}
+diagram('dg1',{L:80,pivot:0,pivotType:'hinge',pivotLabel:'門軸',color:'#c8d6e0',y:95,forces:[{x:75,ang:90,label:'20 N',len:55}],dims:[{a:0,b:75,t:'75 cm',off:40},{a:0,b:80,t:'門寬 80 cm',off:70}],notes:[{x:300,y:22,t:'（俯視圖）',anchor:'middle'}]});
+diagram('dg2',{L:4,pivot:2,pivotLabel:'支點',y:85,forces:[{x:0,ang:270,label:'24 kgw',len:40,c:'#1f6fbf'},{x:2.8,ang:270,label:'60 kgw',len:40},{x:2,ang:270,above:true,label:'板重 30 kgw（作用在支點）',len:34,c:'#7a5a20'}],dims:[{a:0,b:2,t:'2 m',off:78},{a:2,b:2.8,t:'x = ?',off:78}]});
+diagram('dg3',{L:1.2,pivot:0.48,pivotLabel:'肩膀',y:80,forces:[{x:0,ang:270,label:'米 18 kgw',len:40,c:'#1f6fbf'},{x:1.2,ang:270,label:'菜 12 kgw',len:40}],dims:[{a:0,b:0.48,t:'x = ?',off:78},{a:0.48,b:1.2,t:'1.2 − x',off:78}],notes:[{x:60,y:28,t:'前端'},{x:540,y:28,t:'後端',anchor:'end'}]});
+diagram('dg4',{L:30,pivot:0,pivotType:'hinge',pivotLabel:'螺帽中心',color:'#b8c4cc',y:290,forces:[{x:30,ang:150,label:'F（與扳手夾 30°）',len:90,loa:'力臂 15 cm',dx:-10,dy:-10}],dims:[{a:0,b:30,t:'r = 30 cm',off:28}],notes:[{x:420,y:280,t:'30°',anchor:'middle'}]});
+diagram('dg5',{L:100,pivot:35,pivotLabel:'35 cm',y:80,color:'#f3d98a',forces:[{x:5,ang:270,label:'m = ?',len:40,c:'#1f6fbf'},{x:50,ang:270,label:'W = 80 gw',len:40}],dims:[{a:5,b:35,t:'30 cm',off:78},{a:35,b:50,t:'15 cm',off:78}]});
+diagram('dg6',{L:100,pivot:30,pivotLabel:'30 cm',y:80,color:'#f3d98a',forces:[{x:0,ang:270,label:'50 gw',len:40,c:'#1f6fbf'},{x:50,ang:270,label:'W = ?',len:40}],dims:[{a:0,b:30,t:'30 cm',off:78},{a:30,b:50,t:'20 cm',off:78}]});
+diagram('dg7',{L:32,pivot:0,pivotType:'hinge',pivotLabel:'肘關節',color:'#f0c9a8',y:95,forces:[{x:4,ang:90,label:'肌力 F（距肘 4 cm）',len:55,c:'#2e8a3c',dx:80,dy:12},{x:16,ang:270,label:'前臂 1 kgw',len:32,c:'#7a5a20'},{x:32,ang:270,label:'啞鈴 5 kgw',len:32}],dims:[{a:0,b:16,t:'16 cm',off:70},{a:0,b:32,t:'32 cm',off:94}]});
+diagram('dg8',{L:2,pivot:0,pivotType:'hinge',pivotLabel:'鉸鏈',wall:true,y:290,forces:[{x:2,ang:150,label:'繩 T',len:90,c:'#1f6fbf',loa:'力臂 1 m',dx:-6,dy:-8},{x:1,ang:270,label:'桿重 10 kgw',len:30,c:'#7a5a20'},{x:2,ang:270,label:'招牌 5 kgw',len:30}],dims:[{a:0,b:2,t:'2 m',off:58}],notes:[{x:470,y:280,t:'30°',anchor:'middle'}]});
+
+let rzT=null;window.addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout(()=>{drawA();drawB();drawC();for(const id in DIAG)diagram(id,DIAG[id]);},150);});
+
+/* ================= Quiz ================= */
+const QUIZ=[
+ {q:'關於「力臂」，下列何者正確？',o:['支點到施力點的距離','支點到力的作用線的垂直距離','施力點到桿子末端的距離','桿子的全長'],a:1,e:'力臂是支點到力的作用線的垂直距離。只有力和桿子垂直時，才剛好等於支點到施力點的距離。'},
+ {q:'推門時，如果力的方向沿著門面、正對著門軸推（作用線通過門軸），門會怎樣？',o:['用力越大轉越快','只要超過某個力就會轉','力矩為 0，門不會轉','門會往反方向轉'],a:2,e:'作用線通過支點，力臂 = 0，力矩 = 力 × 0 = 0，不論多大的力都不會使門轉動。'},
+ {q:'輕質槓桿（重量不計）支點左側 20 cm 處掛 30 gw。右側要掛 40 gw 的砝碼，應掛在支點右側多遠處才能平衡？',o:['10 cm','15 cm','20 cm','26.7 cm'],a:1,e:'逆時針 30 × 20 = 600 gw·cm；順時針 40 × x。600 = 40x → x = 15 cm。'},
+ {q:'2 kgw·m 等於多少 gw·cm？',o:['200 gw·cm','2000 gw·cm','20000 gw·cm','200000 gw·cm'],a:3,e:'1 kgw = 1000 gw，1 m = 100 cm，所以 1 kgw·m = 10⁵ gw·cm；2 kgw·m = 2 × 10⁵ = 200000 gw·cm。'},
+ {q:'均勻米尺重 100 gw，支點在 40 cm 刻度處，在 0 cm 刻度處掛 30 gw 砝碼。放手後米尺會？',o:['保持平衡','順時針轉（右端下沉）','逆時針轉（左端下沉）','無法判斷'],a:2,e:'逆時針：30 × (40 − 0) = 1200 gw·cm；順時針：米尺重 100 × (50 − 40) = 1000 gw·cm。1200 > 1000，逆時針轉，左端下沉。'},
+ {q:'承上題，若要讓米尺平衡，0 cm 處應改掛多少 gw？此時支點受力多少？',o:['25 gw；125 gw','25 gw；100 gw','40 gw；140 gw','30 gw；130 gw'],a:0,e:'m × 40 = 100 × 10 → m = 25 gw。平衡時支點受力 = 米尺重 + 砝碼 = 100 + 25 = 125 gw。'}
+];
+(function(){const box=document.getElementById('quizBox');let score=0;
+ QUIZ.forEach((it,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML=`<strong>第 ${i+1} 題　</strong>${it.q}<div class="opts"></div><div class="fb box"></div>`;
+  const opts=d.querySelector('.opts'),fb=d.querySelector('.fb');let first=true;
+  it.o.forEach((o,j)=>{const b=document.createElement('button');b.type='button';b.textContent=String.fromCharCode(65+j)+'. '+o;
+   b.onclick=()=>{const bs=opts.querySelectorAll('button');bs.forEach(x=>x.classList.remove('right','wrong'));
+    bs[it.a].classList.add('right');
+    if(j===it.a){if(first)score++;fb.className='fb box key show';fb.textContent='✔ 答對了！'+it.e;}
+    else{b.classList.add('wrong');fb.className='fb box warn show';fb.textContent='✘ 答錯了，正確答案是 '+String.fromCharCode(65+it.a)+'。'+it.e;}
+    first=false;document.getElementById('score').textContent=score+' / '+QUIZ.length;};
+   opts.appendChild(b);});
+  box.appendChild(d);});})();
+
+/* ================= KaTeX ================= */
+window.addEventListener('load',()=>{if(window.renderMathInElement)renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});});
+</script>
+</body>
+</html>
