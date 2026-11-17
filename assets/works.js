@@ -19,6 +19,23 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "english-practice-gpt",
+  "title": "英文小練習｜單字、默寫與教師觀察（GPT版）",
+  "desc": "每輪3、5或10題；單字選答、默寫、Grill me線索追問、一段能力補強與錯題重練。沿用理化系統雲端紀錄與教師登入；預載77字為舊版參考字庫，非二段完整題庫。",
+  "url": "https://addielu-phy.github.io/english-practice-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/english-practice-gpt",
+  "cat": "自學評量",
+  "tags": [
+    "國中英文",
+    "默寫練習",
+    "錯題複習",
+    "教師觀察",
+    "GPT版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "earth-science-exam2-gpt",
   "title": "國三地科二段第5、6章｜重點圖解與會考基測題解（GPT版）",
   "desc": "翰林地球的環境、板塊運動與岩層的祕密；10張可下載SVG圖解、總海報、7道核對題號與答案的考古題導讀、5道原創遷移練習。",
