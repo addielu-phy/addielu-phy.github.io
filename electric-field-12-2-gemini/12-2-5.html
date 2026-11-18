@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-2 例題 5｜不帶電中空金屬球殼的感應電場（Gemini版）</title>
+  <meta name="description" content="12-2 例題 5：利用靜電屏蔽與電場疊加原理，求金屬球殼感應電荷在球心 O 產生的電場，Gemini版。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function() {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="if(window.renderMathInElement)renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-lesson="12-2-5">
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <div class="brand-group">
+        <a class="brand-link" href="index.html">⚡ 12-2 電場・互動例題實驗室</a>
+        <span class="gemini-badge">✨ Gemini版</span>
+      </div>
+      <nav class="lesson-nav-pills" aria-label="12-2 各題快速跳轉">
+        <a class="nav-pill" href="index.html">總覽目錄</a>
+        <a class="nav-pill" href="12-2-1.html">例題 1：中垂線電場</a>
+        <a class="nav-pill" href="12-2-2.html">例題 2：帶電圓環</a>
+        <a class="nav-pill" href="12-2-3.html">例題 3：同心球殼</a>
+        <a class="nav-pill" href="12-2-4.html">例題 4：平行電板</a>
+        <a class="nav-pill active" href="12-2-5.html">例題 5：感應電場</a>
+      </nav>
+      <div class="topbar-right">
+        <a class="ext-link" href="../works.html">Addie Lu 作品集 ↗</a>
+        <button type="button" class="theme-btn" id="theme-toggle" aria-label="切換深淺色主題">☾ 深色</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-wrap" id="lesson-app">
+    <noscript>
+      <div class="problem-card">
+        <h1>12-2 例題 5：不帶電中空金屬球殼的感應電場</h1>
+        <p>請啟用瀏覽器 JavaScript 以顯示互動式物理模擬動畫與展開式解說。</p>
+      </div>
+    </noscript>
+  </main>
+
+  <div class="page-wrap" style="padding-top:0;">
+    <footer class="site-footer">
+      <div>
+        <strong>12-2 電場與電力線・例題 5（Gemini版）</strong><br>
+        原教材來源：張峻輔老師《第十二章 靜電學》§12-2 ·
+        <a href="https://drive.google.com/file/d/1IuNHg9vzqomttYj5Zg3wroFFt_HoZrhe/view?usp=sharing" target="_blank" rel="noopener">查看原始題目教材 ↗</a>
+      </div>
+      <div>
+        <a href="index.html">12-2 例題目錄</a> · <a href="../works.html">Addie Lu 作品集</a> · <a href="https://github.com/addielu-phy/addielu-phy.github.io/tree/main/electric-field-12-2-gemini" target="_blank" rel="noopener">GitHub 原始碼</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="lessons-data.js"></script>
+  <script src="sim-engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-2 電場與電力線｜5題互動模擬與詳細解說（Gemini版）</title>
+  <meta name="description" content="高中物理靜電學 12-2 電場與電力線：5道經典例題獨立互動模擬網頁（Gemini版）。題目直接顯示，解題引導與詳細公式推導預設隱藏、點選按鈕即可開啟。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function() {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-lesson="index">
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <div class="brand-group">
+        <a class="brand-link" href="index.html">⚡ 12-2 電場・互動例題實驗室</a>
+        <span class="gemini-badge">✨ Gemini版</span>
+      </div>
+      <nav class="lesson-nav-pills" aria-label="12-2 各題快速跳轉">
+        <a class="nav-pill active" href="index.html">總覽目錄</a>
+        <a class="nav-pill" href="12-2-1.html">例題 1：中垂線電場</a>
+        <a class="nav-pill" href="12-2-2.html">例題 2：帶電圓環</a>
+        <a class="nav-pill" href="12-2-3.html">例題 3：同心球殼</a>
+        <a class="nav-pill" href="12-2-4.html">例題 4：平行電板</a>
+        <a class="nav-pill" href="12-2-5.html">例題 5：感應電場</a>
+      </nav>
+      <div class="topbar-right">
+        <a class="ext-link" href="../works.html">Addie Lu 作品集 ↗</a>
+        <button type="button" class="theme-btn" id="theme-toggle" aria-label="切換深淺色主題">☾ 深色</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="hero-banner">
+      <div class="eyebrow-row">
+        <span class="chapter-tag">CHAPTER 12 · SECTION 12-2 電場與電力線</span>
+        <span class="gemini-badge">✨ Gemini版 互動教學系列</span>
+      </div>
+      <h1>12-2 電場與電力線：5 道經典例題互動模擬與詳解</h1>
+      <p class="page-subtitle">
+        每一題皆為獨立網頁。進入各題後<strong>「原題目與互動模擬器」直接顯示</strong>，讓學生先觀察電場向量分解與運動軌跡；<strong>「3 階解題引導」、「詳細公式推導」與「最終答案」則預設隱藏</strong>，可依學習節奏點選按鈕逐步開啟。
+      </p>
+      <div class="given-pills" style="margin-top:16px;">
+        <span class="given-pill">✅ 一題一獨立網頁 (12-2-1 ～ 12-2-5)</span>
+        <span class="given-pill">✅ 題目直接顯示、引導與詳解按鈕點選開啟</span>
+        <span class="given-pill">✅ 畫布直接拖曳探針 ＋ 即時函數曲線對照</span>
+        <span class="given-pill">✅ 完整繁體中文推導與段考易錯診斷</span>
+      </div>
+    </section>
+
+    <section aria-label="12-2 電場例題列表">
+      <h2 style="margin: 0 0 8px; font-size: 1.35rem;">📚 選擇例題開始探究（共 5 題）</h2>
+      <p style="margin: 0 0 16px; color: var(--text-secondary);">點擊任一題目卡片進入該題專屬互動實驗室：</p>
+      <div class="catalog-grid" id="catalog-cards">
+        <noscript>
+          <p>請啟用瀏覽器 JavaScript，或直接點選上方導覽列進入：<a href="12-2-1.html">例題 1</a>、<a href="12-2-2.html">例題 2</a>、<a href="12-2-3.html">例題 3</a>、<a href="12-2-4.html">例題 4</a>、<a href="12-2-5.html">例題 5</a>。</p>
+        </noscript>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>
+        <strong>12-2 電場與電力線・例題互動模擬與詳細解說（Gemini版）</strong><br>
+        原教材來源：張峻輔老師《第十二章 靜電學》§12-2 電場與電力線 例題 1～5 ·
+        <a href="https://drive.google.com/file/d/1IuNHg9vzqomttYj5Zg3wroFFt_HoZrhe/view?usp=sharing" target="_blank" rel="noopener">查看原始題目教材 (Google Drive) ↗</a>
+      </div>
+      <div>
+        <a href="../">← 返回盧政良老師首頁</a> · <a href="../works.html">全部教學作品</a> · <a href="https://github.com/addielu-phy/addielu-phy.github.io/tree/main/electric-field-12-2-gemini" target="_blank" rel="noopener">GitHub 原始碼</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="lessons-data.js"></script>
+  <script src="sim-engine.js"></script>
+</body>
+</html>
