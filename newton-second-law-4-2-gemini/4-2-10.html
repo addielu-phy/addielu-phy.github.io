@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4-2 例題 10：加速電梯內的視重讀數與 v-t 梯形面積｜Gemini版</title>
+  <meta name="description" content="高中物理 §4-2 牛頓第二運動定律 例題 10（加速電梯內的視重讀數與 v-t 梯形面積）互動式物理模擬動畫與漸進式詳細解說（Gemini版）。題目直接顯示，引導與詳解點選按鈕開啟。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function() {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="if(window.renderMathInElement)renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-lesson="4-2-10">
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <div class="brand-group">
+        <a class="brand-link" href="index.html">⚙️ 4-2 牛頓第二運動定律・互動例題</a>
+        <span class="gemini-badge">✨ Gemini版</span>
+      </div>
+      <nav class="lesson-nav-pills" aria-label="4-2 各題快速跳轉">
+        <a class="nav-pill" href="index.html">總覽</a>
+        <a class="nav-pill" href="4-2-1.html">例1</a>
+        <a class="nav-pill" href="4-2-2.html">例2</a>
+        <a class="nav-pill" href="4-2-3.html">例3</a>
+        <a class="nav-pill" href="4-2-4.html">例4</a>
+        <a class="nav-pill" href="4-2-5.html">例5</a>
+        <a class="nav-pill" href="4-2-6.html">例6</a>
+        <a class="nav-pill" href="4-2-7.html">例7</a>
+        <a class="nav-pill" href="4-2-8.html">例8</a>
+        <a class="nav-pill" href="4-2-9.html">例9</a>
+        <a class="nav-pill active" href="4-2-10.html">例10</a>
+      </nav>
+      <div class="topbar-right">
+        <a class="ext-link" href="../works.html">Addie Lu 作品集 ↗</a>
+        <button type="button" class="theme-btn" id="theme-toggle" aria-label="切換深淺色主題">☾ 深色</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-wrap" id="lesson-app">
+    <noscript>
+      <div class="problem-card">
+        <h1>4-2 例題 10：加速電梯內的視重讀數與 v-t 梯形面積</h1>
+        <p>請啟用瀏覽器 JavaScript 以顯示互動式物理模擬動畫與展開式解說。</p>
+      </div>
+    </noscript>
+  </main>
+
+  <div class="page-wrap" style="padding-top:0;">
+    <footer class="site-footer">
+      <div>
+        <strong>4-2 牛頓第二運動定律・例題 10（Gemini版）</strong><br>
+        原教材來源：陳慶仁老師編《第四章 牛頓運動定律》§4-2（講義 p.4-25） ·
+        <a href="https://drive.google.com/file/d/1g21SjiOscWnViIdsfg32K7_Z8mMY22Fn/view?usp=sharing" target="_blank" rel="noopener">查看原始題目教材 (Google Drive) ↗</a>
+      </div>
+      <div>
+        <a href="index.html">4-2 例題目錄</a> · <a href="../works.html">Addie Lu 作品集</a> · <a href="https://github.com/addielu-phy/addielu-phy.github.io/tree/main/newton-second-law-4-2-gemini" target="_blank" rel="noopener">GitHub 原始碼</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="lessons-data.js"></script>
+  <script src="sim-engine.js"></script>
+</body>
+</html>
