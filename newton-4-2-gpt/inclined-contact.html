@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>斜切木塊的接觸正向力｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">連結體 · 例 1</p><h1>斜切木塊的接觸正向力</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>光滑地板上有質量各為 m 的木塊 A、B，接觸切面與水平夾 θ 且光滑。A 在左，受水平向右推力 F。兩木塊維持原有相對位置。</p><p><strong>求 A、B 接觸面的正向力大小 N。</strong></p>
+<ul class="options"><li><b>（A）</b> F/(2 sin θ)</li><li><b>（B）</b> (F/2) cos θ</li><li><b>（C）</b> (F/2) tan θ</li><li><b>（D）</b> (F/2) sin θ</li><li><b>（E）</b> (F/2) cot θ</li></ul>
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>先把兩塊視為一個系統，求共同的水平加速度。</li><li>看右塊 B 的受力。兩木塊接觸力垂直於斜切面，哪個分量使 B 向右？</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 合看兩木塊</h3><p>水平外力為 F，總質量為 2m，共同加速度 a＝F/(2m)。</p><h3>2. 單看右塊 B</h3><p>A 給 B 的正向力向右上，與水平夾 90°−θ。水平分量 N cos(90°−θ)＝N sin θ＝ma＝F/2。</p><h3>3. 解出正向力</h3><p><b>N＝F/(2 sin θ)，選 A</b>。鉛直方向另有地板支持力 N<sub>地</sub>＝mg−N cos θ。若推力過大使這個值變成負數，原題假設的共同運動就不成立。</p></div></details></div><p class="note">講義頁碼 4-11</p></section>
+<section class="panel sim" data-scene="3"><h2>互動模擬</h2><p class="muted">旋轉切面並改變推力，觀察接觸力的水平與鉛直分量。超出共同運動條件時，顯示臨界判斷。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="斜切木塊的接觸正向力裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>切面角度 θ（°）<output for="s-theta">55</output></span><input id="s-theta" aria-label="切面角度 θ（°）" type="range" name="theta" min="25" max="80" step="1" value="55"></label><label class="control"><span>水平推力 F（N）<output for="s-f">20</output></span><input id="s-f" aria-label="水平推力 F（N）" type="range" name="f" min="2" max="70" step="1" value="20"></label><label class="control"><span>每塊質量（kg）<output for="s-m">2</output></span><input id="s-m" aria-label="每塊質量（kg）" type="range" name="m" min="1" max="5" step="0.5" value="2"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="rope-load.html">← 上一題</a><a href="side-block.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

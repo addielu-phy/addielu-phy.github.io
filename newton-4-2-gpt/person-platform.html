@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>人拉繩提升自己與平台｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">滑輪 · 例 3</p><h1>人拉繩提升自己與平台</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>質量 m 的人站在質量 M 的平台上。繩自由端由人拉住，經定滑輪後繞過連在平台上的動滑輪，另一端固定在天花板。人與平台一起以加速度 a 向上。滑輪與繩視為理想。</p><p><strong>求人的拉繩力大小，以及平台對人的正向力大小。</strong></p>
+
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>把人和平台合看，數一數共有幾股張力向上作用於系統。</li><li>再單看人。向上力除了平台正向力，還有繩對手的力。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 先合看人與平台</h3><p>動滑輪透過吊具向平台提供 2T，繩自由端向上拉人 T，總向上力 3T。故 3T−(M+m)g＝(M+m)a。</p><h3>2. 求人的施力</h3><p>繩對人的力和人對繩的力大小相同，因此 <b>F＝T＝(M+m)(g+a)/3</b>。</p><h3>3. 單看人，求平台支持力</h3><p>N+T−mg＝ma，故 N＝m(g+a)−T＝<b>(2m−M)(g+a)/3</b>。</p><h3>4. 檢查接觸條件</h3><p>平台只能向上推人，要維持題設的共同運動須 N≥0，即 M≤2m。若計算值為負，共同上升的假設失效。</p></div></details></div><p class="note">講義頁碼 4-20</p></section>
+<section class="panel sim" data-scene="8"><h2>互動模擬</h2><p class="muted">改變人與平台的質量，觀察三股張力、支持力與臨界接觸條件。繩自由端相對平台的移動以色標顯示。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="人拉繩提升自己與平台裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>人的質量 m（kg）<output for="s-m">60</output></span><input id="s-m" aria-label="人的質量 m（kg）" type="range" name="m" min="30" max="100" step="1" value="60"></label><label class="control"><span>平台質量 M（kg）<output for="s-n">80</output></span><input id="s-n" aria-label="平台質量 M（kg）" type="range" name="n" min="20" max="200" step="1" value="80"></label><label class="control"><span>向上加速度 a（m/s²）<output for="s-a">1.5</output></span><input id="s-a" aria-label="向上加速度 a（m/s²）" type="range" name="a" min="0.5" max="4" step="0.1" value="1.5"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="movable-pulley.html">← 上一題</a><a href="elevator.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

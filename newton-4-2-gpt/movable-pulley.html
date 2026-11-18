@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>動滑輪的兩條繩與加速度｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">滑輪 · 例 2</p><h1>動滑輪的兩條繩與加速度</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>輕繩 B 左端固定於天花板，向下托住動滑輪，另一段跨過右上的定滑輪後接 m₂。動滑輪的軸以短繩 A 吊住 m₁。忽略繩與滑輪的質量及摩擦，原題給 m₁＜2m₂。</p><p><strong>求繩 A、B 的張力，以及 m₁、m₂ 的加速度大小與方向。</strong></p>
+
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>有幾段 B 繩托住動滑輪？固定端沒有移動，兩段繩卻都會縮短。</li><li>設 m₁ 向上加速度為 a。用繩長判斷 m₂ 向下加速度，再分別列兩物體的方程。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 短繩 A 的張力</h3><p>輕動滑輪受兩股 B 繩向上，各為 T<sub>B</sub>，受 A 繩向下拉。質量忽略，故 T<sub>A</sub>＝2T<sub>B</sub>。</p><h3>2. 寫出不伸長的繩長限制</h3><p>m₁ 隨動滑輪上升 x 時，兩股支承繩各縮短 x，m₂ 下降 2x。若取 m₁ 向上為 a，m₂ 向下就是 2a。</p><h3>3. 聯立牛頓第二定律</h3><p>對 m₁：2T<sub>B</sub>−m₁g＝m₁a。對 m₂：m₂g−T<sub>B</sub>＝2m₂a。消去 T<sub>B</sub>，得 <b>a＝(2m₂−m₁)g/(m₁+4m₂)</b>。因此 m₁ 向上 a，m₂ 向下 2a。</p><h3>4. 代回求張力</h3><p>T<sub>B</sub>＝m₂(g−2a)＝<b>3m₁m₂g/(m₁+4m₂)</b>，T<sub>A</sub>＝<b>6m₁m₂g/(m₁+4m₂)</b>。若 m₁＝2m₂，兩者恰平衡。</p></div></details></div><p class="note">講義頁碼 4-19</p></section>
+<section class="panel sim" data-scene="7"><h2>互動模擬</h2><p class="muted">調整兩側質量，觀察兩條繩的張力與位移關係。滑桿也可跨到平衡與反轉區。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="動滑輪的兩條繩與加速度裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>動滑輪下方 m₁（kg）<output for="s-m">2</output></span><input id="s-m" aria-label="動滑輪下方 m₁（kg）" type="range" name="m" min="1" max="8" step="0.5" value="2"></label><label class="control"><span>自由端吊重 m₂（kg）<output for="s-n">3</output></span><input id="s-n" aria-label="自由端吊重 m₂（kg）" type="range" name="n" min="1" max="8" step="0.5" value="3"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="fixed-pulley.html">← 上一題</a><a href="person-platform.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

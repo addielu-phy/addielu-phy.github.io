@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>從磅秤讀數求電梯行程｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">視重 · 例 1</p><h1>從磅秤讀數求電梯行程</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>一位質量 60 kg 的人站在電梯內的磅秤上。電梯從靜止出發：前 5 秒秤顯示 72 kg，接下來 5 秒顯示 60 kg，最後 5 秒顯示 48 kg，隨後停止。取 g＝9.8 m/s²。</p><p><strong>求電梯在 15 秒內行駛的總距離（m）。</strong></p>
+<ul class="options"><li><b>（A）</b> 98</li><li><b>（B）</b> 147</li><li><b>（C）</b> 196</li><li><b>（D）</b> 245</li><li><b>（E）</b> 294</li></ul>
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>磅秤的公斤刻度是支持力除以 g。把三段的加速度依序算出來。</li><li>把加速度轉成速度，再讀速度－時間圖的面積。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 把三段秤讀數轉成加速度</h3><p>向上為正，N−mg＝ma。若秤面顯示 R kg，N＝Rg。因此 a＝(R/60−1)g。三段依序為 +1.96、0、−1.96 m/s²。</p><h3>2. 計算每段末速</h3><p>電梯由靜止出發，5 秒後 v＝1.96×5＝9.8 m/s，10 秒時仍為 9.8 m/s，15 秒時減至 0。速度全程向上或為零。</p><h3>3. 用速度－時間圖算距離</h3><p>前段三角形面積 (1/2)×5×9.8＝24.5 m，中段長方形 5×9.8＝49 m，末段三角形 24.5 m。總距離 <b>98 m，選 A</b>。</p><h3>4. 釐清最後一段</h3><p>磅秤顯示 48 kg 時，加速度向下，電梯仍向上運動並減速，直到停止。</p></div></details></div><p class="note">講義頁碼 4-25</p></section>
+<section class="panel sim" data-scene="9"><h2>互動模擬</h2><p class="muted">拖曳時間，比對電梯位置、秤讀數和速度圖。調整加速幅度時，煞車幅度等大，仍在 15 秒停止。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="從磅秤讀數求電梯行程裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>起步加速度（m/s²）<output for="s-a">1.96</output></span><input id="s-a" aria-label="起步加速度（m/s²）" type="range" name="a" min="0.49" max="3.92" step="0.01" value="1.96"></label><label class="control"><span>乘客質量（kg）<output for="s-m">60</output></span><input id="s-m" aria-label="乘客質量（kg）" type="range" name="m" min="40" max="90" step="1" value="60"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="15" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="person-platform.html">← 上一題</a><a href="./">回例題總覽 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

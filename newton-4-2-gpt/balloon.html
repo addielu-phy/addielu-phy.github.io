@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>氣球要拋掉多少質量｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">基本應用 · 例 2</p><h1>氣球要拋掉多少質量</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>輕氣球用繩吊著質量 m 的物體。原先加速度大小為 a、方向向下。浮力固定，忽略氣球與繩的質量以及空氣阻力。</p><p><strong>若要改成大小同為 a、方向向上的加速度，應拋掉多少質量？以 m、a、g 表示。</strong></p>
+
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>前後都用同一個鉛直正方向。</li><li>浮力相同，重量和慣性質量都會因拋載而改變。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 拋載前列式</h3><p>取向上為正，浮力為 B。B−mg＝−ma，故 B＝m(g−a)。</p><h3>2. 拋載後列式</h3><p>設拋掉質量 Δm，剩 m−Δm。B−(m−Δm)g＝(m−Δm)a，所以 B＝(m−Δm)(g+a)。</p><h3>3. 消去浮力</h3><p>m−Δm＝m(g−a)/(g+a)。移項得 <b>Δm＝2ma/(g+a)</b>。</p><h3>4. 分清楚速度和加速度</h3><p>若拋載瞬間氣球仍向下飛，它會先減速，經過速度為零的轉折點後才上升。向上的加速度在拋載後就已出現。</p></div></details></div><p class="note">講義頁碼 4-6～4-7</p></section>
+<section class="panel sim" data-scene="1"><h2>互動模擬</h2><p class="muted">按播放看氣球先下降、再減速轉向。模擬假設拋載時沒有額外推拉，速度連續。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="氣球要拋掉多少質量裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>原本質量（kg）<output for="s-m">5</output></span><input id="s-m" aria-label="原本質量（kg）" type="range" name="m" min="1" max="10" step="0.5" value="5"></label><label class="control"><span>加速度大小（m/s²）<output for="s-a">2</output></span><input id="s-a" aria-label="加速度大小（m/s²）" type="range" name="a" min="0.5" max="5" step="0.5" value="2"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="pull-vs-hang.html">← 上一題</a><a href="rope-load.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

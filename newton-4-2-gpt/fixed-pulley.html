@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>定滑輪重新分配木塊｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">滑輪 · 例 1</p><h1>定滑輪重新分配木塊</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>一條輕繩跨過理想定滑輪，左右各掛 3 個相同木塊而平衡。將右端的一個移到左端，再由靜止釋放。</p><p><strong>運動中的繩張力，是原來平衡張力的幾倍？</strong></p>
+<ul class="options"><li><b>（A）</b> 3/2</li><li><b>（B）</b> 4/3</li><li><b>（C）</b> 9/8</li><li><b>（D）</b> 8/9</li><li><b>（E）</b> 3/4</li></ul>
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>重掛前，每側都是 3m。重掛後兩側質量各是多少？</li><li>理想定滑輪的兩繩端位移等大、方向相反。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 先算原張力</h3><p>原本兩邊靜止，各側 3 個質量 m 的木塊，故 T₀＝3mg。</p><h3>2. 重掛後列兩側方程</h3><p>左側 4m 向下，4mg−T＝4ma。右側 2m 向上，T−2mg＝2ma。相加得 2mg＝6ma，所以 a＝g/3。</p><h3>3. 算張力比</h3><p>代入右側式得 T＝2m(g+g/3)＝8mg/3。故 <b>T/T₀＝8/9，選 D</b>。</p></div></details></div><p class="note">講義頁碼 4-18</p></section>
+<section class="panel sim" data-scene="6"><h2>互動模擬</h2><p class="muted">調整從右側移往左側的木塊數；用同次動畫並排對照原先平衡與改掛後的運動。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="定滑輪重新分配木塊裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>右側移往左側的塊數<output for="s-n">1</output></span><input id="s-n" aria-label="右側移往左側的塊數" type="range" name="n" min="0" max="2" step="1" value="1"></label><label class="control"><span>每塊質量（kg）<output for="s-m">1</output></span><input id="s-m" aria-label="每塊質量（kg）" type="range" name="m" min="0.5" max="4" step="0.5" value="1"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="stacked-blocks.html">← 上一題</a><a href="movable-pulley.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

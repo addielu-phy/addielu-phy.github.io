@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>比較定力拉車與懸掛砝碼｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">基本應用 · 例 1</p><h1>比較定力拉車與懸掛砝碼</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>桌面上的滑車質量都是 10 kg，細繩與滑輪視為理想，忽略阻力。圖一向下拉繩自由端，力為 5 kgw。圖二改用 5 kg 物塊掛在繩端。</p><p><strong>設滑車加速度大小依序為 a₁、a₂，哪個關係正確？</strong></p>
+<ul class="options"><li><b>（A）</b> a₁＝a₂</li><li><b>（B）</b> a₁＝2a₂</li><li><b>（C）</b> 2a₁＝a₂</li><li><b>（D）</b> 2a₁＝3a₂</li><li><b>（E）</b> 以上皆非</li></ul>
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>第一圖已知的是繩端的拉力，第二圖已知的是懸掛物的質量。</li><li>兩種裝置各有哪些物體必須一起加速？</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 圖一直接求滑車加速度</h3><p>理想繩的張力等於自由端拉力。5 kgw 相當於 5g N，所以 10a₁＝5g，a₁＝g/2。</p><h3>2. 圖二先看滑車與懸掛物</h3><p>對滑車，T＝10a₂。取懸掛物向下為正，5g−T＝5a₂。相加消去 T，得 5g＝15a₂，因此 a₂＝g/3。</p><h3>3. 比較並檢查張力</h3><p>a₁/a₂＝(g/2)/(g/3)＝3/2，所以 <b>2a₁＝3a₂，選 D</b>。圖二 T＝10g/3 N，小於懸掛物重量 5g N，差值用來使懸掛物本身向下加速。</p></div></details></div><p class="note">講義頁碼 4-6</p></section>
+<section class="panel sim" data-scene="0"><h2>互動模擬</h2><p class="muted">比較兩個裝置從靜止出發的位移與張力。滑桿同時改變圖一拉力的公斤重數值與圖二懸掛質量。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="比較定力拉車與懸掛砝碼裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>滑車質量（kg）<output for="s-m">10</output></span><input id="s-m" aria-label="滑車質量（kg）" type="range" name="m" min="5" max="20" step="1" value="10"></label><label class="control"><span>拉力（kgw）／吊重（kg）<output for="s-h">5</output></span><input id="s-h" aria-label="拉力（kgw）／吊重（kg）" type="range" name="h" min="1" max="10" step="1" value="5"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="balloon.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

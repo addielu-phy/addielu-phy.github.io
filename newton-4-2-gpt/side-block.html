@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>側邊木塊不下墜的最小推力｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">連結體 · 例 2</p><h1>側邊木塊不下墜的最小推力</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>木塊 m₂ 貼在 m₁ 的右側直立面上，兩塊之間靜摩擦係數為 μ。地面光滑。由左向右對 m₁ 施水平力 F。</p><p><strong>求能讓 m₂ 維持高度的最小 F。</strong></p>
+
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>m₂ 水平靠哪個力跟著 m₁ 加速？</li><li>維持高度所需的向上摩擦力，何時達到靜摩擦上限？</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 水平方向分別列式</h3><p>合看 m₁、m₂，a＝F/(m₁+m₂)。單看 m₂，唯一水平力是接觸正向力，所以 N＝m₂a。</p><h3>2. 鉛直方向檢查能否止滑</h3><p>要 m₂ 不下降，靜摩擦須向上且大小為 m₂g。又 fₛ≤μN，故 m₂g≤μm₂a，得到 a≥g/μ。</p><h3>3. 換回推力</h3><p><b>F<sub>min</sub>＝(m₁+m₂)g/μ</b>。F 正好等於臨界值時，fₛ＝μN。F 超過臨界值後，靜摩擦仍只需要 m₂g。</p></div></details></div><p class="note">講義頁碼 4-11</p></section>
+<section class="panel sim" data-scene="4"><h2>互動模擬</h2><p class="muted">比較所需摩擦力與靜摩擦上限。若發生滑動，動畫以 μₖ＝0.8μ 示範尚未落地的短時間。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="側邊木塊不下墜的最小推力裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>水平推力 F（N）<output for="s-f">75</output></span><input id="s-f" aria-label="水平推力 F（N）" type="range" name="f" min="5" max="220" step="1" value="75"></label><label class="control"><span>左塊質量 m₁（kg）<output for="s-m">3</output></span><input id="s-m" aria-label="左塊質量 m₁（kg）" type="range" name="m" min="1" max="6" step="0.5" value="3"></label><label class="control"><span>右塊質量 m₂（kg）<output for="s-n">1</output></span><input id="s-n" aria-label="右塊質量 m₂（kg）" type="range" name="n" min="0.5" max="4" step="0.5" value="1"></label><label class="control"><span>靜摩擦係數 μ<output for="s-mu">0.5</output></span><input id="s-mu" aria-label="靜摩擦係數 μ" type="range" name="mu" min="0.15" max="0.9" step="0.05" value="0.5"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="inclined-contact.html">← 上一題</a><a href="stacked-blocks.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>

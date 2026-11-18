@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>猴子滑繩與最大張力｜4-2 牛頓第二運動定律｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head><body>
+<a class="skip" href="#content">跳到主要內容</a><header><div class="top"><a href="./">← 4-2 例題總覽</a><span>GPT 版</span></div></header><main id="content"><section class="hero"><p class="tag">基本應用 · 例 3</p><h1>猴子滑繩與最大張力</h1></section>
+<div class="layout"><section class="panel"><h2>題目</h2><p>質量 20 kg 的猴子沿輕繩向下滑。繩可承受的最大張力為 120 N，取 g＝10 m/s²。</p><p><strong>為使繩不超過負荷，猴子向下加速度的最小值為何（m/s²）？</strong></p>
+<ul class="options"><li><b>（A）</b> 4</li><li><b>（B）</b> 3</li><li><b>（C）</b> 1</li><li><b>（D）</b> 2</li><li><b>（E）</b> 2.7</li></ul>
+<div class="reveal"><details><summary>引導提示</summary><div class="inside"><ol><li>猴子受向上的繩力和向下的重力。</li><li>繩的負荷越大，向下合力就越小。哪個張力對應最小向下加速度？</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 以向下為正</h3><p>重力為 20×10＝200 N，繩向上作用 T。故 200−T＝20a。</p><h3>2. 用張力上限求臨界值</h3><p>為使繩能承受，T≤120 N。因此 20a＝200−T≥80 N，<b>a≥4 m/s²</b>。最小值 4 m/s²，選 A。</p><h3>3. 檢查等速下滑</h3><p>等速時 a＝0，所需 T＝200 N，已超過 120 N。動畫把超載視為所設條件無法由未斷的繩維持。</p></div></details></div><p class="note">講義頁碼 4-7</p></section>
+<section class="panel sim" data-scene="2"><h2>互動模擬</h2><p class="muted">從預設的 120 N 張力上限出發，試調猴子要求的向下加速度。超過上限時，圖中切換為理想斷繩後自由落體。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="猴子滑繩與最大張力裝置與運動示意圖"></canvas><figcaption>箭頭顯示力的方向。動畫時間可暫停或拖曳，圖中距離採示意比例。</figcaption></figure>
+<div class="controls"><label class="control"><span>要求向下加速度（m/s²）<output for="s-a">4</output></span><input id="s-a" aria-label="要求向下加速度（m/s²）" type="range" name="a" min="0" max="10" step="0.25" value="4"></label><label class="control"><span>繩的張力上限（N）<output for="s-limit">120</output></span><input id="s-limit" aria-label="繩的張力上限（N）" type="range" name="limit" min="60" max="220" step="5" value="120"></label><label class="control"><span>時間 t（s）<output for="s-time">0</output></span><input id="s-time" aria-label="時間 t（s）" type="range" name="time" min="0" max="2" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="reveal" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用動畫。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="balloon.html">← 上一題</a><a href="inclined-contact.html">下一題 →</a></nav></main>
+<footer>題意參照陳慶仁老師編《第四章 牛頓運動定律》§4–2。題幹改寫、圖形、詳解與互動模擬為 GPT 版。</footer></body></html>
