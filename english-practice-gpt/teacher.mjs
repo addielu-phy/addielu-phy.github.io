@@ -1,5 +1,5 @@
 import {backend,login,logout,readPage,teacherEmail,cloudError} from './cloud.mjs';
-import {metrics,weakKeys,recordFor,deduplicate,validateBackup,dayKey,csv} from './core.mjs';
+import {metrics,weakKeys,recordFor,deduplicate,validateBackup,dayKey,csv} from './core.mjs?v=20261119';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let cloudRows=[],backupRows=null,cursor=null,more=false,user=null,reading=false;
 const normal=r=>({id:r.eventId,eventId:r.eventId,key:r.ids?.[0]||'',category:r.category||'未分類',prompt:r.prompt||'',expected:r.expected||'',response:r.response||'',correct:r.correct===1,assisted:r.assisted===true,grading:r.grading||'auto',activeMs:Math.max(0,Number(r.durationSec)||0)*1000,at:r.clientTime||r.ts?.toDate?.().toISOString()||new Date(0).toISOString(),alias:r.name||'未命名',learnerId:r.learnerId||'unknown',mode:r.exerciseMode||'practice',qa:r.qa===true,sessionId:r.sessionId||r.eventId});

@@ -1,6 +1,6 @@
 import {TRANSLATION} from './translation.mjs';
 import {VOCAB,EXAM,GRILL,TIPS} from './data.mjs';
-import {APP,VERSION,translationMetrics,shuffle,matches,metrics,weakKeys,recordFor,nextQueue,parseWords,validateBackup,dayKey} from './core.mjs';
+import {APP,VERSION,translationMetrics,shuffle,matches,metrics,weakKeys,recordFor,nextQueue,parseWords,validateBackup,dayKey} from './core.mjs?v=20261119';
 import {sendAttempt,cloudError} from './cloud.mjs';
 const QA=new URL(location.href).searchParams.get('qa')==='1';
 const $=id=>document.getElementById(id),KEY='english-small-steps-v1'+(QA?'-qa':''),SESSION=KEY+'-session',uid=()=>crypto.randomUUID();
