@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中空導體的靜電屏蔽｜12-2 電場｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head>
+<body><header><div class="top"><a href="./">← 12-2 電場例題</a><span>GPT 版</span></div></header>
+<main><section class="hero"><p class="tag">例題 5 · 外場與感應場</p><h1>中空導體的靜電屏蔽</h1></section>
+<div class="layout"><section class="panel" aria-labelledby="question-title"><h2 id="question-title">題目</h2><p>一個不帶電的中空金屬球殼，球心為 O，空腔內沒有電荷。外部點電荷 −Q（Q > 0）位於 O 左側，與 O 相距 d。</p>
+<p><strong>僅由球殼所有感應電荷在 O 點造成的電場，大小與方向為何？</strong></p>
+<ul class="options"><li><b>（A）</b> kQ/R²，向右</li><li><b>（B）</b> kQ/R²，向左</li><li><b>（C）</b> kQ/d²，向右</li><li><b>（D）</b> kQ/d²，向左</li><li><b>（E）</b> 0</li></ul>
+<p class="note">R 沿用講義選項的記號。講義圖將 R 標為外表面到球心的距離，題幹寫「外徑」，此記號差異不影響答案。</p><div class="reveal">
+<details><summary>引導提示</summary><div class="inside"><ol><li>把 O 點的總電場分成「外部點電荷造成的電場」和「導體表面感應電荷造成的電場」。</li><li>空腔封閉且內部無自由電荷。靜電平衡時 O 點的總電場是多少？</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 先算外部負點電荷的貢獻</h3><p>單獨計算外部 −Q，在距離 d 的 O 點，E<sub>外</sub> = kQ/d²。負電荷的電場指向自己，所以 O 點的外部貢獻向左。</p><h3>2. 空腔中的淨場為零</h3><p>導體在靜電平衡時等電位。封閉空腔內沒有電荷，邊界又等電位，整個空腔電位為常數，因此 E⃗<sub>總</sub> = 0。</p><h3>3. 用疊加反求感應電場</h3><p>E⃗<sub>感應</sub> = −E⃗<sub>外</sub>，所以大小為 <b>kQ/d²</b>，方向 <b>向右</b>，選 <b>（C）</b>。</p><h3>4. 區分題目問的兩個量</h3><p>在 O 點，外部電荷的貢獻與感應電荷的貢獻都可以非零。兩者相加後，空腔內的總電場才為零。</p></div></details></div>
+<p class="note">講義頁碼 12-16</p></section>
+<section class="panel sim" aria-labelledby="sim-title" data-example="5"><h2 id="sim-title">互動模擬</h2><p class="muted">調整外部電荷距離，或把探測點從 O 移向靠近外部電荷的一側，比較兩種貢獻。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="中空導體的靜電屏蔽互動圖"></canvas><figcaption>外表面的 ± 是感應電荷示意。場值取自空腔內精確抵消關係，讀值單位為 kQ/R²。</figcaption></figure>
+<div class="controls"><label class="control"><span>外部電荷距離 d/R<output id="d-value">2.2</output></span><input aria-label="外部電荷距離 d/R" name="d" type="range" min="1.3" max="3" step="0.01" value="2.2"></label><label class="control"><span>空腔探測位置 x/R<output id="probe-value">0</output></span><input aria-label="空腔探測位置 x/R" name="probe" type="range" min="-0.65" max="0.65" step="0.01" value="0"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="show" aria-pressed="false">顯示電場與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用模擬。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="example-4.html">← 例題 4</a><a href="./">回例題總覽 →</a></nav></main><footer>教材題意參照張峻輔老師《第十二章 靜電學》12-2・題幹改寫、圖形與互動解說為 GPT 版</footer></body></html>

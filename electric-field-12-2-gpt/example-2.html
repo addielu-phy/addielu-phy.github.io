@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>均勻帶電圓環的軸上電場｜12-2 電場｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head>
+<body><header><div class="top"><a href="./">← 12-2 電場例題</a><span>GPT 版</span></div></header>
+<main><section class="hero"><p class="tag">例題 2 · 對稱與分量</p><h1>均勻帶電圓環的軸上電場</h1></section>
+<div class="layout"><section class="panel" aria-labelledby="question-title"><h2 id="question-title">題目</h2><p>半徑為 R 的金屬圓環均勻帶電，總電量為 Q（圖示取 Q > 0）。P 在通過環心且垂直環面的軸線上，距環心 √3 R。</p>
+<p><strong>求 P 點的電場大小。</strong></p>
+<ul class="options"><li><b>（A）</b> √3 kQ/(8R²)</li><li><b>（B）</b> √3 kQ/(4R²)</li><li><b>（C）</b> √3 kQ/(3R²)</li><li><b>（D）</b> √2 kQ/(2R²)</li><li><b>（E）</b> √(3kQ)/(8R²)</li></ul>
+<div class="reveal">
+<details><summary>引導提示</summary><div class="inside"><ol><li>在環上選取一對直徑兩端的微小電荷。兩支電場箭頭在軸線方向和垂直軸線方向各有什麼關係？</li><li>用畢氏定理求環上任一電荷到 P 的距離，再用軸向投影比例。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 把圓環分成小電荷</h3><p>設 P 離環心 z，任一小電荷 ΔQ 到 P 的距離都是 s = √(R² + z²)。因此它造成的電場大小是 kΔQ/s²。</p><h3>2. 只留下軸向分量</h3><p>直徑兩端的小電荷到 P 的距離相同，垂直於軸線的分量成對抵消。它們的軸向分量同向，每份為 (kΔQ/s²)(z/s) = kΔQz/s³。</p><h3>3. 加總後代入題目數字</h3><p>把所有 ΔQ 加起來得 Q，所以 E = kQz/(R² + z²)<sup>3/2</sup>。當 z = √3 R，s = √(R² + 3R²) = 2R，故 E = kQ(√3 R)/(2R)³ = <b>√3 kQ/(8R²)</b>，選 <b>（A）</b>。方向沿軸線由環心指向 P。</p><h3>4. 檢查環心與遠處</h3><p>z = 0 時電場完全抵消。z ≫ R 時，E ≈ kQ/z²，遠看像一個點電荷。</p></div></details></div>
+<p class="note">講義頁碼 12-14</p></section>
+<section class="panel sim" aria-labelledby="sim-title" data-example="2"><h2 id="sim-title">互動模擬</h2><p class="muted">移動 P 或旋轉取樣位置，觀察直徑兩端成對抵消的分量。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="均勻帶電圓環的軸上電場互動圖"></canvas><figcaption>藍、紫顯示一對電荷所生電場的方向，箭長已放大。黃箭代表全環合場，讀值單位為 kQ/R²。</figcaption></figure>
+<div class="controls"><label class="control"><span>軸向距離 z/R<output id="z-value">1.73</output></span><input aria-label="軸向距離 z/R" name="z" type="range" min="0" max="3" step="0.01" value="1.73"></label><label class="control"><span>環上取樣角度<output id="angle-value">48</output></span><input aria-label="環上取樣角度" name="angle" type="range" min="0" max="360" step="1" value="48"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="show" aria-pressed="false">顯示電場與讀值</button><button type="button" id="original">定位題目 P 點</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用模擬。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="example-1.html">← 例題 1</a><a href="example-3.html">例題 3 →</a></nav></main><footer>教材題意參照張峻輔老師《第十二章 靜電學》12-2・題幹改寫、圖形與互動解說為 GPT 版</footer></body></html>

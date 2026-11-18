@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>兩點電荷的合成電場｜12-2 電場｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head>
+<body><header><div class="top"><a href="./">← 12-2 電場例題</a><span>GPT 版</span></div></header>
+<main><section class="hero"><p class="tag">例題 1 · 向量疊加</p><h1>兩點電荷的合成電場</h1></section>
+<div class="layout"><section class="panel" aria-labelledby="question-title"><h2 id="question-title">題目</h2><p>兩個固定點電荷皆為 +q，相距 2L。P 位於兩電荷連線的垂直平分線上，與中點 O 相距 x。</p>
+<ol class="qitems"><li>兩個電荷皆為 +q 時，P 點的電場大小是多少？</li><li>若右側電荷改成 −q，P 點的電場大小是多少？</li></ol>
+<ul class="options"><li><b>（A）</b> 0</li><li><b>（B）</b> kq/(x² + L²)</li><li><b>（C）</b> 4kq/(x² + L²)</li><li><b>（D）</b> 2kqL/(x² + L²)<sup>3/2</sup></li><li><b>（E）</b> 2kqx/(x² + L²)<sup>3/2</sup></li></ul>
+<div class="reveal">
+<details><summary>引導提示</summary><div class="inside"><ol><li>先畫兩個電荷在 P 點各自造成的電場箭頭。正電荷的箭頭遠離電荷，負電荷的箭頭指向電荷。</li><li>兩箭頭一樣長。把它們分解成平行與垂直於電荷連線的分量，看看哪一對抵消。</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 先算單一電荷的電場</h3><p>兩電荷到 P 的距離都是 r = √(L² + x²)，各自造成的電場大小都是 kq/r²。</p><h3>2. 同號時，水平分量抵消</h3><p>取兩電荷連線為水平，P 在 O 的上方。兩個水平分量各為 kqL/r³，方向相反。兩個垂直分量各為 kqx/r³，方向都向上。相加得 <b>2kqx/(L² + x²)<sup>3/2</sup></b>，選 <b>（E）</b>。</p><h3>3. 右邊改成負電，垂直分量抵消</h3><p>右側電荷造成的箭頭整支反向。兩個垂直分量互相抵消，水平分量都向右。相加得 <b>2kqL/(L² + x²)<sup>3/2</sup></b>，選 <b>（D）</b>，方向從正電側指向負電側。</p><h3>4. 用中點檢查方向</h3><p>令 x = 0。同號時兩箭頭完全抵消。異號時兩箭頭都指向負電荷，E = 2kq/L²。</p></div></details></div>
+<p class="note">講義頁碼 12-13</p></section>
+<section class="panel sim" aria-labelledby="sim-title" data-example="1"><h2 id="sim-title">互動模擬</h2><p class="muted">移動 P、切換右側電荷的正負，觀察兩個分量如何改變。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="兩點電荷的合成電場互動圖"></canvas><figcaption>藍、紫為個別電場，黃為合電場。箭頭採同一線性比例，讀值單位為 kq/L²。</figcaption></figure>
+<div class="controls"><label class="control"><span>探測點 x/L<output id="x-value">1</output></span><input aria-label="探測點 x/L" name="x" type="range" min="0" max="3" step="0.01" value="1"></label><label class="control"><span>右側電荷</span><select name="sign"><option value="1" selected>+q</option><option value="-1">−q</option></select></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="show" aria-pressed="false">顯示電場與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用模擬。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="example-2.html">例題 2 →</a></nav></main><footer>教材題意參照張峻輔老師《第十二章 靜電學》12-2・題幹改寫、圖形與互動解說為 GPT 版</footer></body></html>

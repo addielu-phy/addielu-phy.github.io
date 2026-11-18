@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同心金屬球與帶電球殼｜12-2 電場｜GPT 版</title><link rel="stylesheet" href="style.css"><script defer src="sim.js"></script></head>
+<body><header><div class="top"><a href="./">← 12-2 電場例題</a><span>GPT 版</span></div></header>
+<main><section class="hero"><p class="tag">例題 3 · 導體與球對稱</p><h1>同心金屬球與帶電球殼</h1></section>
+<div class="layout"><section class="panel" aria-labelledby="question-title"><h2 id="question-title">題目</h2><p>半徑 a 的金屬球帶電 +q₁。外層是同心金屬球殼，內半徑 b、外半徑 c，淨電量為 +q₂，且 a < b < c。</p>
+<p><strong>分別求 r < a、a < r < b、b < r < c、r > c 的電場大小，並說明非零時的方向。</strong></p>
+
+<div class="reveal">
+<details><summary>引導提示</summary><div class="inside"><ol><li>先標出哪兩個區域是金屬本體。靜電平衡時，導體內部的電場是多少？</li><li>在球殼金屬內畫一同心球面。如果電場為零，球面包住的總電量應是多少？</li></ol></div></details>
+<details><summary>完整詳解</summary><div class="inside"><h3>1. 先判斷金屬內部</h3><p>達到靜電平衡後，金屬內部 E = 0。因此 <b>r < a 與 b < r < c 都是 0</b>。</p><h3>2. 找球殼兩表面上的電量</h3><p>在 b < r < c 的金屬內取同心球形高斯面。電通量為零，包住的電量也必為零，所以 q₁ + q<sub>內表面</sub> = 0，得 q<sub>內表面</sub> = −q₁。球殼的淨電量是 +q₂，外表面必帶 +(q₁ + q₂)。</p><h3>3. 隙間只包住內球</h3><p>在 a < r < b 取同心球形高斯面。球對稱使 E 在球面上處處等大且沿徑向。E(4πr²) = q₁/ε₀，因此 <b>E = kq₁/r²，徑向向外</b>。</p><h3>4. 球殼外包住全部淨電荷</h3><p>r > c 時，E(4πr²) = (q₁ + q₂)/ε₀，得 <b>E = k(q₁ + q₂)/r²，徑向向外</b>。理想帶電表面 a、b、c 的兩側場值不同，應分別看左右極限。</p></div></details></div>
+<p class="note">講義頁碼 12-15</p></section>
+<section class="panel sim" aria-labelledby="sim-title" data-example="3"><h2 id="sim-title">互動模擬</h2><p class="muted">沿半徑移動探測點。比較金屬內、空隙和球殼外的讀值，並觀察圖上的跳變。</p>
+<figure><canvas width="600" height="350" role="img" aria-label="同心金屬球與帶電球殼互動圖"></canvas><figcaption>模擬取 b = 2a、c = 2.65a。讀值單位為 kq₁/a²，遇表面顯示內外側極限。</figcaption></figure>
+<div class="controls"><label class="control"><span>探測半徑 r/a<output id="r-value">1.5</output></span><input aria-label="探測半徑 r/a" name="r" type="range" min="0" max="4" step="0.01" value="1.5"></label><label class="control"><span>球殼淨電量 q₂/q₁<output id="ratio-value">1</output></span><input aria-label="球殼淨電量 q₂/q₁" name="ratio" type="range" min="0.2" max="4" step="0.1" value="1"></label></div>
+<div class="actions"><button type="button" class="primary" id="play">播放動畫</button><button type="button" id="show" aria-pressed="false">顯示電場與讀值</button><button type="button" id="reset">重設</button></div>
+<p id="metrics" class="metrics" hidden></p><noscript>請啟用 JavaScript 使用模擬。</noscript></section></div>
+<nav class="steps-nav" aria-label="例題導覽"><a href="example-2.html">← 例題 2</a><a href="example-4.html">例題 4 →</a></nav></main><footer>教材題意參照張峻輔老師《第十二章 靜電學》12-2・題幹改寫、圖形與互動解說為 GPT 版</footer></body></html>
