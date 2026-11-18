@@ -86,8 +86,8 @@ const WORKS = [
 },
 {
   "id": "english-practice-gpt",
-  "title": "英文小練習｜單字、默寫與教師觀察（GPT版）",
-  "desc": "每輪3、5或10題；單字選答、默寫、Grill me線索追問、一段能力補強與錯題重練。沿用理化系統雲端紀錄與教師登入；預載77字為舊版參考字庫，非二段完整題庫。",
+  "title": "英文小練習｜整段翻譯、默寫與教師觀察（GPT版）",
+  "desc": "先練24組整段中翻英：顯示答案、自評對錯、翻譯錯題加強與統計；另有單字、默寫、Grill me與教師觀察。沿用理化系統雲端紀錄與教師登入；參考字庫與原創練習非二段完整題庫。",
   "url": "https://addielu-phy.github.io/english-practice-gpt/",
   "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/english-practice-gpt",
   "cat": "自學評量",
