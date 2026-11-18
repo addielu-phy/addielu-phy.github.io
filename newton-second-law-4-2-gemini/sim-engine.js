@@ -1495,7 +1495,7 @@ function drawSimulationCanvas(canvas, id, s, m) {
     const animShift = m.tAnim > 0 ? Math.sin(m.tAnim * 2.2) : 0;
 
     // Left: Before (always accelerating down)
-    const b1x = 120, b1y = 195 + (m.tAnim > 0 ? Math.min(45, 16 * m.tAnim * m.tAnim * m.agRatio * 4) : 0);
+    const b1x = 104, b1y = 195 + (m.tAnim > 0 ? Math.min(45, 16 * m.tAnim * m.tAnim * m.agRatio * 4) : 0);
     ctx.fillStyle = P.sub;
     ctx.font = '700 13.5px "Noto Sans TC", sans-serif';
     ctx.textAlign = 'center';
@@ -1518,7 +1518,7 @@ function drawSimulationCanvas(canvas, id, s, m) {
     }
 
     // Middle: After dropping Δm
-    const b2x = 305;
+    const b2x = 274;
     const rawShift = m.tAnim > 0 ? -0.5 * m.aPrimeOverG * 22 * m.tAnim * m.tAnim : 0;
     const b2y = Math.max(125, Math.min(285, 200 + rawShift));
     ctx.fillStyle = P.ink;
@@ -1824,12 +1824,14 @@ function drawSimulationCanvas(canvas, id, s, m) {
     const fallDy = (!m.holds && m.tAnim > 0) ? Math.min(72, 10 * m.ayDown * m.tAnim * m.tAnim * 0.4) : 0;
 
     if (m.mode === 'two_blocks') {
-      const x1 = 80 + dx, w1 = 96, h1 = 100;
+      const x1 = 92 + dx, w1 = 96, h1 = 100;
       const x2 = x1 + w1, w2 = 64, h2 = 68;
       const y2 = floorY - h1 + 14 + fallDy;
       drawBlock(x1, floorY - h1, w1, h1, 'm₁=3kg', '貼地無摩擦', P.blockFill, P.blue);
       drawBlock(x2, y2, w2, h2, 'm₂=2kg', m.holds ? '夾緊不落' : '向下滑落!', P.blockFillAlt, m.holds ? P.teal : P.crimson);
-      drawArrow(x1 - 52, floorY - h1 * 0.5, 48, 0, P.blue, `F=${m.F}N`, 3.2, false, { x: -42, y: -14 });
+      drawArrow(x1 - 56, floorY - h1 * 0.5, 50, 0, P.blue, '', 3.2);
+      ctx.fillStyle = P.blue; ctx.font = '800 13px "JetBrains Mono", sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(`F=${m.F}N`, x1 - 32, floorY - h1 * 0.5 - 14);
       if (s.showFBD) {
         drawArrow(x2 + w2, y2 + h2 * 0.5, 42, 0, P.blue, `N=${fmt(m.N, 0)}N`, 2.4, false, { x: 4, y: -12 });
         drawArrow(x2 + w2 / 2, y2 + h2, 0, 42, P.orange, `W=${fmt(m.W, 0)}N`, 2.6, false, { x: 0, y: 10 });
@@ -1948,10 +1950,10 @@ function drawSimulationCanvas(canvas, id, s, m) {
       }
       ctx.fillStyle = P.sub;
       ctx.textAlign = 'left';
-      ctx.font = '700 12px "JetBrains Mono", "Noto Sans TC", sans-serif';
-      ctx.fillText(`上限 f_max = μmg = ${fmt(m.fsMax, 1)} N`, 256, 340);
-      ctx.fillText(`極限 a_max = ${fmt(m.aMax, 2)} m/s²`, 256, 368);
-      ctx.fillText(`極限 F_max = ${fmt(m.Fmax, 2)} N`, 256, 396);
+      ctx.font = '700 11.5px "JetBrains Mono", "Noto Sans TC", sans-serif';
+      ctx.fillText(`上限 f_max = μmg = ${fmt(m.fsMax, 1)}N`, 246, 340);
+      ctx.fillText(`極限 a_max = ${fmt(m.aMax, 2)} m/s²`, 246, 368);
+      ctx.fillText(`極限 F_max = ${fmt(m.Fmax, 2)} N`, 246, 396);
     }
 
     // Right Graph: a_A and a_B vs F
