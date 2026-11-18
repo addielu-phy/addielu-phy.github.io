@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "coulomb-12-1-gpt",
+  "title": "12-1 庫侖定律｜五道互動例題（GPT 版）",
+  "desc": "比較庫侖力與萬有引力，操作向量疊加、帶電擺球、三電荷平衡與小振動。每題各有獨立網頁、可展開的解題引導與分步詳解。",
+  "url": "https://addielu-phy.github.io/coulomb-12-1-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/coulomb-12-1-gpt",
+  "cat": "錯題詳解",
+  "tags": [
+    "高中物理",
+    "庫侖定律",
+    "互動模擬",
+    "GPT 版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "electric-field-12-2-gemini",
   "title": "12-2 電場與電力線｜5題互動模擬與漸進解說（Gemini版）",
   "desc": "每一題一個獨立網頁（12-2-1～12-2-5）：題目直接顯示、互動式物理模擬可拖曳操作；3階解題引導、詳細公式推導與答案預設隱藏，點選按鈕即可開啟。",
