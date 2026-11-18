@@ -35,3 +35,7 @@ Teacher Auth persists for the current browser session. Database rules enforce re
 - Desktop and 390px iframe viewport inspected; no unreadable Chinese or horizontal content clipping observed.
 - Remaining live-account check: the owner's actual teacher login and authenticated cloud report read require their existing password and were not performed by the agent. No password guessing or credential reset was attempted.
 - Browser download-event automation did not complete reliably; the copyable JSON fallback was verified instead. Device-specific file download and mobile speech availability remain browser-dependent.
+
+## Translation-first update (2026-11-19)
+
+Home defaults to full Chinese-to-English paragraph self-rating. The first two controls are translation training and translation-only weak-item practice. The 24-item bank covers original translation points 65–69 plus new variations; this is not a complete Exam 2 syllabus. No text input or multiple-choice response appears for this mode. The reference remains hidden until Show Answer; only then may the learner rate correct/wrong. Two consecutive correct self-ratings clear a translation weakness, while objective exercise weaknesses still require objective unaided correct attempts. Translation statistics are explicitly self-rated; teacher reports preserve that distinction. Existing records and backup schema remain compatible.
