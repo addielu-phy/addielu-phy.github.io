@@ -141,7 +141,7 @@ function plateModel({distance,field,charge,mass,time}){
 }
 function plates(){
   const model=plateModel(state), {distance,time}=state;
-  const left=65,right=left+185+distance*780,y=179,span=right-left;
+  const left=65,right=left+175+distance*650,y=179,span=right-left;
   const x=left+span*(time/100)**2;
   for(let i=0;i<2;i++){
     const pos=i===1,X=pos?right:left,color=pos?C.coral:C.blue;
@@ -152,9 +152,8 @@ function plates(){
   for(let i=1;i<=10 && i<=time/10+1e-8;i++) dot(left+span*(i/10)**2,y,3,C.purple);
   if(visible){
     arrow(right-17,101,-span+34,0,C.coral);label("電場 E",(left+right)/2,80,C.coral,"center",17);
-    const forceStart=Math.min(x,497), speedWidth=12+time*.46;
-    arrow(forceStart,y+39,40,0,C.blue,"電力");
-    if(time>0) arrow(Math.min(x,550-speedWidth),y-28,speedWidth,0,C.gold,"v");
+    arrow(x,y+39,40,0,C.blue,"電力");
+    if(time>0) arrow(x,y-28,12+time*.46,0,C.gold,"v");
   }
   dot(x,y,11,"#244d70",C.blue);label("−",x,y,C.white,"center",18);
   return "a = "+number(model.a)+" m/s²　t = "+number(model.t)+" / "+number(model.total)+" s　位移 = "+number(model.position)+" m　v = "+number(model.velocity)+" m/s";
