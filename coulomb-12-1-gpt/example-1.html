@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>例題 1・質子與電子的兩種作用力｜12-1 庫侖定律｜GPT 版</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="sim.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header><div class="top"><a href="./">← 12-1 例題總覽</a><span>GPT 版</span></div></header>
+<main id="main">
+<section class="hero"><p class="eyebrow">12-1 庫侖定律 · 例題 1 · 平方反比</p><h1>質子與電子的兩種作用力</h1></section>
+<div class="layout">
+<section class="panel"><h2>題目</h2><p>質子的電荷量為 +e，電子為 −e，其中 e＝1.6 × 10⁻¹⁹ C。兩者的質量分別是 1.7 × 10⁻²⁷ kg、9.1 × 10⁻³¹ kg，相距 5.3 × 10⁻¹¹ m。</p><p><strong>求兩粒子間的庫侖力、萬有引力，以及庫侖力與萬有引力的大小比。</strong></p>
+<div class="reveal"><details><summary>顯示解題引導</summary><ol><li>兩式的分母都含有 r²。先想想力的方向，再比較大小。</li><li>力的大小用 |(+e)(−e)|。兩式相除後，檢查距離是否仍會影響結果。</li></ol></details>
+<details><summary>顯示完整詳解</summary><div class="steps"><h3>1. 取大小並判斷方向</h3><p>質子和電子異號，庫侖力相吸。兩物體的萬有引力也相吸。任一種作用力在兩粒子上皆等大反向。</p>
+<h3>2. 代入庫侖定律</h3><p>r²＝(5.3 × 10⁻¹¹)²＝2.809 × 10⁻²¹ m²。以 k＝9.0 × 10⁹ N·m²/C²，得 Fₑ＝ke²/r²＝(9.0 × 10⁹)(1.6 × 10⁻¹⁹)²/(2.809 × 10⁻²¹)＝<b>8.2 × 10⁻⁸ N</b>。</p>
+<h3>3. 代入萬有引力定律</h3><p>以 G＝6.67 × 10⁻¹¹ N·m²/kg²，得 F<sub>g</sub>＝Gmₚmₑ/r²＝(6.67 × 10⁻¹¹)(1.7 × 10⁻²⁷)(9.1 × 10⁻³¹)/(2.809 × 10⁻²¹)＝<b>3.7 × 10⁻⁴⁷ N</b>。</p>
+<h3>4. 兩式相除</h3><p>Fₑ/F<sub>g</sub>＝ke²/(Gmₚmₑ)＝<b>2.2 × 10³⁹</b>。r² 約去，所以距離加倍時兩力都變成 1/4，兩力比維持原值。</p></div></details></div><p class="muted">講義頁碼 12-1</p></section>
+<section class="panel sim" data-scene="1"><h2>互動模擬</h2><p class="muted">掃描粒子間距，比較兩種力的大小變化。圖中粒子大小與間距採示意比例。</p>
+<figure><svg id="diagram" viewBox="0 0 600 330" role="img" aria-label="質子與電子的受力示意，以及兩種作用力大小對距離的對數圖"></svg></figure>
+<div class="controls"><label><span>距離（10⁻¹¹ m）<output for="r">5.3</output></span><input type="range" id="r" name="r" min="2.65" max="15.9" step="0.05" value="5.3" aria-label="距離（10⁻¹¹ m）"></label></div>
+<div class="buttons"><button class="primary" type="button" id="play">播放距離掃描</button><button type="button" id="show" aria-controls="metrics" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p class="metrics" id="metrics" hidden></p><noscript>請啟用 JavaScript 使用互動模擬。</noscript>
+</section>
+</div>
+<nav aria-label="例題導覽"><a href="./">← 回總覽</a><a href="example-2.html">下一題 →</a></nav>
+</main>
+<footer>題意參照張峻輔老師《第十二章 靜電學》§12-1。題幹改寫、圖形、解說與模擬為 GPT 版。</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>例題 2・正方形頂點的合力何時為零？｜12-1 庫侖定律｜GPT 版</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="sim.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header><div class="top"><a href="./">← 12-1 例題總覽</a><span>GPT 版</span></div></header>
+<main id="main">
+<section class="hero"><p class="eyebrow">12-1 庫侖定律 · 例題 2 · 向量疊加</p><h1>正方形頂點的合力何時為零？</h1></section>
+<div class="layout">
+<section class="panel"><h2>題目</h2><p>四個點電荷位於正方形的四個角，其中一對對角各放 Q，另一對各放 q。兩種電荷量皆非零。</p><p><strong>若任一個 Q 所受的合靜電力為零，Q 與 q 的關係為何？</strong></p><ul class="choices"><li><b>A.</b> Q＝−2√2 q</li><li><b>B.</b> Q＝2√2 q</li><li><b>C.</b> Q＝−2q</li><li><b>D.</b> Q＝2q</li><li><b>E.</b> Q＝√2 q</li></ul>
+<div class="reveal"><details><summary>顯示解題引導</summary><ol><li>選一個 Q 當受力物體。找出兩個 q 的力夾角，以及另一個 Q 的力方向。</li><li>若邊長為 a，先算兩個 q 的力合成後的大小，再用對角線 √2 a 算另一個 Q 的力。</li></ol></details>
+<details><summary>顯示完整詳解</summary><div class="steps"><h3>1. 判斷電性</h3><p>另一個 Q 的作用一定沿對角線將目標 Q 推向外。兩個 q 必須各自吸引目標 Q，向內的合力才可抵消，因此 Q 與 q 異號。</p>
+<h3>2. 合成兩個相鄰角的力</h3><p>每個 q 到目標角的距離皆為 a，力大小 f＝k|Qq|/a²。兩力垂直，因此合力大小 √(f²＋f²)＝√2 k|Qq|/a²。</p>
+<h3>3. 計算對角線上的斥力</h3><p>兩個 Q 相距 √2 a，斥力大小 kQ²/(√2 a)²＝kQ²/(2a²)。</p>
+<h3>4. 令兩力相等</h3><p>√2 k|Qq|/a²＝kQ²/(2a²)。約掉 k|Q|/a²，得 |Q|＝2√2 |q|，再代入異號條件，<b>Q＝−2√2 q，選 A</b>。</p></div></details></div><p class="muted">講義頁碼 12-2</p></section>
+<section class="panel sim" data-scene="2"><h2>互動模擬</h2><p class="muted">把 q 的電量當作正的參考值，調整 Q/q，再依序把三個力首尾相接。</p>
+<figure><svg id="diagram" viewBox="0 0 600 330" role="img" aria-label="正方形四角電荷與目標 Q 的向量疊加圖"></svg></figure>
+<div class="controls"><label><span>電量比 Q/q<output for="ratio">-1</output></span><input type="range" id="ratio" name="ratio" min="-4" max="4" step="0.001" value="-1" aria-label="電量比 Q/q"></label>
+<label><span>向量疊加進度（%）<output for="phase">0</output></span><input type="range" id="phase" name="phase" min="0" max="100" step="1" value="0" aria-label="向量疊加進度（%）"></label></div>
+<div class="buttons"><button class="primary" type="button" id="play">播放向量疊加</button><button type="button" id="show" aria-controls="metrics" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p class="metrics" id="metrics" hidden></p><noscript>請啟用 JavaScript 使用互動模擬。</noscript>
+</section>
+</div>
+<nav aria-label="例題導覽"><a href="example-1.html">← 上一題</a><a href="example-3.html">下一題 →</a></nav>
+</main>
+<footer>題意參照張峻輔老師《第十二章 靜電學》§12-1。題幹改寫、圖形、解說與模擬為 GPT 版。</footer>
+</body>
+</html>

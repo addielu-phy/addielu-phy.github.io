@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>例題 4・三顆共線電荷同時平衡｜12-1 庫侖定律｜GPT 版</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="sim.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header><div class="top"><a href="./">← 12-1 例題總覽</a><span>GPT 版</span></div></header>
+<main id="main">
+<section class="hero"><p class="eyebrow">12-1 庫侖定律 · 例題 4 · 同時滿足三個受力條件</p><h1>三顆共線電荷同時平衡</h1></section>
+<div class="layout">
+<section class="panel"><h2>題目</h2><p>真空中 A 帶電 Q，B 帶電 4Q，兩者相距 d。在它們的連線上放帶電 q 的 C，希望 A、B、C 三球的合靜電力同時為零。</p><p><strong>（1）C 距 A 多遠？（2）求 q/Q。</strong></p>
+<div class="reveal"><details><summary>顯示解題引導</summary><ol><li>先看 C。若 C 在 A、B 兩球外側，兩個同號源電荷對 C 的力會不會同向？</li><li>先用 C 的平衡決定位置，再用 A 的平衡求 q。最後把結果帶回 B 檢查。</li></ol></details>
+<details><summary>顯示完整詳解</summary><div class="steps"><h3>1. 判斷 C 的位置及電性</h3><p>A、B 同號，C 位於外側時兩力同向。因此 C 在兩球之間。A、B 互斥，C 必須吸引它們，所以 q 與 Q 異號。</p>
+<h3>2. 由 C 的平衡求位置</h3><p>設 AC＝x，則 BC＝d−x。k|Qq|/x²＝4k|Qq|/(d−x)²。取正平方根，d−x＝2x，故 <b>x＝d/3</b>。</p>
+<h3>3. 由 A 的平衡求電量</h3><p>A 受 B 向左的斥力 4kQ²/d²，受 C 向右的吸力 k|Qq|/(d/3)²＝9k|Qq|/d²。兩者相等，|q|/|Q|＝4/9。配合異號，<b>q/Q＝−4/9</b>。</p>
+<h3>4. 代回檢查 B</h3><p>B 受 A 向右的斥力 4kQ²/d²，受 C 向左的吸力 4k|Qq|/(2d/3)²＝9k|Qq|/d²＝4kQ²/d²。B 的合力也為零。</p></div></details></div><p class="muted">講義頁碼 12-3</p></section>
+<section class="panel sim" data-scene="4"><h2>互動模擬</h2><p class="muted">移動 C 並改變電量，觀察三顆球的受力方向。掃描時，A、B 的位置固定供比較。</p>
+<figure><svg id="diagram" viewBox="0 0 600 330" role="img" aria-label="三顆共線電荷的配置及各自的合力"></svg></figure>
+<div class="controls"><label><span>C 位置 AC/d<output for="x">0.5</output></span><input type="range" id="x" name="x" min="0.12" max="0.88" step="0.001" value="0.5" aria-label="C 位置 AC/d"></label>
+<label><span>電量比 q/Q<output for="ratio">-0.3</output></span><input type="range" id="ratio" name="ratio" min="-1" max="1" step="0.001" value="-0.3" aria-label="電量比 q/Q"></label></div>
+<div class="buttons"><button class="primary" type="button" id="play">播放位置掃描</button><button type="button" id="show" aria-controls="metrics" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p class="metrics" id="metrics" hidden></p><noscript>請啟用 JavaScript 使用互動模擬。</noscript>
+</section>
+</div>
+<nav aria-label="例題導覽"><a href="example-3.html">← 上一題</a><a href="example-5.html">下一題 →</a></nav>
+</main>
+<footer>題意參照張峻輔老師《第十二章 靜電學》§12-1。題幹改寫、圖形、解說與模擬為 GPT 版。</footer>
+</body>
+</html>

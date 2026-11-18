@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>例題 3・帶電擺球的平衡距離｜12-1 庫侖定律｜GPT 版</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="sim.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header><div class="top"><a href="./">← 12-1 例題總覽</a><span>GPT 版</span></div></header>
+<main id="main">
+<section class="hero"><p class="eyebrow">12-1 庫侖定律 · 例題 3 · 受力與幾何</p><h1>帶電擺球的平衡距離</h1></section>
+<div class="layout">
+<section class="panel"><h2>題目</h2><p>球 A、B 原本質量均為 m，電荷量均為 q。A 由長度 L 的細線懸掛，B 固定在懸點正下方 L 處。兩球斥力使 A 偏離鉛直，平衡時球心距離為 d。</p><p><strong>（1）求平衡距離 d。（2）兩球電量各減為原來一半，達新平衡時，庫侖力是原來的幾倍？</strong></p><ul class="choices"><li>（1） A. ∛(kq²/(Lmg))　 B. √(kq²/(Lmg))　 C. ∛(kq²L/(mg))　 D. √(kq²L/(mg))　 E. qk²L/(mg)</li><li>（2） A. 2¹⁄²　 B. 2⁻¹⁄²　 C. 2⁻³⁄²　 D. 2⁻²⁄³　 E. 2¹⁄³</li></ul>
+<div class="reveal"><details><summary>顯示解題引導</summary><ol><li>把懸點 O、A、B 連起來。OA 與 OB 等長，弦 AB 怎麼用半角表示？</li><li>沿擺球軌跡的切線分解電力和重力，可以消去繩張力。第二問要用新平衡距離。</li></ol></details>
+<details><summary>顯示完整詳解</summary><div class="steps"><h3>1. 先把弦長和擺角連起來</h3><p>令 θ＝∠AOB。OA＝OB＝L，所以 d＝2L sin(θ/2)。</p>
+<h3>2. 沿 A 的運動切線列平衡式</h3><p>張力指向 O，沿切線分量為零。電力沿 B→A，其向外的切向分量為 Fₑ cos(θ/2)。重力的向內切向分量為 mg sin θ。因此 Fₑ cos(θ/2)＝mg sin θ，化為 Fₑ＝2mg sin(θ/2)＝mgd/L。</p>
+<h3>3. 聯立庫侖定律</h3><p>kq²/d²＝mgd/L，所以 d³＝kq²L/(mg)，得 <b>d＝∛(kq²L/(mg))，第（1）問選 C</b>。</p>
+<h3>4. 電量改變後重新平衡</h3><p>q 變成 q/2 時，d′/d＝(1/4)¹⁄³＝2⁻²⁄³。用平衡式 Fₑ＝mgd/L，得 <b>Fₑ′/Fₑ＝2⁻²⁄³，第（2）問選 D</b>。若瞬間把電量減半，距離尚未改變，此時才是原力的 1/4。</p></div></details></div><p class="muted">講義頁碼 12-2</p></section>
+<section class="panel sim" data-scene="3"><h2>互動模擬</h2><p class="muted">改變兩球的電量倍率，從舊平衡位置放手。動畫含少量切向阻尼，讓 A 球逐漸接近新平衡。</p>
+<figure><svg id="diagram" viewBox="0 0 600 330" role="img" aria-label="帶電擺球從舊平衡位置放手後的軌跡與新平衡位置"></svg></figure>
+<div class="controls"><label><span>兩球電量倍率<output for="q">0.5</output></span><input type="range" id="q" name="q" min="0.25" max="1.5" step="0.01" value="0.5" aria-label="兩球電量倍率"></label>
+<label><span>A 球質量倍率<output for="mass">1</output></span><input type="range" id="mass" name="mass" min="0.75" max="2" step="0.01" value="1" aria-label="A 球質量倍率"></label>
+<label><span>動畫進度（%）<output for="phase">0</output></span><input type="range" id="phase" name="phase" min="0" max="100" step="1" value="0" aria-label="動畫進度（%）"></label></div>
+<div class="buttons"><button class="primary" type="button" id="play">播放擺球運動</button><button type="button" id="show" aria-controls="metrics" aria-pressed="false">顯示受力與讀值</button><button type="button" id="reset">重設</button></div>
+<p class="metrics" id="metrics" hidden></p><noscript>請啟用 JavaScript 使用互動模擬。</noscript>
+</section>
+</div>
+<nav aria-label="例題導覽"><a href="example-2.html">← 上一題</a><a href="example-4.html">下一題 →</a></nav>
+</main>
+<footer>題意參照張峻輔老師《第十二章 靜電學》§12-1。題幹改寫、圖形、解說與模擬為 GPT 版。</footer>
+</body>
+</html>
