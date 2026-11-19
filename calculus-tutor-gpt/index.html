@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="大一微積分家教簡報，七堂各 60 分鐘，從一階導數判定到積分代換。">
+<title>大一微積分｜每週一小時・GPT 版</title>
+<style>
+:root{color-scheme:light;--ink:#16233c;--muted:#52617b;--accent:#0a685b;--paper:#fff;--bg:#f2f5fa;--line:#d9e1ed;font-family:"Microsoft JhengHei","Noto Sans CJK TC","PingFang TC",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6}button,a{font:inherit}a{color:var(--accent)}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}a:focus-visible,button:focus-visible{outline:3px solid #247bde;outline-offset:4px}header,main,footer,.nav{width:min(1120px,calc(100% - 36px));margin:auto}header{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700}.brand{text-decoration:none;color:var(--ink)}.actions{display:flex;gap:8px}.btn{display:inline-flex;justify-content:center;align-items:center;padding:8px 14px;min-height:42px;background:white;border:1px solid var(--line);border-radius:9px;color:var(--ink);text-decoration:none;font-weight:700}.primary{background:var(--accent);color:white;border-color:var(--accent)}main{padding-bottom:16px}h1,h2,p{margin:0}h1{line-height:1.2;font-size:clamp(2.2rem,5vw,4.2rem);letter-spacing:-.035em}h2{line-height:1.3;font-size:clamp(1.4rem,3.4vw,2.5rem)}.hero{background:#14253f;color:white;border-radius:18px;padding:clamp(24px,6vw,64px);margin:16px 0 24px}.hero p{margin-top:18px;color:#d4e7ed;font-size:clamp(1rem,2vw,1.25rem)}.catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lesson-link{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:18px 20px;text-decoration:none;background:white;color:var(--ink);border:1px solid var(--line);border-radius:12px}.lesson-link:hover{border-color:var(--accent)}.ordinal{color:var(--accent);font-weight:800}.lesson-link strong{font-size:1.13rem}.lesson-link small{display:block;color:var(--muted);margin-top:5px}.catalog-note{color:var(--muted);margin-top:18px;font-size:.94rem}.slide{background:white;border:1px solid var(--line);border-top:6px solid var(--accent);border-radius:14px;padding:clamp(23px,5vw,58px);margin:12px auto 0;min-height:min(580px,72vh)}.slide h1{font-size:clamp(1.8rem,4.8vw,3.4rem);margin:9px 0 25px}.eyebrow{color:var(--accent);font-weight:800;font-size:clamp(.9rem,1.7vw,1.04rem)}.body-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}.body-grid.with-plot{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)}.points,.solution ul{padding-left:1.25em;margin:0}.points li,.solution li{margin:0 0 .6em;font-size:clamp(1rem,2.15vw,1.44rem);overflow-wrap:anywhere}.points li::marker{color:var(--accent)}.solution{margin-top:16px;padding:16px 20px;background:#eaf6f2;border-radius:10px;border-left:4px solid var(--accent)}.solution strong{display:block;margin-bottom:5px}.reveal{margin-top:15px}.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin:0 auto 10px}.nav button:first-child{justify-self:start}.nav button:last-child{justify-self:end}.progress{color:var(--muted);font-variant-numeric:tabular-nums;text-align:center;font-size:.9rem}figure{margin:0;align-self:start}canvas{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block;background:#f5f9fb}figcaption{font-size:.91rem;color:var(--muted);margin-top:6px}.detail{color:var(--muted);margin-bottom:10px}footer{padding:10px 0 20px;color:var(--muted);font-size:.88rem}#print-deck{display:none}[hidden]{display:none!important}
+@media(max-width:670px){header,main,footer,.nav{width:calc(100% - 26px)}.catalog,.body-grid.with-plot{grid-template-columns:1fr}.slide{min-height:0}.actions .btn{padding:6px 9px;font-size:.9rem}.hero{margin-top:5px}.lesson-link{padding:14px}.body-grid{gap:14px}.slide h1{margin-bottom:16px}.points li{line-height:1.55}}
+@page{size:landscape;margin:10mm}
+@media print{body{background:white}header,main,.nav,footer{display:none!important}#print-deck{display:block}.slide{min-height:0;break-after:page;border-radius:0;border:0;border-top:4px solid var(--accent);padding:12mm;margin:0;print-color-adjust:exact}.slide:last-child{break-after:auto}.slide h1{font-size:32pt;margin-bottom:16pt}.points li,.solution li{font-size:16pt}.solution{display:block;padding:10px}.body-grid.with-plot{grid-template-columns:1.45fr 1fr}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="#">大一微積分 · GPT 版</a><div class="actions"><a class="btn" href="#" id="home" hidden>七週目錄</a><button class="btn" id="print" type="button">列印／存 PDF</button></div></header>
+<main id="main"></main>
+<div class="nav" id="nav" hidden><button class="btn" id="prev" type="button">← 上一頁</button><span class="progress" id="progress"></span><button class="btn primary" id="next" type="button">下一頁 →</button></div>
+<footer>家教簡報 · GPT 版</footer>
+<noscript><p>請啟用 JavaScript 開啟投影片。</p></noscript>
+<div id="print-deck" aria-hidden="true"></div>
+<script>
+const lessons = [
+{
+ title:"用斜率找增減與極值", source:"講義 3.3", goal:"看到函數，能畫出 f′ 的正負表，再說出哪裡上升、下降或轉向。",
+ slides:[
+ ["0–8 分｜先備快問","下面兩個函數的導數各是什麼？",["g(x) = (2x − 1)³","h(x) = (x + 2)/(x − 1)，x ≠ 1"],["g′(x) = 6(2x − 1)²。外層三次方微分後，要乘內層的 2。","h′(x) = [(x − 1) − (x + 2)]/(x − 1)² = −3/(x − 1)²。"]],
+ ["8–20 分｜讀 f′ 正負","斜率為正，曲線往右升。",["在可微的區間內，f′ > 0 表示遞增，f′ < 0 表示遞減。","先找定義域，再找域內 f′ = 0 或 f′ 不存在的點，最後分區間測符號。","連續的內點若 f′ 由 ＋ 轉 −，是局部極大。由 − 轉 ＋，是局部極小。"]],
+ ["20–37 分｜一起做","f(x) = x³ − 12x 在哪裡上升？",["① f′(x) = 3(x − 2)(x + 2)。臨界數為 −2、2。","② 從左到右三區的 f′ 符號為 ＋、−、＋。","③ (−∞, −2)、(2, ∞) 遞增，(−2, 2) 遞減。局部極大 (−2, 16)，局部極小 (2, −16)。"],null,"cubic"],
+ ["37–54 分｜學生先做","把定義域與臨界數一起放到數線上。",["① 求 f(x) = x + 16/x 的增減區間和局部極值。","② 求 g(x) = cos x/(1 + sin²x) 在 (0, 2π) 內所有局部極值。"],["① x ≠ 0。f′ = (x − 4)(x + 4)/x²。在 (−∞, −4)、(4, ∞) 遞增，在 (−4, 0)、(0, 4) 遞減。局部極大 (−4, −8)，局部極小 (4, 8)。","② g′ = −sin x(3 − sin²x)/(1 + sin²x)²。π 左負右正，故局部極小 (π, −1)。"]],
+ ["54–60 分｜下課檢核","x³ 在 x = 0 的導數為零。它有局部極值嗎？",["請用 f′ 左右兩側符號解釋。"],["沒有。f′ = 3x² 在 0 的兩側皆為正，函數持續遞增。"]]
+]},
+{
+ title:"看凹性、反曲點與二階判定", source:"講義 3.4", goal:"分清楚 f′ 看升降、f″ 看彎曲，能從符號判出反曲點。",
+ slides:[
+ ["0–8 分｜先備快問","f(x) = x⁴ 的 f′ 和 f″ 是什麼？",["在 x = 0 左右，f″ 的符號有改變嗎？"],["f′ = 4x³，f″ = 12x²。f″ 在兩側皆為正，0 處凹性相同。"]],
+ ["8–20 分｜用兩種導數讀圖","f′ 看坡向，f″ 看斜率怎麼變。",["f″ > 0：切線斜率遞增，凹向上。f″ < 0：切線斜率遞減，凹向下。","反曲點候選 x 先由 f″ = 0 或 f″ 不存在找出，再檢查 f 在該處連續且凹性改變。","若 f′(c) = 0 且 f″(c) > 0，則有局部極小。f″(c) < 0 則有局部極大。f″(c) = 0 時可改查 f′ 變號。"]],
+ ["20–35 分｜一起做","f(x) = x³ − 3x 有哪些轉折？",["f′ = 3(x − 1)(x + 1)，f″ = 6x。","f″ 在 x < 0 為負，在 x > 0 為正，反曲點是 (0, 0)。","f″(−1) = −6，局部極大 (−1, 2)。f″(1) = 6，局部極小 (1, −2)。"]],
+ ["35–48 分｜學生先做","遇到根號或 f″ = 0 時怎麼判？",["① 求 f(x) = x√(x + 2) 的反曲點。","② 求 p(x) = x⁴ − 8x³ + 5 的局部極值。"],["① x ≥ −2。對 x > −2，f″ = (3x + 8)/[4(x + 2)³ᐟ²] > 0。端點只有單側圖形，沒有反曲點。","② p′ = 4x²(x − 6)，p″ = 12x(x − 4)。6 處 p″ > 0，局部極小 (6, −427)。0 處 p″ = 0，p′ 左右皆負，故無局部極值。"]],
+ ["48–60 分｜下課檢核","三次函數可從反曲點往回建。",["找反曲點 (2, 1)、局部極大 (1, 3)、局部極小 (3, −1) 的三次函數。","提示：把原點移到反曲點，先把式子寫成 a(x − 2)³ + b(x − 2) + 1。"],["由 f′(1) = 0 得 b = −3a。由 f(1) = 3 得 −a − b = 2，所以 a = 1、b = −3。","f(x) = (x − 2)³ − 3(x − 2) + 1。代回兩端座標，再驗 f″(1) < 0、f″(3) > 0。"]]
+]},
+{
+ title:"最佳化與線性近似", source:"講義 3.5", goal:"把文字變成一個變數的函數，找最大值，並用切線估算小變動。",
+ slides:[
+ ["0–8 分｜先備快問","最大值會出現在哪裡？",["F(x) = −(x − 3)² + 9，若 x ∈ [0, 2]，最大值是多少？"],["F′(x) = −2(x − 3) > 0 於 (0,2)，故 x = 2 時有最大值 8。"]],
+ ["8–22 分｜建模四步","先寫要最大化的量。",["① 決定目標函數。② 用限制條件消去一個變數。","③ 從題意寫出可行範圍。④ 比較閉區間內的臨界點與端點。","若售價 p(q) 隨銷量 q 改變，營收 R(q) = q·p(q)，利潤 P(q) = R(q) − C(q)。"]],
+ ["22–38 分｜一起做","促銷要賣幾份，利潤最高？",["售價 p(q) = 70 − q，成本 C(q) = 10q + 100，0 ≤ q ≤ 40。","P(q) = q(70 − q) − (10q + 100) = −q² + 60q − 100。","P′ = 60 − 2q，臨界值 q = 30。P(0) = −100、P(30) = 800、P(40) = 700，所以賣 30 份最高。"]],
+ ["38–51 分｜一起估算","√25.4 大約是多少？",["令 f(x) = √x，取 a = 25，dx = 0.4。","f′(25) = 1/10，dy = f′(25)dx = 0.04，故 √25.4 ≈ 5.04。","Δy = f(a + dx) − f(a) 是實際變量。dx 小時用切線變量 dy 近似。若半徑量測有小誤差，圓面積誤差可用 dA = 2πr dr 估計。"]],
+ ["51–60 分｜下課檢核","把兩個方法各用一次。",["① 用 28 m 圍籬圍矩形，四邊皆圍，面積最大時長寬各多少？","② 用線性近似估 √15.9。"],["① y = 14 − x，A = 14x − x²，0 < x < 14。A′ = 14 − 2x 在 7 左正右負，故長寬均為 7 m，最大面積 49 m²。","② 取 a = 16、dx = −0.1。f′(16) = 1/8，故 √15.9 ≈ 4 − 0.0125 = 3.9875。"]]
+]},
+{
+ title:"牛頓法與無窮遠極限", source:"講義 3.6", goal:"用切線更新根的近似值，並能分別算左右端的函數趨勢。",
+ slides:[
+ ["0–8 分｜先備快問","切線與 x 軸相交在哪？",["若 f(2) = 1、f′(2) = 4，求 x = 2 處切線的 x 截距。"],["切線 y = 1 + 4(x − 2)，令 y = 0 得 x = 7/4。"]],
+ ["8–23 分｜牛頓法","每一步都用切線的 x 截距。",["公式 xₙ₊₁ = xₙ − f(xₙ)/f′(xₙ)。每次用最新的 x 值。","求 √5：把問題改成 f(x) = x² − 5 = 0，以 x₀ = 2 開始。","x₁ = 2 − (4 − 5)/4 = 2.25，x₂ = 2.25 − (2.25² − 5)/4.5 = 2.23611…","若 f′(xₙ) = 0，公式無法更新。起始值也會影響能否收斂。"]],
+ ["23–39 分｜無窮遠極限","把分子、分母同除最高次方。",["對 (7x² − 3)/(2x² + x)，同除 x² 得 (7 − 3/x²)/(2 + 1/x)，左右極限都為 7/2。","若任一端的極限為有限值 L，y = L 就是水平漸近線。","對 x/√(x² + 9)，用 √(x²) = |x|，故 x → ∞ 時趨近 1，x → −∞ 時趨近 −1。"]],
+ ["39–53 分｜學生先做","看見根號或震盪，先保留符號。",["① 用牛頓法從 x₀ = 1 近似 x³ = 2。算 x₁。","② 求 x → −∞ 時，(2x − 1)/√(x² + 4) 的極限。","③ 求 x → ∞ 時，sin(3x)/x 的極限。"],["① f(x) = x³ − 2，f′(1) = 3。x₁ = 1 − (−1)/3 = 4/3。","② 除以 |x|，分子趨近 −2、分母趨近 1，極限 −2。","③ |sin(3x)/x| ≤ 1/x（x > 0），由夾擠定理得 0。"]],
+ ["53–60 分｜下課檢核","用左右極限說出漸近線。",["h(x) = (3x² + 2x)/(x² + 5)。說出 x → ±∞ 的極限和水平漸近線。"],["同除 x²，兩端皆得 3，因此水平漸近線為 y = 3。"]]
+]},
+{
+ title:"反導函數與定積分", source:"講義 4.1", goal:"能從導數找回原函數，並把定積分讀成帶正負號的累積量。",
+ slides:[
+ ["0–8 分｜先備快問","不同函數可以有相同的導數嗎？",["微分 x³ 與 x³ + 6。為什麼積分答案常寫 + C？"],["兩個導數都是 3x²。在同一區間上，反導函數之間相差常數。"]],
+ ["8–22 分｜反導","先積分，再用初值求 C。",["冪次加 1，再除以新次方。∫xⁿ dx = xⁿ⁺¹/(n+1) + C（n ≠ −1）。","例：F′(x) = 6x² − 4，F(1) = 5。整合得 F(x) = 2x³ − 4x + C。","5 = 2 − 4 + C，故 C = 7。n = −1 是例外，∫1/x dx = ln|x| + C（在不跨 0 的區間）。"]],
+ ["22–38 分｜黎曼和","用長方形累積，再把切片變窄。",["每片的貢獻是函數值 × 區間寬度。總和寫成 Σ f(xᵢ*)Δxᵢ。","例：f(x) = x，區間 [0, 2]，四等分、右端取樣，估計量為 0.5(0.5 + 1 + 1.5 + 2) = 2.5。","對等分右端和，Δx = 2/n，xᵢ = 2i/n，累加得 2(n+1)/n。n → ∞ 時得 2。"],null,"riemann"],
+ ["38–53 分｜學生先做","帶符號面積與幾何面積。",["畫 y = x − 1 在 [0, 3] 的圖。各用三角形算正區塊、負區塊，再算定積分與總面積。","可在 x = 1 切段。若把上下限交換，結果如何？"],["左側三角形面積 1/2，右側面積 2。定積分為 −1/2 + 2 = 3/2，總面積為 1/2 + 2 = 5/2。","交換上下限時定積分變號，得到 −3/2。"]],
+ ["53–60 分｜下課檢核","一道要 + C，一道要數值。",["① 求 ∫(8x³ + 3) dx。② 用幾何算 y = 3 在 [−1, 2] 的定積分。"],["① 2x⁴ + 3x + C。② 長方形寬為 3、高為 3，定積分等於 9。"]]
+]},
+{
+ title:"微積分基本定理", source:"講義 4.2", goal:"會用原函數算定積分，也會對上限含 x 的積分求導。",
+ slides:[
+ ["0–8 分｜先備快問","哪一個函數微分後得到 4x³？",["A. x⁴　B. 4x⁴　C. 12x²"],["A。把候選反導函數微分一次，就能檢查。"]],
+ ["8–24 分｜算定積分","找到原函數，再做上限減下限。",["f 在 [a, b] 連續，F′ = f 時，∫ₐᵇ f(x) dx = F(b) − F(a)。","例：∫₁³(2x − 1) dx = [x² − x]₁³ = (9 − 3) − (1 − 1) = 6。","若積的是變化率，結果是淨變化。幾何總面積則在變號處切段，各段取絕對值後再加。"]],
+ ["24–38 分｜平均值","把彎曲圖形換成等帶符號面積的長方形。",["平均值 = 定積分 ÷ (b − a)。若 f 連續，區間內至少有一點取到此平均。","例：f(x) = 3x² 在 [0, 2] 的定積分 = 8，所以平均值 = 4。","令 3c² = 4，得 c = 2/√3，確實在 (0, 2) 內。"]],
+ ["38–53 分｜變上限積分","上限到哪裡，把上限代入被積函數。",["A(x) = ∫ₐˣ f(t) dt，若 f 連續，則 A′(x) = f(x)。","若上下限是 g(x)、h(x)，導數為 f(h(x))h′(x) − f(g(x))g′(x)。","練習：B(x) = ∫ 從 x 到 x² (1 + t³) dt，求 B′(x)。"],["上限貢獻 (1 + x⁶)·2x，下限貢獻 (1 + x³)·1。B′(x) = 2x(1 + x⁶) − (1 + x³)。"]],
+ ["53–60 分｜下課檢核","算積分與對積分求導，各做一次。",["① 算 ∫₀²(3x² − 2) dx。","② 若 C(x) = ∫₀ˣ (1 + t²) dt，求 C′(−2)。"],["① [x³ − 2x]₀² = 4。② C′(x) = 1 + x²，所以 C′(−2) = 5。"]]
+]},
+{
+ title:"積分代換與奇偶性", source:"講義 4.3", goal:"會辨認內函數和它的導數，並能在定積分正確換上下限。",
+ slides:[
+ ["0–8 分｜先備快問","把連鎖律倒著用。",["微分 (x² + 4)⁵。哪一項來自內函數？"],["導數是 10x(x² + 4)⁴，其中 2x 來自內函數的微分。"]],
+ ["8–24 分｜不定積分","找括號裡的式子，再核對剩下的因子。",["例：∫x(3x² + 1)² dx，令 u = 3x² + 1，du = 6x dx。","x dx = du/6，原式化成 (1/6)∫u² du = u³/18 + C。","換回 x，得 (3x² + 1)³/18 + C。微分驗算會回到原被積函數。"]],
+ ["24–40 分｜定積分","變數換成 u，上下限也換成 u。",["例：∫₀¹ 4x√(1 + 2x²) dx。令 u = 1 + 2x²，du = 4x dx。","x 從 0 到 1，u 從 1 到 3。","原式 = ∫₁³ √u du = (2/3)(3√3 − 1)。"]],
+ ["40–53 分｜對稱區間","先檢查奇偶，再決定要不要算。",["在 [−a, a]，可積的奇函數積分為 0。可積的偶函數積分等於 [0, a] 積分的兩倍。","練習：算 ∫₋₂²(x⁵ + 2x²) dx。"],["x⁵ 的正負部分互消。2x² 為偶函數，所以原式 = 2∫₀²2x² dx = 32/3。"]],
+ ["53–60 分｜下課檢核","先寫 u、du 和新上下限。",["算 ∫₀¹ 3x²/(2 + x³) dx。"],["u = 2 + x³，du = 3x² dx，上下限換成 2、3。結果為 ln 3 − ln 2 = ln(3/2)。"]]
+]}
+];
+
+const main = document.querySelector("#main");
+const nav = document.querySelector("#nav");
+const home = document.querySelector("#home");
+const progress = document.querySelector("#progress");
+const prev = document.querySelector("#prev");
+const next = document.querySelector("#next");
+const printDeck = document.querySelector("#print-deck");
+const supplementary = [
+ ["先備補強｜極限與分段","先比左右，再談導數。",["① 算 x → 0 時 (√(16 + 3x) − 4)/x。","② f(x) 在 x < 0 時為 x² + 2x + 1，在 x ≥ 0 時為 a + bx。求讓 f 在 0 可微的 a、b。"],["① 乘共軛式並約掉 x，得 3/(√(16 + 3x) + 4) → 3/8。","② 連續給 a = 1。左導數為 2，右導數為 b，故 b = 2。"]],
+ ["先備補強｜隱微分與相關變率","先微分整條關係式。",["① 圓 x² + y² = 25 在 (3, 4) 的切線斜率是多少？","② 球半徑為 2 cm、體積以 12π cm³/min 增加時，半徑的變化率是多少？"],["① 2x + 2yy′ = 0，代入得 −3/4。","② V = 4πr³/3，所以 dV/dt = 4πr²·dr/dt。代入得 dr/dt = 3/4 cm/min。"]],
+ ["先備補強｜高階導數與因式","找出重複出現的結構。",["① f(x) = cos(2x)，求 f 的第 10 階導數在 x = 0 的值。","② g(x) = (x − 2)(x + 1)/(x + 4)，求 g′(2)。"],["① 每四次回到 cos 型、係數乘 2⁴。第 10 階等於 −2¹⁰cos(2x)，在 0 為 −1024。","② 寫成 (x − 2)h(x)。g′(2) = h(2) = (2 + 1)/(2 + 4) = 1/2。"]]
+];
+const units = [...lessons,{title:"期中先備補強",source:"選用",goal:"按學生需要複習極限、隱微分、相關變率與高階導數。",slides:supplementary}];
+function element(tag, text, className) {
+  const item = document.createElement(tag);
+  if (text) item.textContent = text;
+  if (className) item.className = className;
+  return item;
+}
+function list(lines, className) {
+  const result = element("ul", null, className);
+  for (const line of lines) result.append(element("li", line));
+  return result;
+}
+function plot(kind) {
+  const figure = element("figure");
+  const canvas = element("canvas");
+  canvas.width = 640;
+  canvas.height = 405;
+  const isRiemann = kind === "riemann";
+  const caption = isRiemann ? "右端取樣的四個長方形蓋住直線下方。":"f′ 在 −2 與 2 的兩側改變符號。";
+  canvas.setAttribute("role","img");
+  canvas.setAttribute("aria-label",caption);
+  figure.append(canvas,element("figcaption",caption));
+  const ctx = canvas.getContext("2d");
+  const bounds = isRiemann ? [-.25,2.2,-.17,2.3] : [-3.8,3.8,-21,21];
+  const px = x => 43+(x-bounds[0])*555/(bounds[1]-bounds[0]);
+  const py = y => 355-(y-bounds[2])*310/(bounds[3]-bounds[2]);
+  ctx.strokeStyle="#8192a8";
+  ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(px(bounds[0]),py(0));ctx.lineTo(px(bounds[1]),py(0));ctx.moveTo(px(0),py(bounds[2]));ctx.lineTo(px(0),py(bounds[3]));ctx.stroke();
+  ctx.font="24px system-ui";ctx.fillStyle="#334a68";
+  ctx.fillText("x",px(bounds[1])-12,py(0)-10);ctx.fillText("y",px(0)+10,py(bounds[3])+8);
+  if(isRiemann){
+    for(let i=1;i<=4;i++){
+      const h=i/2;const x=px(h-.5);const y=py(h);
+      ctx.fillStyle="#d7eee7";ctx.strokeStyle="#4d948b";
+      ctx.fillRect(x,y,px(h)-x,py(0)-y);ctx.strokeRect(x,y,px(h)-x,py(0)-y);
+      ctx.fillStyle="#334a68";ctx.fillText(h.toString(),px(h)-15,py(0)+32);
+    }
+    ctx.fillText("0",px(0)-14,py(0)+31);
+  }
+  ctx.strokeStyle="#086658";ctx.lineWidth=5;ctx.beginPath();
+  const from=isRiemann?0:-3.9;
+  const to=isRiemann?2.12:3.9;
+  ctx.save();ctx.beginPath();ctx.rect(32,36,575,326);ctx.clip();ctx.beginPath();
+  for(let i=0;i<=160;i++){
+    const x=from+(to-from)*i/160;const y=isRiemann?x:x**3-12*x;
+    if(i===0)ctx.moveTo(px(x),py(y));else ctx.lineTo(px(x),py(y));
+  }
+  ctx.stroke();ctx.restore();
+  if(!isRiemann){
+    for(const x of [-2,2]){
+      const y=x**3-12*x;
+      ctx.fillStyle="#0a685b";ctx.beginPath();ctx.arc(px(x),py(y),7,0,2*Math.PI);ctx.fill();
+      ctx.fillStyle="#213551";ctx.fillText(x===-2?"(−2, 16)":"(2, −16)",px(x)+12,py(y)+(x===-2?-10:2));
+    }
+  }
+  return figure;
+}
+function makeSlide(unit, unitIndex, pageIndex, printing=false) {
+  const [stage,title,points,answers,plotKind]=unit.slides[pageIndex];
+  const section=element("article",null,"slide");
+  const prefix=unitIndex<lessons.length ? `第 ${unitIndex+1} 週 / ${unit.title} / ` : "";
+  section.append(element("p",prefix+stage,"eyebrow"));
+  const heading=element("h1",title);
+  heading.tabIndex=-1;
+  section.append(heading);
+  const body=element("div",null,plotKind?"body-grid with-plot":"body-grid");
+  body.append(list(points,"points"));
+  if(plotKind)body.append(plot(plotKind));
+  section.append(body);
+  if(answers){
+    const solution=element("div",null,"solution");
+    solution.id=printing?`print-answer-${unitIndex}-${pageIndex}`:"answer";
+    solution.append(element("strong","解答"),list(answers));
+    if(!printing){
+      const reveal=element("button","顯示解答","btn reveal");
+      reveal.type="button";reveal.setAttribute("aria-expanded","false");reveal.setAttribute("aria-controls",solution.id);
+      solution.hidden=true;
+      reveal.addEventListener("click",()=>{
+        solution.hidden=!solution.hidden;
+        reveal.textContent=solution.hidden?"顯示解答":"收起解答";
+        reveal.setAttribute("aria-expanded",String(!solution.hidden));
+      });
+      section.append(reveal);
+    }
+    section.append(solution);
+  }
+  return section;
+}
+const pathFor=(unit,page)=>`#w${unit+1}-${page+1}`;
+function readRoute() {
+  const match=/^#w(\d+)-(\d+)$/.exec(location.hash);
+  if(!match)return null;
+  const unit=Number(match[1])-1;
+  const page=Number(match[2])-1;
+  return units[unit]?.slides[page]?[unit,page]:null;
+}
+function showCatalog(){
+  const hero=element("section",null,"hero");
+  hero.append(element("h1","大一微積分，每週一小時"),element("p","七堂家教課，從導數判圖形，到定積分與代換。每堂都有例題、學生練習和離堂檢核。"));
+  const catalog=element("div",null,"catalog");
+  units.forEach((unit,index)=>{
+    const link=element("a",null,"lesson-link");
+    link.href=pathFor(index,0);
+    const details=element("span");
+    details.append(element("strong",unit.title),element("small",unit.goal));
+    link.append(element("span",index<7?`第 ${index+1} 週`:"附錄","ordinal"),details,element("span","→"));
+    catalog.append(link);
+  });
+  const note=element("p","進度對照｜前四週為微分應用（講義 3.3–3.6），後三週為積分（講義 4.1–4.3）。附錄可依期中表現選用。","catalog-note");
+  main.replaceChildren(hero,catalog,note);
+}
+function render(shouldFocus=false){
+  const route=readRoute();
+  nav.hidden=!route;home.hidden=!route;
+  if(route){
+    const [unit,page]=route;
+    main.replaceChildren(makeSlide(units[unit],unit,page));
+    progress.textContent=`${page+1} / ${units[unit].slides.length}`;
+    prev.disabled=page===0;
+    next.textContent=page+1===units[unit].slides.length?"回目錄 →":"下一頁 →";
+  }else showCatalog();
+  if(shouldFocus){
+    window.scrollTo(0,0);
+    const heading=main.querySelector("h1");
+    heading.tabIndex=-1;
+    heading.focus({preventScroll:true});
+  }
+}
+function move(delta){
+  const route=readRoute();
+  if(!route)return;
+  const [unit,page]=route;
+  const target=page+delta;
+  if(target<0)return;
+  location.hash=target>=units[unit].slides.length?"":pathFor(unit,target);
+}
+prev.addEventListener("click",()=>move(-1));
+next.addEventListener("click",()=>move(1));
+window.addEventListener("hashchange",()=>render(true));
+document.addEventListener("keydown",event=>{
+  if(!readRoute()||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
+  if(event.key==="ArrowLeft"||event.key==="ArrowRight"){
+    event.preventDefault();move(event.key==="ArrowLeft"?-1:1);
+  }
+});
+function preparePrint(){
+  const route=readRoute();
+  const selection=route?[route[0]]:units.map((_,index)=>index);
+  printDeck.replaceChildren(...selection.flatMap(unit=>units[unit].slides.map((_,page)=>makeSlide(units[unit],unit,page,true))));
+}
+window.addEventListener("beforeprint",preparePrint);
+document.querySelector("#print").addEventListener("click",()=>window.print());
+render();
+</script>
+</body>
+</html>
