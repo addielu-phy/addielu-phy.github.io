@@ -19,6 +19,21 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "calculus-tutor-gpt",
+  "title": "大一微積分｜每週一小時家教簡報（GPT 版）",
+  "desc": "七堂各 60 分鐘，從增減與極值一路到積分代換。含分步示範、可展開解答、課末檢核與期中先備補強。",
+  "url": "https://addielu-phy.github.io/calculus-tutor-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/calculus-tutor-gpt",
+  "cat": "課程工具",
+  "tags": [
+    "大一微積分",
+    "家教簡報",
+    "GPT 版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "newton-second-law-4-2-gemini",
   "title": "4-2 牛頓第二運動定律｜10題互動模擬與漸進解說（Gemini版）",
   "desc": "每一題一個獨立網頁（4-2-1～4-2-10）：涵蓋定力與懸重比較、氣球拋重、最大張力、連結體與兩物重疊、定滑輪與動滑輪系統、人拉平台與電梯視重；題目與互動模擬直接顯示，解題引導與詳細推導點選按鈕開啟。",
