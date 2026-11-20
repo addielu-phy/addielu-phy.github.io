@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "typt-parameter-lab-gpt",
+  "title": "物理探究參數研究室｜物辯四題、十二個單變因（GPT 版）",
+  "desc": "電容發聲、Y 形擺、冷飲與磁力旋轉木馬。理論曲線、CSV 與實驗架設提示；需教材共用碼。",
+  "url": "https://addielu-phy.github.io/typt-parameter-lab-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io",
+  "cat": "探究與實作",
+  "tags": [
+    "TYPT",
+    "高中物理",
+    "單變因",
+    "GPT 版"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "calculus-tutor-gpt",
   "title": "大一微積分｜每週一小時家教簡報（GPT 版）",
   "desc": "七堂各 60 分鐘，從增減與極值一路到積分代換。含分步示範、可展開解答、課末檢核與期中先備補強。",
