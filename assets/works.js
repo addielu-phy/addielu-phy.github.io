@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "nknush-physics-midterm-2-gpt",
+  "title": "國三理化 2-1～3-3 十大必考題型（GPT 版）",
+  "desc": "高師大附中國中部第二次段考複習。十題會考考古題與十題原創練習，皆可操作動畫、調整參數與展開分步詳解。",
+  "url": "https://addielu-phy.github.io/nknush-physics-midterm-2-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/nknush-physics-midterm-2-gpt",
+  "cat": "錯題詳解",
+  "tags": [
+    "國三理化",
+    "段考複習",
+    "會考考古題",
+    "互動模擬"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "typt-parameter-lab-gpt",
   "title": "物理探究參數研究室｜物辯四題、十二個單變因（GPT 版）",
   "desc": "電容發聲、Y 形擺、冷飲與磁力旋轉木馬。理論曲線、CSV 與實驗架設提示；需教材共用碼。",
