@@ -13,11 +13,819 @@
    tags     : 2–5 個標籤
    date     : 'YYYY-MM'（大致完成月份）
    featured : true 會出現在首頁精選（建議維持 6–8 個 true）
+   embed    : 選填。false 表示 AI 展示頁不要放 iframe（密碼或共用碼牆）
+   note     : 選填。展示卡上的短註，例如「需密碼」
+   spotlight: 選填。true 會出現在 AI 展示頁最上方精選
+   series   : 選填。同組子作品在展示頁排在一起
    ========================================================= */
 
 const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具', '社群與共備', 'AI × 教育'];
 
 const WORKS = [
+{
+  "id": "claude-sims",
+  "title": "Claude 版互動物理模擬總庫",
+  "desc": "高中與國中物理的 Claude 版互動教材目錄。滑輪九題、電場五例、木箱傾倒、槓桿、地科圖解與高雄段考古題索引都從這裡進去。",
+  "url": "https://addielu-phy.github.io/claude-sims/",
+  "repo": "https://github.com/addielu-phy/claude-sims",
+  "cat": "課程工具",
+  "tags": [
+    "Claude 版",
+    "互動模擬",
+    "高中物理",
+    "總目錄"
+  ],
+  "date": "2026-11",
+  "spotlight": true,
+  "featured": false
+},
+{
+  "id": "newton-4-2-gpt",
+  "title": "4-2 牛頓第二運動定律｜十道例題（GPT 版）",
+  "desc": "高中物理第四章十道例題：定力與懸重、氣球、繩張力、連結體、滑輪與電梯視重。先作答，再展開提示、詳解與動畫。",
+  "url": "https://addielu-phy.github.io/newton-4-2-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/newton-4-2-gpt",
+  "cat": "課程工具",
+  "tags": [
+    "高中物理",
+    "牛頓第二運動定律",
+    "互動模擬",
+    "GPT 版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "single-slit-gpt",
+  "title": "單狹縫光程差實驗室（GPT 版）",
+  "desc": "單狹縫繞射互動實驗：六等分狹縫、光程差、波源相消與亮紋位置，可調參數並對照圖形。",
+  "url": "https://addielu-phy.github.io/single-slit-gpt/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/single-slit-gpt",
+  "cat": "探究與實作",
+  "tags": [
+    "波動光學",
+    "單狹縫",
+    "互動模擬",
+    "GPT 版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "cubesat-chips-grok",
+  "title": "探空氣球立方衛星晶片彙整（Grok 版）",
+  "desc": "高雄中學探空氣球立方衛星計畫的晶片與模組選型表，整理規格、近空適用性與台灣可購買的型號。",
+  "url": "https://addielu-phy.github.io/cubesat-chips-grok/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/cubesat-chips-grok",
+  "cat": "探究與實作",
+  "tags": [
+    "立方衛星",
+    "探空氣球",
+    "元件選型",
+    "Grok 版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "math-a-nanyi-exam2",
+  "title": "南一高二上數學 A｜第二次段考複習 2-1～2-3",
+  "desc": "指數函數、對數與對數律、對數函數。十四個重點與二十八題自編代表題，詳解按鈕展開。",
+  "url": "https://addielu-phy.github.io/math-a-nanyi-exam2/",
+  "repo": "https://github.com/addielu-phy/math-a-nanyi-exam2",
+  "cat": "自學評量",
+  "tags": [
+    "高二數學",
+    "指數對數",
+    "段考複習",
+    "南一版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "inquiry-report-platform-firebase",
+  "title": "探究與實作上台報告平台（Firebase 收分版）",
+  "desc": "抽籤排序、QR 進場、三向度評量、計時與即時收分，結束後可看平均並匯出。進場前名單由老師自行輸入。",
+  "url": "https://addielu-phy.github.io/inquiry-report-platform-firebase/",
+  "repo": "https://github.com/addielu-phy/inquiry-report-platform-firebase",
+  "cat": "課程工具",
+  "tags": [
+    "探究與實作",
+    "上台報告",
+    "即時評分",
+    "Firebase"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "kshs-typt-random-draw",
+  "title": "雄中 TYPT｜IYPT 即席英文演說抽題",
+  "desc": "校隊甄選用的中英雙語抽題台。題目不重複抽出，可全螢幕計時，頁面不含預先寫入的學生名單。",
+  "url": "https://addielu-phy.github.io/kshs-typt-random-draw/",
+  "repo": "https://github.com/addielu-phy/kshs-typt-random-draw",
+  "cat": "課程工具",
+  "tags": [
+    "TYPT",
+    "IYPT",
+    "抽題",
+    "英文演說"
+  ],
+  "date": "2026-09",
+  "featured": false
+},
+{
+  "id": "wind-power",
+  "title": "風把葉片吹轉，電從哪裡來？",
+  "desc": "盧政良的立體物理書。跟著能量走過風力發電機：翻開 3D 書頁、切換開閉路，看磁通、電動勢與能量守恆。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/wind-power/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/wind-power",
+  "cat": "探究與實作",
+  "tags": [
+    "電磁學",
+    "能量守恆",
+    "立體書",
+    "互動模擬"
+  ],
+  "date": "2026-10",
+  "spotlight": true,
+  "featured": false
+},
+{
+  "id": "openmaic-lite-physics",
+  "title": "OpenMAIC Physics｜繁中高中物理多代理互動教室",
+  "desc": "由一個課題生成大綱，再轉成投影片、測驗、模擬、問題本位學習、白板與講義的繁中物理教室。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/openmaic-lite-physics-zh-tw/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/openmaic-lite-physics-zh-tw",
+  "cat": "AI × 教育",
+  "tags": [
+    "多代理",
+    "高中物理",
+    "課堂生成",
+    "AI 輔助教學"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "phai-codex-agent-2026-05-20",
+  "title": "PhAI 共學圈｜Codex × Agent 協作簡報",
+  "desc": "讓 AI 成為教學助理團隊的共學簡報：怎麼把 Codex 與 Agent 排進備課、出題與改作流程。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/presentations/phai-codex-agent-2026-05-20/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/presentations/phai-codex-agent-2026-05-20",
+  "cat": "AI × 教育",
+  "tags": [
+    "PhAI",
+    "簡報",
+    "Agent",
+    "教師共學"
+  ],
+  "date": "2026-05",
+  "featured": false
+},
+{
+  "id": "collision-momentum-impulse",
+  "title": "§7-7 碰撞｜動量守恆與衝量",
+  "desc": "動量守恆、衝量、彈性與非彈性碰撞、恢復係數。例題有動畫，練習題附詳解。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/collision-momentum-impulse/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/collision-momentum-impulse",
+  "cat": "錯題詳解",
+  "tags": [
+    "動量",
+    "碰撞",
+    "衝量",
+    "高中物理"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "vertical-circular-motion-energy",
+  "title": "力學能守恆｜鉛直圓周、斜面與彈簧",
+  "desc": "依講義整理能量觀念、代表例題與練習詳解，並用動畫看鉛直圓周、摩擦斜面與彈簧能量。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/vertical-circular-motion-energy/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/vertical-circular-motion-energy",
+  "cat": "錯題詳解",
+  "tags": [
+    "力學能",
+    "圓周運動",
+    "彈簧",
+    "詳解"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "conical-pendulum-lagrange",
+  "title": "用拉格朗日力學解圓錐擺",
+  "desc": "從拘束與座標寫到拉格朗日方程式，說明圓錐擺的週期與張力怎麼來。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/conical-pendulum-lagrange/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/conical-pendulum-lagrange",
+  "cat": "探究與實作",
+  "tags": [
+    "圓錐擺",
+    "拉格朗日",
+    "高中物理",
+    "進階"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "two-mass-spring-oscillator",
+  "title": "雙質量彈簧振子互動模擬",
+  "desc": "兩個物體中間連一條彈簧，壓縮後自由振盪。可看質心運動與相對振動。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/two-mass-spring-oscillator/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/two-mass-spring-oscillator",
+  "cat": "探究與實作",
+  "tags": [
+    "簡諧運動",
+    "彈簧",
+    "互動模擬",
+    "高中物理"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "sweet-monochromator",
+  "title": "甜的單色器｜糖水旋光",
+  "desc": "白光 LED、偏振片與飽和糖水的旋光色散模型。可掃描角度、讀四個波段，並對照探究活動。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/sweet-monochromator-sugar-water/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/sweet-monochromator-sugar-water",
+  "cat": "探究與實作",
+  "tags": [
+    "旋光",
+    "偏振",
+    "IYPT",
+    "互動模擬"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "y-shaped-bowditch-pendulum",
+  "title": "Y 型擺（Bowditch pendulum）互動研究室",
+  "desc": "Y 型擺的互動模擬，可調長度與初始條件，觀察利薩如軌跡與拍頻。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/y-shaped-bowditch-pendulum/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/y-shaped-bowditch-pendulum",
+  "cat": "探究與實作",
+  "tags": [
+    "Y 型擺",
+    "IYPT",
+    "振動",
+    "互動模擬"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "typt19-acoustics",
+  "title": "聲學研究工作台",
+  "desc": "在瀏覽器裡看波形、頻譜與時頻圖，把實驗曲線和物理模型放在一起比較。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/typt19-acoustics/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/typt19-acoustics",
+  "cat": "探究與實作",
+  "tags": [
+    "聲學",
+    "頻譜",
+    "TYPT",
+    "實驗分析"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "solar-panel-student-research",
+  "title": "中學生太陽能板研究與應用彙整",
+  "desc": "整理太陽能板、染料敏化電池、農電共生與冷卻增效的科展、論文和教材，供探究選題參考。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/research/solar-panel-student-research/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/research/solar-panel-student-research",
+  "cat": "探究與實作",
+  "tags": [
+    "太陽能",
+    "探究選題",
+    "文獻",
+    "STEM"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "dsat-114-physics-self-study",
+  "title": "114 分科測驗物理｜自學評量",
+  "desc": "114 學年度分科測驗物理自學練習：作答、自動評分、錯題分析與詳解，可重複練。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/dsat-114-physics-self-study/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/dsat-114-physics-self-study",
+  "cat": "自學評量",
+  "tags": [
+    "分科測驗",
+    "高中物理",
+    "自動評分",
+    "錯題"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "dsat-physics-five-year-topical",
+  "title": "近五年分科物理｜主題式自學評量",
+  "desc": "110 至 114 年分科與指考物理，依力學、熱學、光學、電磁學、近代物理與子單元排成可重複練習的題序。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/physics/dsat-physics-five-year-topical/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/physics/dsat-physics-five-year-topical",
+  "cat": "自學評量",
+  "tags": [
+    "分科測驗",
+    "主題式",
+    "高中物理",
+    "錯題"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "cap-115-nature-physics",
+  "title": "115 會考自然科｜物理試題整理",
+  "desc": "115 年國中教育會考自然科裡的物理試題截圖，附概念分類、參考答案與官方來源。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/exams/cap-115-nature-physics/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/exams/cap-115-nature-physics",
+  "cat": "自學評量",
+  "tags": [
+    "會考",
+    "自然科",
+    "物理",
+    "試題整理"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "nanyi-math-1b-ch3-probability",
+  "title": "高一下數學｜南一第三章機率",
+  "desc": "重點整理、常見題型、重要試題解說與考前檢核，對應南一版高一下第三章。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/math/nanyi-math-1b-ch3-probability/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/math/nanyi-math-1b-ch3-probability",
+  "cat": "自學評量",
+  "tags": [
+    "高一數學",
+    "機率",
+    "南一版",
+    "段考"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "nknush-114-2-g10-math-exam1",
+  "title": "高師大附中高一數學｜114-2 第一次段考逐題詳解",
+  "desc": "單選、多選、填充與計算證明題的逐題詳解，對應 114 學年度第二學期第一次段考。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/math/nknush-114-2-g10-math-exam1-solutions/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/math/nknush-114-2-g10-math-exam1-solutions",
+  "cat": "錯題詳解",
+  "tags": [
+    "高一數學",
+    "段考詳解",
+    "附中",
+    "逐題"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "nknush-basic-counting-3-1",
+  "title": "高一下｜南一 3-1 基本計數原理互動題庫",
+  "desc": "附中公開考古題依主題與難易重排。答案與詳解預設收合，按鈕展開。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/math/nknush-nanyi-1b-3-1-basic-counting/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/math/nknush-nanyi-1b-3-1-basic-counting",
+  "cat": "自學評量",
+  "tags": [
+    "高一數學",
+    "計數原理",
+    "考古題",
+    "南一版"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "nknush-prob-3-2",
+  "title": "高一下段考｜3-2 機率的性質題庫",
+  "desc": "彙整附中高一下近年段考中，對應南一版 3-2 的題目，附來源、篩選說明與答案提示。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/math/nknush-g1b-probability-3-2/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/math/nknush-g1b-probability-3-2",
+  "cat": "自學評量",
+  "tags": [
+    "高一數學",
+    "機率",
+    "段考",
+    "附中"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "l07-feiyu-terms",
+  "title": "國文〈飛魚〉名詞注釋翻卡",
+  "desc": "二下第七課名詞注釋：隨機翻卡、對錯統計與錯題再練。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/chinese/l07-feiyu-terms/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/chinese/l07-feiyu-terms",
+  "cat": "自學評量",
+  "tags": [
+    "國中國文",
+    "翻卡",
+    "注釋",
+    "飛魚"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "l08-kongchengji-terms",
+  "title": "國文〈空城計〉名詞注釋翻卡",
+  "desc": "二下第八課名詞注釋：隨機翻卡、對錯統計與錯題再練。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/chinese/l08-kongchengji-terms/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/chinese/l08-kongchengji-terms",
+  "cat": "自學評量",
+  "tags": [
+    "國中國文",
+    "翻卡",
+    "注釋",
+    "空城計"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "l09-miluojiangshen-terms",
+  "title": "國文〈汨羅江神〉名詞注釋翻卡",
+  "desc": "二下第九課名詞注釋：隨機翻卡、對錯統計與錯題再練。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/chinese/l09-miluojiangshen-terms/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/chinese/l09-miluojiangshen-terms",
+  "cat": "自學評量",
+  "tags": [
+    "國中國文",
+    "翻卡",
+    "注釋",
+    "汨羅江神"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "jhs-science-b4-b2",
+  "title": "國中自然第二冊・第四冊總入口",
+  "desc": "跨版本重點、會考提醒與原創練習的學生入口。教師版頁面不另列，由站內進入。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/science/jhs-science-b4-b2/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/science/jhs-science-b4-b2",
+  "cat": "自學評量",
+  "tags": [
+    "國中自然",
+    "重點整理",
+    "會考",
+    "總入口"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "wufu-organic-ch5",
+  "title": "五福國中國二下｜第 5 章有機化合物題庫",
+  "desc": "110 至 113 學年度期末自然第五章題目，依主題與難易重排，答案與詳解預設收合。",
+  "url": "https://addielu-phy.github.io/ai-coding-tools-free-comparison/exams/wufu-jh-8b-final-science-ch5/",
+  "repo": "https://github.com/addielu-phy/ai-coding-tools-free-comparison/tree/main/exams/wufu-jh-8b-final-science-ch5",
+  "cat": "自學評量",
+  "tags": [
+    "國二理化",
+    "有機化合物",
+    "五福國中",
+    "期末"
+  ],
+  "date": "2026-10",
+  "featured": false
+},
+{
+  "id": "claude-pulley-4-2",
+  "title": "4-2 滑輪練習題互動解說（Claude 版）",
+  "desc": "牛頓第二運動定律的九題滑輪練習總頁。每題一頁，題目直接顯示，引導與詳解可展開。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2",
+  "cat": "探究與實作",
+  "tags": [
+    "滑輪",
+    "牛頓第二運動定律",
+    "Claude 版",
+    "高中物理"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p1",
+  "title": "滑輪練習 1｜兩斜面交換位置",
+  "desc": "53° 與 37° 兩光滑斜面上的物體交換位置後，求加速度。可操作模擬並展開計算。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p1/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p1",
+  "cat": "探究與實作",
+  "tags": [
+    "滑輪",
+    "斜面",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p2",
+  "title": "滑輪練習 2｜阿特午機落地前後",
+  "desc": "質量 m 與 2m 的阿特午機，看 2m 落地前後的加速度、張力與上升高度。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p2/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p2",
+  "cat": "探究與實作",
+  "tags": [
+    "阿特午機",
+    "滑輪",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p3",
+  "title": "滑輪練習 3｜讓車上的物體相對靜止",
+  "desc": "車頂上的物體跨過滑輪連到車廂側邊，求使它相對車靜止的加速度。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p3/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p3",
+  "cat": "探究與實作",
+  "tags": [
+    "相對靜止",
+    "滑輪",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p4",
+  "title": "滑輪練習 4｜桌面木塊與動滑輪",
+  "desc": "光滑桌面上的木塊連接吊著另一物的動滑輪，看兩段繩的張力與加速度。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p4/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p4",
+  "cat": "探究與實作",
+  "tags": [
+    "動滑輪",
+    "張力",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p5",
+  "title": "滑輪練習 5｜施力上拉動滑輪",
+  "desc": "向上拉質量不計的滑輪，判斷重物何時離地，以及力再加大時的加速度。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p5/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p5",
+  "cat": "探究與實作",
+  "tags": [
+    "動滑輪",
+    "牛頓第二運動定律",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p6",
+  "title": "滑輪練習 6｜兩桌之間的動滑輪",
+  "desc": "兩張光滑桌之間吊著動滑輪，求三個物體的加速度。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p6/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p6",
+  "cat": "探究與實作",
+  "tags": [
+    "動滑輪",
+    "連結體",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-p7",
+  "title": "滑輪練習 7｜天平上的阿特午機",
+  "desc": "等臂天平一端吊著阿特午機，比較按住繩子與放手時，另一端要放多少質量。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/p7/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/p7",
+  "cat": "探究與實作",
+  "tags": [
+    "天平",
+    "阿特午機",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-v6",
+  "title": "滑輪練習｜雙層滑輪",
+  "desc": "複式阿特午機：定滑輪一側一個物體，另一側動滑輪再吊兩個物體，求三者加速度。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/v6/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/v6",
+  "cat": "探究與實作",
+  "tags": [
+    "複式滑輪",
+    "加速度",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-pulley-v9",
+  "title": "滑輪練習｜加速電梯中的阿特午機",
+  "desc": "把阿特午機放進有加速度的電梯，用視重改寫運動方程式。",
+  "url": "https://addielu-phy.github.io/claude-sims/pulley-4-2/v9/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/pulley-4-2/v9",
+  "cat": "探究與實作",
+  "tags": [
+    "電梯",
+    "視重",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・4-2 滑輪",
+  "featured": false
+},
+{
+  "id": "claude-efield-12-2",
+  "title": "12-2 電場：五個例題互動解說（Claude 版）",
+  "desc": "兩點電荷、帶電圓環、同心球殼、平行板加速與感應電荷。每題一頁，附引導、詳解與類題。",
+  "url": "https://addielu-phy.github.io/claude-sims/efield-12-2/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/efield-12-2",
+  "cat": "探究與實作",
+  "tags": [
+    "電場",
+    "靜電",
+    "Claude 版",
+    "高中物理"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・12-2 電場",
+  "featured": false
+},
+{
+  "id": "claude-efield-ex1",
+  "title": "電場例題 1｜兩點電荷的中垂線",
+  "desc": "看兩點電荷在中垂線上的電場如何疊加，垂直分量如何抵消。",
+  "url": "https://addielu-phy.github.io/claude-sims/efield-12-2/ex1/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/efield-12-2/ex1",
+  "cat": "探究與實作",
+  "tags": [
+    "點電荷",
+    "向量疊加",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・12-2 電場",
+  "featured": false
+},
+{
+  "id": "claude-efield-ex2",
+  "title": "電場例題 2｜帶電圓環軸線",
+  "desc": "3D 模擬把圓環切成小段，看垂直分量抵消、軸向分量相加。",
+  "url": "https://addielu-phy.github.io/claude-sims/efield-12-2/ex2/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/efield-12-2/ex2",
+  "cat": "探究與實作",
+  "tags": [
+    "圓環",
+    "電場",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・12-2 電場",
+  "featured": false
+},
+{
+  "id": "claude-efield-ex3",
+  "title": "電場例題 3｜金屬球與同心球殼",
+  "desc": "帶電金屬球外套同心球殼，用高斯面看各區域電場與感應電荷。",
+  "url": "https://addielu-phy.github.io/claude-sims/efield-12-2/ex3/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/efield-12-2/ex3",
+  "cat": "探究與實作",
+  "tags": [
+    "高斯面",
+    "導體",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・12-2 電場",
+  "featured": false
+},
+{
+  "id": "claude-efield-ex4",
+  "title": "電場例題 4｜平行板間的加速",
+  "desc": "帶電質點在均勻電場中由靜止加速，並連到帶電單擺的週期。",
+  "url": "https://addielu-phy.github.io/claude-sims/efield-12-2/ex4/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/efield-12-2/ex4",
+  "cat": "探究與實作",
+  "tags": [
+    "勻強電場",
+    "運動學",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・12-2 電場",
+  "featured": false
+},
+{
+  "id": "claude-efield-ex5",
+  "title": "電場例題 5｜感應電荷與靜電屏蔽",
+  "desc": "點電荷靠近不帶電球殼時，看感應電荷、電力線與殼內電場為何是零。",
+  "url": "https://addielu-phy.github.io/claude-sims/efield-12-2/ex5/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/efield-12-2/ex5",
+  "cat": "探究與實作",
+  "tags": [
+    "靜電屏蔽",
+    "感應",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "series": "Claude 版・12-2 電場",
+  "featured": false
+},
+{
+  "id": "claude-box-slide-or-tip",
+  "title": "推木箱：先滑動還是先傾倒？（Claude 版）",
+  "desc": "看正向力作用點怎麼隨推力移動，判斷木箱先滑動或先傾倒，並附三小題計算。",
+  "url": "https://addielu-phy.github.io/claude-sims/box-slide-or-tip/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/box-slide-or-tip",
+  "cat": "探究與實作",
+  "tags": [
+    "摩擦力",
+    "力矩",
+    "木箱",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "claude-torque-lever",
+  "title": "2-5 力矩與槓桿原理（Claude 版）",
+  "desc": "力臂偵測器、槓桿實驗室與三種槓桿分類器，搭配情境例題和逐步計算。",
+  "url": "https://addielu-phy.github.io/claude-sims/torque-lever/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/torque-lever",
+  "cat": "探究與實作",
+  "tags": [
+    "力矩",
+    "槓桿",
+    "國中理化",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "claude-earth-ch5-6",
+  "title": "地科 CH5–6 圖解與會考真題（Claude 版）",
+  "desc": "地球的環境、板塊與岩層：九張重點圖、必考整理，以及十五題會考與基測互動詳解。",
+  "url": "https://addielu-phy.github.io/claude-sims/earth-ch5-6/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/earth-ch5-6",
+  "cat": "自學評量",
+  "tags": [
+    "地科",
+    "會考",
+    "圖解",
+    "Claude 版"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
+{
+  "id": "claude-kh-exam-index",
+  "title": "高雄六校國三上第二次段考古題索引（Claude 版）",
+  "desc": "五福、七賢、明華、龍華、陽明與附中國中部 112 至 114 學年度試題的公開連結，並標出自然科可用卷。",
+  "url": "https://addielu-phy.github.io/claude-sims/kh-exam-index/",
+  "repo": "https://github.com/addielu-phy/claude-sims/tree/main/kh-exam-index",
+  "cat": "自學評量",
+  "tags": [
+    "段考",
+    "考古題",
+    "高雄",
+    "索引"
+  ],
+  "date": "2026-11",
+  "featured": false
+},
 {
   "id": "addie-ai-workshop",
   "title": "AI 科學教學實驗室｜六站教師研習（GPT 版）",
@@ -32,7 +840,8 @@ const WORKS = [
     "互動闖關"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "spotlight": true
 },
 {
   "id": "nknush-physics-midterm-2-gpt",
@@ -48,7 +857,8 @@ const WORKS = [
     "互動模擬"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "spotlight": true
 },
 {
   "id": "typt-parameter-lab-gpt",
@@ -64,7 +874,9 @@ const WORKS = [
     "GPT 版"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "embed": false,
+  "note": "需教材共用碼"
 },
 {
   "id": "calculus-tutor-gpt",
@@ -79,7 +891,8 @@ const WORKS = [
     "GPT 版"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "spotlight": true
 },
 {
   "id": "newton-second-law-4-2-gemini",
@@ -96,7 +909,8 @@ const WORKS = [
     "Gemini版"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "spotlight": true
 },
 {
   "id": "coulomb-12-1-gpt",
@@ -112,7 +926,8 @@ const WORKS = [
     "GPT 版"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "spotlight": true
 },
 {
   "id": "electric-field-12-2-gemini",
@@ -464,7 +1279,9 @@ const WORKS = [
     "互動模擬"
   ],
   "date": "2026-11",
-  "featured": true
+  "featured": true,
+  "embed": false,
+  "note": "需密碼"
 },
   {
   "id": "tennis-racket",
@@ -518,7 +1335,9 @@ const WORKS = [
     cat: '探究與實作',
     tags: ['TYPT 2027', '物理辯論', '練習賽筆記', 'Grok 版'],
     date: '2026-11',
-    featured: false
+    featured: false,
+    embed: false,
+    note: '需密碼'
   },
   {
     id: 'iypt2027-si-grok',
@@ -529,7 +1348,9 @@ const WORKS = [
     cat: '探究與實作',
     tags: ['TYPT 2027', '聲學', '隔音', 'Grok 版本'],
     date: '2026-11',
-    featured: false
+    featured: false,
+    embed: false,
+    note: '需密碼'
   },
   {
     id: 'physics-rope-tension',
@@ -551,7 +1372,9 @@ const WORKS = [
     cat: '探究與實作',
     tags: ['IYPT 2027', '聲學', '聲場視覺化', '物理辯論'],
     date: '2026-10',
-    featured: false
+    featured: false,
+    embed: false,
+    note: '需密碼'
   },
   {
     id: 'phai-optics-sim',
@@ -606,7 +1429,8 @@ const WORKS = [
     cat: '探究與實作',
     tags: ['手機感測器', '物理實驗', '即時數據', '探究工具'],
     date: '2026-10',
-    featured: true
+    featured: true,
+    spotlight: true
   },
   {
     id: 'kshs-typt-selection',
@@ -782,7 +1606,8 @@ const WORKS = [
     cat: '社群與共備',
     tags: ['教師共備', 'AI 教學案例', '資源目錄', '投稿系統'],
     date: '2026-07',
-    featured: true
+    featured: true,
+    spotlight: true
   },
   {
     id: 'cap-review',
