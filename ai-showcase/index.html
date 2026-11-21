@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 作品展示｜盧政良 Addie Lu</title>
+<meta name="description" content="盧政良（Addie Lu）用 AI 製作的教學網站：段考與會考練習、物理互動模擬、PhAI 與課堂工具。可預覽、可搜尋，並直接開啟體驗。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="AI 作品展示｜盧政良 Addie Lu">
+<meta property="og:description" content="段考與會考練習、物理互動模擬、PhAI 與課堂工具。先看預覽，再打開原網站操作。">
+<meta property="og:url" content="https://addielu-phy.github.io/ai-showcase/">
+<meta property="og:image" content="https://addielu-phy.github.io/ai-showcase/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="盧政良 Addie Lu 的 AI 作品展示">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 作品展示｜盧政良 Addie Lu">
+<meta name="twitter:description" content="段考與會考練習、物理互動模擬、PhAI 與課堂工具。先看預覽，再打開原網站操作。">
+<meta name="twitter:image" content="https://addielu-phy.github.io/ai-showcase/og.png">
+<link rel="canonical" href="https://addielu-phy.github.io/ai-showcase/">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
+if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+document.documentElement.setAttribute('data-theme',t)})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="showcase.css">
+<script data-goatcounter="https://addielu-phy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="showcase">
+
+<div class="topbar">
+  <div class="wrap bar">
+    <a class="brand" href="../">盧政良 <span class="en">ADDIE LU</span></a>
+    <nav class="mainnav" aria-label="主選單">
+      <a href="../#about" class="hide-sm">關於</a>
+      <a href="./" class="active">AI 展示</a>
+      <a href="../works.html">全部作品</a>
+      <a href="../#contact" class="hide-sm">聯絡</a>
+      <a href="https://github.com/addielu-phy" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <button class="iconbtn" id="theme-toggle" aria-label="切換深淺主題">☾</button>
+  </div>
+</div>
+
+<header class="hero showcase-hero">
+  <div class="wrap">
+    <div class="inner">
+      <p class="eyebrow rise d1">Showcase · AI × Teaching</p>
+      <h1 class="rise d2">AI 作品展示</h1>
+      <p class="role rise d3">
+        <span class="en">ADDIE LU</span>
+        <span>盧政良 · 高雄中學物理教師 · 高師大兼任助理教授 · 台大物理博士</span>
+      </p>
+      <p class="tagline rise d4">這些網站是為了段考、會考、探究和教師共備做出來的。桌機可在卡片裡預覽，點開後能直接操作；手機改看縮圖，再進原站體驗。</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats" aria-label="展示數量">
+    <div class="stat"><div class="num" id="stat-works">–</div><div class="lbl">件上線作品</div></div>
+    <div class="stat"><div class="num" id="stat-cats">–</div><div class="lbl">個分類</div></div>
+    <div class="stat"><div class="num" id="stat-spot">–</div><div class="lbl">件精選可預覽</div></div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="wrap">
+    <form class="search" role="search" id="search-form">
+      <label for="q">搜尋作品</label>
+      <input id="q" name="q" type="search" placeholder="輸入名稱、科目或關鍵字" autocomplete="off" enterkeyhint="search">
+    </form>
+    <div class="filters" id="filters" role="group" aria-label="依分類篩選"></div>
+    <p class="count-line" id="count-line" aria-live="polite"></p>
+  </div>
+</div>
+
+<main id="main">
+  <section class="block" id="spotlight">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Selected</p>
+        <h2>精選</h2>
+      </div>
+      <p class="lead">先看這幾件：段考複習、互動模擬、PhAI，以及可以翻開的立體物理書。</p>
+      <div class="show-grid spot-grid" id="spot-grid"></div>
+    </div>
+  </section>
+  <div id="catalog"></div>
+</main>
+
+<noscript>
+  <div class="wrap noscript">
+    <p>作品預覽需要 JavaScript。你也可以先看 <a href="../works.html">全部作品清單</a>。</p>
+  </div>
+</noscript>
+
+<footer class="site">
+  <div class="wrap">
+    <p>© 2026 盧政良 Addie Lu · 高雄中學物理 · 展示頁與作品清單共用同一份資料</p>
+    <p class="fmono">x(t) = v₀cosθ·t　·　y(t) = v₀sinθ·t − ½gt²</p>
+  </div>
+</footer>
+
+<dialog id="preview" class="preview" aria-labelledby="preview-title">
+  <div class="preview-bar">
+    <div class="preview-heading">
+      <p class="preview-kicker" id="preview-kicker"></p>
+      <h2 id="preview-title"></h2>
+    </div>
+    <div class="preview-actions">
+      <a class="btn primary" id="preview-open" target="_blank" rel="noopener">立即體驗 <span class="arr">→</span></a>
+      <button type="button" class="iconbtn" id="preview-close" aria-label="關閉預覽">×</button>
+    </div>
+  </div>
+  <p class="preview-note" id="preview-note" hidden></p>
+  <div class="preview-stage">
+    <img id="preview-still" alt="" hidden>
+    <iframe id="preview-iframe" title="作品預覽" hidden></iframe>
+  </div>
+</dialog>
+
+<script src="../assets/works.js?v=20261121-showcase"></script>
+<script src="showcase.js?v=20261121-showcase"></script>
+</body>
+</html>
