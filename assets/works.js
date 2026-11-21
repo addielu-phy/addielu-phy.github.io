@@ -19,6 +19,22 @@ const CATS = ['自學評量', '錯題詳解', '探究與實作', '課程工具',
 
 const WORKS = [
 {
+  "id": "addie-ai-workshop",
+  "title": "AI 科學教學實驗室｜六站教師研習（GPT 版）",
+  "desc": "走入六間科學實驗室，與站長交談並完成 12 道 AI 教學情境題。支援手機方向鍵、徽章、行動筆記與學習報表。",
+  "url": "https://addielu-phy.github.io/addie-ai-workshop/",
+  "repo": "https://github.com/addielu-phy/addielu-phy.github.io/tree/main/addie-ai-workshop",
+  "cat": "AI × 教育",
+  "tags": [
+    "教師研習",
+    "AI 素養",
+    "高中科學",
+    "互動闖關"
+  ],
+  "date": "2026-11",
+  "featured": true
+},
+{
   "id": "nknush-physics-midterm-2-gpt",
   "title": "國三理化 2-1～3-3 十大必考題型（GPT 版）",
   "desc": "高師大附中國中部第二次段考複習。十題會考考古題與十題原創練習，皆可操作動畫、調整參數與展開分步詳解。",
